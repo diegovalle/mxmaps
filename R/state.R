@@ -27,7 +27,7 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
 
 #' Create a state-level choropleth
 #'
-#' The map used is mxstate.map in the choroplethrMXMaps package. See mxmunicipio.map for
+#' The map used is mxstate.map in the mxmapsData package. See mxstate.map for
 #' an object which can help you coerce your regions into the required format.
 #'
 #' @param df A data.frame with a column named "region" and a column named "value".  Elements in
