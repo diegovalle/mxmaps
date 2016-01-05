@@ -19,6 +19,7 @@ Here's a choropleth of Mexican states:
 ```{r}
 library(mxmaps)
 library(viridis)
+library(ggplot2)
 df = data.frame(region=unique(mxstate.map$region),
                 value=sample(as.numeric(unique(mxstate.map$region))))
 df$region <- as.character(df$region)
@@ -33,6 +34,16 @@ df = data.frame(region=unique(mxmunicipio.map$region),
                 value=sample(as.numeric(unique(mxmunicipio.map$region))))
 df$region <- as.character(df$region)
 mxmunicipio_choropleth(df, num_colors = 1) +
+  scale_fill_viridis()
+```
+
+Hexbin map
+
+```{r}
+df = data.frame(region=unique(mxhexbin.map$region),
+                value=sample(as.numeric(unique(mxhexbin.map$region))))
+df$region <- as.character(df$region)
+mxhexbin_choropleth(df, num_colors = 1) +
   scale_fill_viridis()
 ```
 
