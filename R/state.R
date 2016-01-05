@@ -2,7 +2,6 @@
 #' @export
 #' @importFrom dplyr left_join
 #' @importFrom R6 R6Class
-#' @include choropleth.R
 MXStateChoropleth = R6Class("MXStateChoropleth",
                                 inherit = choroplethr:::Choropleth,
                                 public = list(

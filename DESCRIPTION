@@ -30,3 +30,8 @@ Suggests:
 Depends:
     R (>= 3.0.0)
 VignetteBuilder: knitr
+Collate:
+    'hexbin.R'
+    'municipio.R'
+    'state.R'
+RoxygenNote: 5.0.0
