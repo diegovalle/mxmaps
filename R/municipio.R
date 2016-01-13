@@ -5,6 +5,16 @@
 MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                             inherit = choroplethr:::Choropleth,
                             public = list(
+                              render = function()
+                              {
+                                self$prepare_map()
+
+                                ggplot(self$choropleth.df, aes(long, lat, group = group)) +
+                                  geom_polygon(aes(fill = value), color = "dark grey", size = 0.1) +
+                                  self$get_scale() +
+                                  self$theme_clean() +
+                                  ggtitle(self$title)
+                              },
 
                               # initialize with a world map
                               initialize = function(user.df)
