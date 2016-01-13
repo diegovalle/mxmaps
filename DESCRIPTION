@@ -1,6 +1,6 @@
 Package: mxmaps
 Type: Package
-Title: Choropleths of Mexico
+Title: Create Choropleths of Mexico
 Version: 0.1
 Date: 2016-01-02
 Author: Diego Valle-Jones
@@ -17,7 +17,8 @@ Imports:
     R6,
     acs,
     WDI,
-    choroplethr
+    choroplethr,
+    leaflet
 Suggests:
     testthat,
     zipcode,
@@ -34,4 +35,6 @@ Collate:
     'hexbin.R'
     'municipio.R'
     'state.R'
+    'data.R'
+    'leaflet.R'
 RoxygenNote: 5.0.0
