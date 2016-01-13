@@ -5,7 +5,7 @@
 \title{Create a municipio-level choropleth}
 \usage{
 mxhexbin_choropleth(df, title = "", legend = "", num_colors = 7,
-  zoom = NULL)
+  zoom = NULL, color = "white")
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in

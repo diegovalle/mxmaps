@@ -20,6 +20,9 @@ Here's a choropleth of Mexican states:
 library(mxmaps)
 library(viridis)
 library(ggplot2)
+library(leaflet)
+library(scales)
+library(dplyr)
 df = data.frame(region=unique(mxstate.map$region),
                 value=sample(as.numeric(unique(mxstate.map$region))))
 df$region <- as.character(df$region)
@@ -30,11 +33,8 @@ mxstate_choropleth(df, num_colors = 1) +
 Here's another one of Mexican municipios (similar to counties):
 
 ```{r}
-df = data.frame(region=unique(mxmunicipio.map$region),
-                value=sample(as.numeric(unique(mxmunicipio.map$region))))
-df$region <- as.character(df$region)
-mxmunicipio_choropleth(df, num_colors = 1) +
-  scale_fill_viridis()
+df_mxmunicipio$value <- df_mxmunicipio$indigenous / df_mxmunicipio$pop
+mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1) 
 ```
 
 Hexbin map
@@ -43,8 +43,48 @@ Hexbin map
 df = data.frame(region=unique(mxhexbin.map$region),
                 value=sample(as.numeric(unique(mxhexbin.map$region))))
 df$region <- as.character(df$region)
-mxhexbin_choropleth(df, num_colors = 1) +
-  scale_fill_viridis()
+mxhexbin_choropleth(df, num_colors = 9)
+
+c = MXHexBinChoropleth$new(df)
+c$title = "2012 State Population Estimates"
+c$legend = "Population"
+c$set_num_colors(7)
+c$set_zoom(NULL)
+c$show_labels = TRUE
+c$label_color = "white"
+without_abbr = c$render()
+
+without_abbr
+```
+
+```{r}
+
+df_mxmunicipio$value <- df_mxmunicipio$indigenous /df_mxmunicipio$pop
+
+pal <- colorNumeric(magma(9), domain = df_mxmunicipio$value)
+mxmunicipio_leaflet(df_mxmunicipio,
+                    pal,
+                    ~ pal(value),
+                    ~ sprintf("State: %s<br/>Municipio : %s<br/>Value: %s%%",
+                              state_name, municipio_name, round(value * 100, 1)))%>%
+  addLegend(position = "bottomright", pal = pal, values = df_mxmunicipio$value)%>%
+  addProviderTiles("CartoDB.Positron")
+
+mxmunicipio_leaflet(df_mxmunicipio,
+                    pal,
+                    ~ pal(value),
+                    "abcdef")
+
+df_mxstate$value <- df_mxstate$afromexican / df_mxstate$pop
+pal <- colorNumeric("Blues", domain = df_mxstate$value)
+mxstate_leaflet(df_mxstate,
+                    pal,
+                    ~ pal(value),
+                    ~ sprintf("State: %s<br/>Value: %s",
+                              state_name, comma(value))) %>%
+  addLegend(position = "bottomright", pal = pal, values = df_mxstate$value) %>%
+  addProviderTiles("CartoDB.Positron")
+
 ```
 
 
