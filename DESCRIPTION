@@ -1,12 +1,13 @@
 Package: mxmaps
 Type: Package
-Title: Create Choropleths of Mexico
+Title: Ready-made functions to create choropleths of Mexico. See the vignette for examples.
 Version: 0.1
 Date: 2016-01-02
 Author: Diego Valle-Jones
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
-Description: Choropleths of Mexico
-License: BSD_3_clause
+Description: Choropleths of Mexico.
+BugReports: https://github.com/diegovalle/mxmaps/issues
+License: BSD_3_clause + file LICENSE
 LazyData: TRUE
 Imports:
     scales,
@@ -15,14 +16,11 @@ Imports:
     ggplot2,
     dplyr,
     R6,
-    acs,
-    WDI,
     choroplethr,
     leaflet
 Suggests:
     testthat,
     zipcode,
-    knitr,
     choroplethrMaps,
     choroplethrAdmin1,
     knitr,
