@@ -39,17 +39,7 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
 #' match the names of countries as they appear in the "region" column of ?country.regions
 #' @examples
 #' # demonstrate default options
-#' data(df_pop_country)
-#' country_choropleth(df_pop_country, "2012 World Bank Populate Estimates")
-#'
-#' # demonstrate continuous scale
-#' country_choropleth(df_pop_country, "2012 World Bank Populate Estimates", num_colors=1)
-#'
-#' # demonstrate zooming
-#' country_choropleth(df_pop_country,
-#'                    "2012 World Bank Population Estimates",
-#'                    num_colors=1,
-#'                    zoom=c("united states of america", "canada", "mexico"))
+
 
 #' @export
 #' @importFrom Hmisc cut2

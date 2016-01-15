@@ -13,7 +13,8 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                   geom_polygon(aes(fill = value), color = "dark grey", size = 0.1) +
                                   self$get_scale() +
                                   self$theme_clean() +
-                                  ggtitle(self$title)
+                                  ggtitle(self$title) +
+                                  coord_map()
                               },
 
                               # initialize with a world map
@@ -49,17 +50,6 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 #' match the names of countries as they appear in the "region" column of ?country.regions
 #' @examples
 #' # demonstrate default options
-#' data(df_pop_country)
-#' country_choropleth(df_pop_country, "2012 World Bank Populate Estimates")
-#'
-#' # demonstrate continuous scale
-#' country_choropleth(df_pop_country, "2012 World Bank Populate Estimates", num_colors=1)
-#'
-#' # demonstrate zooming
-#' country_choropleth(df_pop_country,
-#'                    "2012 World Bank Population Estimates",
-#'                    num_colors=1,
-#'                    zoom=c("united states of america", "canada", "mexico"))
 
 #' @export
 #' @importFrom Hmisc cut2
