@@ -1,3 +1,5 @@
+[![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps)
+
 Mexico Choropleths
 ======================
 
