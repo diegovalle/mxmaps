@@ -7,6 +7,7 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                              public = list(
                                show_labels = TRUE,
                                label_color = "black",
+                               label_size = 5,
 
                                # initialize with a world map
                                initialize = function(user.df)
@@ -51,7 +52,7 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                                                                       state_abbr = c("BCS",
                                                                                      "BC", "SIN", "SON", "NAY", "DGO", "GRO", "MICH", "COL", "JAL",
                                                                                      "ZAC", "CHIH", "MOR", "MEX", "GTO", "AGS", "COAH", "OAX", "PUE",
-                                                                                     "DF", "QRO", "SLP", "NL", "CHPS", "TLAX", "HGO", "VER", "TAM",
+                                                                                     "CDMX", "QRO", "SLP", "NL", "CHPS", "TLAX", "HGO", "VER", "TAM",
                                                                                      "TAB", "CAMP", "QROO", "YUC"),
                                                                       id = c("03", "02", "25", "26",
                                                                              "18", "10", "12", "16", "06", "14", "32", "08", "17", "15", "11",
@@ -67,7 +68,9 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 
                                    df_mxstate_labels = df_mxstate_labels[df_mxstate_labels$id %in% private$zoom, ]
 
-                                   choropleth = choropleth + geom_text(data = df_mxstate_labels, aes(long, lat, label = state_abbr, group = NULL), color = self$label_color)
+                                   choropleth = choropleth + geom_text(data = df_mxstate_labels, aes(long, lat, label = state_abbr, group = NULL),
+                                                                       color = self$label_color,
+                                                                       size = self$label_size)
                                  }
 
                                  choropleth
@@ -98,12 +101,15 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 #' @importFrom ggplot2 scale_fill_continuous scale_colour_brewer ggplotGrob annotation_custom
 #' @importFrom scales comma
 #' @importFrom grid unit grobTree
-mxhexbin_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL)
+mxhexbin_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
+                               label_color = "black", label_size = 5)
 {
   c = MXHexBinChoropleth$new(df)
   c$title  = title
   c$legend = legend
   c$set_num_colors(num_colors)
   c$set_zoom(zoom)
+  c$label_color = label_color
+  c$label_size = label_size
   c$render()
 }
