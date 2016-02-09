@@ -5,16 +5,27 @@
 MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                             inherit = choroplethr:::Choropleth,
                             public = list(
+                              show_states = FALSE,
                               render = function()
                               {
                                 self$prepare_map()
 
-                                ggplot(self$choropleth.df, aes(long, lat, group = group)) +
+                                gg <- ggplot(self$choropleth.df, aes(long, lat, group = group)) +
                                   geom_polygon(aes(fill = value), color = "dark grey", size = 0.1) +
                                   self$get_scale() +
                                   self$theme_clean() +
                                   ggtitle(self$title) +
                                   coord_map()
+                                state_zoom <- unique(str_sub(private$zoom, start = 1, end = 2))
+                                if(self$show_states) {
+                                  data(mxstate.map, package="mxmapsData", envir=environment())
+                                  gg <- gg + geom_polygon(
+                                    data = subset(mxstate.map, region %in% state_zoom),
+                                    fill = "transparent",
+                                    color = "black",
+                                    size = .15)
+                                }
+                                return(gg)
                               },
 
                               # initialize with a world map
@@ -48,6 +59,8 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 #' will use a continuous scale, and a value in [2, 9] will use that many colors.
 #' @param zoom An optional vector of countries to zoom in on. Elements of this vector must exactly
 #' match the names of countries as they appear in the "region" column of ?country.regions
+#' @param show_states An optional vector of countries to zoom in on. Elements of this vector must exactly
+#' match the names of countries as they appear in the "region" column of ?country.regions
 #' @examples
 #' # demonstrate default options
 
@@ -58,12 +71,14 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 #' @importFrom ggplot2 scale_fill_continuous scale_colour_brewer ggplotGrob annotation_custom
 #' @importFrom scales comma
 #' @importFrom grid unit grobTree
-mxmunicipio_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL)
+mxmunicipio_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
+                                  show_states = FALSE)
 {
   c = MXMunicipioChoropleth$new(df)
   c$title  = title
   c$legend = legend
   c$set_num_colors(num_colors)
   c$set_zoom(zoom)
+  c$show_states = show_states
   c$render()
 }
