@@ -17,4 +17,3 @@ NULL
 #' @keywords data
 #' @usage data(df_mxmunicipio)
 NULL
-

@@ -2,6 +2,10 @@
 #' @export
 #' @importFrom dplyr left_join
 #' @importFrom R6 R6Class
+#' @importFrom stringr str_sub
+#' @importFrom ggplot2 ggplot aes geom_polygon scale_fill_brewer ggtitle theme theme_grey element_blank geom_text coord_map
+#' @importFrom ggplot2 scale_fill_continuous scale_colour_brewer ggplotGrob annotation_custom
+#
 MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                             inherit = choroplethr:::Choropleth,
                             public = list(

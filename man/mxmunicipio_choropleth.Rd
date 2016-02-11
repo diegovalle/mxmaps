@@ -5,7 +5,7 @@
 \title{Create a municipio-level choropleth}
 \usage{
 mxmunicipio_choropleth(df, title = "", legend = "", num_colors = 7,
-  zoom = NULL)
+  zoom = NULL, show_states = FALSE)
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
@@ -20,6 +20,9 @@ will use a continuous scale, and a value in [2, 9] will use that many colors.}
 
 \item{zoom}{An optional vector of countries to zoom in on. Elements of this vector must exactly
 match the names of countries as they appear in the "region" column of ?country.regions}
+
+\item{show_states}{An optional vector of countries to zoom in on. Elements of this vector must exactly
+match the names of countries as they appear in the "region" column of ?country.regions}
 }
 \description{
 The map used is mxmunicipio.map in the mxmapsData package. See mxmunicipio.map for
@@ -27,16 +30,5 @@ an object which can help you coerce your regions into the required format.
 }
 \examples{
 # demonstrate default options
-data(df_pop_country)
-country_choropleth(df_pop_country, "2012 World Bank Populate Estimates")
-
-# demonstrate continuous scale
-country_choropleth(df_pop_country, "2012 World Bank Populate Estimates", num_colors=1)
-
-# demonstrate zooming
-country_choropleth(df_pop_country,
-                   "2012 World Bank Population Estimates",
-                   num_colors=1,
-                   zoom=c("united states of america", "canada", "mexico"))
 }
 

@@ -5,12 +5,56 @@
 \title{mxstate_leaflet}
 \usage{
 mxstate_leaflet(df, pal, fillColor, popup, weight = 0.2, color = "#555555",
-  opacity = 1, fillOpacity = 0.8, lat = 23.8, lng = -102, zoom = 5)
+  opacity = 1, fillOpacity = 0.8, lat = 23.8, lng = -102, mapzoom = 5,
+  zoom = NULL)
 }
 \arguments{
-\item{zoom}{}
+\item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
+the "region" column must exactly match how regions are named in the "region" column in ?df_mxstates.}
+
+\item{pal}{the color palette function, generated from
+\code{\link{colorNumeric}()}, \code{colorBin()}, \code{colorQuantile()}, or
+\code{colorFactor()}}
+
+\item{fillColor}{the values used to generate colors from the palette function}
+
+\item{popup}{The text to show when the user clicks on a map feature}
+
+\item{weight}{The thickness of map feature borders}
+
+\item{color}{The border color for the map features}
+
+\item{opacity}{the opacity of colors.}
+
+\item{fillOpacity}{The opacity of the colors used to fill the map features}
+
+\item{lat}{The latitude of the map center}
+
+\item{lng}{The longitude of the map center}
+
+\item{mapzoom}{The zoom level}
+
+\item{zoom}{The municipios to zoom into}
+}
+\value{
+A leaflet map
 }
 \description{
 mxstate_leaflet
+}
+\examples{
+\dontrun{
+data(df_mxstate)
+df_mxstate$value <- df_mxstate$afromexican / df_mxstate$pop
+pal <- colorNumeric("Blues", domain = df_mxstate$value)
+mxstate_leaflet(df_mxstate,
+                pal,
+                ~ pal(value),
+                ~ sprintf("State: \%s<br/>Value: \%s",
+                          state_name, comma(value)),
+                zoom = c("09", "10")) \%>\%
+  addLegend(position = "bottomright", pal = pal, values = df_mxstate$value) \%>\%
+  addProviderTiles("CartoDB.Positron")
+}
 }
 

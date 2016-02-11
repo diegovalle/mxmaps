@@ -5,13 +5,12 @@
 MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                              inherit = choroplethr:::Choropleth,
                              public = list(
-                               show_labels = TRUE,
                                label_color = "black",
                                label_size = 5,
+                               show_labels = TRUE,
 
                                # initialize with a world map
-                               initialize = function(user.df)
-                               {
+                               initialize = function(user.df) {
                                  if (!requireNamespace("mxmapsData", quietly = TRUE)) {
                                    stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
                                  }
@@ -19,15 +18,13 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                                  data(mxhexbin.map, package="mxmapsData", envir=environment())
                                  super$initialize(mxhexbin.map, user.df)
 
-                                 if (private$has_invalid_regions)
-                                 {
+                                 if (private$has_invalid_regions) {
                                    warning("Please see ?country.regions for a list of mappable regions")
                                  }
                                },
 
-                               render = function()
-                               {
-                                 choropleth = super$render()
+                               render = function() {
+                                 choropleth <- super$render()
 
                                  # by default, add labels for the lower 48 states
                                  if (self$show_labels) {
@@ -68,7 +65,7 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 
                                    df_mxstate_labels = df_mxstate_labels[df_mxstate_labels$id %in% private$zoom, ]
 
-                                   choropleth = choropleth + geom_text(data = df_mxstate_labels, aes(long, lat, label = state_abbr, group = NULL),
+                                   choropleth <-  choropleth + geom_text(data = df_mxstate_labels, aes(long, lat, label = state_abbr, group = NULL),
                                                                        color = self$label_color,
                                                                        size = self$label_size)
                                  }
@@ -91,25 +88,30 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 #' will use a continuous scale, and a value in [2, 9] will use that many colors.
 #' @param zoom An optional vector of countries to zoom in on. Elements of this vector must exactly
 #' match the names of countries as they appear in the "region" column of ?country.regions
+#' @param label_color An optional color for the state abbreviation labels
+#' @param label_size An optional size for the state abbrevition labels
 #' @examples
-
-
+#' \dontrun{
+#' data(df_mxstates)
+#' df_mxstates$value <- df_mxstates$pop
+#' mxhexbin _choropleth(df_mxstates, num_colors = 1)
+#' }
 #' @export
 #' @importFrom Hmisc cut2
-#' @importFrom stringr str_extract_all
+#' @importFrom stringr str_extract_all str_length
 #' @importFrom ggplot2 ggplot aes geom_polygon scale_fill_brewer ggtitle theme theme_grey element_blank geom_text
 #' @importFrom ggplot2 scale_fill_continuous scale_colour_brewer ggplotGrob annotation_custom
 #' @importFrom scales comma
 #' @importFrom grid unit grobTree
 mxhexbin_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
-                               label_color = "black", label_size = 5)
+                               label_color = "black", label_size = 4.5)
 {
-  c = MXHexBinChoropleth$new(df)
-  c$title  = title
-  c$legend = legend
+  c <-  MXHexBinChoropleth$new(df)
+  c$title  <-  title
+  c$legend <- legend
   c$set_num_colors(num_colors)
   c$set_zoom(zoom)
-  c$label_color = label_color
-  c$label_size = label_size
+  c$label_color <-  label_color
+  c$label_size <-  label_size
   c$render()
 }

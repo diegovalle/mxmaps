@@ -5,7 +5,7 @@
 \title{Create a municipio-level choropleth}
 \usage{
 mxhexbin_choropleth(df, title = "", legend = "", num_colors = 7,
-  zoom = NULL, color = "white")
+  zoom = NULL, label_color = "black", label_size = 4.5)
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
@@ -20,23 +20,20 @@ will use a continuous scale, and a value in [2, 9] will use that many colors.}
 
 \item{zoom}{An optional vector of countries to zoom in on. Elements of this vector must exactly
 match the names of countries as they appear in the "region" column of ?country.regions}
+
+\item{label_color}{An optional color for the state abbreviation labels}
+
+\item{label_size}{An optional size for the state abbrevition labels}
 }
 \description{
 The map used is mxmunicipio.map in the mxmapsData package. See mxmunicipio.map for
 an object which can help you coerce your regions into the required format.
 }
 \examples{
-# demonstrate default options
-data(df_pop_country)
-country_choropleth(df_pop_country, "2012 World Bank Populate Estimates")
-
-# demonstrate continuous scale
-country_choropleth(df_pop_country, "2012 World Bank Populate Estimates", num_colors=1)
-
-# demonstrate zooming
-country_choropleth(df_pop_country,
-                   "2012 World Bank Population Estimates",
-                   num_colors=1,
-                   zoom=c("united states of america", "canada", "mexico"))
+\dontrun{
+data(df_mxstates)
+df_mxstates$value <- df_mxstates$pop
+mxhexbin _choropleth(df_mxstates, num_colors = 1)
+}
 }
 

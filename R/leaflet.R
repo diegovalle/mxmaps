@@ -64,23 +64,40 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
 #' mxmunicipio_leaflet
 #'
 #' @param df A data.frame with a column named "region" and a column named "value".  Elements in
-#' the "region" column must exactly match how regions are named in the "region" column in ?country.map.
-#' @param pal
-#' @param fillColor
-#' @param popup
-#' @param weight
-#' @param color
-#' @param opacity
-#' @param fillOpacity
-#' @param lat
-#' @param lng
-#' @param zoom
+#' the "region" column must exactly match how regions are named in the "region" column in ?df_mxstates.
+#' @param pal the color palette function, generated from
+#'   \code{\link{colorNumeric}()}, \code{colorBin()}, \code{colorQuantile()}, or
+#'   \code{colorFactor()}
+#' @param fillColor the values used to generate colors from the palette function
+#' @param popup The text to show when the user clicks on a map feature
+#' @param weight The thickness of map feature borders
+#' @param color The border color for the map features
+#' @param opacity the opacity of colors.
+#' @param fillOpacity The opacity of the colors used to fill the map features
+#' @param lat The latitude of the map center
+#' @param lng The longitude of the map center
+#' @param mapzoom  The zoom level
+#' @param zoom  The municipios to zoom into
 #'
-#' @return
+#' @return A leaflet map
 #' @export
 #' @importFrom leaflet colorNumeric
 #'
 #' @examples
+#' \dontrun{
+#' data(df_mxmunicipio)
+#' df_mxmunicipio$value <- df_mxmunicipio$indigenous /df_mxmunicipio$pop
+#' magma <- c("#000004FF", "#1D1146FF", "#50127CFF", "#822681FF",
+#'            "#B63779FF", "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF")
+#' pal <- colorNumeric(magma, domain = df_mxmunicipio$value)
+#' mxmunicipio_leaflet(df_mxmunicipio,
+#' pal,
+#' ~ pal(value),
+#' ~ sprintf("State: %s<br/>Municipio : %s<br/>Value: %s%%",
+#'           state_name, municipio_name, round(value * 100, 1))) %>%
+#'   addLegend(position = "bottomright", pal = pal, values = df_mxmunicipio$value) %>%
+#'   addProviderTiles("CartoDB.Positron")
+#' }
 mxmunicipio_leaflet <- function(df, pal,
                                 fillColor, popup,
                                 weight = .2, color = "#555555", opacity = 1, fillOpacity = .8,
@@ -108,23 +125,40 @@ mxmunicipio_leaflet <- function(df, pal,
 
 #' mxstate_leaflet
 #'
-#' @param df
-#' @param pal
-#' @param fillColor
-#' @param popup
-#' @param weight
-#' @param color
-#' @param opacity
-#' @param fillOpacity
-#' @param lat
-#' @param lng
-#' @param zoom
+#' @param df A data.frame with a column named "region" and a column named "value".  Elements in
+#' the "region" column must exactly match how regions are named in the "region" column in ?df_mxstates.
+#' @param pal the color palette function, generated from
+#'   \code{\link{colorNumeric}()}, \code{colorBin()}, \code{colorQuantile()}, or
+#'   \code{colorFactor()}
+#' @param fillColor the values used to generate colors from the palette function
+#' @param popup The text to show when the user clicks on a map feature
+#' @param weight The thickness of map feature borders
+#' @param color The border color for the map features
+#' @param opacity the opacity of colors.
+#' @param fillOpacity The opacity of the colors used to fill the map features
+#' @param lat The latitude of the map center
+#' @param lng The longitude of the map center
+#' @param mapzoom  The zoom level
+#' @param zoom  The municipios to zoom into
 #'
-#' @return
+#' @return A leaflet map
 #' @export
 #' @importFrom leaflet colorNumeric
 #'
 #' @examples
+#' \dontrun{
+#' data(df_mxstate)
+#' df_mxstate$value <- df_mxstate$afromexican / df_mxstate$pop
+#' pal <- colorNumeric("Blues", domain = df_mxstate$value)
+#' mxstate_leaflet(df_mxstate,
+#'                 pal,
+#'                 ~ pal(value),
+#'                 ~ sprintf("State: %s<br/>Value: %s",
+#'                           state_name, comma(value)),
+#'                 zoom = c("09", "10")) %>%
+#'   addLegend(position = "bottomright", pal = pal, values = df_mxstate$value) %>%
+#'   addProviderTiles("CartoDB.Positron")
+#' }
 mxstate_leaflet <- function(df, pal,
                             fillColor, popup,
                             weight = .2, color = "#555555", opacity = 1, fillOpacity = .8,

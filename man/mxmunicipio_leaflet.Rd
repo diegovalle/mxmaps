@@ -6,12 +6,56 @@
 \usage{
 mxmunicipio_leaflet(df, pal, fillColor, popup, weight = 0.2,
   color = "#555555", opacity = 1, fillOpacity = 0.8, lat = 23.8,
-  lng = -102, zoom = 5)
+  lng = -102, mapzoom = 5, zoom = NULL)
 }
 \arguments{
-\item{zoom}{}
+\item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
+the "region" column must exactly match how regions are named in the "region" column in ?df_mxstates.}
+
+\item{pal}{the color palette function, generated from
+\code{\link{colorNumeric}()}, \code{colorBin()}, \code{colorQuantile()}, or
+\code{colorFactor()}}
+
+\item{fillColor}{the values used to generate colors from the palette function}
+
+\item{popup}{The text to show when the user clicks on a map feature}
+
+\item{weight}{The thickness of map feature borders}
+
+\item{color}{The border color for the map features}
+
+\item{opacity}{the opacity of colors.}
+
+\item{fillOpacity}{The opacity of the colors used to fill the map features}
+
+\item{lat}{The latitude of the map center}
+
+\item{lng}{The longitude of the map center}
+
+\item{mapzoom}{The zoom level}
+
+\item{zoom}{The municipios to zoom into}
+}
+\value{
+A leaflet map
 }
 \description{
 mxmunicipio_leaflet
+}
+\examples{
+\dontrun{
+data(df_mxmunicipio)
+df_mxmunicipio$value <- df_mxmunicipio$indigenous /df_mxmunicipio$pop
+magma <- c("#000004FF", "#1D1146FF", "#50127CFF", "#822681FF",
+           "#B63779FF", "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF")
+pal <- colorNumeric(magma, domain = df_mxmunicipio$value)
+mxmunicipio_leaflet(df_mxmunicipio,
+pal,
+~ pal(value),
+~ sprintf("State: \%s<br/>Municipio : \%s<br/>Value: \%s\%\%",
+          state_name, municipio_name, round(value * 100, 1))) \%>\%
+  addLegend(position = "bottomright", pal = pal, values = df_mxmunicipio$value) \%>\%
+  addProviderTiles("CartoDB.Positron")
+}
 }
 

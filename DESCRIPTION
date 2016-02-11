@@ -1,11 +1,11 @@
 Package: mxmaps
 Type: Package
-Title: Ready-made functions to create choropleths of Mexico. See the vignette for examples.
+Title: Choropleths of Mexico
 Version: 0.1
 Date: 2016-01-02
 Author: Diego Valle-Jones
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
-Description: Choropleths of Mexico.
+Description: Ready-made functions to create choropleths of Mexico. See the vignette for examples.
 BugReports: https://github.com/diegovalle/mxmaps/issues
 License: BSD_3_clause + file LICENSE
 LazyData: TRUE
@@ -17,10 +17,11 @@ Imports:
     dplyr,
     R6,
     choroplethr,
-    leaflet
+    leaflet,
+    inegiR,
+    lubridate
 Suggests:
     testthat,
-    zipcode,
     choroplethrMaps,
     choroplethrAdmin1,
     knitr,
@@ -35,4 +36,5 @@ Collate:
     'state.R'
     'data.R'
     'leaflet.R'
+    'inegi.R'
 RoxygenNote: 5.0.0
