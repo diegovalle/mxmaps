@@ -9,6 +9,9 @@ branches:
     - master
     - develop
 
+r_packages:
+  - devtools
+
 r_github_packages:
   - jimhester/covr
 
