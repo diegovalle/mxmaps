@@ -18,8 +18,7 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                   geom_polygon(aes(fill = value), color = "dark grey", size = 0.1) +
                                   self$get_scale() +
                                   self$theme_clean() +
-                                  ggtitle(self$title) +
-                                  coord_map()
+                                  ggtitle(self$title)
                                 state_zoom <- unique(str_sub(private$zoom, start = 1, end = 2))
                                 if(self$show_states) {
                                   data(mxstate.map, package="mxmapsData", envir=environment())
@@ -29,7 +28,10 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                     color = "black",
                                     size = .15)
                                 }
-                                return(gg)
+                                return(gg + coord_map(xlim = c(min(self$choropleth.df$long),
+                                                               max(self$choropleth.df$long)),
+                                                      ylim = c(min(self$choropleth.df$lat),
+                                                               max(self$choropleth.df$lat))))
                               },
 
                               # initialize with a world map
