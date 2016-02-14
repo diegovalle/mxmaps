@@ -36,4 +36,5 @@ Collate:
     'data.R'
     'leaflet.R'
     'inegi.R'
+    'string.R'
 RoxygenNote: 5.0.0
