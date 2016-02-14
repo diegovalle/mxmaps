@@ -5,7 +5,7 @@
 \title{Create a municipio-level choropleth}
 \usage{
 mxmunicipio_choropleth(df, title = "", legend = "", num_colors = 7,
-  zoom = NULL, show_states = FALSE)
+  zoom = NULL, show_states = TRUE)
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in

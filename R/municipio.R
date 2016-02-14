@@ -9,7 +9,7 @@
 MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                             inherit = choroplethr:::Choropleth,
                             public = list(
-                              show_states = FALSE,
+                              show_states = TRUE,
                               render = function()
                               {
                                 self$prepare_map()
@@ -78,7 +78,7 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 #' @importFrom scales comma
 #' @importFrom grid unit grobTree
 mxmunicipio_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
-                                  show_states = FALSE)
+                                  show_states = TRUE)
 {
   c = MXMunicipioChoropleth$new(df)
   c$title  = title
