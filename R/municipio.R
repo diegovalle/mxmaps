@@ -80,6 +80,9 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 mxmunicipio_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
                                   show_states = TRUE)
 {
+  if("region" %in% colnames(df)) {
+    df$region <- str_mxmunicipio(df$region)
+  }
   c = MXMunicipioChoropleth$new(df)
   c$title  = title
   c$legend = legend

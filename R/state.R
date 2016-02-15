@@ -50,6 +50,9 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
 #' @importFrom grid unit grobTree
 mxstate_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL)
 {
+  if("region" %in% colnames(df)) {
+    df$region <- str_mxstate(df$region)
+  }
   c = MXStateChoropleth$new(df)
   c$title  = title
   c$legend = legend

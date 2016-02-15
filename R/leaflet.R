@@ -99,17 +99,21 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
 #'   addProviderTiles("CartoDB.Positron")
 #' }
 mxmunicipio_leaflet <- function(df, pal,
-                                fillColor, popup,
+                                fillColor, popup = "",
                                 weight = .2, color = "#555555", opacity = 1, fillOpacity = .8,
                                 lat = 23.8, lng = -102, mapzoom = 5, zoom = NULL) {
   if (!requireNamespace("mxmapsData", quietly = TRUE)) {
     stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
   }
-  if (missing(df) | missing(fillColor) | missing(popup)){
-    stop()
+  if (missing(df)){
+    stop("missing data.frame")
+  }
+  if (missing(fillColor)){
+    stop("missing fillColor")
   }
   stopifnot(is.data.frame(df))
   stopifnot(c("region", "value") %in% colnames(df))
+  df$region <- str_mxmunicipio(df$region)
 
   data(mxmunicipio.topoJSON, package="mxmapsData", envir=environment())
   mxmunicipio.topoJSON <- setStyle(mxmunicipio.topoJSON, weight, color, opacity , fillOpacity)
@@ -169,7 +173,15 @@ mxstate_leaflet <- function(df, pal,
 
   data(mxstate.topoJSON, package="mxmapsData", envir=environment())
   mxstate.topoJSON <- setStyle(mxstate.topoJSON, weight, color, opacity , fillOpacity)
-
+  if (missing(df)){
+    stop("missing data.frame")
+  }
+  if (missing(fillColor)){
+    stop("missing fillColor")
+  }
+  stopifnot(is.data.frame(df))
+  stopifnot(c("region", "value") %in% colnames(df))
+  df$region <- str_mxstate(df$region)
 
   df$apopups <- resolveFormula(popup, df)
   df$acolors <- resolveFormula(fillColor, df)

@@ -106,6 +106,9 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 mxhexbin_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
                                label_color = "black", label_size = 4.5)
 {
+  if("region" %in% colnames(df)) {
+    df$region <- str_mxstate(df$region)
+  }
   c <-  MXHexBinChoropleth$new(df)
   c$title  <-  title
   c$legend <- legend
