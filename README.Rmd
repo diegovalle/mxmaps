@@ -1,0 +1,159 @@
+---
+title: "Mexico Choropleths"
+author: "Diego Valle-Jones"
+date: "February 11, 2016"
+output: 
+ github_document:
+          toc: true
+          fig_width: 8
+          fig_height: 5
+---
+
+[![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps) [![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
+
+|              |          |
+|--------------|---------------|
+| __Author:__ | Diego Valle-Jones |
+| __License:__ | [BSD_3](https://opensource.org/licenses/BSD-3-Clause) |
+| __Status:__ | alpha |
+
+## What does it do?
+
+This package can be used to easily create maps of Mexico at both the state and municipio levels. It also includes functions to create interactive maps using the leaflet package, map INEGI data from its API, and format strings so they match the INEGI state and municipio codes.
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Installation
+
+For the moment this package is only available from github. For the development version:
+
+```r
+if (!require(devtools)) {
+    install.packages("devtools")
+}
+devtools::install_github(c('diegovalle/mxmapsData', 'diegovalle/mxmaps'))
+```
+
+## Quick Example
+
+```{r}
+library(mxmaps)
+
+data("df_mxstate")
+df_mxstate$value <- df_mxstate$pop
+mxstate_choropleth(df_mxstate,
+                    title = "Total population, by state") 
+```
+
+##Data
+
+The data.frame that you provide to the plotting functions must have one column named "region" and one column named "value". The entries for "region" must match the INEGI codes for states ("01", "02", etc) and municipios ("01001", "01002", etc) either as a string with or without a leading "0" or as numerics. The functions `str_mxstate` and `str_mxmunicipio` are provided to easily format codes to the INEGI specification. Also, two example data.frames, `df_mxstate` and `df_mxmunicipio`, are provided with demographic variables from the Encuesta Intercensal 2015.
+
+```{r}
+data("df_mxstate")
+knitr::kable(head(df_mxstate))
+data("df_mxmunicipio")
+knitr::kable(head(df_mxmunicipio))
+```
+
+## Municipios
+
+Here's another one of Mexican municipios (similar to counties):
+
+```{r}
+data("df_mxmunicipio")
+df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop 
+mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
+                       title = "Percentage of the population that self-identifies as indigenous")
+
+```
+
+Zoom into metro areas:
+
+```{r}
+
+mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
+                       zoom = subset(df_mxmunicipio, metro_area %in% c("Valle de México",
+                                                                       "Puebla-Tlaxcala",
+                                                                       "Cuernavaca",
+                                                                       "Toluca"))$region,
+                       title = "Percentage of the population that self-identifies as indigenous") 
+```
+
+## Hexbin maps
+
+Hexbin map
+
+```{r}
+data("df_mxstate")
+df_mxstate$value = df_mxstate$afromexican / df_mxstate$pop 
+mxhexbin_choropleth(df_mxstate, num_colors = 1,
+                    title = "Percentage of the population that self-identifies as Afro-Mexican")
+
+```
+
+## INEGI API
+
+The package also has special functions to download data from the [INEGI API](http://www.inegi.org.mx/desarrolladores/indicadores/apiindicadores.aspx) using the [inegiR]() package
+
+1) You must have a [token](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx) to use this functionality. It's free and easy to get by visiting the [INEGI website](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx)
+2) The function plots the most recent value provided by the API
+3) You'll have to lookup the indicator code at the [INEGI](http://www.inegi.org.mx/desarrolladores/indicadores/apiindicadores.aspx)
+
+```{r, warning=FALSE}
+# Insert token here
+token <- ""
+
+mxc_regions <- subset(df_mxmunicipio, metro_area == "Valle de México")$region
+choropleth_inegi(token, mxc_regions, 
+                 indicator = "1006000044", 
+                 silent = FALSE)
+
+state_regions <- df_mxstate$region
+choropleth_inegi(token, state_regions, 
+                 indicator = "3101008001")
+hexbin_inegi(token, state_regions, 
+             indicator = "3106002001")
+```
+
+## String conversion
+
+```{r}
+str_mxstate(c(32, 5))
+str_mxmunicipio(c(32, 5), c(9, 18))
+str_mxmunicipio(c(32001, 5009))
+```
+
+## Leaflet
+
+```r
+library(leaflet)
+library(scales) # needed for comma
+
+df_mxstate$value <- df_mxstate$afromexican / df_mxstate$pop
+pal <- colorNumeric("Blues", domain = df_mxstate$value)
+mxstate_leaflet(df_mxstate,
+                pal,
+                ~ pal(value),
+                ~ sprintf("State: %s<br/>Value: %s",
+                          state_name, comma(value))) %>%
+  addLegend(position = "bottomright", pal = pal, values = df_mxstate$value) %>%
+  addProviderTiles("CartoDB.Positron")
+
+df_mxmunicipio$value <- df_mxmunicipio$indigenous / df_mxmunicipio$pop
+magma <- c("#000004FF", "#1D1146FF", "#50127CFF", "#822681FF", "#B63779FF", 
+           "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF")
+pal <- colorNumeric(magma, domain = df_mxmunicipio$value)
+mxmunicipio_leaflet(df_mxmunicipio,
+                    pal,
+                    ~ pal(value),
+                    ~ sprintf("State: %s<br/>Municipio : %s<br/>Value: %s%%",
+                              state_name, municipio_name, round(value * 100, 1))) %>%
+  addLegend(position = "bottomright", pal = pal, values = df_mxmunicipio$value) %>%
+  addProviderTiles("CartoDB.Positron")
+```
+
+
