@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+saveshps.R
+.travis.yml
+^\.travis\.yml$
+README.Rmd
+README.html
+README_files
+^cran-comments\.md$
