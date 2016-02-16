@@ -1,13 +1,5 @@
 
 
-str_mxstate <- function(x) {
-  stringr::str_pad(x, 2, "left", "0")
-}
-
-str_mxmunicipio <- function(x) {
-  stringr::str_pad(x, 3, "left", "0")
-}
-
 setStyle <- function(topoJSON, weight, color, opacity , fillOpacity){
  topoJSON$style = list(
     weight = .2,
