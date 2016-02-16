@@ -50,7 +50,7 @@ For the moment this package is only available from github. For the development v
 if (!require(devtools)) {
     install.packages("devtools")
 }
-devtools::install_github(c('diegovalle/mxmapsData', 'diegovalle/mxmaps'))
+devtools::install_github('diegovalle/mxmaps')
 ```
 
 Quick Example
