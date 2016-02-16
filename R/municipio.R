@@ -20,7 +20,7 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                   ggtitle(self$title)
                                 state_zoom <- unique(str_sub(private$zoom, start = 1, end = 2))
                                 if(self$show_states) {
-                                  data(mxstate.map, package="mxmapsData", envir=environment())
+                                  data(mxstate.map, package="mxmaps", envir=environment())
                                   gg <- gg + geom_polygon(
                                     data = subset(mxstate.map, region %in% state_zoom),
                                     fill = "transparent",
