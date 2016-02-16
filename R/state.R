@@ -8,16 +8,16 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
                                   # initialize with a world map
                                   initialize = function(user.df)
                                   {
-                                    if (!requireNamespace("mxmapsData", quietly = TRUE)) {
-                                      stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
-                                    }
+                                    #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
+                                    #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
+                                    #}
 
-                                    data(mxstate.map, package="mxmapsData", envir=environment())
+                                    data(mxstate.map, package="mxmaps", envir=environment())
                                     super$initialize(mxstate.map, user.df)
 
                                     if (private$has_invalid_regions)
                                     {
-                                      warning("Please see ?country.regions for a list of mappable regions")
+                                      warning("Please see df_mxstate for a list of mappable regions")
                                     }
                                   }
                                 )
@@ -38,8 +38,6 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
 #' match the names of countries as they appear in the "region" column of ?country.regions
 #' @examples
 #' # demonstrate default options
-
-
 #' @export
 mxstate_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL)
 {

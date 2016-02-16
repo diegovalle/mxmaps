@@ -94,9 +94,9 @@ mxmunicipio_leaflet <- function(df, pal,
                                 fillColor, popup = "",
                                 weight = .2, color = "#555555", opacity = 1, fillOpacity = .8,
                                 lat = 23.8, lng = -102, mapzoom = 5, zoom = NULL) {
-  if (!requireNamespace("mxmapsData", quietly = TRUE)) {
-    stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
-  }
+  #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
+  #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
+  #}
   if (missing(df)){
     stop("missing data.frame")
   }
@@ -107,7 +107,7 @@ mxmunicipio_leaflet <- function(df, pal,
   stopifnot(c("region", "value") %in% colnames(df))
   df$region <- str_mxmunicipio(df$region)
 
-  data(mxmunicipio.topoJSON, package="mxmapsData", envir=environment())
+  data(mxmunicipio.topoJSON, package="mxmaps", envir=environment())
   mxmunicipio.topoJSON <- setStyle(mxmunicipio.topoJSON, weight, color, opacity , fillOpacity)
 
 
@@ -159,11 +159,11 @@ mxstate_leaflet <- function(df, pal,
                             fillColor, popup,
                             weight = .2, color = "#555555", opacity = 1, fillOpacity = .8,
                             lat = 23.8, lng = -102, mapzoom = 5, zoom = NULL) {
-  if (!requireNamespace("mxmapsData", quietly = TRUE)) {
-    stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
-  }
+  #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
+  #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
+  #}
 
-  data(mxstate.topoJSON, package="mxmapsData", envir=environment())
+  data(mxstate.topoJSON, package="mxmaps", envir=environment())
   mxstate.topoJSON <- setStyle(mxstate.topoJSON, weight, color, opacity , fillOpacity)
   if (missing(df)){
     stop("missing data.frame")

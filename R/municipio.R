@@ -36,16 +36,16 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                               # initialize with a world map
                               initialize = function(user.df)
                               {
-                                if (!requireNamespace("mxmapsData", quietly = TRUE)) {
-                                  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
-                                }
+                                #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
+                                #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
+                                #}
 
-                                data(mxmunicipio.map, package="mxmapsData", envir=environment())
+                                data(mxmunicipio.map, package="mxmaps", envir=environment())
                                 super$initialize(mxmunicipio.map, user.df)
 
                                 if (private$has_invalid_regions)
                                 {
-                                  warning("Please see ?country.regions for a list of mappable regions")
+                                  warning("Please see df_mxmunicipio for a list of mappable regions")
                                 }
                               }
                             )

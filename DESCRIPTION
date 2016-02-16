@@ -21,17 +21,7 @@ Imports:
 Suggests:
     testthat,
     knitr,
-    rmarkdown,
-    mxmapsData
+    rmarkdown
 Depends:
     R (>= 3.0.0)
-Collate:
-    'string.R'
-    'hexbin.R'
-    'municipio.R'
-    'state.R'
-    'data.R'
-    'leaflet.R'
-    'inegi.R'
-    'mxmaps-package.R'
 RoxygenNote: 5.0.0

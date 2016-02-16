@@ -10,15 +10,15 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 
                                # initialize with a world map
                                initialize = function(user.df) {
-                                 if (!requireNamespace("mxmapsData", quietly = TRUE)) {
-                                   stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
-                                 }
+                                 #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
+                                #   stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
+                                 #}
 
-                                 data(mxhexbin.map, package="mxmapsData", envir=environment())
+                                 data(mxhexbin.map, package="mxmaps", envir=environment())
                                  super$initialize(mxhexbin.map, user.df)
 
                                  if (private$has_invalid_regions) {
-                                   warning("Please see ?country.regions for a list of mappable regions")
+                                   warning("Please see ?df_mxstate for a list of mappable regions")
                                  }
                                },
 
