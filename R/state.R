@@ -1,6 +1,5 @@
 #' An R6 object for creating state-level choropleths.
 #' @export
-#' @importFrom dplyr left_join
 #' @importFrom R6 R6Class
 MXStateChoropleth = R6Class("MXStateChoropleth",
                                 inherit = choroplethr:::Choropleth,
@@ -42,12 +41,6 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
 
 
 #' @export
-#' @importFrom Hmisc cut2
-#' @importFrom stringr str_extract_all
-#' @importFrom ggplot2 ggplot aes geom_polygon scale_fill_brewer ggtitle theme theme_grey element_blank geom_text
-#' @importFrom ggplot2 scale_fill_continuous scale_colour_brewer ggplotGrob annotation_custom
-#' @importFrom scales comma
-#' @importFrom grid unit grobTree
 mxstate_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL)
 {
   if("region" %in% colnames(df)) {

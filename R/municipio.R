@@ -1,6 +1,5 @@
 #' An R6 object for creating municipio-level choropleths.
 #' @export
-#' @importFrom dplyr left_join
 #' @importFrom R6 R6Class
 #' @importFrom stringr str_sub
 #' @importFrom ggplot2 ggplot aes geom_polygon scale_fill_brewer ggtitle theme theme_grey element_blank geom_text coord_map
@@ -71,12 +70,6 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 #' # demonstrate default options
 
 #' @export
-#' @importFrom Hmisc cut2
-#' @importFrom stringr str_extract_all
-#' @importFrom ggplot2 ggplot aes geom_polygon scale_fill_brewer ggtitle theme theme_grey element_blank geom_text
-#' @importFrom ggplot2 scale_fill_continuous scale_colour_brewer ggplotGrob annotation_custom
-#' @importFrom scales comma
-#' @importFrom grid unit grobTree
 mxmunicipio_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
                                   show_states = TRUE)
 {
