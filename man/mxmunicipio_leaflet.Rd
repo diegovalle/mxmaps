@@ -4,7 +4,7 @@
 \alias{mxmunicipio_leaflet}
 \title{mxmunicipio_leaflet}
 \usage{
-mxmunicipio_leaflet(df, pal, fillColor, popup, weight = 0.2,
+mxmunicipio_leaflet(df, pal, fillColor, popup = "", weight = 0.2,
   color = "#555555", opacity = 1, fillOpacity = 0.8, lat = 23.8,
   lng = -102, mapzoom = 5, zoom = NULL)
 }
