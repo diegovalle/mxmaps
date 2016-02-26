@@ -102,6 +102,9 @@ mxhexbin_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
   if("region" %in% colnames(df)) {
     df$region <- str_mxstate(df$region)
   }
+  if(!is.null(zoom)) {
+    zoom <- str_mxstate(zoom)
+  }
   c <-  MXHexBinChoropleth$new(df)
   c$title  <-  title
   c$legend <- legend

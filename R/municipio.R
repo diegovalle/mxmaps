@@ -76,6 +76,9 @@ mxmunicipio_choropleth = function(df, title="", legend="", num_colors=7, zoom=NU
   if("region" %in% colnames(df)) {
     df$region <- str_mxmunicipio(df$region)
   }
+  if(!is.null(zoom)) {
+    zoom <- str_mxmunicipio(zoom)
+  }
   c = MXMunicipioChoropleth$new(df)
   c$title  = title
   c$legend = legend
