@@ -48,6 +48,15 @@ test_that("convert municipio codes to INEGI format",{
   expect_warning(str_mxmunicipio(c("01096", "02003")), "Invalid codes detected")
 })
 
+test_that("zoom works in", {
+  df = df_mxmunicipio
+  df$value = df$pop
+  p <- mxmunicipio_choropleth(df,
+                         num_colors = 1,
+                         zoom = c(9002:9010))
+  expect_is(p$layers[[1]], "ggproto")
+})
+
 # test_that("INEGI choropleths match expectations",{
 #   # Insert your INEGI token here:
 #   token <- ""
