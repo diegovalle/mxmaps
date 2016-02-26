@@ -5,8 +5,8 @@
 \title{mxmunicipio_leaflet}
 \usage{
 mxmunicipio_leaflet(df, pal, fillColor, popup = "", weight = 0.2,
-  color = "#555555", opacity = 1, fillOpacity = 0.8, lat = 23.8,
-  lng = -102, mapzoom = 5, zoom = NULL)
+  color = "#555555", opacity = 1, fillOpacity = 0.8, lng = -102,
+  lat = 23.8, mapzoom = 5, zoom = NULL)
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
@@ -28,9 +28,9 @@ the "region" column must exactly match how regions are named in the "region" col
 
 \item{fillOpacity}{The opacity of the colors used to fill the map features}
 
-\item{lat}{The latitude of the map center}
-
 \item{lng}{The longitude of the map center}
+
+\item{lat}{The latitude of the map center}
 
 \item{mapzoom}{The zoom level}
 

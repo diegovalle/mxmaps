@@ -66,8 +66,8 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
 #' @param color The border color for the map features
 #' @param opacity the opacity of colors.
 #' @param fillOpacity The opacity of the colors used to fill the map features
-#' @param lat The latitude of the map center
 #' @param lng The longitude of the map center
+#' @param lat The latitude of the map center
 #' @param mapzoom  The zoom level
 #' @param zoom  The municipios to zoom into
 #'
@@ -132,8 +132,8 @@ mxmunicipio_leaflet <- function(df, pal,
 #' @param color The border color for the map features
 #' @param opacity the opacity of colors.
 #' @param fillOpacity The opacity of the colors used to fill the map features
-#' @param lat The latitude of the map center
 #' @param lng The longitude of the map center
+#' @param lat The latitude of the map center
 #' @param mapzoom  The zoom level
 #' @param zoom  The municipios to zoom into
 #'
@@ -158,7 +158,7 @@ mxmunicipio_leaflet <- function(df, pal,
 mxstate_leaflet <- function(df, pal,
                             fillColor, popup,
                             weight = .2, color = "#555555", opacity = 1, fillOpacity = .8,
-                            lat = 23.8, lng = -102, mapzoom = 5, zoom = NULL) {
+                            lng = -102, lat = 23.8, mapzoom = 5, zoom = NULL) {
   #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
   #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
   #}
