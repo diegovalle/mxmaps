@@ -9,7 +9,7 @@ February 11, 2016
 -   [Data](#data)
 -   [Municipios](#municipios)
 
-[![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps) [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=develop)](https://travis-ci.org/diegovalle/mxmaps) [![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
+Master: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps) Develop: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=develop)](https://travis-ci.org/diegovalle/mxmaps) [![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
 
 <table style="width:43%;">
 <colgroup>
