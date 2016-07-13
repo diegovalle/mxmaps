@@ -10,6 +10,7 @@ setStyle <- function(topoJSON, weight, color, opacity , fillOpacity){
  topoJSON
 }
 
+#from the leaflet package
 resolveFormula = function(f, data) {
   if (!inherits(f, 'formula')) return(f)
   if (length(f) != 2L) stop("Unexpected two-sided formula: ", deparse(f))
@@ -74,6 +75,7 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
 #' @return A leaflet map
 #' @export
 #' @importFrom leaflet colorNumeric
+#' @importFrom  utils data
 #'
 #' @examples
 #' \dontrun{
@@ -140,6 +142,7 @@ mxmunicipio_leaflet <- function(df, pal,
 #' @return A leaflet map
 #' @export
 #' @importFrom leaflet colorNumeric
+#' @importFrom  utils data
 #'
 #' @examples
 #' \dontrun{

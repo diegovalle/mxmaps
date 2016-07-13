@@ -35,6 +35,7 @@ str_mxstate <- function(code){
 #' @return The state and municipio code in the format required by the plotting functions
 #' @export
 #' @importFrom stringr str_pad str_c
+#' @importFrom utils data
 #'
 #' @examples
 #' str_mxmunicipio(c("1006", "2003"))
