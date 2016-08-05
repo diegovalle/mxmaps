@@ -37,7 +37,9 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
 #' @param zoom An optional vector of countries to zoom in on. Elements of this vector must exactly
 #' match the names of countries as they appear in the "region" column of ?country.regions
 #' @examples
-#' # demonstrate default options
+#' df <- df_mxstate
+#' df$value <- df$indigenous
+#' mxstate_choropleth(df)
 #' @export
 mxstate_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL)
 {

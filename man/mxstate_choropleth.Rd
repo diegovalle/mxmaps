@@ -26,6 +26,8 @@ The map used is mxstate.map in the mxmapsData package. See mxstate.map for
 an object which can help you coerce your regions into the required format.
 }
 \examples{
-# demonstrate default options
+df <- df_mxstate
+df$value <- df$indigenous
+mxstate_choropleth(df)
 }
 
