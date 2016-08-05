@@ -27,10 +27,18 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                     color = "black",
                                     size = .15)
                                 }
-                                return(gg + coord_map(xlim = c(min(self$choropleth.df$long),
-                                                               max(self$choropleth.df$long)),
-                                                      ylim = c(min(self$choropleth.df$lat),
-                                                               max(self$choropleth.df$lat))))
+                                xmin <- min(self$choropleth.df$long)
+                                xmax <- max(self$choropleth.df$long)
+                                ymin <- min(self$choropleth.df$lat)
+                                ymax <- max(self$choropleth.df$lat)
+                                xpad <- (xmax - xmin) * .05
+                                ypad <- (ymax - ymin) * .05
+                                return(gg + coord_map(xlim = c(xmin - xpad,
+                                                               xmax + xpad),
+                                                      ylim = c(ymin - ypad,
+                                                               ymax + ypad)
+                                                      )
+                                       )
                               },
 
                               # initialize with a world map
@@ -67,7 +75,9 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 #' @param show_states An optional vector of countries to zoom in on. Elements of this vector must exactly
 #' match the names of countries as they appear in the "region" column of ?country.regions
 #' @examples
-#' # demonstrate default options
+#' df <- df_mxmunicipio
+#' df$value <- df$indigenous
+#' mxmunicipio_choropleth(df)
 
 #' @export
 mxmunicipio_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,

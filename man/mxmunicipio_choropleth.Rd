@@ -29,6 +29,8 @@ The map used is mxmunicipio.map in the mxmapsData package. See mxmunicipio.map f
 an object which can help you coerce your regions into the required format.
 }
 \examples{
-# demonstrate default options
+df <- df_mxmunicipio
+df$value <- df$indigenous
+mxmunicipio_choropleth(df)
 }
 
