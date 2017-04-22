@@ -3,6 +3,11 @@
 language: r
 warnings_are_errors: true
 sudo: required
+addons:
+  apt:
+    packages:
+      - libgdal-dev
+      - libproj-dev
 
 branches:
   only:
