@@ -2,10 +2,12 @@
 
 language: r
 warnings_are_errors: true
+dist: precise
 sudo: required
 addons:
   apt:
     packages:
+      - libgdal-dev
       - libgdal1-dev
       - libproj-dev
 
