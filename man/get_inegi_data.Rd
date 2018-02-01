@@ -16,4 +16,3 @@ get_inegi_data(token, region, indicator)
 \description{
 Title
 }
-

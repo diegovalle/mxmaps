@@ -16,4 +16,3 @@ Downloaded from the "Cartografia Geoestadistica Urbana y
 Rural Amanzanada. Planeacion de la Encuesta Intercensal 2015" shapefiles
 (https://gist.github.com/diegovalle/aa3eef87c085d6ea034f)
 }
-

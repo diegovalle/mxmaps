@@ -12,4 +12,3 @@ MXHexBinChoropleth
 An R6 object for creating municipio-level choropleths.
 }
 \keyword{datasets}
-

@@ -57,4 +57,3 @@ mxstate_leaflet(df_mxstate,
   addProviderTiles("CartoDB.Positron")
 }
 }
-

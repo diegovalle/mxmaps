@@ -18,4 +18,3 @@ get_regions_inegi(token, regions, indicator, silent = TRUE)
 \description{
 Title
 }
-

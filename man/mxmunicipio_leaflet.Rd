@@ -58,4 +58,3 @@ pal,
   addProviderTiles("CartoDB.Positron")
 }
 }
-

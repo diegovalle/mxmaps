@@ -14,4 +14,3 @@ A data.frame containing population estimates for Mexican municipios in 2015.
 Taken from the Encuesta Intercensal..
 }
 \keyword{data}
-

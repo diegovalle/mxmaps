@@ -33,4 +33,3 @@ df <- df_mxmunicipio
 df$value <- df$indigenous
 mxmunicipio_choropleth(df)
 }
-

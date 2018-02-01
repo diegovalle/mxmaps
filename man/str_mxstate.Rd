@@ -27,4 +27,3 @@ str_mxstate("35")
 \seealso{
 \url{http://www.inegi.org.mx/est/contenidos/proyectos/aspectosmetodologicos/clasificadoresycatalogos/catalogo_entidades.aspx}
 }
-

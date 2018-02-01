@@ -12,4 +12,3 @@ Nothing.  However, a variable number of files are written to the current working
 \description{
 Animate a list of chropleths
 }
-

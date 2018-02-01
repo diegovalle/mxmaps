@@ -20,4 +20,3 @@ data(mxhexbin.map)
 ggplot(mxhexbin.map, aes(long, lat, group=group)) + geom_polygon(color = "black")
 }
 }
-

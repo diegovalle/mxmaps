@@ -29,4 +29,3 @@ str_mxmunicipio(33, 999)
 \seealso{
 \url{http://www.inegi.org.mx/est/contenidos/proyectos/aspectosmetodologicos/clasificadoresycatalogos/catalogo_entidades.aspx}
 }
-

@@ -36,4 +36,3 @@ df_mxstates$value <- df_mxstates$pop
 mxhexbin _choropleth(df_mxstates, num_colors = 1)
 }
 }
-

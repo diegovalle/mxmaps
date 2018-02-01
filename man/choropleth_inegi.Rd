@@ -33,4 +33,3 @@ state_regions <- df_mxstate$region
 choropleth_inegi(token, state_regions, "3101008001")
 }
 }
-

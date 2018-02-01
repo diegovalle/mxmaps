@@ -12,4 +12,3 @@ MXStateChoropleth
 An R6 object for creating state-level choropleths.
 }
 \keyword{datasets}
-

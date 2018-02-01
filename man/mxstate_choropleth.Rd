@@ -30,4 +30,3 @@ df <- df_mxstate
 df$value <- df$indigenous
 mxstate_choropleth(df)
 }
-

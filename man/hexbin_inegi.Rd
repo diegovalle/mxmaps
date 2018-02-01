@@ -32,4 +32,3 @@ state_regions <- df_mxstate$region
 hexbin_inegi(token, state_regions, "3101008001")
 }
 }
-
