@@ -11,30 +11,12 @@ February 11, 2016
 
 Master: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps) Develop: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=develop)](https://travis-ci.org/diegovalle/mxmaps) [![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
 
-<table style="width:43%;">
-<colgroup>
-<col width="20%" />
-<col width="22%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td align="left"><strong>Author:</strong></td>
-<td align="left">Diego Valle-Jones</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>License:</strong></td>
-<td align="left"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD_3</a></td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>Status:</strong></td>
-<td align="left">alpha</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>Website:</strong></td>
-<td align="left"><a href="https://www.diegovalle.net/mxmaps/" class="uri">https://www.diegovalle.net/mxmaps/</a></td>
-</tr>
-</tbody>
-</table>
+|              |                                                        |
+|--------------|--------------------------------------------------------|
+| **Author:**  | Diego Valle-Jones                                      |
+| **License:** | [BSD\_3](https://opensource.org/licenses/BSD-3-Clause) |
+| **Status:**  | alpha                                                  |
+| **Website:** | <https://www.diegovalle.net/mxmaps/>                   |
 
 What does it do?
 ----------------
@@ -65,7 +47,7 @@ mxstate_choropleth(df_mxstate,
                     title = "Total population, by state") 
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)<!-- -->
+![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)
 
 Data
 ----
@@ -91,14 +73,14 @@ data("df_mxmunicipio")
 knitr::kable(head(df_mxmunicipio))
 ```
 
-| region | state\_code | state\_name    | state\_name\_official | state\_abbr | state\_abbr\_official | municipio\_code | municipio\_name     |     pop|  pop\_male|  pop\_female|  afromexican|  part\_afromexican|  indigenous|  part\_indigenous| metro\_area    |
-|:-------|:------------|:---------------|:----------------------|:------------|:----------------------|:----------------|:--------------------|-------:|----------:|------------:|------------:|------------------:|-----------:|-----------------:|:---------------|
-| 01001  | 01          | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | 001             | Aguascalientes      |  877190|     425731|       451459|          532|               2791|      104125|             14209| Aguascalientes |
-| 01002  | 01          | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | 002             | Asientos            |   46464|      22745|        23719|            3|                130|        1691|                92| NA             |
-| 01003  | 01          | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | 003             | Calvillo            |   56048|      27298|        28750|           10|                167|        7358|              2223| NA             |
-| 01004  | 01          | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | 004             | Cosío               |   15577|       7552|         8025|            0|                 67|        2213|               191| NA             |
-| 01005  | 01          | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | 005             | Jesús María         |  120405|      60135|        60270|           32|                219|        8679|               649| Aguascalientes |
-| 01006  | 01          | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | 006             | Pabellón de Arteaga |   46473|      22490|        23983|            3|                 74|        6232|               251| NA             |
+| state\_code | municipio\_code | region | state\_name    | state\_name\_official | state\_abbr | state\_abbr\_official | municipio\_name     |     pop|  pop\_male|  pop\_female|  afromexican|  part\_afromexican|  indigenous|  part\_indigenous| metro\_area    |       long|       lat|
+|:------------|:----------------|:-------|:---------------|:----------------------|:------------|:----------------------|:--------------------|-------:|----------:|------------:|------------:|------------------:|-----------:|-----------------:|:---------------|----------:|---------:|
+| 01          | 001             | 01001  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Aguascalientes      |  877190|     425731|       451459|          532|               2791|      104125|             14209| Aguascalientes |  -102.2960|  21.87982|
+| 01          | 002             | 01002  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Asientos            |   46464|      22745|        23719|            3|                130|        1691|                92| NA             |  -102.0893|  22.23832|
+| 01          | 003             | 01003  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Calvillo            |   56048|      27298|        28750|           10|                167|        7358|              2223| NA             |  -102.7188|  21.84691|
+| 01          | 004             | 01004  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Cosío               |   15577|       7552|         8025|            0|                 67|        2213|               191| NA             |  -102.3000|  22.36641|
+| 01          | 005             | 01005  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Jesús María         |  120405|      60135|        60270|           32|                219|        8679|               649| Aguascalientes |  -102.3434|  21.96127|
+| 01          | 006             | 01006  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Pabellón de Arteaga |   46473|      22490|        23983|            3|                 74|        6232|               251| NA             |  -102.2765|  22.14920|
 
 Municipios
 ----------
@@ -112,4 +94,4 @@ mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
                        title = "Percentage of the population that self-identifies as indigenous")
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)<!-- -->
+![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)

@@ -64,7 +64,7 @@ knitr::kable(head(df_mxmunicipio))
 
 ## Municipios
 
-Here's another example of Mexican municipios (similar to counties):
+Here's another example showing Mexican municipios (similar to counties):
 
 ```{r}
 data("df_mxmunicipio")
