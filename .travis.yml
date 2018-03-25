@@ -1,15 +1,25 @@
 # Sample .travis.yml for R projects
 
 language: r
+cache: packages
 warnings_are_errors: true
 
 matrix:
-  include:
+  include:   
     - os: linux
       dist: trusty
-      sudo: required
+      sudo: false
+      r: devel
+    - os: linux
+      dist: trusty
+      sudo: false
+      r: release
+    - os: linux
+      dist: trusty
+      sudo: false
+      r: oldrel
     - os: osx
-      osx_image: xcode7.2
+      r: release
 
 addons:
   apt:
