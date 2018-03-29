@@ -1,8 +1,8 @@
 Package: mxmaps
 Type: Package
 Title: Choropleths of Mexico
-Version: 0.1
-Date: 2016-01-02
+Version: 0.5
+Date: 2018-03-29
 Author: Diego Valle-Jones
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
 Description: Ready-made functions to create choropleths of Mexico.

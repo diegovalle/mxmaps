@@ -1,7 +1,7 @@
 Mexico Choropleths
 ================
 Diego Valle-Jones
-February 11, 2016
+March 29, 2018
 
 -   [What does it do?](#what-does-it-do)
 -   [Installation](#installation)
@@ -9,7 +9,7 @@ February 11, 2016
 -   [Data](#data)
 -   [Municipios](#municipios)
 
-Master: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps) Develop: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=develop)](https://travis-ci.org/diegovalle/mxmaps) [![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
+Master: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps) [![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
 
 |              |                                                        |
 |--------------|--------------------------------------------------------|
@@ -85,7 +85,7 @@ knitr::kable(head(df_mxmunicipio))
 Municipios
 ----------
 
-Here's another example of Mexican municipios (similar to counties):
+Here's another example showing Mexican municipios (similar to counties):
 
 ``` r
 data("df_mxmunicipio")
