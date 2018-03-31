@@ -1,0 +1,86 @@
+---
+title: "Mexico Choropleths"
+output: html_document
+fig_width: 8
+fig_height: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This R package can be used to easily create maps of Mexico at both the state and municipio levels. It is based on the [choroplethr](https://cran.r-project.org/web/packages/choroplethr/index.html) package and also includes functions to create interactive maps using the leaflet package, map INEGI data from its API using the [inegiR](https://github.com/Eflores89/inegiR) package, and format strings so they match the INEGI state and municipio codes.
+
+
+## Installation
+
+For the moment this package is only available from github. For the development version:
+
+```r
+if (!require("devtools")) {
+    install.packages("devtools")
+}
+devtools::install_github("diegovalle/mxmaps")
+```
+
+## Quick Example
+
+```{r}
+library("mxmaps")
+
+df_mxstate$value <- df_mxstate$pop
+mxstate_choropleth(df_mxstate,
+                   title = "Total population, by state") 
+# What the data looks like
+head(df_mxstate[,c("region", "value")])
+```
+
+[![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps) 
+[![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
+
+##Basic Usage
+
+The two basic functions of the package are ```mxstate_choropleth``` and ```mxmunicipio_choropleth```. The data.frame that you provide to the plotting functions must have one column named ```region``` with the INEGI codes of the states or municipios and one column named ```value``` with the values to plot. You can specify a title with the ```title``` parameter and the number of buckets with the ```num_color``` parameter. If you want a continuous scale you can set the ```num_colors``` parameter equal to 1.
+
+```{r}
+library("mxmaps")
+
+df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop 
+mxstate_choropleth(df_mxstate, 
+                   num_colors = 1,
+                   title = "Percentage of the population that self-identifies as indigenous")
+```
+
+## Municipios
+
+You can also plot Mexican municipios (similar to counties) with a continuous color scale set with num_colors = 1
+
+```{r}
+data("df_mxmunicipio")
+df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop 
+mxmunicipio_choropleth(df_mxmunicipio, 
+                       num_colors = 1,
+                       title = "Percentage of the population that self-identifies as indigenous")
+
+```
+
+You can also subset the area to show in the choropleth by using the zoom parameter:
+
+```{r}
+
+mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
+                       zoom = subset(df_mxmunicipio, metro_area %in% c("Valle de México",
+                                                                       "Puebla-Tlaxcala",
+                                                                       "Cuernavaca",
+                                                                       "Toluca"))$region,
+                       title = "Percentage of the population that self-identifies as indigenous") 
+```
+
+You can use the ```show_states``` parameter to hide or show the state borders when making municipio choropleths.
+
+```{r}
+mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
+                       zoom = c(31001:31106,30002:30212),
+                       title = "Percentage of the population that self-identifies\nas indigenous in Yucatán and Veracruz",
+                       show_states = FALSE)
+```

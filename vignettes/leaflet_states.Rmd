@@ -1,0 +1,25 @@
+---
+title: "Leaflet States"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(mxmaps)
+library(leaflet) # for colorNumeric
+library(scales) # needed for comma
+
+df_mxstate$value <- df_mxstate$afromexican / df_mxstate$pop
+pal <- colorNumeric("Blues", domain = df_mxstate$value)
+mxstate_leaflet(df_mxstate,
+                pal,
+                ~ pal(value),
+                ~ sprintf("State: %s<br/>Percent Afro-Mexican: %s",
+                          state_name, comma(value))) %>%
+  addLegend(position = "bottomright", pal = pal, values = df_mxstate$value,
+            title = "Percent<br>Afro-Mexican") %>%
+  addProviderTiles("CartoDB.Positron")
+```

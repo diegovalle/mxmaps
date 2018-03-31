@@ -1,0 +1,42 @@
+---
+title: "Data"
+output: html_document
+css: css/report_styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The data.frame that you provide to the plotting functions must have one column named "region" and one column named "value". The entries for "region" must match the INEGI codes for states ("01", "02", etc) and municipios ("01001", "01002", etc) either as a string with or without a leading "0" or as numerics. The functions `str_mxstate` and `str_mxmunicipio` are provided to easily format codes to the INEGI specification. Also, two example data.frames, `df_mxstate` and `df_mxmunicipio`, are provided with demographic variables from the Encuesta Intercensal 2015.
+
+```{r}
+library(mxmaps)
+library(htmlTable)
+
+data("df_mxstate")
+htmlTable(head(df_mxstate), rnames = FALSE, col.rgroup = c("none", "#F7F7F7"))
+data("df_mxmunicipio")
+htmlTable(head(df_mxmunicipio), rnames = FALSE, col.rgroup = c("none", "#F7F7F7"))
+```
+
+State names and abbreviations come in two styles since normal people always use _Veracruz_ instead of the full official name of _Veracruz de Ignacio de la Llave_, and it's kind of awkward to use the Chiapas official abbreviation of _Chis._
+
+```{r}
+library("geojsonio")
+
+# Convert the topoJSON to spatial object
+data(mxstate.topoJSON)
+tmpdir <- tempdir()
+# have to use RJSONIO or else the topojson isn't valid
+write(RJSONIO::toJSON(mxstate.topoJSON), file.path(tmpdir, "state.topojson"))
+states <- topojson_read(file.path(tmpdir, "state.topojson"))
+```
+
+## String conversion
+
+```{r}
+str_mxstate(c(32, 5))
+str_mxmunicipio(c(32, 5), c(9, 18))
+str_mxmunicipio(c(32001, 5009))
+```

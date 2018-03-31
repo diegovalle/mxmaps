@@ -1,0 +1,33 @@
+---
+title: "Hexbins"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library("mxmaps")
+
+data("df_mxstate")
+df_mxstate$value = df_mxstate$afromexican / df_mxstate$pop 
+mxhexbin_choropleth(df_mxstate, num_colors = 1,
+                    title = "Percentage of the population that self-identifies as Afro-Mexican")
+
+```
+
+You can use ```label_color``` if you want the state abbreviations in a different color than the default black.
+
+```{r message=FALSE,warning=FALSE}
+library("viridis")
+
+df_mxstate$value = df_mxstate$afromexican / df_mxstate$pop 
+# Will show a warning, look at the municipio examples to see how to remove it
+mxhexbin_choropleth(df_mxstate, 
+                    num_colors = 1,
+                    label_color = "white",
+                    title = "Percentage of the population that self-identifies as Afro-Mexican") +
+  scale_fill_viridis()
+
+```

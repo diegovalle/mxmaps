@@ -1,0 +1,27 @@
+---
+title: "Leaflet Municipios"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(mxmaps)
+library(leaflet) # for colorNumeric
+
+df_mxmunicipio$value <- df_mxmunicipio$indigenous / df_mxmunicipio$pop
+#Viridis color scheme
+magma <- c("#000004FF", "#1D1146FF", "#50127CFF", "#822681FF", "#B63779FF", 
+           "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF")
+pal <- colorNumeric(magma, domain = df_mxmunicipio$value)
+mxmunicipio_leaflet(df_mxmunicipio,
+                    pal,
+                    ~ pal(value),
+                    ~ sprintf("State: %s<br/>Municipio : %s<br/>Percent Indigenous: %s%%",
+                              state_name, municipio_name, round(value * 100, 1))) %>%
+  addLegend(position = "bottomright", pal = pal, values = df_mxmunicipio$value,
+            title = "Percent<br>Indigenous") %>%
+  addProviderTiles("CartoDB.Positron")
+```
