@@ -22,7 +22,7 @@ htmlTable(head(df_mxmunicipio), rnames = FALSE, col.rgroup = c("none", "#F7F7F7"
 
 State names and abbreviations come in two styles since normal people always use _Veracruz_ instead of the full official name of _Veracruz de Ignacio de la Llave_, and it's kind of awkward to use the Chiapas official abbreviation of _Chis._
 
-```{r}
+```{r message=FALSE,warning=FALSE}
 library("geojsonio")
 
 # Convert the topoJSON to spatial object
