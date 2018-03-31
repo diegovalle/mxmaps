@@ -1,7 +1,7 @@
 Package: mxmaps
 Type: Package
 Title: Choropleths of Mexico
-Version: 0.5
+Version: 0.5.0
 Date: 2018-03-29
 Authors@R: c(person("Diego", "Valle-Jones", email = "diego@diegovalle.net", role = c("aut", "cre")))
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
