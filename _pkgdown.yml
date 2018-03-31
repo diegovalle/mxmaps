@@ -1,0 +1,41 @@
+title: mxmaps - Mexico Choropleths
+url: https://www.diegovalle.net/mxmaps/
+template:
+  params:
+    ganalytics: UA-100264-1
+navbar:
+  title: "mxmaps"
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Data"
+      href: articles/data.html
+    - text: "Choropleths"
+      icon: fa-map
+      menu:
+        - text: "Static"
+        - text: "States"
+          href: articles/states.html
+        - text: "Hexbins"
+          href: articles/hexbins.html
+        - text: "Municipios"
+          hreg: articles/municipios.html
+        - text: "---------"
+        - text: "Leaflet"
+        - text: "States"
+          href: articles/leaflet_states.html
+        - text: "Municipios"
+          href: articles/leaflet_municipios.html
+    - text: "INEGI API"
+      href: articles/inegi_api.html
+    - text: "Shiny"
+      href: articles/shiny.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Changelog"
+      href: news.html
+  right:
+    - icon: fa-github
+      href: https://github.com/rstudio/sparklyr

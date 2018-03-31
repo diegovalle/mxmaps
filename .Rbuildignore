@@ -7,3 +7,9 @@ README.Rmd
 README.html
 README_files
 ^cran-comments\.md$
+^_pkgdown\.yml$
+^docs$
+^vignettes/articles/*
+^data-raw/*
+^index.Rmd$
+^vignettes/*

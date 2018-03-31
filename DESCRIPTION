@@ -3,9 +3,10 @@ Type: Package
 Title: Choropleths of Mexico
 Version: 0.5
 Date: 2018-03-29
-Author: Diego Valle-Jones
+Authors@R: c(person("Diego", "Valle-Jones", email = "diego@diegovalle.net", role = c("aut", "cre")))
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
 Description: Ready-made functions to create choropleths of Mexico.
+URL: https://www.diegovalle.net/mxmaps/, https://github.com/diegovalle/mxmaps
 BugReports: https://github.com/diegovalle/mxmaps/issues
 License: BSD_3_clause + file LICENSE
 LazyData: TRUE
