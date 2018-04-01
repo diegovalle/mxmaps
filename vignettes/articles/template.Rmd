@@ -4,7 +4,10 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, 
+                      fig.dim = c(6, 6), 
+                      dpi = 100, 
+                      out.width = '100%')
 ```
 
 ## Section 1

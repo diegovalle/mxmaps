@@ -4,7 +4,10 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, 
+                      fig.dim = c(6, 6), 
+                      dpi = 100, 
+                      out.width = '100%')
 ```
 
 The package also has special functions to download data from the [INEGI API](http://www.inegi.org.mx/desarrolladores/indicadores/apiindicadores.aspx) using the [inegiR](https://github.com/Eflores89/inegiR) package
@@ -22,6 +25,8 @@ library(mxmaps)
 # If you don't have a token you can get one from:
 # http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx
 token <- ""
+if (identical(token, ""))
+  token <- Sys.getenv("INEGI_TOKEN")
 
 mxc_regions <- subset(df_mxmunicipio, metro_area == "Valle de México")$region
 choropleth_inegi(token, mxc_regions, 

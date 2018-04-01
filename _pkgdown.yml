@@ -14,27 +14,27 @@ navbar:
       icon: fa-home
       href: index.html
     - text: "Data"
-      href: articles/data.html
+      href: articles/articles/data.html
     - text: "Choropleths"
       icon: fa-map
       menu:
         - text: "Static"
         - text: "States"
-          href: articles/states.html
+          href: articles/articles/states.html
         - text: "Hexbins"
-          href: articles/hexbins.html
+          href: articles/articles/hexbins.html
         - text: "Municipios"
-          href: articles/municipios.html
+          href: articles/articles/municipios.html
         - text: "---------"
         - text: "Leaflet"
         - text: "States"
-          href: articles/leaflet_states.html
+          href: articles/articles/leaflet_states.html
         - text: "Municipios"
-          href: articles/leaflet_municipios.html
+          href: articles/articles/leaflet_municipios.html
     - text: "INEGI API"
-      href: articles/inegi_api.html
+      href: articles/articles/inegi_api.html
     - text: "Shiny"
-      href: articles/shiny.html
+      href: articles/articles/shiny.html
     - text: "Reference"
       href: reference/index.html
     - text: "Changelog"

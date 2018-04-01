@@ -4,10 +4,15 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, 
+                      fig.dim = c(6, 6), 
+                      dpi = 100, 
+                      out.width = '100%')
 ```
 
-![interactive map of homicides in mexico](images/homicides_shiny.png)
+```{r  echo=FALSE, out.width='100%'}
+knitr::include_graphics('homicides_shiny.png')
+```
 
 You can also use the data that comes with the package to create interactive webapps with shiny.
 
@@ -24,11 +29,10 @@ library("lubridate")
 library("zoo")
 library("stringi")
 
-# Download crime data
-## From crimenmexico.diegovalle.net/en/csv
+## Download archived crime data from elcri.men 1997-2017 (not updated anymore)
 ## All local crimes at the state level
 tmpdir <- tempdir()
-download.file("http://crimenmexico.diegovalle.net/data/fuero-comun-estados.csv.gz",
+download.file("https://data.diegovalle.net/elcrimen/fuero-comun-estados.csv.gz",
               file.path(tmpdir, "fuero-comun-estados.csv.gz"))
 
 
@@ -65,8 +69,8 @@ ui <- bootstrapPage(
   tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
   leafletOutput("map", width = "100%", height = "100%"),
   absolutePanel(top = 10, right = 10,
-                sliderInput("range", "Year", 1997, 2015,
-                            value = 2015, step = 1, sep="",
+                sliderInput("range", "Year", 1997, 2017,
+                            value = 2017, step = 1, sep="",
                             animate = animationOptions(interval = 3000, loop = FALSE, 
                                                        playButton = NULL,
                                                        pauseButton = NULL),
@@ -78,7 +82,8 @@ server <- function(input, output, session) {
 
   # Reactive expression for the data subsetted to what the user selected
   filteredData <- reactive({
-    states@data <- merge(states@data, subset(hom, year == input$range[1]))
+    states@data <- left_join(states@data, subset(hom, year == input$range[1]), 
+                             by = "id")
     states
     #hom[hom$year == input$range[1] ,]
   })
@@ -93,13 +98,14 @@ server <- function(input, output, session) {
     # Use leaflet() here, and only include aspects of the map that
     # won't need to change dynamically (at least, not unless the
     # entire map is being torn down and recreated).
-    states@data <- merge(states@data, subset(hom, year == 2015))
+    states@data <- left_join(states@data, subset(hom, year == 2017), by = "id")
     pal <- colorpal()
     leaflet(states) %>% addTiles() %>%
       setView(-102, 23.8, 5)%>% 
       addLegend(position = "bottomright",
                           pal = pal, values = ~hom$rate,
-                          title = "homicide<br>rate")
+                          title = "homicide<br>rate") %>% 
+      addTiles()
   })
 
   # Incremental changes to the map (in this case, replacing the
@@ -108,9 +114,8 @@ server <- function(input, output, session) {
   # should be managed in its own observer.
   observe({
     pal <- colorpal()
-    head(states@data)
     leafletProxy("map", data = filteredData()) %>%
-      clearShapes()%>%
+      clearShapes() %>%
       addPolygons(stroke = TRUE, weight = 1, color = "#000000",
                   fillOpacity = 0.8, smoothFactor = 0.5,
                   fillColor = ~pal(rate), 
