@@ -1,6 +1,6 @@
 
 
-setStyle <- function(topoJSON, weight, color, opacity , fillOpacity){
+setStyle <- function(topoJSON, weight, color, opacity, fillOpacity){
  topoJSON$style = list(
     weight = .2,
     color = "#555555",
@@ -116,7 +116,8 @@ mxmunicipio_leaflet <- function(df, pal,
   df$region <- str_mxmunicipio(df$region)
 
   data(mxmunicipio.topoJSON, package="mxmaps", envir=environment())
-  mxmunicipio.topoJSON <- setStyle(mxmunicipio.topoJSON, weight, color, opacity , fillOpacity)
+  mxmunicipio.topoJSON <- setStyle(mxmunicipio.topoJSON, weight, color, opacity,
+                                   fillOpacity)
 
 
   df$apopups <- resolveFormula(popup, df)
