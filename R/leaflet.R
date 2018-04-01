@@ -54,10 +54,13 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
   leaflet::addTopoJSON(m, topoJSON)
 }
 
-#' mxmunicipio_leaflet
+#' Create a municipio-level interactive map
 #'
-#' @param df A data.frame with a column named "region" and a column named "value".  Elements in
-#' the "region" column must exactly match how regions are named in the "region" column in ?df_mxstates.
+#' Zoomable municipio maps made with leaflet
+#'
+#' @param df A data.frame with a column named "region" and a column named
+#'   "value".  Elements in the "region" column must exactly match how regions
+#'   are named in the "region" column in ?df_mxmunicipio.
 #' @param pal the color palette function, generated from
 #'   \code{\link{colorNumeric}()}, \code{colorBin()}, \code{colorQuantile()}, or
 #'   \code{colorFactor()}
@@ -79,17 +82,20 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
 #'
 #' @examples
 #' \dontrun{
+#' library(leaflet)
+#'
 #' data(df_mxmunicipio)
 #' df_mxmunicipio$value <- df_mxmunicipio$indigenous /df_mxmunicipio$pop
 #' magma <- c("#000004FF", "#1D1146FF", "#50127CFF", "#822681FF",
 #'            "#B63779FF", "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF")
 #' pal <- colorNumeric(magma, domain = df_mxmunicipio$value)
 #' mxmunicipio_leaflet(df_mxmunicipio,
-#' pal,
-#' ~ pal(value),
-#' ~ sprintf("State: %s<br/>Municipio : %s<br/>Value: %s%%",
-#'           state_name, municipio_name, round(value * 100, 1))) %>%
-#'   addLegend(position = "bottomright", pal = pal, values = df_mxmunicipio$value) %>%
+#'                     pal,
+#'                     ~ pal(value),
+#'                     ~ sprintf("State: %s<br/>Municipio : %s<br/>Value: %s%%",
+#'                     state_name, municipio_name, round(value * 100, 1))) %>%
+#'   addLegend(position = "bottomright", pal = pal,
+#'             values = df_mxmunicipio$value) %>%
 #'   addProviderTiles("CartoDB.Positron")
 #' }
 mxmunicipio_leaflet <- function(df, pal,
@@ -121,10 +127,12 @@ mxmunicipio_leaflet <- function(df, pal,
   draw_mxleaflet(mxmunicipio.topoJSON, lat, lng, mapzoom)
 }
 
-#' mxstate_leaflet
+#' Create a state-level interactive map
+#'
+#' Zoomable state maps made with leaflet
 #'
 #' @param df A data.frame with a column named "region" and a column named "value".  Elements in
-#' the "region" column must exactly match how regions are named in the "region" column in ?df_mxstates.
+#' the "region" column must exactly match how regions are named in the "region" column in ?df_mxstate.
 #' @param pal the color palette function, generated from
 #'   \code{\link{colorNumeric}()}, \code{colorBin()}, \code{colorQuantile()}, or
 #'   \code{colorFactor()}
@@ -146,6 +154,9 @@ mxmunicipio_leaflet <- function(df, pal,
 #'
 #' @examples
 #' \dontrun{
+#' library(scales)
+#' library(leaflet)
+#'
 #' data(df_mxstate)
 #' df_mxstate$value <- df_mxstate$afromexican / df_mxstate$pop
 #' pal <- colorNumeric("Blues", domain = df_mxstate$value)
@@ -153,8 +164,7 @@ mxmunicipio_leaflet <- function(df, pal,
 #'                 pal,
 #'                 ~ pal(value),
 #'                 ~ sprintf("State: %s<br/>Value: %s",
-#'                           state_name, comma(value)),
-#'                 zoom = c("09", "10")) %>%
+#'                           state_name, comma(value))) %>%
 #'   addLegend(position = "bottomright", pal = pal, values = df_mxstate$value) %>%
 #'   addProviderTiles("CartoDB.Positron")
 #' }

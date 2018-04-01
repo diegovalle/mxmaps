@@ -1,10 +1,22 @@
 #' An R6 object for creating municipio-level choropleths.
+#'
 #' @export
 #' @importFrom R6 R6Class
 #' @importFrom stringr str_sub
 #' @importFrom ggplot2 ggplot aes geom_polygon scale_fill_brewer ggtitle theme theme_grey element_blank geom_text coord_map
 #' @importFrom ggplot2 scale_fill_continuous scale_colour_brewer ggplotGrob annotation_custom
-#
+#'
+#' @examples
+#' library(viridis)
+#' library(scales)
+#'
+#' df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop
+#' gg = MXMunicipioChoropleth$new(df_mxmunicipio)
+#' gg$title <- "Percentage of the population that self-identifies as indigenous"
+#' gg$set_num_colors(1)
+#' gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
+#' gg$render()
+
 MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                             inherit = choroplethr:::Choropleth,
                             public = list(
@@ -61,26 +73,25 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 
 #' Create a municipio-level choropleth
 #'
-#' The map used is mxmunicipio.map in the mxmapsData package. See mxmunicipio.map for
-#' an object which can help you coerce your regions into the required format.
+#' The map used is mxmunicipio.map. See ?mxmunicipio.map for
+#' more information.
 #'
 #' @param df A data.frame with a column named "region" and a column named "value".  Elements in
-#' the "region" column must exactly match how regions are named in the "region" column in ?country.map.
+#' the "region" column must exactly match how regions are named in the "region" column in ?df_mxmunicipio
 #' @param title An optional title for the map.
 #' @param legend An optional name for the legend.
 #' @param num_colors The number of colors to use on the map.  A value of 1
 #' will use a continuous scale, and a value in [2, 9] will use that many colors.
 #' @param zoom An optional vector of countries to zoom in on. Elements of this vector must exactly
 #' match the names of countries as they appear in the "region" column of ?country.regions
-#' @param show_states An optional vector of countries to zoom in on. Elements of this vector must exactly
-#' match the names of countries as they appear in the "region" column of ?country.regions
+#' @param show_states Wether to draw state borders.
 #' @examples
 #' df <- df_mxmunicipio
 #' df$value <- df$indigenous
 #' mxmunicipio_choropleth(df)
 
 #' @export
-mxmunicipio_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
+mxmunicipio_choropleth  <-  function(df, title="", legend="", num_colors=7, zoom=NULL,
                                   show_states = TRUE)
 {
   if("region" %in% colnames(df)) {

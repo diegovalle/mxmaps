@@ -9,7 +9,7 @@ mxmunicipio_choropleth(df, title = "", legend = "", num_colors = 7,
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
-the "region" column must exactly match how regions are named in the "region" column in ?country.map.}
+the "region" column must exactly match how regions are named in the "region" column in ?df_mxmunicipio}
 
 \item{title}{An optional title for the map.}
 
@@ -21,12 +21,11 @@ will use a continuous scale, and a value in [2, 9] will use that many colors.}
 \item{zoom}{An optional vector of countries to zoom in on. Elements of this vector must exactly
 match the names of countries as they appear in the "region" column of ?country.regions}
 
-\item{show_states}{An optional vector of countries to zoom in on. Elements of this vector must exactly
-match the names of countries as they appear in the "region" column of ?country.regions}
+\item{show_states}{Wether to draw state borders.}
 }
 \description{
-The map used is mxmunicipio.map in the mxmapsData package. See mxmunicipio.map for
-an object which can help you coerce your regions into the required format.
+The map used is mxmunicipio.map. See ?mxmunicipio.map for
+more information.
 }
 \examples{
 df <- df_mxmunicipio

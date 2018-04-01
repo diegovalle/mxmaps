@@ -2,7 +2,7 @@
 % Please edit documentation in R/string.R
 \name{str_mxmunicipio}
 \alias{str_mxmunicipio}
-\title{str_mxmunicipio}
+\title{Format municipio codes with leading zeroes}
 \usage{
 str_mxmunicipio(code, municipio_code)
 }
@@ -15,11 +15,13 @@ str_mxmunicipio(code, municipio_code)
 The state and municipio code in the format required by the plotting functions
 }
 \description{
-str_mxmunicipio
+Format municipio codes with leading zeroes
 }
 \examples{
+# Format the concatenated string of state code + municipio code
 str_mxmunicipio(c("1006", "2003"))
-str_mxmunicipio(c(32, 5), c(9, 18))
+# Format the state and municipio code separately
+str_mxmunicipio(c(10, 6), c(20, 3))
 
 \dontrun{
 # warning about invalid code

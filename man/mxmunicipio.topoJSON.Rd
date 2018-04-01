@@ -3,13 +3,13 @@
 \docType{data}
 \name{mxmunicipio.topoJSON}
 \alias{mxmunicipio.topoJSON}
-\title{Map of the all Mexican municipios and delegaciones}
+\title{TopoJSON of Mexican municipios and alcaldías}
 \usage{
 data(mxmunicipio.topoJSON)
 }
 \description{
-A data.frame which contains a map of all Mexican municipios plus
-boroughs of the Federal District in topoJSON format.
+A data.frame which contains a map of all Mexican municipios and CDMX alcaldías
+in topoJSON format.
 }
 \references{
 Downloaded from the "Cartografia Geoestadistica Urbana y

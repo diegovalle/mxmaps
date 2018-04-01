@@ -1,7 +1,6 @@
-#' Map of the 31 Mexican states plus the Federal District
+#' TopoJSON of Mexican states
 #'
-#' A data.frame which contains a map of all 31 Mexican States plus
-#' the Federal District in topoJSON format.
+#' A fortified data.frame which contains a map of all 32 Mexican states in topoJSON format.
 #'
 #' @docType data
 #' @name mxstate.topoJSON
@@ -11,10 +10,10 @@
 #' (https://gist.github.com/diegovalle/aa3eef87c085d6ea034f)
 NULL
 
-#' Map of the all Mexican municipios and delegaciones
+#' TopoJSON of Mexican municipios and alcaldías
 #'
-#' A data.frame which contains a map of all Mexican municipios plus
-#' boroughs of the Federal District in topoJSON format.
+#' A data.frame which contains a map of all Mexican municipios and CDMX alcaldías
+#' in topoJSON format.
 #'
 #' @docType data
 #' @name mxmunicipio.topoJSON

@@ -3,13 +3,12 @@
 \docType{data}
 \name{mxstate.topoJSON}
 \alias{mxstate.topoJSON}
-\title{Map of the 31 Mexican states plus the Federal District}
+\title{TopoJSON of Mexican states}
 \usage{
 data(mxstate.topoJSON)
 }
 \description{
-A data.frame which contains a map of all 31 Mexican States plus
-the Federal District in topoJSON format.
+A fortified data.frame which contains a map of all 32 Mexican states in topoJSON format.
 }
 \references{
 Downloaded from the "Cartografia Geoestadistica Urbana y

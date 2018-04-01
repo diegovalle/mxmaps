@@ -3,14 +3,35 @@
 \docType{data}
 \name{df_mxstate}
 \alias{df_mxstate}
-\title{A data.frame containing population estimates for Mexican states in 2015.}
+\title{Mexican states dataset}
+\format{An object of class \code{data.frame} with 32 rows and 12 columns.}
 \usage{
-data(df_mxstate)
+df_mxstate
 }
 \description{
-A data.frame containing population estimates for Mexican states in 2015.
+A data.frame containing population estimates for all the Mexican states in 2015.
+}
+\details{
+\describe{
+  \item{region}{INEGI code of the state}
+  \item{state_name}{short state name (e.g. Coahuila)}
+  \item{state_name_official}{Official state name (e.g. Coahuila de Zaragoza)}
+  \item{state_abbr}{state abbreviation}
+  \item{state_abbr_official}{official state abbreviation (it can be awkward to use Chis for Chiapas)
+  according to the INEGI.}
+  \item{pop}{total state population according to the Encuesta Intercensal 2015}
+  \item{pop_male}{male population according to the Encuesta Intercensal 2015}
+  \item{pop_female}{female population according to the Encuesta Intercensal 2015}
+  \item{afromexican}{afromexican population according to the Encuesta Intercensal 2015}
+  \item{part_afromexican}{part afromexican population according to the Encuesta Intercensal 2015}
+  \item{indigenous}{indigenous population according to the Encuesta Intercensal 2015}
+  \item{part_indigenous}{part indigenous population according to the Encuesta Intercensal 2015}
+}
+}
+\examples{
+head(df_mxstate)
 }
 \references{
-Taken from the Encuesta Intercensal.
+Population estimates taken from the \href{http://www.beta.inegi.org.mx/proyectos/enchogares/especiales/intercensal/}{Encuesta Intercensal.}
 }
 \keyword{data}

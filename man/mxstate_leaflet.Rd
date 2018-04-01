@@ -2,7 +2,7 @@
 % Please edit documentation in R/leaflet.R
 \name{mxstate_leaflet}
 \alias{mxstate_leaflet}
-\title{mxstate_leaflet}
+\title{Create a state-level interactive map}
 \usage{
 mxstate_leaflet(df, pal, fillColor, popup, weight = 0.2, color = "#555555",
   opacity = 1, fillOpacity = 0.8, lng = -102, lat = 23.8, mapzoom = 5,
@@ -10,7 +10,7 @@ mxstate_leaflet(df, pal, fillColor, popup, weight = 0.2, color = "#555555",
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
-the "region" column must exactly match how regions are named in the "region" column in ?df_mxstates.}
+the "region" column must exactly match how regions are named in the "region" column in ?df_mxstate.}
 
 \item{pal}{the color palette function, generated from
 \code{\link{colorNumeric}()}, \code{colorBin()}, \code{colorQuantile()}, or
@@ -40,10 +40,13 @@ the "region" column must exactly match how regions are named in the "region" col
 A leaflet map
 }
 \description{
-mxstate_leaflet
+Zoomable state maps made with leaflet
 }
 \examples{
 \dontrun{
+library(scales)
+library(leaflet)
+
 data(df_mxstate)
 df_mxstate$value <- df_mxstate$afromexican / df_mxstate$pop
 pal <- colorNumeric("Blues", domain = df_mxstate$value)
@@ -51,8 +54,7 @@ mxstate_leaflet(df_mxstate,
                 pal,
                 ~ pal(value),
                 ~ sprintf("State: \%s<br/>Value: \%s",
-                          state_name, comma(value)),
-                zoom = c("09", "10")) \%>\%
+                          state_name, comma(value))) \%>\%
   addLegend(position = "bottomright", pal = pal, values = df_mxstate$value) \%>\%
   addProviderTiles("CartoDB.Positron")
 }

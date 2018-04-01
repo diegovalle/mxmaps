@@ -3,20 +3,19 @@
 \docType{data}
 \name{mxhexbin.map}
 \alias{mxhexbin.map}
-\title{Hex bin map of the 31 Mexican states plus the Federal District}
+\title{Hexbin map of Mexican states}
 \usage{
 data(mxhexbin.map)
 }
 \description{
-A data.frame which contains an hexagonal bin map of all 31 Mexican States plus
-the Federal District.
+A fortified data.frame which contains an hexagonal bin map of all 32 Mexican states
 }
 \examples{
-\dontrun{
-# render the map with ggplot2
+## render the map with ggplot2
 library(ggplot2)
 
 data(mxhexbin.map)
-ggplot(mxhexbin.map, aes(long, lat, group=group)) + geom_polygon(color = "black")
-}
+ggplot(mxhexbin.map, aes(long, lat, group=group)) +
+  geom_polygon(color = "black") +
+  coord_map()
 }

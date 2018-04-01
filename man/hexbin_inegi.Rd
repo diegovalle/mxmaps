@@ -2,7 +2,7 @@
 % Please edit documentation in R/inegi.R
 \name{hexbin_inegi}
 \alias{hexbin_inegi}
-\title{hexbin_inegi}
+\title{Hexbin map made with INEGI data}
 \usage{
 hexbin_inegi(token, regions, indicator, title, legend = "", silent = FALSE)
 }
@@ -11,24 +11,30 @@ hexbin_inegi(token, regions, indicator, title, legend = "", silent = FALSE)
 
 \item{regions}{A vector of states to zoom in on. Elements of this vector must exactly match the names of states as they appear in the "region" column of ?df_mxstates.}
 
-\item{indicator}{Numeric indicator}
+\item{indicator}{Numeric indicator from the \href{http://www.beta.inegi.org.mx/servicios/api_biinegi.html}{INEGI API}}
 
 \item{title}{An optional title for the map.}
 
 \item{legend}{An optional name for the legend.}
 
-\item{silent}{Print a text progress bar with estimated time remaining}
+\item{silent}{Wether to print a text progress bar while downloading the INEGI API data}
 }
 \value{
 A choropleth
 }
 \description{
-hexbin_inegi
+A state hexbin map of data available from the INEGI API
 }
 \examples{
 \dontrun{
 data(df_mxstates)
+## Insert token here
+## If you don't have a token you can get one from:
+## http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx
+token <- "INSERT_TOKEN_HERE"
 state_regions <- df_mxstate$region
-hexbin_inegi(token, state_regions, "3101008001")
+## You can look up the numeric indicator codes at
+## http://www.beta.inegi.org.mx/servicios/api_biinegi.html
+hexbin_inegi(token, state_regions, "6200205259")
 }
 }

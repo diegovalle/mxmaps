@@ -3,6 +3,9 @@ url: https://www.diegovalle.net/mxmaps/
 template:
   params:
     ganalytics: UA-100264-1
+authors:
+  Diego Valle-Jones:
+    href: https://www.diegovalle.net
 navbar:
   title: "mxmaps"
   type: inverse
@@ -21,7 +24,7 @@ navbar:
         - text: "Hexbins"
           href: articles/hexbins.html
         - text: "Municipios"
-          hreg: articles/municipios.html
+          href: articles/municipios.html
         - text: "---------"
         - text: "Leaflet"
         - text: "States"
@@ -35,7 +38,50 @@ navbar:
     - text: "Reference"
       href: reference/index.html
     - text: "Changelog"
-      href: news.html
+      href: news/index.html
   right:
     - icon: fa-github
-      href: https://github.com/rstudio/sparklyr
+      href: https://github.com/diegovalle/mxmaps
+reference:
+  - title: Static Maps
+    desc: Functions for drawing non-interactive maps with ggplot2
+    contents:
+      - '`mxhexbin_choropleth`'
+      - '`mxstate_choropleth`'
+      - '`mxmunicipio_choropleth`'
+  - title: Interactive Maps
+    desc: Functions for drawing zoomable maps with leaflet
+    contents:
+      - '`mxstate_leaflet`'
+      - '`mxmunicipio_leaflet`'
+  - title: INEGI API Maps
+    desc: Functions for drawing static maps with INEGI data
+    contents:
+      - '`choropleth_inegi`'
+      - '`hexbin_inegi`'
+  - title: Datasets
+    desc: Official datasets from the INEGI and CONAPO
+    contents:
+      - '`df_mxmunicipio`'
+      - '`df_mxstate`'
+      - '`mxhexbin.map`'
+      - '`mxstate.map`'
+      - '`mxmunicipio.map`'
+      - '`mxstate.topoJSON`'
+      - '`mxmunicipio.topoJSON`'
+  - title: Helper functions
+    desc: Helps add leading zeros to the municipio and state codes
+    contents:
+      - '`str_mxmunicipio`'
+      - '`str_mxstate`'
+  - title: R6 classes
+    desc: If you ever need to modify the way static maps are plotted
+    contents:
+      - '`MXHexBinChoropleth`'
+      - '`MXStateChoropleth`'
+      - '`MXMunicipioChoropleth`'
+  - title: Package
+    desc: mxmaps package
+    contents:
+      - '`mxmaps`'
+

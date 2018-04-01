@@ -1,4 +1,4 @@
-#' str_mxstate
+#' Format state codes with leading zeroes
 #'
 #' @param code The state code according to the INEGI's Catalogo de entidades federativas, municipios y localidades
 #' @seealso \url{http://www.inegi.org.mx/est/contenidos/proyectos/aspectosmetodologicos/clasificadoresycatalogos/catalogo_entidades.aspx}
@@ -19,14 +19,14 @@ str_mxstate <- function(code){
   if(missing(code)) {
     stop("missing state code to convert")
   }
-  code <- as.numeric(code)
+  code <- as.numeric(as.character(code))
   if(any(code > 32)) {
     warning("Invalid state codes detected")
   }
   return(str_pad(code, 2, "left", pad = "0"))
 }
 
-#' str_mxmunicipio
+#' Format municipio codes with leading zeroes
 #'
 #' @param code The sate or combined state and municipio code if the municipio_code variable is missing
 #' @param municipio_code The municipio code
@@ -38,8 +38,10 @@ str_mxstate <- function(code){
 #' @importFrom utils data
 #'
 #' @examples
+#' # Format the concatenated string of state code + municipio code
 #' str_mxmunicipio(c("1006", "2003"))
-#' str_mxmunicipio(c(32, 5), c(9, 18))
+#' # Format the state and municipio code separately
+#' str_mxmunicipio(c(10, 6), c(20, 3))
 #'
 #' \dontrun{
 #' # warning about invalid code

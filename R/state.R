@@ -1,6 +1,17 @@
 #' An R6 object for creating state-level choropleths.
+#'
 #' @export
 #' @importFrom R6 R6Class
+#' @examples
+#' library(viridis)
+#' library(scales)
+#'
+#' df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop
+#' gg = MXStateChoropleth$new(df_mxstate)
+#' gg$title <- "Percentage of the population that self-identifies as indigenous"
+#' gg$set_num_colors(1)
+#' gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
+#' gg$render()
 MXStateChoropleth = R6Class("MXStateChoropleth",
                                 inherit = choroplethr:::Choropleth,
                                 public = list(
@@ -25,11 +36,11 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
 
 #' Create a state-level choropleth
 #'
-#' The map used is mxstate.map in the mxmapsData package. See mxstate.map for
-#' an object which can help you coerce your regions into the required format.
+#' The map used is mxstate.map. See ?mxstate.map for
+#' for more information.
 #'
 #' @param df A data.frame with a column named "region" and a column named "value".  Elements in
-#' the "region" column must exactly match how regions are named in the "region" column in ?country.map.
+#' the "region" column must exactly match how regions are named in the "region" column in ?df_mxstate.
 #' @param title An optional title for the map.
 #' @param legend An optional name for the legend.
 #' @param num_colors The number of colors to use on the map.  A value of 1
@@ -41,7 +52,7 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
 #' df$value <- df$indigenous
 #' mxstate_choropleth(df)
 #' @export
-mxstate_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL)
+mxstate_choropleth  <-  function(df, title="", legend="", num_colors=7, zoom=NULL)
 {
   if("region" %in% colnames(df)) {
     df$region <- str_mxstate(df$region)

@@ -2,14 +2,14 @@
 % Please edit documentation in R/hexbin.R
 \name{mxhexbin_choropleth}
 \alias{mxhexbin_choropleth}
-\title{Create a municipio-level choropleth}
+\title{Create a state-level hexbin choropleth}
 \usage{
 mxhexbin_choropleth(df, title = "", legend = "", num_colors = 7,
   zoom = NULL, label_color = "black", label_size = 4.5)
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
-the "region" column must exactly match how regions are named in the "region" column in ?country.map.}
+the "region" column must exactly match how regions are named in the "region" column in ?df_mxstate.}
 
 \item{title}{An optional title for the map.}
 
@@ -18,7 +18,7 @@ the "region" column must exactly match how regions are named in the "region" col
 \item{num_colors}{The number of colors to use on the map.  A value of 1
 will use a continuous scale, and a value in [2, 9] will use that many colors.}
 
-\item{zoom}{An optional vector of countries to zoom in on. Elements of this vector must exactly
+\item{zoom}{An optional vector of states to zoom in on. Elements of this vector must exactly
 match the names of countries as they appear in the "region" column of ?country.regions}
 
 \item{label_color}{An optional color for the state abbreviation labels}
@@ -26,13 +26,10 @@ match the names of countries as they appear in the "region" column of ?country.r
 \item{label_size}{An optional size for the state abbrevition labels}
 }
 \description{
-The map used is mxmunicipio.map in the mxmapsData package. See mxmunicipio.map for
-an object which can help you coerce your regions into the required format.
+Hexagonal tiles of the states of Mexico
 }
 \examples{
-\dontrun{
-data(df_mxstates)
-df_mxstates$value <- df_mxstates$pop
-mxhexbin _choropleth(df_mxstates, num_colors = 1)
-}
+data(df_mxstate)
+df_mxstate$value <- df_mxstate$pop
+mxhexbin_choropleth(df_mxstate, num_colors = 1)
 }

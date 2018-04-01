@@ -1,3 +1,10 @@
+# mxmaps 0.5.1
+
+## New features
+
+* Better documentation
+* pkgdown website [https://www.diegovalle.net/mxmaps](https://www.diegovalle.net/mxmaps)
+
 # mxmaps 0.5.0
 
 ## New features

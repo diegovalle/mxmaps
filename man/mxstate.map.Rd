@@ -3,25 +3,24 @@
 \docType{data}
 \name{mxstate.map}
 \alias{mxstate.map}
-\title{Map of the 31 Mexican states plus the Federal District}
+\title{Map of Mexican States}
 \usage{
 data(mxstate.map)
 }
 \description{
-A data.frame which contains a map of all 31 Mexican States plus
-the Federal District.  The shapefile
+A data.frame which contains a map of all 32 Mexican states. The shapefile
 was modified using QGIS in order to remove
 the Maria islands, Socorro island, Arrecife Alacran and
 Guadalupe Island, then simplified with http://www.mapshaper.org/
 }
 \examples{
-\dontrun{
 # render the map with ggplot2
 library(ggplot2)
 
 data(mxstate.map)
-ggplot(mxstate.map, aes(long, lat, group=group)) + geom_polygon(color = "black")
-}
+ggplot(mxstate.map, aes(long, lat, group=group)) +
+  geom_polygon(fill = "white", color = "black", size = .2) +
+  coord_map()
 }
 \references{
 Downloaded from the "Cartografia Geoestadistica Urbana y

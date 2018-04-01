@@ -3,7 +3,7 @@
 \docType{data}
 \name{mxmunicipio.map}
 \alias{mxmunicipio.map}
-\title{Map of the all Mexican municipios and delegaciones}
+\title{Map of the all Mexican municipios and alcaldías}
 \usage{
 data(mxmunicipio.map)
 }
@@ -15,13 +15,13 @@ the Maria islands, Socorro island, Arrecife Alacran and
 Guadalupe Island, then simplified with http://www.mapshaper.org/
 }
 \examples{
-\dontrun{
 # render the map with ggplot2
 library(ggplot2)
 
 data(mxmunicipio.map)
-ggplot(mxmunicipio.map, aes(long, lat, group=group)) + geom_polygon(color = "black")
-}
+ggplot(mxmunicipio.map, aes(long, lat, group=group)) +
+  geom_polygon(fill = "white", color = "#666666", size = .05) +
+  coord_map()
 }
 \references{
 Downloaded from the "Cartografia Geoestadistica Urbana y

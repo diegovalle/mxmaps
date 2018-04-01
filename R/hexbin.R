@@ -1,6 +1,16 @@
-#' An R6 object for creating municipio-level choropleths.
+#' An R6 object for creating state-level hexbin choropleths.
 #' @export
 #' @importFrom R6 R6Class
+#' @examples
+#' library(viridis)
+#' library(scales)
+#'
+#' df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop
+#' gg = MXHexBinChoropleth$new(df_mxstate)
+#' gg$title <- "Percentage of the population that self-identifies as indigenous"
+#' gg$set_num_colors(1)
+#' gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
+#' gg$render()
 MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                              inherit = choroplethr:::Choropleth,
                              public = list(
@@ -74,29 +84,26 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                              )
 )
 
-#' Create a municipio-level choropleth
+#' Create a state-level hexbin choropleth
 #'
-#' The map used is mxmunicipio.map in the mxmapsData package. See mxmunicipio.map for
-#' an object which can help you coerce your regions into the required format.
+#' Hexagonal tiles of the states of Mexico
 #'
 #' @param df A data.frame with a column named "region" and a column named "value".  Elements in
-#' the "region" column must exactly match how regions are named in the "region" column in ?country.map.
+#' the "region" column must exactly match how regions are named in the "region" column in ?df_mxstate.
 #' @param title An optional title for the map.
 #' @param legend An optional name for the legend.
 #' @param num_colors The number of colors to use on the map.  A value of 1
 #' will use a continuous scale, and a value in [2, 9] will use that many colors.
-#' @param zoom An optional vector of countries to zoom in on. Elements of this vector must exactly
+#' @param zoom An optional vector of states to zoom in on. Elements of this vector must exactly
 #' match the names of countries as they appear in the "region" column of ?country.regions
 #' @param label_color An optional color for the state abbreviation labels
 #' @param label_size An optional size for the state abbrevition labels
 #' @examples
-#' \dontrun{
-#' data(df_mxstates)
-#' df_mxstates$value <- df_mxstates$pop
-#' mxhexbin _choropleth(df_mxstates, num_colors = 1)
-#' }
+#' data(df_mxstate)
+#' df_mxstate$value <- df_mxstate$pop
+#' mxhexbin_choropleth(df_mxstate, num_colors = 1)
 #' @export
-mxhexbin_choropleth = function(df, title="", legend="", num_colors=7, zoom=NULL,
+mxhexbin_choropleth  <-  function(df, title="", legend="", num_colors=7, zoom=NULL,
                                label_color = "black", label_size = 4.5)
 {
   if("region" %in% colnames(df)) {

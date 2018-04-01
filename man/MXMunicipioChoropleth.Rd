@@ -11,4 +11,15 @@ MXMunicipioChoropleth
 \description{
 An R6 object for creating municipio-level choropleths.
 }
+\examples{
+library(viridis)
+library(scales)
+
+df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop
+gg = MXMunicipioChoropleth$new(df_mxmunicipio)
+gg$title <- "Percentage of the population that self-identifies as indigenous"
+gg$set_num_colors(1)
+gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
+gg$render()
+}
 \keyword{datasets}

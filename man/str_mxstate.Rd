@@ -2,7 +2,7 @@
 % Please edit documentation in R/string.R
 \name{str_mxstate}
 \alias{str_mxstate}
-\title{str_mxstate}
+\title{Format state codes with leading zeroes}
 \usage{
 str_mxstate(code)
 }
@@ -13,7 +13,7 @@ str_mxstate(code)
 The state code in the format required by the plotting functions
 }
 \description{
-str_mxstate
+Format state codes with leading zeroes
 }
 \examples{
 str_mxstate(c("12", "2"))

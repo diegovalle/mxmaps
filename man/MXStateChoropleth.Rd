@@ -11,4 +11,15 @@ MXStateChoropleth
 \description{
 An R6 object for creating state-level choropleths.
 }
+\examples{
+library(viridis)
+library(scales)
+
+df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop
+gg = MXStateChoropleth$new(df_mxstate)
+gg$title <- "Percentage of the population that self-identifies as indigenous"
+gg$set_num_colors(1)
+gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
+gg$render()
+}
 \keyword{datasets}

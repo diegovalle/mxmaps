@@ -9,7 +9,7 @@ mxstate_choropleth(df, title = "", legend = "", num_colors = 7,
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
-the "region" column must exactly match how regions are named in the "region" column in ?country.map.}
+the "region" column must exactly match how regions are named in the "region" column in ?df_mxstate.}
 
 \item{title}{An optional title for the map.}
 
@@ -22,8 +22,8 @@ will use a continuous scale, and a value in [2, 9] will use that many colors.}
 match the names of countries as they appear in the "region" column of ?country.regions}
 }
 \description{
-The map used is mxstate.map in the mxmapsData package. See mxstate.map for
-an object which can help you coerce your regions into the required format.
+The map used is mxstate.map. See ?mxstate.map for
+for more information.
 }
 \examples{
 df <- df_mxstate

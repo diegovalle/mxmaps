@@ -2,7 +2,7 @@
 % Please edit documentation in R/inegi.R
 \name{choropleth_inegi}
 \alias{choropleth_inegi}
-\title{choropleth_inegi}
+\title{Static maps with INEGI data}
 \usage{
 choropleth_inegi(token, regions, indicator, title, legend = "",
   silent = FALSE)
@@ -12,24 +12,30 @@ choropleth_inegi(token, regions, indicator, title, legend = "",
 
 \item{regions}{A vector of states to zoom in on. Elements of this vector must exactly match the names of states as they appear in the "region" column of ?df_mxstates.}
 
-\item{indicator}{Numeric indicator}
+\item{indicator}{Numeric indicator from the \href{http://www.beta.inegi.org.mx/servicios/api_biinegi.html}{INEGI API}}
 
 \item{title}{An optional title for the map.}
 
 \item{legend}{An optional name for the legend.}
 
-\item{silent}{Print a text progress bar with estimated time remaining}
+\item{silent}{Wether to print a text progress bar while downloading the INEGI API data}
 }
 \value{
 A choropleth
 }
 \description{
-choropleth_inegi
+A state or municipio map of data available from the INEGI API
 }
 \examples{
 \dontrun{
 data(df_mxstates)
+## Insert token here
+## If you don't have a token you can get one from:
+## http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx
+token <- "INSERT_TOKEN_HERE"
 state_regions <- df_mxstate$region
-choropleth_inegi(token, state_regions, "3101008001")
+## You can look up the numeric indicator codes at
+## http://www.beta.inegi.org.mx/servicios/api_biinegi.html
+choropleth_inegi(token, state_regions, "1002000003")
 }
 }
