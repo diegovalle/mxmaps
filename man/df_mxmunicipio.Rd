@@ -35,6 +35,7 @@ A data.frame containing population estimates for all the Mexican municipios in 2
 }
 }
 \examples{
+data("df_mxmunicipio")
 head(df_mxmunicipio)
 }
 \references{

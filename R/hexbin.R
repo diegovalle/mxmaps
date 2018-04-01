@@ -21,7 +21,7 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                                # initialize with a world map
                                initialize = function(user.df) {
 
-                                 data(mxhexbin.map, package = "mxmaps", envi r= environment())
+                                 data(mxhexbin.map, package = "mxmaps", envir = environment())
                                  super$initialize(mxhexbin.map, user.df)
 
                                  if (private$has_invalid_regions) {

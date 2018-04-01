@@ -22,7 +22,11 @@ mxstate_leaflet(df_mxstate,
                 ~ pal(value),
                 ~ sprintf("State: %s<br/>Percent Afro-Mexican: %s",
                           state_name, comma(value))) %>%
-  addLegend(position = "bottomright", pal = pal, values = df_mxstate$value,
-            title = "Percent<br>Afro-Mexican") %>%
+  addLegend(position = "bottomright", 
+            pal = pal, 
+            values = df_mxstate$value,
+            title = "Percent<br>Afro-Mexican",
+            labFormat = labelFormat(suffix = "%",
+                                    transform = function(x) {100 * x})) %>%
   addProviderTiles("CartoDB.Positron")
 ```

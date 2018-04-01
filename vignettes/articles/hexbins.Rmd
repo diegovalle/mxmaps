@@ -14,9 +14,10 @@ knitr::opts_chunk$set(echo = TRUE,
 library("mxmaps")
 
 data("df_mxstate")
-df_mxstate$value = df_mxstate$afromexican / df_mxstate$pop 
+df_mxstate$value = df_mxstate$afromexican / df_mxstate$pop * 100
 mxhexbin_choropleth(df_mxstate, num_colors = 1,
-                    title = "Percentage of the population that self-identifies as Afro-Mexican")
+                    title = "Percentage of the population that self-identifies as Afro-Mexican",
+                    legend = "%")
 
 ```
 
@@ -24,13 +25,16 @@ You can use ```label_color``` if you want the state abbreviations in a different
 
 ```{r message=FALSE,warning=FALSE}
 library("viridis")
+library("scales")
 
 df_mxstate$value = df_mxstate$afromexican / df_mxstate$pop 
 # Will show a warning, look at the municipio examples to see how to remove it
 mxhexbin_choropleth(df_mxstate, 
                     num_colors = 1,
                     label_color = "white",
-                    title = "Percentage of the population that self-identifies as Afro-Mexican") +
-  scale_fill_viridis()
+                    title = "Percentage of the population that self-identifies as Afro-Mexican",
+                    legend = "%",
+                    label_size = 3.8) +
+  scale_fill_viridis("percentage", labels = percent)
 
 ```

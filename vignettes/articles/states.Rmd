@@ -37,7 +37,6 @@ gg$render()
 A map with labels for each state
 
 ```{r message=FALSE,warning=FALSE}
-library("mxmaps")
 library("geojsonio")
 library("ggplot2")
 library("rgdal")
@@ -45,10 +44,11 @@ library("rgeos")
 library("maptools")
 library("ggrepel")
 
-df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop 
-gg <- mxstate_choropleth(df_mxstate, 
-                         num_colors = 1,
-                         title = "Percentage of the population that self-identifies as indigenous")
+df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop * 100
+p <- mxstate_choropleth(df_mxstate, 
+                        num_colors = 1,
+                        title = "Percentage of the population that self-identifies as indigenous",
+                        legend = "%")
 
 
 data("mxstate.topoJSON")
@@ -61,12 +61,13 @@ states <- topojson_read(file.path(tmpdir, "state.topojson"))
 # remove bad polygons
 states <- gBuffer(states, byid=TRUE, width=0)
 
-
-df_mxstate <- cbind(df_mxstate, data.frame(lon = coordinates(states)[,1],
-                                           lat = coordinates(states)[,2]))
+# make sure the coordinates of the labels are in the correct order
+df_mxstate <- cbind(df_mxstate, 
+                    data.frame(lon = coordinates(states[match(df_mxstate$region, states$id),])[,1],
+                               lat = coordinates(states[match(df_mxstate$region, states$id),])[,2]))
 df_mxstate$group <- df_mxstate$state_abbr
 
-gg +
+p +
   geom_text_repel(data = df_mxstate, aes(lon, lat, label = state_abbr), size = 3,
-                  box.padding = unit(0.1, 'lines'), force = 0.5)
+                  box.padding = unit(0.1, 'lines'), force = 0.1)
 ```

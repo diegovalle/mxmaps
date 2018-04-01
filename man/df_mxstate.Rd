@@ -29,6 +29,7 @@ A data.frame containing population estimates for all the Mexican states in 2015.
 }
 }
 \examples{
+data("df_mxstate")
 head(df_mxstate)
 }
 \references{

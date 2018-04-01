@@ -59,10 +59,11 @@ The two basic functions of the package are ```mxstate_choropleth``` and ```mxmun
 ```{r}
 library("mxmaps")
 
-df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop 
+df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop * 100
 mxstate_choropleth(df_mxstate, 
                    num_colors = 1,
-                   title = "Percentage of the population that self-identifies as indigenous")
+                   title = "Percentage of the population that self-identifies\nas indigenous",
+                   legend = "%")
 ```
 
 ## Municipios
@@ -71,10 +72,11 @@ You can also plot Mexican municipios (similar to counties) with a continuous col
 
 ```{r}
 data("df_mxmunicipio")
-df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop 
+df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop * 100
 mxmunicipio_choropleth(df_mxmunicipio, 
                        num_colors = 1,
-                       title = "Percentage of the population that self-identifies as indigenous")
+                       title = "Percentage of the population that self-identifies\nas indigenous",
+                       legend = "%")
 
 ```
 
@@ -87,7 +89,8 @@ mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
                                                                        "Puebla-Tlaxcala",
                                                                        "Cuernavaca",
                                                                        "Toluca"))$region,
-                       title = "Percentage of the population that self-identifies as indigenous") 
+                       title = "Percentage of the population that self-identifies\nas indigenous",
+                       legend = "%") 
 ```
 
 You can use the ```show_states``` parameter to hide or show the state borders when making municipio choropleths.
@@ -96,5 +99,6 @@ You can use the ```show_states``` parameter to hide or show the state borders wh
 mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
                        zoom = c(31001:31106,30002:30212),
                        title = "Percentage of the population that self-identifies\nas indigenous in Yucatán and Veracruz",
-                       show_states = FALSE)
+                       show_states = FALSE,
+                       legend = "%")
 ```

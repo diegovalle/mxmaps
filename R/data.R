@@ -23,6 +23,7 @@
 #'
 #' @keywords data
 #' @examples
+#' data("df_mxstate")
 #' head(df_mxstate)
 "df_mxstate"
 
@@ -60,5 +61,6 @@
 #'
 #' @keywords data
 #' @examples
+#' data("df_mxmunicipio")
 #' head(df_mxmunicipio)
 "df_mxmunicipio"
