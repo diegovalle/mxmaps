@@ -38,7 +38,7 @@ mxmaps depends on the sf package which has other [dependencies](https://github.c
 
 ## Quick Example
 
-```{r}
+```{r head, fig.dim = c(5, 3), dpi = 92}
 library("mxmaps")
 
 df_mxstate$value <- df_mxstate$pop
