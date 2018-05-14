@@ -51,7 +51,7 @@ muns <- topojson_read(file.path(tmpdir, "mun.topojson"))
 
 # municipios that make up Monterrey
 monterrey <- muns[muns$id %in% df_mxmunicipio$region[df_mxmunicipio$metro_area == "Monterrey"],]
-# made up data
+# made-up data
 monterrey@data$rand <- 1:nrow(monterrey@data)
 
 # Create a continuous palette function
