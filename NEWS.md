@@ -1,6 +1,12 @@
+# mxmaps 0.5.2
+
+## Bug fixes and improvements
+
+* Require specific versions of ggplot and choroplethr to fix a bug when used with old versions
+
 # mxmaps 0.5.1
 
-## New features
+## Bug fixes and improvements
 
 * Better documentation
 * pkgdown website [https://www.diegovalle.net/mxmaps](https://www.diegovalle.net/mxmaps)
