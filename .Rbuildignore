@@ -13,3 +13,4 @@ README_files
 ^data-raw/*
 ^index.Rmd$
 ^vignettes/*
+^ISSUE_TEMPLATE.md$
