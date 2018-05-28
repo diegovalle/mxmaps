@@ -1,6 +1,6 @@
 Package: mxmaps
 Type: Package
-Title: Choropleths of Mexico
+Title: Create Choropleths of Mexico
 Version: 0.5.2
 Date: 2018-03-29
 Authors@R: c(person("Diego", "Valle-Jones", email = "diego@diegovalle.net", role = c("aut", "cre")))
