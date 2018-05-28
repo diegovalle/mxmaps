@@ -1,7 +1,7 @@
 Mexico Choropleths
 ================
 Diego Valle-Jones
-March 29, 2018
+May 28, 2018
 
 -   [What does it do?](#what-does-it-do)
 -   [Installation](#installation)
@@ -15,7 +15,6 @@ Master: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?b
 |--------------|--------------------------------------------------------|
 | **Author:**  | Diego Valle-Jones                                      |
 | **License:** | [BSD\_3](https://opensource.org/licenses/BSD-3-Clause) |
-| **Status:**  | alpha                                                  |
 | **Website:** | <https://www.diegovalle.net/mxmaps/>                   |
 
 What does it do?

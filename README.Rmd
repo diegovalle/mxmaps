@@ -16,7 +16,6 @@ Master: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?b
 |--------------|--------------------------------------------------------------------------|
 | __Author:__  | Diego Valle-Jones                                                        |
 | __License:__ | [BSD_3](https://opensource.org/licenses/BSD-3-Clause)                    |
-| __Status:__  | beta                                                                     |
 | __Website:__ | [https://www.diegovalle.net/mxmaps/](https://www.diegovalle.net/mxmaps/) |
 
 ## What does it do?
