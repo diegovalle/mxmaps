@@ -9,7 +9,7 @@
 ## Bug fixes and improvements
 
 * Better documentation
-* pkgdown website [https://www.diegovalle.net/mxmaps](https://www.diegovalle.net/mxmaps)
+* pkgdown website [https://www.diegovalle.net/mxmaps/](https://www.diegovalle.net/mxmaps/)
 
 # mxmaps 0.5.0
 
