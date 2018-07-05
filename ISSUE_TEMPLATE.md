@@ -1,4 +1,4 @@
-**Note: for support questions, please contact me via email or twitter**. This repository's issues are reserved for feature requests and bug reports.
+**Note: for support questions, please use the [google group](https://groups.google.com/forum/#!forum/mxmaps) or contact me via email or twitter**. This repository's issues are reserved for feature requests and bug reports.
 
 * **I'm submitting a ...**
   - [ ] bug report
