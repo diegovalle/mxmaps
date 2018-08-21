@@ -1,7 +1,7 @@
 Package: mxmaps
 Type: Package
 Title: Create Maps of Mexico
-Version: 0.5.2
+Version: 0.5.3
 Date: 2018-03-29
 Authors@R: c(person("Diego", "Valle-Jones", email = "diego@diegovalle.net", role = c("aut", "cre")))
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
@@ -13,7 +13,7 @@ BugReports: https://github.com/diegovalle/mxmaps/issues
 License: BSD_3_clause + file LICENSE
 LazyData: TRUE
 Imports:
-    choroplethr (>= 3.6.1),
+    choroplethr (>= 3.6.3),
     stringr,
     ggplot2 (>= 2.2.1),
     scales,
@@ -29,5 +29,5 @@ Suggests:
     rmarkdown
 Depends:
     R (>= 3.1.1)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Encoding: UTF-8

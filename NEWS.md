@@ -1,3 +1,9 @@
+# mxmaps 0.5.3
+
+## Bug fixes and improvements
+
+* Requier choroplethr 3.6.3 to fix a ggplot2 incompatibility
+
 # mxmaps 0.5.2
 
 ## Bug fixes and improvements
