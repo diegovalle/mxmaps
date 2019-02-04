@@ -1,3 +1,10 @@
+# mxmaps 0.5.4
+
+## Bug fixes and improvements
+
+* Adds mapproj to imports
+* Removes INEGI API documentation since it doesn't work anymore
+
 # mxmaps 0.5.3
 
 ## Bug fixes and improvements
