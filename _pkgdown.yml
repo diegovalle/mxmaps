@@ -1,4 +1,3 @@
-title: mxmaps
 url: https://www.diegovalle.net/mxmaps
 template:
   params:
@@ -10,7 +9,6 @@ authors:
   Diego Valle-Jones:
     href: https://www.diegovalle.net
 navbar:
-  title: "mxmaps"
   type: inverse
   left:
     - text: "Home"
@@ -34,8 +32,8 @@ navbar:
           href: articles/articles/leaflet_states.html
         - text: "Municipios"
           href: articles/articles/leaflet_municipios.html
-    - text: "INEGI API"
-      href: articles/articles/inegi_api.html
+    #- text: "INEGI API"
+    #  href: articles/articles/inegi_api.html
     - text: "Shiny"
       href: articles/articles/shiny.html
     - text: "Reference"

@@ -22,7 +22,8 @@ Imports:
     leaflet,
     inegiR,
     lubridate,
-    viridis
+    viridis,
+    mapproj
 Suggests:
     testthat,
     knitr,
