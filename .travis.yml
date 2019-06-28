@@ -54,5 +54,5 @@ after_success:
 script:
   - R CMD build .
   - R CMD check *tar.gz
-  - R CMD install *tar.gz
+  - R CMD INSTALL *tar.gz
   - Rscript -e 'install.packages("pkgdown"); pkgdown::build_site()'
