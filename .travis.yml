@@ -50,4 +50,6 @@ r_github_packages:
 
 after_success:
   - Rscript -e 'covr::coveralls()'
+  
+script:
   - Rscript -e 'install.packages("pkgdown"); pkgdown::build_site()'
