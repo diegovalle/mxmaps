@@ -50,9 +50,4 @@ r_github_packages:
 
 after_success:
   - Rscript -e 'covr::coveralls()'
-  
-script:
-  - R CMD build .
-  - R CMD check *tar.gz
-  - R CMD INSTALL *tar.gz
-  - Rscript -e 'install.packages("pkgdown"); pkgdown::build_site()'
+  - Rscript -e "tryCatch({install.packages(c('remotes', 'geojsonio', 'sf', 'rgdal', 'rgeos', 'ggrepel', 'leaflet'));remotes::install_github('r-lib/pkgdown');remotes::install_github('diegovalle/mxmaps');pkgdown::build_site()}, error = function(e) {quit(status=1)})"
