@@ -101,7 +101,7 @@ choropleth_inegi <- function(token, regions, indicator, title, legend ="", silen
   }
 }
 
-#' Hexbin map made with INEGI data
+#' Hexbin map with INEGI data
 #'
 #' A state hexbin map of data available from the INEGI API
 #'

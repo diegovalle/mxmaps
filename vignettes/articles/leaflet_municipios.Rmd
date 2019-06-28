@@ -42,6 +42,7 @@ You can also subset the data to only show certain municipios
 library("dplyr")
 library("geojsonio")
 library("jsonlite")
+library("sf")
 
 # Convert the topoJSON to spatial object
 tmpdir <- tempdir()
@@ -51,6 +52,8 @@ muns <- topojson_read(file.path(tmpdir, "mun.topojson"))
 
 # municipios that make up Monterrey
 monterrey <- muns[muns$id %in% df_mxmunicipio$region[df_mxmunicipio$metro_area == "Monterrey"],]
+# Convert to SpatialDataFrame
+monterrey <- as_Spatial(monterrey)
 # made-up data
 monterrey@data$rand <- 1:nrow(monterrey@data)
 

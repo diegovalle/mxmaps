@@ -2,7 +2,7 @@
 % Please edit documentation in R/inegi.R
 \name{hexbin_inegi}
 \alias{hexbin_inegi}
-\title{Hexbin map made with INEGI data}
+\title{Hexbin map with INEGI data}
 \usage{
 hexbin_inegi(token, regions, indicator, title, legend = "",
   silent = FALSE)

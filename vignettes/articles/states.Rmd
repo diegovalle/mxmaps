@@ -43,6 +43,7 @@ library("rgdal")
 library("rgeos")
 library("maptools")
 library("ggrepel")
+library("sf")
 
 df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop * 100
 p <- mxstate_choropleth(df_mxstate, 
@@ -59,7 +60,7 @@ tmpdir <- tempdir()
 write(RJSONIO::toJSON(mxstate.topoJSON), file.path(tmpdir, "state.topojson"))
 states <- topojson_read(file.path(tmpdir, "state.topojson"))
 # remove bad polygons
-states <- gBuffer(states, byid=TRUE, width=0)
+states <- gBuffer(as_Spatial(states), byid=TRUE, width=0)
 
 # make sure the coordinates of the labels are in the correct order
 df_mxstate <- cbind(df_mxstate, 
