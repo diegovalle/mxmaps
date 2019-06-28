@@ -23,11 +23,11 @@ Imports:
     inegiR,
     lubridate,
     viridis,
-    mapproj
+    mapproj,
 Suggests:
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
 Depends:
     R (>= 3.1.1)
 RoxygenNote: 6.1.0
