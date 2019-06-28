@@ -52,4 +52,6 @@ after_success:
   - Rscript -e 'covr::coveralls()'
   
 script:
+  - R CMD build .
+  - R CMD check *tar.gz
   - Rscript -e 'install.packages("pkgdown"); pkgdown::build_site()'
