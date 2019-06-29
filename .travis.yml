@@ -28,7 +28,7 @@ addons:
       - libgdal1-dev
       - libproj-dev
       - libudunits2-dev
-      - libnode-dev
+      #- libnode-dev
   brew_packages:
       - udunits
 
