@@ -24,18 +24,19 @@ matrix:
 addons:
   apt:
     packages:
-      - libgdal-dev
-      - libgdal1-dev
-      - libproj-dev
       - libudunits2-dev
-      - libgeos-c1
+      - libv8-dev
+      - libprotobuf-dev
+      - libprotoc-dev
+      - libproj-dev
+      - libgeos-dev
+      - libgdal-dev
+      - protobuf-compiler
+      - valgrind
+      - libjq-dev
+      - netcdf-bin
   brew_packages:
       - udunits
-
-before_install:
-  - if [ ${TRAVIS_OS_NAME} == linux ]; then sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes; fi
-  - if [ ${TRAVIS_OS_NAME} == linux ]; then sudo apt-get --yes --force-yes update -qq; fi
-  - if [ ${TRAVIS_OS_NAME} == linux ]; then sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev; fi
 
 branches:
   only:
