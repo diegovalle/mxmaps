@@ -1,7 +1,7 @@
 Package: mxmaps
 Type: Package
 Title: Create Maps of Mexico
-Version: 0.5.4
+Version: 0.5.5
 Date: 2018-03-29
 Authors@R: c(person("Diego", "Valle-Jones", email = "diego@diegovalle.net", role = c("aut", "cre")))
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
