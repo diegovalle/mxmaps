@@ -3,6 +3,7 @@
 #' @param token The INEGI registration token available from http://www3.inegi.org.mx/sistemas/api/denue/v1/tokenVerify.aspx
 #' @param region Region to download data
 #' @param indicator Numeric indicator
+#' @param database The database to query. BIE (Banco de Informacion Economica) or BISE (Banco de Indicadores). Defaults to BIE.
 #'
 #' @importFrom inegiR inegi_series
 .get_inegi_data <- function(token, region, indicator, database) {
@@ -20,6 +21,7 @@
 #' @param token The INEGI registration token available from http://www3.inegi.org.mx/sistemas/api/denue/v1/tokenVerify.aspx
 #' @param regions Region to download data
 #' @param indicator Numeric indicator
+#' @param database The database to query. BIE (Banco de Informacion Economica) or BISE (Banco de Indicadores). Defaults to BIE.
 #' @param silent print progress
 #'
 #' @importFrom dplyr progress_estimated

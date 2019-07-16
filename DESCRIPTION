@@ -20,7 +20,7 @@ Imports:
     dplyr,
     R6,
     leaflet,
-    inegiR,
+    inegiR (>= 3.0.0),
     lubridate,
     viridis,
     mapproj,

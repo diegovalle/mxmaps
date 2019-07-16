@@ -4,7 +4,7 @@
 \alias{.get_inegi_data}
 \title{Title}
 \usage{
-.get_inegi_data(token, region, indicator)
+.get_inegi_data(token, region, indicator, database)
 }
 \arguments{
 \item{token}{The INEGI registration token available from http://www3.inegi.org.mx/sistemas/api/denue/v1/tokenVerify.aspx}
@@ -12,6 +12,8 @@
 \item{region}{Region to download data}
 
 \item{indicator}{Numeric indicator}
+
+\item{database}{The database to query. BIE (Banco de Informacion Economica) or BISE (Banco de Indicadores). Defaults to BIE.}
 }
 \description{
 Title

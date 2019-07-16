@@ -5,7 +5,7 @@
 \title{Hexbin map with INEGI data}
 \usage{
 hexbin_inegi(token, regions, indicator, title, legend = "",
-  silent = FALSE)
+  database = "BISE", silent = FALSE)
 }
 \arguments{
 \item{token}{The INEGI registration token available from http://www3.inegi.org.mx/sistemas/api/denue/v1/tokenVerify.aspx}
@@ -17,6 +17,8 @@ hexbin_inegi(token, regions, indicator, title, legend = "",
 \item{title}{An optional title for the map.}
 
 \item{legend}{An optional name for the legend.}
+
+\item{database}{The database to query. BIE (Banco de Informacion Economica) or BISE (Banco de Indicadores). Defaults to BIE.}
 
 \item{silent}{Wether to print a text progress bar while downloading the INEGI API data}
 }
