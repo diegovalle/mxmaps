@@ -36,7 +36,8 @@ mxc_regions <- subset(df_mxmunicipio, metro_area == "Valle de México")$region
 choropleth_inegi(token, mxc_regions, 
                  indicator = "1002000026", 
                  silent = FALSE,
-                 legend = "años")
+                 legend = "años",
+                 title = "Número de naciemntos en la Zona Metropolitana del Valle de México")
 state_regions <- df_mxstate$region
 #1002000003
 choropleth_inegi(token, state_regions, 

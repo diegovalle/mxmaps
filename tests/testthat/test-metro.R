@@ -13,6 +13,7 @@ test_that("No NA values in latitude and longitude columns", {
   expect_true(all(!is.na(df_mxmunicipio$long)))
 })
 
+context("Test that metro area codes were transcribed correctly")
 
 # Source: Clasificación y número de municipios de las zonas metropolitanas, 2010
 # http://www.conapo.gob.mx/en/CONAPO/Zonas_metropolitanas_2010

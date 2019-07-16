@@ -1,3 +1,5 @@
+context("test charts")
+
 library(testthat)
 library(mxmaps)
 
