@@ -6,6 +6,7 @@
 #' @param database The database to query. BIE (Banco de Informacion Economica) or BISE (Banco de Indicadores). Defaults to BIE.
 #'
 #' @importFrom inegiR inegi_series
+#' @keywords internal
 .get_inegi_data <- function(token, region, indicator, database) {
   s <- inegi_series(indicator, token, geography = region,
                     database = database, lastonly = TRUE)
@@ -25,6 +26,7 @@
 #' @param silent print progress
 #'
 #' @importFrom dplyr progress_estimated
+#' @keywords internal
 .get_regions_inegi <- function(token, regions, indicator, database, silent = TRUE) {
   df <- data.frame()
   cat("\rDownloading data from the INEGI API")

@@ -1,3 +1,16 @@
+# mxmaps 0.6.0
+
+## New features
+
+* Reintroduces `choropleth_inegi()` and `hexbin_inegi()` as they now work with the INEGI API v2
+
+# mxmaps 0.5.5
+
+## Bug fixes and improvements
+
+* Remove all the functions that depend on inegiR
+
+
 # mxmaps 0.5.4
 
 ## Bug fixes and improvements

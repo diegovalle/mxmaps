@@ -10,16 +10,18 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = '100%')
 ```
 
-The package also has special functions to download data from the [INEGI API](http://www.inegi.org.mx/desarrolladores/indicadores/apiindicadores.aspx) using the [inegiR](https://github.com/Eflores89/inegiR) package
+This package also has special functions to download data from the [INEGI API](http://www.inegi.org.mx/desarrolladores/indicadores/apiindicadores.aspx) using the [inegiR](https://github.com/Eflores89/inegiR) package
 
 1) You must have a [token](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx) to use this functionality. It's free and easy to get by visiting the [INEGI website](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx)
 2) The function plots the most recent value provided by the API
-3) You'll have to lookup the indicator code at the [INEGI](http://www.inegi.org.mx/desarrolladores/indicadores/apiindicadores.aspx)
+3) You'll have to lookup the indicator code at the [INEGI](https://www.inegi.org.mx/servicios/api_indicadores.html)
 
-the data can take a while to download and by defaut the choropleth functions will show you an estimate of how much time is remaining for the downloads to finish. If you do not want this behavior set the ```silent``` parameter to TRUE
+the data can take a while to download and by defaut the choropleth functions will show you an estimate of how much time is remaining for the downloads to finish. If you do not want this behavior set the ```silent``` parameter to TRUE. Note that only indicators that provide data at the national and state
+level are supported.
 
 ```{r, warning=FALSE}
 library(mxmaps)
+library(ggplot2)
 # Insert token here
 # If you don't have a token you can get one from:
 # http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx
@@ -31,18 +33,22 @@ if (identical(token, ""))
   token <- Sys.getenv("INEGI_TOKEN")
 ```
 
-```{r}
+```{r, warning=FALSE}
 mxc_regions <- subset(df_mxmunicipio, metro_area == "Valle de México")$region
 choropleth_inegi(token, mxc_regions, 
-                 indicator = "1002000026", 
+                 indicator = "1002000011", 
                  silent = FALSE,
-                 legend = "años",
-                 title = "Número de naciemntos en la Zona Metropolitana del Valle de México")
+                 legend = "Edad"
+                 ) +
+  labs(title = "Edad Mediana Hombres en la Zona Metropolitana del Valle de México",
+          caption = "Data source: INEGI BISE (Banco de Indicadores)")
+
 state_regions <- df_mxstate$region
-#1002000003
 choropleth_inegi(token, state_regions, 
-                 indicator = "1002000026",
-                 legend = "número\nde\nmujeres")
+                 indicator = "6200240365",
+                 legend = "%",
+                 title = "Porcentaje de la población de 15 años y más con instrucción superior")
 hexbin_inegi(token, state_regions, 
-             indicator = "1002000026",
-             legend = "número de nacimientos")
+             indicator = "1007000014",
+             legend = "número",
+             title = "Huelgas estalladas")
