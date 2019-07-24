@@ -48,3 +48,33 @@ p <- mxmunicipio_choropleth(df_mxmunicipio,
                             num_colors = 9)
 p[["layers"]][[1]][["aes_params"]][["colour"]] <- "transparent"
 p
+```
+
+We can also add the names of important municipios to maps (in this case those municipios in Chihuahua with more
+than 100,000 persons)
+
+```{r}
+library("ggrepel")
+
+df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop * 100
+chih <- subset(df_mxmunicipio, state_name %in% c("Chihuahua"))
+p <- mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
+                       zoom = chih$region,
+                       title = "Percentage of the population that self-identifies\nas indigenous in Chihuahua",
+                       show_states = FALSE,
+                       legend = "%")
+
+labels <- chih
+labels$group <- NA
+labels <- subset(labels, pop > 1e05)
+p +
+  geom_text_repel(data = labels, 
+                  aes(long, lat, label = municipio_name), 
+                  nudge_x = .1, 
+                  nudge_y = .7) +
+  geom_point(data = labels, 
+             aes(long, lat), 
+             color = "#d6604d",
+             size = 1)
+```
+

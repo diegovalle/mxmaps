@@ -97,7 +97,7 @@ You can use the ```show_states``` parameter to hide or show the state borders wh
 
 ```{r}
 mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
-                       zoom = c(31001:31106,30002:30212),
+                       zoom = subset(df_mxmunicipio, state_name %in% c("Yucatán", "Veracruz"))$region,
                        title = "Percentage of the population that self-identifies\nas indigenous in Yucatán and Veracruz",
                        show_states = FALSE,
                        legend = "%")
