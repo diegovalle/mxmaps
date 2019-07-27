@@ -8,7 +8,7 @@
 
 ## Bug fixes and improvements
 
-* Remove all the functions that depend on inegiR
+* Removes all the functions that depend on inegiR
 
 
 # mxmaps 0.5.4

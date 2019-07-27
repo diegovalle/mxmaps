@@ -10,7 +10,13 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = '100%')
 ```
 
-This package also has special functions to download data from the [INEGI API](http://www.inegi.org.mx/desarrolladores/indicadores/apiindicadores.aspx) using the [inegiR](https://github.com/Eflores89/inegiR) package
+This package also has special functions to download and map data from the [INEGI API](http://www.inegi.org.mx/desarrolladores/indicadores/apiindicadores.aspx) using the [inegiR](https://github.com/Eflores89/inegiR) package
+
+*Note: For the INEGI API to work you'll need to install the development version of inegiR* 
+
+```
+devtools::install_github("Eflores89/inegiR")
+```
 
 1) You must have a [token](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx) to use this functionality. It's free and easy to get by visiting the [INEGI website](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx)
 2) The function plots the most recent value provided by the API
