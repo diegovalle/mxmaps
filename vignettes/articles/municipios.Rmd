@@ -28,11 +28,15 @@ Another example with categorical data
 ```{r message=FALSE,warning=FALSE}
 library("ggplot2")
 
-df_mxmunicipio$value <- as.factor(sample(letters[1:2], 2457, replace = TRUE) )
+df_mxmunicipio$value <- as.factor(sample(c(NA, letters[1:6]),
+                                         nrow(df_mxmunicipio),
+                                         replace = TRUE) )
 gg = MXMunicipioChoropleth$new(df_mxmunicipio)
-gg$title <- "Municipios a and b"
-gg$set_num_colors(2)
-gg$ggplot_scale <- scale_fill_brewer("type", type = "qual")
+gg$title <- "Municipios a-f"
+gg$set_num_colors(6)
+gg$set_zoom(subset(df_mxmunicipio, state_name %in% c("Ciudad de México",                                                                     "México"))$region)
+gg$ggplot_scale <- scale_fill_brewer("type", type = "qual", palette = 2,
+                                     na.value = "gray")
 p <- gg$render()
 p + theme_void()
 ```
