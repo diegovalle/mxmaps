@@ -53,4 +53,4 @@ r_github_packages:
 
 after_success:
   - Rscript -e 'covr::coveralls()'
-  - Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'));remotes::install_github('r-lib/pkgdown');remotes::install_github('diegovalle/mxmaps');pkgdown::build_site()}, error = function(e) {quit(status=1)})"
+  - travis_wait 30 Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'));remotes::install_github('r-lib/pkgdown');remotes::install_github('diegovalle/mxmaps');pkgdown::build_site()}, error = function(e) {quit(status=1)})"
