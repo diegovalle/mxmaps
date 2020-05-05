@@ -43,6 +43,11 @@ branches:
   only:
     - master
     - develop
+    
+script: 
+  - |
+    R CMD build .
+    travis_wait 20 R CMD check mxmaps*tar.gz
 
 r_packages:
   - devtools
