@@ -47,7 +47,7 @@ branches:
 script: 
   - |
     R CMD build .
-    travis_wait 20 R CMD check mxmaps*tar.gz
+    travis_wait 40 R CMD check mxmaps*tar.gz
 
 r_packages:
   - devtools
