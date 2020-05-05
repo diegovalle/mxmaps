@@ -60,5 +60,5 @@ r_github_packages:
   - cran/survival
 
 after_success:
-  - ravis_wait 40 Rscript -e 'covr::coveralls()'
+  - travis_wait 40 Rscript -e 'covr::coveralls()'
   - travis_wait 30 Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'));remotes::install_github('r-lib/pkgdown');remotes::install_github('diegovalle/mxmaps');pkgdown::build_site()}, error = function(e) {quit(status=1)})"
