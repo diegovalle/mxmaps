@@ -59,7 +59,7 @@
 #'
 #' @param token The INEGI registration token available from http://www3.inegi.org.mx/sistemas/api/denue/v1/tokenVerify.aspx
 #' @param regions A vector of states to zoom in on. Elements of this vector must exactly match the names of states as they appear in the "region" column of ?df_mxstates.
-#' @param indicator Numeric indicator from the \href{http://www.beta.inegi.org.mx/servicios/api_biinegi.html}{INEGI API}
+#' @param indicator Numeric indicator from the \href{https://www.inegi.org.mx/servicios/api_indicadores.html}{INEGI API}
 #' @param title An optional title for the map.
 #' @param legend	An optional name for the legend.
 #' @param database The database to query. BIE (Banco de Informacion Economica) or BISE (Banco de Indicadores). Defaults to BIE.
@@ -78,7 +78,7 @@
 #' token <- "INSERT_TOKEN_HERE"
 #' state_regions <- df_mxstate$region
 #' ## You can look up the numeric indicator codes at
-#' ## http://www.beta.inegi.org.mx/servicios/api_biinegi.html
+#' ## https://www.inegi.org.mx/servicios/api_indicadores.html
 #' choropleth_inegi(token, state_regions, "1002000003")
 #' }
 choropleth_inegi <- function(token, regions, indicator, title, legend ="",
@@ -110,7 +110,7 @@ choropleth_inegi <- function(token, regions, indicator, title, legend ="",
 #'
 #' @param token The INEGI registration token available from http://www3.inegi.org.mx/sistemas/api/denue/v1/tokenVerify.aspx
 #' @param regions A vector of states to zoom in on. Elements of this vector must exactly match the names of states as they appear in the "region" column of ?df_mxstates.
-#' @param indicator Numeric indicator from the \href{http://www.beta.inegi.org.mx/servicios/api_biinegi.html}{INEGI API}
+#' @param indicator Numeric indicator from the \href{https://www.inegi.org.mx/servicios/api_indicadores.html}{INEGI API}
 #' @param title An optional title for the map.
 #' @param legend	An optional name for the legend.
 #' @param database The database to query. BIE (Banco de Informacion Economica) or BISE (Banco de Indicadores). Defaults to BIE.
@@ -129,7 +129,7 @@ choropleth_inegi <- function(token, regions, indicator, title, legend ="",
 #' token <- "INSERT_TOKEN_HERE"
 #' state_regions <- df_mxstate$region
 #' ## You can look up the numeric indicator codes at
-#' ## http://www.beta.inegi.org.mx/servicios/api_biinegi.html
+#' ## https://www.inegi.org.mx/servicios/api_indicadores.html
 #' hexbin_inegi(token, state_regions, "6200205259")
 #' }
 hexbin_inegi <- function(token, regions, indicator, title, legend = "",

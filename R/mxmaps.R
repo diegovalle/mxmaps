@@ -5,7 +5,7 @@
 #' from the INEGI API.
 #'
 #' See the website on
-#' \href{https://www.diegovalle.net/mxmaps}{mxmaps}
+#' \href{https://www.diegovalle.net/mxmaps/}{mxmaps}
 #'
 #' @docType package
 #' @name mxmaps

@@ -23,7 +23,7 @@ Imports:
     inegiR (>= 3.0.0),
     lubridate,
     viridis,
-    mapproj,
+    mapproj
 Suggests:
     testthat,
     knitr,

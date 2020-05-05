@@ -12,7 +12,7 @@ choropleth_inegi(token, regions, indicator, title, legend = "",
 
 \item{regions}{A vector of states to zoom in on. Elements of this vector must exactly match the names of states as they appear in the "region" column of ?df_mxstates.}
 
-\item{indicator}{Numeric indicator from the \href{http://www.beta.inegi.org.mx/servicios/api_biinegi.html}{INEGI API}}
+\item{indicator}{Numeric indicator from the \href{https://www.inegi.org.mx/servicios/api_indicadores.html}{INEGI API}}
 
 \item{title}{An optional title for the map.}
 
@@ -37,7 +37,7 @@ data(df_mxstates)
 token <- "INSERT_TOKEN_HERE"
 state_regions <- df_mxstate$region
 ## You can look up the numeric indicator codes at
-## http://www.beta.inegi.org.mx/servicios/api_biinegi.html
+## https://www.inegi.org.mx/servicios/api_indicadores.html
 choropleth_inegi(token, state_regions, "1002000003")
 }
 }
