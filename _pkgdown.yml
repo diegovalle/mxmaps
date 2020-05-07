@@ -1,9 +1,6 @@
 url: https://www.diegovalle.net/mxmaps
 template:
   params:
-    docsearch:
-      api_key: 8a77b782295c9cba8f27c0e19f021240
-      index_name: mxmaps
     ganalytics: UA-100264-1
 authors:
   Diego Valle-Jones:
