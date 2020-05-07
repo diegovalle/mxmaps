@@ -48,7 +48,7 @@ script:
   - |
     R CMD build .
     travis_wait 40 R CMD check mxmaps*tar.gz
-  - travis_wait 50 Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'));remotes::install_github('r-lib/pkgdown');remotes::install_github('diegovalle/mxmaps');remotes::install_github("Eflores89/inegiR");pkgdown::build_site()}, error = function(e) {quit(status=1)})"
+  - travis_wait 50 Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'));remotes::install_github('r-lib/pkgdown');remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR');pkgdown::build_site()}, error = function(e) {quit(status=1)})"
 
 after_failure:
   find *Rcheck -name '*.fail' -print -exec cat '{}' \;
