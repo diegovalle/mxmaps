@@ -14,8 +14,9 @@ This package also has special functions to download and map data from the [INEGI
 
 *Note: For the INEGI API to work you'll need to install the development version of inegiR* 
 
-```
-devtools::install_github("Eflores89/inegiR")
+```{r, warning=FALSE, message=FALSE}
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("Eflores89/inegiR", upgrade = "never")
 ```
 
 1) You must have a [token](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx) to use this functionality. It's free and easy to get by visiting the [INEGI website](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx)
