@@ -59,10 +59,10 @@ data(mxstate.topoJSON)
 tmpdir <- tempdir()
 # have to use RJSONIO or else the topojson isn't valid
 write(RJSONIO::toJSON(mxstate.topoJSON), file.path(tmpdir, "state.topojson"))
+# read the topojson file as an 'sf' object
 states <- topojson_read(file.path(tmpdir, "state.topojson"))
 
-# state codes in a standard format
-
+# put state codes in a standard format
 states$id <- str_mxstate(states$id)
 
 
