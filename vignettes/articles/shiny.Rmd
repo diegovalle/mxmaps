@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE,
 ```
 
 ```{r  echo=FALSE, out.width='100%'}
-knitr::include_graphics('homicides_shiny.png')
+knitr::include_graphics('https://github.com/diegovalle/mxmaps/raw/master/vignettes/articles/homicides_shiny.png')
 ```
 
 You can also use the data that comes with the package to create interactive webapps with shiny.
