@@ -72,3 +72,22 @@ p +
   geom_text_repel(data = df_mxstate, aes(lon, lat, label = state_abbr), size = 3,
                   box.padding = unit(0.1, 'lines'), force = 0.1)
 ```
+
+Add a legend for states with NA values
+
+```{r warning=FALSE, message=FALSE}
+df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop * 100
+df_mxstate$value[1:5] <- NA
+mxstate_choropleth(df_mxstate, 
+                   num_colors = 1,
+                   title = "Percentage of the population that identifies\nas indigenous",
+                   legend = "%") +
+  # Add a fake color scale which we'll change to 'no data'
+  geom_point(data = df_mxmunicipio[1,], 
+             aes(color = "", group = NA, lat = lat, long = long)) +
+  scale_color_manual(values = NA) +
+  guides(color=guide_legend("no data", 
+                             override.aes=list(color = "black",
+                                               shape = 15, 
+                                               size = 7)))
+```
