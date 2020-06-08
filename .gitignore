@@ -4,3 +4,5 @@
 inst/doc
 R/saveshps.R
 docs/*
+/index.html
+/index.md

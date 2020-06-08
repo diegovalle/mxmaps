@@ -14,3 +14,7 @@ README_files
 ^index.Rmd$
 ^vignettes/*
 ^ISSUE_TEMPLATE.md$
+^build_docs.sh$
+^index.html$
+^index.md$
+^header.png$

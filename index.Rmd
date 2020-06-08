@@ -1,13 +1,13 @@
 ---
 title: "Mexico Choropleths"
-output: html_document
+output: md_document
 fig_width: 8
 fig_height: 5
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, 
-                      fig.dim = c(5, 5), 
+                      fig.dim = c(8, 5), 
                       dpi = 100, 
                       out.width = '100%')
 ```
@@ -38,7 +38,7 @@ mxmaps depends on the sf package which has other [dependencies](https://github.c
 
 ## Quick Example
 
-```{r head, fig.dim = c(5, 3), dpi = 92}
+```{r head, fig.dim = c(8, 5), dpi = 92}
 library("mxmaps")
 
 df_mxstate$value <- df_mxstate$pop

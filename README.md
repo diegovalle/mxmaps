@@ -1,7 +1,7 @@
 Mexico Choropleths
 ================
 Diego Valle-Jones
-June 03, 2020
+June 08, 2020
 
   - [What does it do?](#what-does-it-do)
   - [Installation](#installation)
