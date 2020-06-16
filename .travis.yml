@@ -10,6 +10,7 @@ matrix:
     - os: linux
       dist: trusty
       sudo: false
+      brew_packages: udunits
       r: devel
     - os: linux
       dist: trusty
