@@ -10,7 +10,6 @@ matrix:
     - os: linux
       dist: trusty
       sudo: false
-      brew_packages: udunits
       r: devel
     - os: linux
       dist: trusty
@@ -39,11 +38,18 @@ addons:
       - netcdf-bin
   brew_packages:
       - udunits
+      - gdal
 
 branches:
   only:
     - master
     - develop
+    
+before_install:
+  - echo "options(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/xenial/latest'))" >> ~/.Rprofile.site
+  - echo "options(HTTPUserAgent = paste0('R/', getRversion(), ' R (',
+       paste(getRversion(), R.version['platform'], R.version['arch'], R.version['os']),
+       ')'))" >> ~/.Rprofile.site
     
 script: 
   - |
