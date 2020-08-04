@@ -2,7 +2,8 @@
 
 language: r
 dist: xenial
-cache: packages
+cache:
+  - $HOME/.ccache
 warnings_are_errors: true
 
 matrix:
@@ -25,6 +26,7 @@ matrix:
 addons:
   apt:
     packages:
+      - ccache
       - libudunits2-dev
       - libv8-dev
       - libprotobuf-dev
@@ -45,11 +47,13 @@ branches:
     - master
     - develop
     
-#before_install:
-#  - echo "options(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/xenial/latest'))" >> ~/.Rprofile.site
-#  - echo "options(HTTPUserAgent = paste0('R/', getRversion(), ' R (',
-#       paste(getRversion(), R.version['platform'], R.version['arch'], R.version['os']),
-#       ')'))" >> ~/.Rprofile.site
+before_install:
+  - mkdir $HOME/.R && echo -e 'CXX_STD = CXX14\n\nVER=\nCCACHE=ccache\nCC=$(CCACHE) gcc$(VER) -std=gnu99\nCXX=$(CCACHE) g++$(VER)\nC11=$(CCACHE) g++$(VER)\nC14=$(CCACHE) g++$(VER)\nFC=$(CCACHE) gfortran$(VER)\nF77=$(CCACHE) gfortran$(VER)' > $HOME/.R/Makevars
+  - echo -e 'max_size = 5.0G\nsloppiness = include_file_ctime\nhash_dir=false' > $HOME/.ccache/ccache.conf
+  - echo "options(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/xenial/latest'))" >> ~/.Rprofile.site
+  - echo "options(HTTPUserAgent = paste0('R/', getRversion(), ' R (',
+       paste(getRversion(), R.version['platform'], R.version['arch'], R.version['os']),
+       ')'))" >> ~/.Rprofile.site
     
 script: 
   - |
