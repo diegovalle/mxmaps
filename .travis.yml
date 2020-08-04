@@ -22,14 +22,6 @@ matrix:
       r: oldrel
     - os: osx
       r: release
-      
-r_binary_packages:
-      - tidyverse
-      - data.table
-      - rcpp
-      - lubridate
-      - devtools
-      - ggplot2
 
 addons:
   apt:
