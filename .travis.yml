@@ -23,7 +23,7 @@ matrix:
     - os: osx
       r: release
       
-t_packages:
+r_binary_packages:
       - tidyverse
       - data.table
       - rcpp
