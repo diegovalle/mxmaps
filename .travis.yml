@@ -23,12 +23,13 @@ matrix:
     - os: osx
       r: release
       
-apt_packages:
-      - r-cran-tidyverse
-      - r-cran-data.table
-      - r-cran-rcpp
-      - r-cran-lubridate
-      - r-cran-devtools
+t_packages:
+      - tidyverse
+      - data.table
+      - rcpp
+      - lubridate
+      - devtools
+      - ggplot2
 
 addons:
   apt:
