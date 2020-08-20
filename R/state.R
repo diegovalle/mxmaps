@@ -16,7 +16,10 @@ MXStateChoropleth = R6Class("MXStateChoropleth",
                                 inherit = choroplethr:::Choropleth,
                                 public = list(
 
-                                  # initialize with a world map
+                                  #' @description
+                                  #' Initialize the map of Mexico
+                                  #' @param user.df df
+                                  #' @return A new `MXStateChoropleth` object.
                                   initialize = function(user.df)
                                   {
                                     #if (!requireNamespace("mxmapsData", quietly = TRUE)) {

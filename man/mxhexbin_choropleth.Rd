@@ -4,8 +4,15 @@
 \alias{mxhexbin_choropleth}
 \title{Create a state-level hexbin choropleth}
 \usage{
-mxhexbin_choropleth(df, title = "", legend = "", num_colors = 7,
-  zoom = NULL, label_color = "black", label_size = 4.5)
+mxhexbin_choropleth(
+  df,
+  title = "",
+  legend = "",
+  num_colors = 7,
+  zoom = NULL,
+  label_color = "black",
+  label_size = 4.5
+)
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in

@@ -4,8 +4,7 @@
 \alias{mxstate_choropleth}
 \title{Create a state-level choropleth}
 \usage{
-mxstate_choropleth(df, title = "", legend = "", num_colors = 7,
-  zoom = NULL)
+mxstate_choropleth(df, title = "", legend = "", num_colors = 7, zoom = NULL)
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in

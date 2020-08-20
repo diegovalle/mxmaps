@@ -4,8 +4,15 @@
 \alias{choropleth_inegi}
 \title{Static maps with INEGI data}
 \usage{
-choropleth_inegi(token, regions, indicator, title, legend = "",
-  database = "BISE", silent = FALSE)
+choropleth_inegi(
+  token,
+  regions,
+  indicator,
+  title,
+  legend = "",
+  database = "BISE",
+  silent = FALSE
+)
 }
 \arguments{
 \item{token}{The INEGI registration token available from http://www3.inegi.org.mx/sistemas/api/denue/v1/tokenVerify.aspx}

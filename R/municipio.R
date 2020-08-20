@@ -2,6 +2,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
+#' @param show_states draw state borders
 #' @importFrom stringr str_sub
 #' @importFrom ggplot2 ggplot aes geom_polygon scale_fill_brewer ggtitle theme theme_grey element_blank geom_text coord_map
 #' @importFrom ggplot2 scale_fill_continuous scale_colour_brewer ggplotGrob annotation_custom
@@ -20,7 +21,12 @@
 MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                             inherit = choroplethr:::Choropleth,
                             public = list(
+                              #' @field show_states boolean, draw state borders
                               show_states = TRUE,
+                              #' @description
+                              #' Render the map of Mexico
+                              #' @param user.df df
+                              #' @return A new ggplot2 object with a map of Mexico.
                               render = function()
                               {
                                 self$prepare_map()
@@ -53,7 +59,10 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                        )
                               },
 
-                              # initialize with a world map
+                              #' @description
+                              #' Initialize the map of Mexico
+                              #' @param user.df df
+                              #' @return A new `MXMunicipioChoropleth` object.
                               initialize = function(user.df)
                               {
                                 #if (!requireNamespace("mxmapsData", quietly = TRUE)) {

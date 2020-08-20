@@ -1,3 +1,10 @@
+# mxmaps 0.6.1
+
+## New features
+
+* Change the progress bar used when downloading from the INEGI API since
+  `progress_estimated()` from the dplyr package was deprecated
+
 # mxmaps 0.6.0
 
 ## New features

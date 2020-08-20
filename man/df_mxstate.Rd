@@ -4,7 +4,9 @@
 \name{df_mxstate}
 \alias{df_mxstate}
 \title{Mexican states dataset}
-\format{An object of class \code{data.frame} with 32 rows and 12 columns.}
+\format{
+An object of class \code{data.frame} with 32 rows and 12 columns.
+}
 \usage{
 df_mxstate
 }

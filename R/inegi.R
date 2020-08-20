@@ -25,7 +25,7 @@
 #' @param database The database to query. BIE (Banco de Informacion Economica) or BISE (Banco de Indicadores). Defaults to BIE.
 #' @param silent print progress
 #'
-#' @importFrom dplyr progress_estimated
+#' @importFrom progress progress_bar
 #' @keywords internal
 .get_regions_inegi <- function(token, regions, indicator, database, silent = TRUE) {
   df <- data.frame()
@@ -33,17 +33,18 @@
   #flush.console()
   if (!silent) {
     if (length(regions) > 1) {
-      p <- progress_estimated(length(regions), min_time = 2)
+      p <- progress_bar$new(total = length(regions))
     }
   }
   i <- 0
+  p$tick(0)
   for (region in regions) {
     tmp <- .get_inegi_data(token, region, indicator, database)
     tmp$region <- region
     df <- rbind(df, tmp)
     if (!silent) {
       if (length(regions) > 1) {
-        p$tick()$print()
+        p$tick()
       }
     }
     i <- i + 1

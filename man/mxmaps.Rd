@@ -3,7 +3,6 @@
 \docType{package}
 \name{mxmaps}
 \alias{mxmaps}
-\alias{mxmaps-package}
 \title{\code{mxmaps} package}
 \description{
 Tools for static and interactive choropleths of Mexico. Includes functions to

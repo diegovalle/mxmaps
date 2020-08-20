@@ -4,8 +4,15 @@
 \alias{hexbin_inegi}
 \title{Hexbin map with INEGI data}
 \usage{
-hexbin_inegi(token, regions, indicator, title, legend = "",
-  database = "BISE", silent = FALSE)
+hexbin_inegi(
+  token,
+  regions,
+  indicator,
+  title,
+  legend = "",
+  database = "BISE",
+  silent = FALSE
+)
 }
 \arguments{
 \item{token}{The INEGI registration token available from http://www3.inegi.org.mx/sistemas/api/denue/v1/tokenVerify.aspx}

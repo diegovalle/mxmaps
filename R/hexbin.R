@@ -14,11 +14,18 @@
 MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                              inherit = choroplethr:::Choropleth,
                              public = list(
+
+                               #' @field label_color color for the state labels
+                               #' @field label_size font size for the state labels
+                               #' @field show_labels draw the state labels
                                label_color = "black",
                                label_size = 5,
                                show_labels = TRUE,
 
-                               # initialize with a world map
+                               #' @description
+                               #' Initialize the map of Mexico
+                               #' @param user.df df
+                               #' @return A new `MXHexBinChoropleth` object.
                                initialize = function(user.df) {
 
                                  data(mxhexbin.map, package = "mxmaps", envir = environment())
@@ -29,6 +36,9 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                                  }
                                },
 
+                               #' @description
+                               #' Render a map of Mexico
+                               #' @return A ggplot2 object with the map of Mexico.
                                render = function() {
                                  choropleth <- super$render()
 

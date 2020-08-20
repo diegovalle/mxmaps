@@ -4,9 +4,20 @@
 \alias{mxstate_leaflet}
 \title{Create a state-level interactive map}
 \usage{
-mxstate_leaflet(df, pal, fillColor, popup, weight = 0.2,
-  color = "#555555", opacity = 1, fillOpacity = 0.8, lng = -102,
-  lat = 23.8, mapzoom = 5, zoom = NULL)
+mxstate_leaflet(
+  df,
+  pal,
+  fillColor,
+  popup,
+  weight = 0.2,
+  color = "#555555",
+  opacity = 1,
+  fillOpacity = 0.8,
+  lng = -102,
+  lat = 23.8,
+  mapzoom = 5,
+  zoom = NULL
+)
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
