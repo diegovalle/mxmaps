@@ -38,6 +38,8 @@ addons:
       - valgrind
       - libjq-dev
       - netcdf-bin
+      - libharfbuzz-dev 
+      - libfribidi-dev 
   brew_packages:
       - udunits
       - gdal
