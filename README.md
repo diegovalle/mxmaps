@@ -23,14 +23,13 @@ Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=mas
 ## What does it do?
 
 This package is based on
-[choroplethr](https://cran.r-project.org/web/packages/choroplethr/index.html)
-and can be used to easily create maps of Mexico at both the state and
-municipio levels. It also includes functions to create interactive maps
-using the leaflet package, map INEGI data from its
-[API](https://cran.r-project.org/web/packages/inegiR/inegiR.pdf), and
-format strings so they match the INEGI state and municipio codes. Be
-sure to visit the [official
-website](https://www.diegovalle.net/mxmaps/).
+[choroplethr](https://CRAN.R-project.org/package=choroplethr) and can be
+used to easily create maps of Mexico at both the state and municipio
+levels. It also includes functions to create interactive maps using the
+leaflet package, map INEGI data from its
+[API](https://CRAN.R-project.org/package=inegiR), and format strings so
+they match the INEGI state and municipio codes. Be sure to visit the
+[official website](https://www.diegovalle.net/mxmaps/).
 
 ## Installation
 

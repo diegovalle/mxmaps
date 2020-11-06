@@ -11,6 +11,8 @@ on:
       - main
       - master
       - develop
+  schedule:
+    -cron: "2 20 * * 5"
 
 name: R-CMD-check
 
@@ -31,6 +33,7 @@ jobs:
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
+      INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -75,14 +78,16 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
+      - name: test site
+        run: |
+          Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'));remotes::install_github('r-lib/pkgdown');remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR');pkgdown::build_site()}, error = function(e) {quit(status=1)})
+
+      - name: coveralls
+        run: Rscript -e 'covr::coveralls()'
+
       - name: Upload check results
         if: failure()
         uses: actions/upload-artifact@main
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-    # - name: test site
-    #   run: |
-    #     Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'));remotes::install_github('r-lib/pkgdown');remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR');pkgdown::build_site()}, error = function(e) {quit(status=1)})
-    # - name: coveralls
-    #   run: Rscript -e 'covr::coveralls()'
