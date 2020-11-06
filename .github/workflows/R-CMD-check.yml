@@ -1,0 +1,40 @@
+# Basic workflow leaning on https://eddelbuettel.github.io/r-travis/
+
+name: R-CMD-check
+
+on:
+  push:
+  pull_request:
+
+env:
+  USE_BSPM: "true"
+  _R_CHECK_FORCE_SUGGESTS_: "false"
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        config:
+          - {os: macOS-latest}
+          - {os: ubuntu-latest}
+
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: download
+      run: curl -OLs https://eddelbuettel.github.io/r-travis/run.sh
+    - name: mode
+      run: chmod 0755 run.sh
+    - name: bootstrap
+      run: ./run.sh bootstrap
+    - name: dependencies
+      run: ./run.sh install_all
+    - name: test
+      run: ./run.sh run_tests
+    # - name: test site
+    #   run: |
+    #     Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'));remotes::install_github('r-lib/pkgdown');remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR');pkgdown::build_site()}, error = function(e) {quit(status=1)})
+    - name: coveralls
+      run: Rscript -e 'covr::coveralls()'
