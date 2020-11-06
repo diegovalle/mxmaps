@@ -1,15 +1,15 @@
 Mexico Choropleths
 ================
 Diego Valle-Jones
-June 08, 2020
+November 05, 2020
 
   - [What does it do?](#what-does-it-do)
   - [Installation](#installation)
   - [Quick Example](#quick-example)
   - [Municipios](#municipios)
 
-Master: [![Travis-CI Build
-Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps)
+Master: [![R build
+status](https://github.com/diegovalle/mxmaps/workflows/R-CMD-check/badge.svg)](https://github.com/diegovalle/mxmaps/actions)
 [![Coverage
 Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
 

@@ -19,3 +19,4 @@ README_files
 ^index.md$
 ^header.png$
 .github
+^\.github$

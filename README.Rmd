@@ -9,7 +9,7 @@ output:
           fig_height: 5
 ---
 
-Master: [![Travis-CI Build Status](https://travis-ci.org/diegovalle/mxmaps.svg?branch=master)](https://travis-ci.org/diegovalle/mxmaps) 
+Master: [![R build status](https://github.com/diegovalle/mxmaps/workflows/R-CMD-check/badge.svg)](https://github.com/diegovalle/mxmaps/actions)
 [![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
 
 |              |                                                                          |
