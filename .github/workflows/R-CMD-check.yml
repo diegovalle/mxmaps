@@ -79,11 +79,15 @@ jobs:
         shell: Rscript {0}
 
       - name: test site
+        if: matrix.config.r == 'release'
         run: |
           Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'));install.packages('V8', repos = 'http://cran.r-project.org'); remotes::install_github('r-lib/pkgdown'); remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR');pkgdown::build_site()}, error = function(e) {quit(status=1)})"
 
       - name: coveralls
-        run: Rscript -e 'covr::coveralls()'
+        if: matrix.config.r == 'release'
+        run: | 
+          R CMD INSTALL .
+          Rscript -e 'install.packages("covr");covr::coveralls()'
 
       - name: Upload check results
         if: failure()
