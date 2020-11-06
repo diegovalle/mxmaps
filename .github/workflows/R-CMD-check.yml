@@ -5,6 +5,8 @@ name: R-CMD-check
 on:
   push:
   pull_request:
+  schedule:
+    - cron: "3 20 * * 5"
 
 env:
   USE_BSPM: "true"
