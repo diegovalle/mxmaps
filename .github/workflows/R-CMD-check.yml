@@ -35,6 +35,7 @@ jobs:
       RSPM: ${{ matrix.config.rspm }}
       INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
       COVERALLS_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
 
     steps:
       - uses: actions/checkout@v2
