@@ -47,14 +47,14 @@ choropleth_inegi(token, mxc_regions,
                  silent = FALSE,
                  legend = "Edad"
                  ) +
-  labs(title = "Edad Mediana Hombres en la Zona Metropolitana del Valle de México",
+  labs(title = "Edad Mediana Hombres en la\nZona Metropolitana del Valle de México",
           caption = "Data source: INEGI BISE (Banco de Indicadores)")
 
 state_regions <- df_mxstate$region
 choropleth_inegi(token, state_regions, 
                  indicator = "6200240365",
                  legend = "%",
-                 title = "Porcentaje de la población de 15 años y más con instrucción superior")
+                 title = "Porcentaje de la población de 15 años y más\ncon instrucción superior")
 hexbin_inegi(token, state_regions, 
              indicator = "1007000014",
              legend = "número",

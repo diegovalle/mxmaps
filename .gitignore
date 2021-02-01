@@ -6,3 +6,5 @@ R/saveshps.R
 docs/*
 /index.html
 /index.md
+data-raw/simpl/
+AGEEML_20211271312276.csv.xz

@@ -9,9 +9,8 @@
 #' @docType data
 #' @name mxmunicipio.map
 #' @usage data(mxmunicipio.map)
-#' @references Downloaded from the "Cartografia Geoestadistica Urbana y
-#' Rural Amanzanada. Planeacion de la Encuesta Intercensal 2015" shapefiles
-#' (https://gist.github.com/diegovalle/aa3eef87c085d6ea034f)
+#' @references Downloaded from the "Marco Geoestadístico. Censo de Población y Vivienda 2020" shapefiles
+#' (https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=889463807469)
 #' @examples
 #' # render the map with ggplot2
 #' library(ggplot2)
