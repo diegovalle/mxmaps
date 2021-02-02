@@ -18,7 +18,7 @@
 #'   \item{indigenous}{indigenous population according to the Encuesta Intercensal 2015}
 #'   \item{part_indigenous}{part indigenous population according to the Encuesta Intercensal 2015}
 #' }
-#' @name df_mxstate
+#' @name df_mxstate_2015
 #' @docType data
 #' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/intercensal/2015/}{Encuesta Intercensal.}
 #'
@@ -54,7 +54,7 @@
 #'   \item{long}{longitude of the localidad cabecera of each municipio}
 #'   \item{lat}{latitude of the localidad cabecera of each municipio}
 #' }
-#' @name df_mxmunicipio
+#' @name df_mxmunicipio_2015
 #' @docType data
 #' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/intercensal/2015/}{Encuesta Intercensal}.
 #' The latitude and longitude of the localidad cabecera of each municipio come from the

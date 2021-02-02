@@ -6,31 +6,31 @@ library(mxmaps)
 #test_package("mxmaps")
 
 test_that("state choropleth matches expectations",{
-  data("df_mxstate")
-  df_mxstate$value = df_mxstate$pop
-  p <- mxstate_choropleth(df_mxstate, num_colors = 1)
+  data("df_mxstate_2020")
+  df_mxstate_2020$value = df_mxstate_2020$pop
+  p <- mxstate_choropleth(df_mxstate_2020, num_colors = 1)
   expect_is(p$layers[[1]], "ggproto")
-  expect_identical(sort(unique(p$data$id)), sort(df_mxstate$region))
+  expect_identical(sort(unique(p$data$id)), sort(df_mxstate_2020$region))
   expect_identical(p$labels$y, "lat")
   expect_identical(p$labels$x, "long")
 })
 
 test_that("municipio choropleth matches expectations",{
-  data("df_mxmunicipio")
-  df_mxmunicipio$value = df_mxmunicipio$pop
-  p <- mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1)
+  data("df_mxmunicipio_2020")
+  df_mxmunicipio_2020$value = df_mxmunicipio_2020$pop
+  p <- mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1)
   expect_is(p$layers[[1]], "ggproto")
-  expect_identical(sort(unique(p$data$id)), sort(df_mxmunicipio$region))
+  expect_identical(sort(unique(p$data$id)), sort(df_mxmunicipio_2020$region))
   expect_identical(p$labels$y, "lat")
   expect_identical(p$labels$x, "long")
 })
 
 test_that("hexbin matches expectations",{
   data("df_mxstate")
-  df_mxstate$value = df_mxstate$pop
-  p <- mxhexbin_choropleth(df_mxstate)
+  df_mxstate_2020$value = df_mxstate_2020$pop
+  p <- mxhexbin_choropleth(df_mxstate_2020)
   expect_is(p$layers[[1]], "ggproto")
-  expect_identical(sort(unique(p$data$id)), sort(df_mxstate$region))
+  expect_identical(sort(unique(p$data$id)), sort(df_mxstate_2020$region))
   expect_identical(p$labels$y, "lat")
   expect_identical(p$labels$x, "long")
 })
@@ -51,7 +51,7 @@ test_that("convert municipio codes to INEGI format",{
 })
 
 test_that("zoom works in", {
-  df = df_mxmunicipio
+  df = df_mxmunicipio_2020
   df$value = df$pop
   p <- mxmunicipio_choropleth(df,
                          num_colors = 1,

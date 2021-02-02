@@ -9,8 +9,8 @@ test_that("The number of metro areas is correct", {
 
 # No NAs in lat and long
 test_that("No NA values in latitude and longitude columns", {
-  expect_true(all(!is.na(df_mxmunicipio$lat)))
-  expect_true(all(!is.na(df_mxmunicipio$long)))
+  expect_true(all(!is.na(df_mxmunicipio_2020$lat)))
+  expect_true(all(!is.na(df_mxmunicipio_2020$long)))
 })
 
 context("Test that metro area codes were transcribed correctly")
@@ -19,9 +19,9 @@ context("Test that metro area codes were transcribed correctly")
 # http://www.conapo.gob.mx/en/CONAPO/Zonas_metropolitanas_2010
 test_that("The number of municipios in metro areas is correct", {
   # Total municipios in all metro areas
-  expect_equal(length(unique(df_mxmunicipio$region[!is.na(df_mxmunicipio$metro_area)])), 367)
+  expect_equal(length(unique(df_mxmunicipio_2020$region[!is.na(df_mxmunicipio_2020$metro_area)])), 367)
   # Total municipios by metro area
-  df <- aggregate(df_mxmunicipio, by=list(metro = df_mxmunicipio$metro_area), function(x) length(x))
+  df <- aggregate(df_mxmunicipio_2020, by=list(metro = df_mxmunicipio_2020$metro_area), function(x) length(x))
   expect_equal(df[df$metro == "Monterrey",]$metro_area,
                13)
   expect_equal(df[df$metro == "Puerto Vallarta",]$metro_area,

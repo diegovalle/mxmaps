@@ -1,6 +1,8 @@
 ---
 title: "States"
 output: html_document
+fig_width: 8
+fig_height: 5
 ---
 
 ```{r setup, include=FALSE}
@@ -13,28 +15,29 @@ knitr::opts_chunk$set(echo = TRUE,
 ```{r}
 library(mxmaps)
 
-data("df_mxstate")
-df_mxstate$value <- df_mxstate$pop
-mxstate_choropleth(df_mxstate,
+data("df_mxstate_2020")
+df_mxstate_2020$value <- df_mxstate_2020$pop
+mxstate_choropleth(df_mxstate_2020,
                     title = "Total population, by state") 
 ```
 
-Change the color scale
+## Different color scale
 
 ```{r message=FALSE,warning=FALSE}
 library(mxmaps)
 library(viridis)
 library(scales)
 
-df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop 
-gg = MXStateChoropleth$new(df_mxstate)
-gg$title <- "Percentage of the population that self-identifies as indigenous"
+df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
+  df_mxstate_2020$pop 
+gg = MXStateChoropleth$new(df_mxstate_2020)
+gg$title <- "Percentage of the population that speaks an indigenous language"
 gg$set_num_colors(1)
 gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
 gg$render()
 ```
 
-A map with labels for each state
+## Map with labels for each state
 
 ```{r message=FALSE,warning=FALSE}
 library("geojsonio")
@@ -45,45 +48,49 @@ library("maptools")
 library("ggrepel")
 library("sf")
 
-df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop * 100
-p <- mxstate_choropleth(df_mxstate, 
+df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
+  df_mxstate_2020$pop * 100
+p <- mxstate_choropleth(df_mxstate_2020, 
                         num_colors = 1,
-                        title = "Percentage of the population that self-identifies as indigenous",
+                        title = "Percentage of the population that speaks an indigenous language",
                         legend = "%")
 
 
 data("mxstate.topoJSON")
-data("df_mxstate")
+data("df_mxstate_2020")
 
 tmpdir <- tempdir()
 # have to use RJSONIO or else the topojson isn't valid
 write(RJSONIO::toJSON(mxstate.topoJSON), file.path(tmpdir, "state.topojson"))
 states <- topojson_read(file.path(tmpdir, "state.topojson"))
-# remove bad polygons
-states <- gBuffer(as_Spatial(states), byid=TRUE, width=0)
+# convert to SpatialPolygonsDataFrame
+states <- as_Spatial(states)
 
 # make sure the coordinates of the labels are in the correct order
-df_mxstate <- cbind(df_mxstate, 
-                    data.frame(lon = coordinates(states[match(df_mxstate$region, states$id),])[,1],
-                               lat = coordinates(states[match(df_mxstate$region, states$id),])[,2]))
-df_mxstate$group <- df_mxstate$state_abbr
+df_mxstate_2020 <- cbind(df_mxstate_2020, 
+                    data.frame(lon = coordinates(states[match(df_mxstate_2020$region, states$id),])[,1],
+                               lat = coordinates(states[match(df_mxstate_2020$region, states$id),])[,2]))
+df_mxstate_2020$group <- df_mxstate_2020$state_abbr
 
 p +
-  geom_text_repel(data = df_mxstate, aes(lon, lat, label = state_abbr), size = 3,
+  geom_text_repel(data = df_mxstate_2020, aes(lon, lat, label = state_abbr), size = 3,
                   box.padding = unit(0.1, 'lines'), force = 0.1)
 ```
+
+## Legends
 
 Add a legend for states with NA values
 
 ```{r warning=FALSE, message=FALSE}
-df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop * 100
-df_mxstate$value[1:5] <- NA
-mxstate_choropleth(df_mxstate, 
+df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
+  df_mxstate_2020$pop * 100
+df_mxstate_2020$value[1:5] <- NA
+mxstate_choropleth(df_mxstate_2020, 
                    num_colors = 1,
-                   title = "Percentage of the population that identifies\nas indigenous",
+                   title = "Percentage of the population that speaks\nan indigenous language",
                    legend = "%") +
   # Add a fake color scale which we'll change to 'no data'
-  geom_point(data = df_mxmunicipio[1,], 
+  geom_point(data = df_mxmunicipio_2020[1,], 
              aes(color = "", group = NA, lat = lat, long = long)) +
   scale_color_manual(values = NA) +
   guides(color=guide_legend("no data", 

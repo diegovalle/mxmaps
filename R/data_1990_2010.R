@@ -10,7 +10,7 @@
 #'   \item{sex}{Sex of the person}
 #'   \item{pop}{total state population}
 #' }
-#' @name df_mxstate
+#' @name df_mxstate_1990_2010
 #' @docType data
 #' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page.}
 #'
@@ -32,7 +32,7 @@
 #'   \item{sex}{Sex of the person}
 #'   \item{pop}{total municipio population}
 #' }
-#' @name df_mxmunicipio
+#' @name df_mxmunicipio_1990_2010
 #' @docType data
 #' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page}
 #'

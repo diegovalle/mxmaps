@@ -14,20 +14,21 @@ knitr::opts_chunk$set(echo = TRUE,
 library(mxmaps)
 library(leaflet) # for colorNumeric
 
-df_mxmunicipio$value <- df_mxmunicipio$indigenous / df_mxmunicipio$pop
+df_mxmunicipio_2020$value <- df_mxmunicipio_2020$indigenous_language /
+  df_mxmunicipio_2020$pop
 #Viridis color scheme
 magma <- c("#000004FF", "#1D1146FF", "#50127CFF", "#822681FF", "#B63779FF", 
            "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF")
-pal <- colorNumeric(magma, domain = df_mxmunicipio$value)
-mxmunicipio_leaflet(df_mxmunicipio,
+pal <- colorNumeric(magma, domain = df_mxmunicipio_2020$value)
+mxmunicipio_leaflet(df_mxmunicipio_2020,
                     pal,
                     ~ pal(value),
                     ~ sprintf("State: %s<br/>Municipio : %s<br/>Percent Indigenous: %s%%",
                               state_name, municipio_name, round(value * 100, 1))) %>%
   addLegend(position = "bottomright", 
             pal = pal, 
-            values = df_mxmunicipio$value,
-            title = "Percent<br>Indigenous",
+            values = df_mxmunicipio_2020$value,
+            title = "Percent<br>Indigenous<br>Speaking",
             labFormat = labelFormat(suffix = "%",
                                     transform = function(x) {100 * x})) %>%
   addProviderTiles("CartoDB.Positron")
@@ -51,7 +52,8 @@ write(RJSONIO::toJSON(mxmunicipio.topoJSON), file.path(tmpdir, "mun.topojson"))
 muns <- topojson_read(file.path(tmpdir, "mun.topojson"))
 
 # municipios that make up Monterrey
-monterrey <- muns[muns$id %in% df_mxmunicipio$region[df_mxmunicipio$metro_area == "Monterrey"],]
+monterrey <- muns[muns$id %in% 
+                    df_mxmunicipio_2020$region[df_mxmunicipio_2020$metro_area == "Monterrey"], ]
 # Convert to SpatialDataFrame
 monterrey <- as_Spatial(monterrey)
 # made-up data

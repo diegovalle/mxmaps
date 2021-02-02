@@ -8,7 +8,8 @@ lats <- read.csv("data-raw/censo/AGEEML_20211271312276.csv.xz",
   group_by(region) %>%
   slice(1) %>%
   select(region, lat_decimal, longitud) %>%
-  rename(lat = lat_decimal, long = longitud) %>%
+  #for some reason lat and long are reversed
+  rename(long = lat_decimal, lat = longitud) %>%
   na.omit()
 names(df_mxmunicipio_2020) <- c("region", "municipio_name", "Total", "Male",
                       "Female")
@@ -70,11 +71,12 @@ stopifnot(sum(df_mxmunicipio_2020$Total) == 126014024)
 stopifnot(nrow(df_mxmunicipio_2020) == nrow(lats))
 
 df_mxmunicipio_2020 <- df_mxmunicipio_2020 %>%
-  rename(pop = Total, pop_male = Male, pop_female = Female) %>%
+  rename(pop = Total, pop_male = Male, pop_female = Female)%>%
+  left_join(df_mxmunicipio[, c("region", "metro_area")]) %>%
   select(state_code, municipio_code, region, state_name, state_name_official,
          state_abbr, state_abbr_official, municipio_name, year, pop,
          pop_male, pop_female, afromexican,
-         indigenous_language, long, lat)%>%
+         indigenous_language, metro_area, long, lat)%>%
   mutate(state_name_official = str_replace(state_name_official,
                                            "Distrito Federal",
                                            "Ciudad de México")) %>%
@@ -82,5 +84,9 @@ df_mxmunicipio_2020 <- df_mxmunicipio_2020 %>%
                                            "DF",
                                            "CDMX"))
 
+Encoding(df_mxmunicipio_2020$state_name) <- "UTF-8"
+Encoding(df_mxmunicipio_2020$state_name_official) <- "UTF-8"
+Encoding(df_mxmunicipio_2020$state_abbr_official) <- "UTF-8"
+Encoding(df_mxmunicipio_2020$municipio_name) <- "UTF-8"
 save(df_mxmunicipio_2020, file = "data/df_mxmunicipio_2020.RData",
      compress = "xz", version = 2)

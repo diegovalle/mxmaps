@@ -74,6 +74,7 @@ merge() {
     done
 }
 
-main
-merge municipios.shp "*municipales.shp"
-merge estados.shp "*estatales.shp"
+#main
+#merge municipios.shp "*municipales.shp"
+#merge estados.shp "*estatales.shp"
+merge ageb.shp "*ageb_*.shp"

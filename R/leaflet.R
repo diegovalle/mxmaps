@@ -146,7 +146,7 @@ mxmunicipio_leaflet <- function(df, pal,
 #' @param lng The longitude of the map center
 #' @param lat The latitude of the map center
 #' @param mapzoom  The zoom level
-#' @param zoom  The municipios to zoom into
+#' @param zoom  The states to zoom into
 #'
 #' @return A leaflet map
 #' @export

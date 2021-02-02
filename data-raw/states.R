@@ -56,6 +56,10 @@ df_mxstate_2020 <- df_mxstate_2020 %>%
                                            "Ciudad de México")) %>%
   mutate(state_abbr_official = str_replace(state_abbr_official,
                                            "DF",
-                                           "CDMX")) %>%
+                                           "CDMX"))
+
+Encoding(df_mxstate_2020$state_name) <- "UTF-8"
+Encoding(df_mxstate_2020$state_name_official) <- "UTF-8"
+Encoding(df_mxstate_2020$state_abbr_official) <- "UTF-8"
 save(df_mxstate_2020, file = "data/df_mxstate_2020.RData",
      compress = "xz", version = 2)

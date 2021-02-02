@@ -51,12 +51,12 @@ str_mxmunicipio <- function(code, municipio_code){
   if(missing(code)) {
     stop("missing state code to convert")
   }
-  df_mxmunicipio <- NULL
-  data(df_mxmunicipio, package="mxmaps", envir=environment())
+  df_mxmunicipio_2020 <- NULL
+  data(df_mxmunicipio_2020, package="mxmaps", envir=environment())
   if(missing(municipio_code)) {
     code <- str_pad(code, 5, "left", pad = "0")
 
-    if(any(!code %in% df_mxmunicipio$region)) {
+    if(any(!code %in% df_mxmunicipio_2020$region)) {
       warning("Invalid codes detected")
     }
     return(code)
@@ -64,7 +64,7 @@ str_mxmunicipio <- function(code, municipio_code){
   code <- str_c(str_pad(code, 2, "left", pad = "0"),
         str_pad(municipio_code, 3, "left", pad = "0"))
 
-  if(any(!code %in% df_mxmunicipio$region)) {
+  if(any(!code %in% df_mxmunicipio_2020$region)) {
     warning("Invalid codes detected")
   }
   return(code)

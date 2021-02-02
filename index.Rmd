@@ -41,28 +41,29 @@ mxmaps depends on the sf package which has other [dependencies](https://github.c
 ```{r head, fig.dim = c(8, 5), dpi = 92}
 library("mxmaps")
 
-df_mxstate$value <- df_mxstate$pop
-mxstate_choropleth(df_mxstate,
+df_mxstate_2020$value <- df_mxstate_2020$pop
+mxstate_choropleth(df_mxstate_2020,
                    title = "Total population, by state") 
 ```
 
 What the data looks like:
 
 ```{r}
-knitr::kable(head(df_mxstate[,c("region", "value")]))
+knitr::kable(head(df_mxstate_2020[,c("region", "value")]))
 ```
 
 ##Basic Usage
 
-The two basic functions of the package are ```mxstate_choropleth``` and ```mxmunicipio_choropleth```. The data.frame that you provide to the plotting functions must have one column named ```region``` with the INEGI codes of the states or municipios and one column named ```value``` with the values to plot. You can specify a title with the ```title``` parameter and the number of buckets with the ```num_color``` parameter. If you want a continuous scale you can set the ```num_colors``` parameter equal to 1.
+The two basic functions of the package are ```mxstate_choropleth``` and ```mxmunicipio_choropleth```. The data.frame that you provide to the plotting functions must have one column named ```region``` with the INEGI codes of the states or municipios and another one named ```value``` with the values to plot. You can specify a title with the ```title``` parameter and the number of buckets for the color scale with the ```num_color``` parameter. If you need a continuous scale you can set the ```num_colors``` parameter equal to 1.
 
 ```{r}
 library("mxmaps")
 
-df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop * 100
-mxstate_choropleth(df_mxstate, 
+df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
+  df_mxstate_2020$pop * 100
+mxstate_choropleth(df_mxstate_2020, 
                    num_colors = 1,
-                   title = "Percentage of the population that self-identifies\nas indigenous",
+                   title = "Percentage of the population that speaks\nan indigenous language",
                    legend = "%")
 ```
 
@@ -72,10 +73,11 @@ You can also plot Mexican municipios (similar to counties) with a continuous col
 
 ```{r}
 data("df_mxmunicipio")
-df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop * 100
-mxmunicipio_choropleth(df_mxmunicipio, 
+df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / 
+  df_mxmunicipio_2020$pop * 100
+mxmunicipio_choropleth(df_mxmunicipio_2020, 
                        num_colors = 1,
-                       title = "Percentage of the population that self-identifies\nas indigenous",
+                       title = "Percentage of the population that speaks\nan indigenous language",
                        legend = "%")
 
 ```
@@ -84,21 +86,23 @@ You can also subset the area to show in the choropleth by using the zoom paramet
 
 ```{r}
 
-mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
-                       zoom = subset(df_mxmunicipio, metro_area %in% c("Valle de México",
-                                                                       "Puebla-Tlaxcala",
-                                                                       "Cuernavaca",
-                                                                       "Toluca"))$region,
-                       title = "Percentage of the population that self-identifies\nas indigenous",
+mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
+                       zoom = subset(df_mxmunicipio_2020, metro_area %in% 
+                                       c("Valle de México",
+                                         "Puebla-Tlaxcala",
+                                         "Cuernavaca",
+                                         "Toluca"))$region,
+                       title = "Percentage of the population that speaks\nan indigenous language",
                        legend = "%") 
 ```
 
 You can use the ```show_states``` parameter to hide or show the state borders when making municipio choropleths.
 
 ```{r}
-mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
-                       zoom = subset(df_mxmunicipio, state_name %in% c("Yucatán", "Veracruz"))$region,
-                       title = "Percentage of the population that self-identifies\nas indigenous in Yucatán and Veracruz",
+mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
+                       zoom = subset(df_mxmunicipio_2020, state_name %in% 
+                                       c("Yucatán", "Veracruz"))$region,
+                       title = "Percentage of the population that speaks\nan indigenous language in Yucatán and Veracruz",
                        show_states = FALSE,
                        legend = "%")
 ```

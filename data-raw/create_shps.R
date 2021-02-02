@@ -40,3 +40,17 @@ mxmunicipio.map$region <- mxmunicipio.map$id
 save(mxmunicipio.map, file = "data/mxmunicipio.map.RData",
      compress = "xz", version = 2)
 
+
+mxstate.topoJSON <- readLines("data-raw/simpl/entidades.topojson") %>%
+  paste(collapse = "\n") %>%
+  fromJSON(simplifyVector = FALSE)
+stopifnot(length(mxstate.topoJSON$objects$state) > 1)
+save(mxstate.topoJSON, file = "data/mxstate.topoJSON.RData",
+     compress = "xz", version = 2)
+
+mxmunicipio.topoJSON <- readLines("data-raw/simpl/municipios.topojson") %>%
+  paste(collapse = "\n") %>%
+  fromJSON(simplifyVector = FALSE)
+stopifnot(length(mxmunicipio.topoJSON$objects$municipios) > 1)
+save(mxmunicipio.topoJSON, file = "data/mxmunicipio.topoJSON.RData",
+     compress = "xz", version = 2)

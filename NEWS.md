@@ -1,3 +1,18 @@
+# mxmaps 2020.0.0
+
+## New features
+
+* Maps are now based on those of the 2020 Mexican Census
+* New data frames `df_mxmunicipio_2020` and `df_mxstate_2020` with population
+  data from the 2020 Census
+* New data.frames `df_mxmunicipio_1990_2010` and `df_mxstate_1990_2010` with
+  population data from the 1990-2010 censuses and conteos
+* Alias the `df_mxmunicipio` and `df_mxstate` data.frames to 
+ `df_mxmunicipio_2015` and `df_mxstate_2015` to indicate the year their data is 
+  from
+* Changed the versioning scheme to include the year the shapefiles the maps are
+  based on were published
+
 # mxmaps 0.6.1
 
 ## New features

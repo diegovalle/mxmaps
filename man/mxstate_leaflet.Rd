@@ -45,7 +45,7 @@ the "region" column must exactly match how regions are named in the "region" col
 
 \item{mapzoom}{The zoom level}
 
-\item{zoom}{The municipios to zoom into}
+\item{zoom}{The states to zoom into}
 }
 \value{
 A leaflet map
