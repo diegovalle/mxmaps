@@ -18,7 +18,8 @@ df_mxmunicipio_1990_2010 <- df_mxmunicipio_1990_2010 %>%
 
 
 Encoding(df_mxmunicipio_1990_2010$municipio_name) <- "UTF-8"
-save(df_mxmunicipio_1990_2010, file = "data/df_mxmunicipio_1990_2010.RData",
+save(as.data.frame(df_mxmunicipio_1990_2010),
+     file = "data/df_mxmunicipio_1990_2010.RData",
      compress = "xz", version = 2)
 
 
@@ -43,7 +44,8 @@ df_mxstate_1990_2010 <- df_mxstate_1990_2010 %>%
 
 
 Encoding(df_mxstate_1990_2010$state_name_official) <- "UTF-8"
-save(df_mxstate_1990_2010, file = "data/df_mxstate_1990_2010.RData",
+save(as.data.frame(df_mxstate_1990_2010),
+     file = "data/df_mxstate_1990_2010.RData",
      compress = "xz", version = 2)
 
 

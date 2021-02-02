@@ -63,8 +63,14 @@ reference:
   - title: Datasets
     desc: Official datasets from the INEGI and CONAPO
     contents:
-      - '`df_mxmunicipio`'
+      - '`df_mxstate_2020`'
+      - '`df_mxmunicipio_2020`'
       - '`df_mxstate`'
+      - '`df_mxmunicipio`'
+      - '`df_mxstate_2015`'
+      - '`df_mxmunicipio_2015`'
+      - '`df_mxstate_1990_2010`'
+      - '`df_mxmunicipio_1990_2010`'
       - '`mxhexbin.map`'
       - '`mxstate.map`'
       - '`mxmunicipio.map`'
