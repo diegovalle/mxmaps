@@ -16,6 +16,7 @@ library(jsonlite)
 library(readr)
 library(tidyr)
 library(mxmaps)
+library(sf)
 
 mxstate.map.spdf <- readOGR("data-raw/simpl/entidades.shp", "entidades")
 head(mxstate.map.spdf@data)
