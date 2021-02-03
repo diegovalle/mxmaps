@@ -1,7 +1,7 @@
 Mexico Choropleths
 ================
 Diego Valle-Jones
-November 05, 2020
+February 03, 2021
 
   - [What does it do?](#what-does-it-do)
   - [Installation](#installation)
@@ -48,9 +48,9 @@ devtools::install_github('diegovalle/mxmaps')
 ``` r
 library(mxmaps)
 
-data("df_mxstate")
-df_mxstate$value <- df_mxstate$pop
-mxstate_choropleth(df_mxstate,
+data("df_mxstate_2020")
+df_mxstate_2020$value <- df_mxstate_2020$pop
+mxstate_choropleth(df_mxstate_2020,
                     title = "Total population, by state") 
 ```
 
@@ -69,42 +69,42 @@ specification. Also, two example data.frames, `df_mxstate` and
 Encuesta Intercensal 2015.
 
 ``` r
-data("df_mxstate")
-knitr::kable(head(df_mxstate))
+data("df_mxstate_2020")
+knitr::kable(head(df_mxstate_2020))
 ```
 
-| region | state\_name         | state\_name\_official | state\_abbr | state\_abbr\_official |     pop | pop\_male | pop\_female | afromexican | part\_afromexican | indigenous | part\_indigenous |
-| :----- | :------------------ | :-------------------- | :---------- | :-------------------- | ------: | --------: | ----------: | ----------: | ----------------: | ---------: | ---------------: |
-| 01     | Aguascalientes      | Aguascalientes        | AGS         | Ags.                  | 1312544 |    640091 |      672453 |         653 |              4559 |     153395 |            18716 |
-| 02     | Baja California     | Baja California       | BC          | BC                    | 3315766 |   1650341 |     1665425 |        7445 |             10432 |     283055 |            38391 |
-| 03     | Baja California Sur | Baja California Sur   | BCS         | BCS                   |  712029 |    359137 |      352892 |       11032 |              5132 |     103034 |            11728 |
-| 04     | Campeche            | Campeche              | CAMP        | Camp.                 |  899931 |    441276 |      458655 |        3554 |              6833 |     400811 |            13140 |
-| 05     | Coahuila            | Coahuila de Zaragoza  | COAH        | Coah.                 | 2954915 |   1462612 |     1492303 |        2761 |              8137 |     204890 |            28588 |
-| 06     | Colima              | Colima                | COL         | Col.                  |  711235 |    350791 |      360444 |         762 |              3314 |     145297 |            12373 |
+| region | state\_name         | state\_name\_official | state\_abbr | state\_abbr\_official | year |     pop | pop\_male | pop\_female | afromexican | indigenous\_language |
+| :----- | :------------------ | :-------------------- | :---------- | :-------------------- | ---: | ------: | --------: | ----------: | ----------: | -------------------: |
+| 01     | Aguascalientes      | Aguascalientes        | AGS         | Ags.                  | 2020 | 1425607 |    696683 |      728924 |       22425 |                 2539 |
+| 02     | Baja California     | Baja California       | BC          | BC                    | 2020 | 3769020 |   1900589 |     1868431 |       64362 |                49130 |
+| 03     | Baja California Sur | Baja California Sur   | BCS         | BCS                   | 2020 |  798447 |    405879 |      392568 |       26330 |                13581 |
+| 04     | Campeche            | Campeche              | CAMP        | Camp.                 | 2020 |  928363 |    456939 |      471424 |       19319 |                91801 |
+| 05     | Coahuila            | Coahuila de Zaragoza  | COAH        | Coah.                 | 2020 | 3146771 |   1563669 |     1583102 |       45976 |                 5527 |
+| 06     | Colima              | Colima                | COL         | Col.                  | 2020 |  731391 |    360622 |      370769 |       13574 |                 5210 |
 
 ``` r
-data("df_mxmunicipio")
-knitr::kable(head(df_mxmunicipio))
+data("df_mxmunicipio_2020")
+knitr::kable(head(df_mxmunicipio_2020))
 ```
 
-| state\_code | municipio\_code | region | state\_name    | state\_name\_official | state\_abbr | state\_abbr\_official | municipio\_name     |    pop | pop\_male | pop\_female | afromexican | part\_afromexican | indigenous | part\_indigenous | metro\_area    |       long |      lat |
-| :---------- | :-------------- | :----- | :------------- | :-------------------- | :---------- | :-------------------- | :------------------ | -----: | --------: | ----------: | ----------: | ----------------: | ---------: | ---------------: | :------------- | ---------: | -------: |
-| 01          | 001             | 01001  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Aguascalientes      | 877190 |    425731 |      451459 |         532 |              2791 |     104125 |            14209 | Aguascalientes | \-102.2960 | 21.87982 |
-| 01          | 002             | 01002  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Asientos            |  46464 |     22745 |       23719 |           3 |               130 |       1691 |               92 | NA             | \-102.0893 | 22.23832 |
-| 01          | 003             | 01003  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Calvillo            |  56048 |     27298 |       28750 |          10 |               167 |       7358 |             2223 | NA             | \-102.7188 | 21.84691 |
-| 01          | 004             | 01004  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Cosío               |  15577 |      7552 |        8025 |           0 |                67 |       2213 |              191 | NA             | \-102.3000 | 22.36641 |
-| 01          | 005             | 01005  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Jesús María         | 120405 |     60135 |       60270 |          32 |               219 |       8679 |              649 | Aguascalientes | \-102.3434 | 21.96127 |
-| 01          | 006             | 01006  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Pabellón de Arteaga |  46473 |     22490 |       23983 |           3 |                74 |       6232 |              251 | NA             | \-102.2765 | 22.14920 |
+| state\_code | municipio\_code | region | state\_name    | state\_name\_official | state\_abbr | state\_abbr\_official | municipio\_name     | year |    pop | pop\_male | pop\_female | afromexican | indigenous\_language | metro\_area    |       long |      lat |
+| :---------- | :-------------- | :----- | :------------- | :-------------------- | :---------- | :-------------------- | :------------------ | ---: | -----: | --------: | ----------: | ----------: | -------------------: | :------------- | ---------: | -------: |
+| 01          | 001             | 01001  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Aguascalientes      | 2020 | 948990 |    462073 |      486917 |       15170 |                 1839 | Aguascalientes | \-102.2960 | 21.87982 |
+| 01          | 002             | 01002  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Asientos            | 2020 |  51536 |     25261 |       26275 |         225 |                   22 | NA             | \-102.0893 | 22.23832 |
+| 01          | 003             | 01003  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Calvillo            | 2020 |  58250 |     28563 |       29687 |         266 |                   76 | NA             | \-102.7188 | 21.84691 |
+| 01          | 004             | 01004  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Cosío               | 2020 |  17000 |      8292 |        8708 |        2155 |                    7 | NA             | \-102.3000 | 22.36641 |
+| 01          | 005             | 01005  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Jesús María         | 2020 | 129929 |     64219 |       65710 |        2543 |                  158 | Aguascalientes | \-102.3434 | 21.96127 |
+| 01          | 006             | 01006  | Aguascalientes | Aguascalientes        | AGS         | Ags.                  | Pabellón de Arteaga | 2020 |  47646 |     23377 |       24269 |         482 |                   52 | NA             | \-102.2765 | 22.14920 |
 
 ## Municipios
 
 Here’s another example showing Mexican municipios (similar to counties):
 
 ``` r
-data("df_mxmunicipio")
-df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop 
-mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
-                       title = "Percentage of the population that self-identifies as indigenous")
+data("df_mxmunicipio_2020")
+df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / df_mxmunicipio_2020$pop 
+mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
+                       title = "Percentage of the population that identifies as indigenous")
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->

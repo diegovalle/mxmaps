@@ -44,9 +44,9 @@ devtools::install_github('diegovalle/mxmaps')
 ```{r}
 library(mxmaps)
 
-data("df_mxstate")
-df_mxstate$value <- df_mxstate$pop
-mxstate_choropleth(df_mxstate,
+data("df_mxstate_2020")
+df_mxstate_2020$value <- df_mxstate_2020$pop
+mxstate_choropleth(df_mxstate_2020,
                     title = "Total population, by state") 
 ```
 
@@ -55,10 +55,10 @@ mxstate_choropleth(df_mxstate,
 The data.frame that you provide to the plotting functions must have one column named "region" and one column named "value". The entries for "region" must match the INEGI codes for states ("01", "02", etc) and municipios ("01001", "01002", etc) either as a string with or without a leading "0" or as numerics. The functions `str_mxstate` and `str_mxmunicipio` are provided to easily format codes to the INEGI specification. Also, two example data.frames, `df_mxstate` and `df_mxmunicipio`, are provided with demographic variables from the Encuesta Intercensal 2015.
 
 ```{r}
-data("df_mxstate")
-knitr::kable(head(df_mxstate))
-data("df_mxmunicipio")
-knitr::kable(head(df_mxmunicipio))
+data("df_mxstate_2020")
+knitr::kable(head(df_mxstate_2020))
+data("df_mxmunicipio_2020")
+knitr::kable(head(df_mxmunicipio_2020))
 ```
 
 ## Municipios
@@ -66,9 +66,9 @@ knitr::kable(head(df_mxmunicipio))
 Here's another example showing Mexican municipios (similar to counties):
 
 ```{r}
-data("df_mxmunicipio")
-df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop 
-mxmunicipio_choropleth(df_mxmunicipio, num_colors = 1,
-                       title = "Percentage of the population that self-identifies as indigenous")
+data("df_mxmunicipio_2020")
+df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / df_mxmunicipio_2020$pop 
+mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
+                       title = "Percentage of the population that identifies as indigenous")
 
 ```
