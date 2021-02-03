@@ -15,17 +15,14 @@ library(mxmaps)
 library(viridis)
 library(scales)
 
-df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$afromexican / 
+df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / 
   df_mxmunicipio_2020$pop 
 gg = MXMunicipioChoropleth$new(df_mxmunicipio_2020)
-gg$title <- "Percentage of the population that identifies as Afromexican"
+gg$title <- "Percentage of the population that speaks\nan indigenous language"
 gg$set_num_colors(1)
-gg$ggplot_scale <- scale_fill_viridis("percent\n(log scale)", 
+gg$ggplot_scale <- scale_fill_viridis("percent", 
                                       labels = percent)
-p <- gg$render()
-# Remove borders to make the map prettier
-p[["layers"]][[1]][["aes_params"]][["colour"]] <- "transparent"
-p
+gg$render()
 ```
 
 Another example with categorical data
@@ -47,14 +44,15 @@ p + theme_void()
 ```
 You can also edit the ggplot object directly, for example, if you wanted to remove the municipio borders.
 
-```{r}
+```{r message=FALSE,warning=FALSE}
 library("scales")
 
-df_mxmunicipio$value <- df_mxmunicipio$pop
-p <- mxmunicipio_choropleth(df_mxmunicipio,
-                            title = "Total population, by municipio", 
-                            legend = "population",
-                            num_colors = 9)
+df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$afromexican / 
+  df_mxmunicipio_2020$pop 
+p <- mxmunicipio_choropleth(df_mxmunicipio_2020,
+                            title = "Percentage of population that identifies as Afromexican", 
+                            legend = "percent\nAfromexican",
+                            num_colors = 1) 
 p[["layers"]][[1]][["aes_params"]][["colour"]] <- "transparent"
 p
 ```
