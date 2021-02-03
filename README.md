@@ -64,9 +64,9 @@ column named “region” and one column named “value”. The entries for
 municipios (“01001”, “01002”, etc) either as a string with or without a
 leading “0” or as numerics. The functions `str_mxstate` and
 `str_mxmunicipio` are provided to easily format codes to the INEGI
-specification. Also, two example data.frames, `df_mxstate` and
-`df_mxmunicipio`, are provided with demographic variables from the
-Encuesta Intercensal 2015.
+specification. Also, two example data.frames, `df_mxstate_2020` and
+`df_mxmunicipio_2020`, are provided with demographic variables from the
+2020 census.
 
 ``` r
 data("df_mxstate_2020")
@@ -104,7 +104,7 @@ Here’s another example showing Mexican municipios (similar to counties):
 data("df_mxmunicipio_2020")
 df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / df_mxmunicipio_2020$pop 
 mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
-                       title = "Percentage of the population that identifies as indigenous")
+                       title = "Percentage of the population that speaks\nan indigenous language")
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->

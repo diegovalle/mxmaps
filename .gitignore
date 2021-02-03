@@ -9,3 +9,8 @@ docs/*
 /index_files
 data-raw/simpl/
 AGEEML_20211271312276.csv.xz
+/data-raw/*shp
+/data-raw/*dbf
+/data-raw/*prj
+/data-raw/*shx
+data-raw/censo/AGEEML_20211271318711.csv

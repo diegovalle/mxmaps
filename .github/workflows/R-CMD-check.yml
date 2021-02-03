@@ -19,7 +19,7 @@ name: R-CMD-check
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
-    if: "! contains(toJSON(github.event.commits.*.msg), '[skip-ci]')"
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
