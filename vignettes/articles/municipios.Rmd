@@ -23,6 +23,7 @@ gg$set_num_colors(1)
 gg$ggplot_scale <- scale_fill_viridis("percent\n(log scale)", 
                                       labels = percent)
 p <- gg$render()
+# Remove borders to make the map prettier
 p[["layers"]][[1]][["aes_params"]][["colour"]] <- "transparent"
 p
 ```
