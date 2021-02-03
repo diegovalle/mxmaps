@@ -15,12 +15,13 @@ library(mxmaps)
 library(viridis)
 library(scales)
 
-df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / 
+df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$afromexican / 
   df_mxmunicipio_2020$pop 
 gg = MXMunicipioChoropleth$new(df_mxmunicipio_2020)
-gg$title <- "Percentage of the population that speaks\nan indigenous language"
+gg$title <- "Percentage of the population that identifies as Afromexican"
 gg$set_num_colors(1)
-gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
+gg$ggplot_scale <- scale_fill_viridis("percent\n(log scale)", 
+                                      labels = percent)
 gg$render()
 ```
 

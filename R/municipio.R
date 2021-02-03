@@ -32,7 +32,7 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                 self$prepare_map()
 
                                 gg <- ggplot(self$choropleth.df, aes(long, lat, group = group)) +
-                                  geom_polygon(aes(fill = value), color = "dark grey", size = 0.1) +
+                                  geom_polygon(aes(fill = value), color = "dark grey", size = 0.08) +
                                   self$get_scale() +
                                   self$theme_clean() +
                                   ggtitle(self$title)
