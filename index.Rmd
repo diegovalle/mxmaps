@@ -8,7 +8,7 @@ fig_height: 5
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, 
                       fig.dim = c(8, 5), 
-                      dpi = 100, 
+                      dpi = 200, 
                       out.width = '100%')
 ```
 
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE,
 [![R build status](https://github.com/diegovalle/mxmaps/workflows/R-CMD-check/badge.svg)](https://github.com/diegovalle/mxmaps/actions)
 [![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master) [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing) [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/mxmaps)](https://cran.r-project.org/package=mxmaps)
 
-![](header.png)
+<img src="header.png" intrinsicsize="722 x 270" style="width:80%">
 
 This R package can be used to easily create maps of Mexico at both the state and municipio levels. It is based on the [choroplethr](https://cran.r-project.org/web/packages/choroplethr/index.html) package and includes functions to create interactive maps using the leaflet package, map INEGI data using their API with the [inegiR](https://github.com/Eflores89/inegiR) package, and format strings so they match the INEGI state and municipio codes.
 
@@ -38,7 +38,7 @@ mxmaps depends on the sf package which has other [dependencies](https://github.c
 
 ## Quick Example
 
-```{r head, fig.dim = c(8, 5), dpi = 92}
+```{r head, fig.dim = c(8, 5)}
 library("mxmaps")
 
 df_mxstate_2020$value <- df_mxstate_2020$pop

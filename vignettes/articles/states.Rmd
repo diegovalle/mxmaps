@@ -7,8 +7,8 @@ fig_height: 5
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, 
-                      fig.dim = c(6,6), 
-                      dpi = 100, 
+                      fig.dim = c(6,4), 
+                      dpi = 200, 
                       out.width = '100%')
 ```
 
@@ -31,7 +31,7 @@ library(scales)
 df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
   df_mxstate_2020$pop 
 gg = MXStateChoropleth$new(df_mxstate_2020)
-gg$title <- "Percentage of the population that speaks an indigenous language"
+gg$title <- "Percentage of the population that speaks\nan indigenous language"
 gg$set_num_colors(1)
 gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
 gg$render()
@@ -52,7 +52,7 @@ df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language /
   df_mxstate_2020$pop * 100
 p <- mxstate_choropleth(df_mxstate_2020, 
                         num_colors = 1,
-                        title = "Percentage of the population that speaks an indigenous language",
+                        title = "Percentage of the population that speaks\nan indigenous language",
                         legend = "%")
 
 

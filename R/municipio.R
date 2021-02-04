@@ -42,7 +42,7 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                   gg <- gg + geom_polygon(
                                     data = subset(mxstate.map, region %in% state_zoom),
                                     fill = "transparent",
-                                    color = "black",
+                                    color = "#333333",
                                     size = .15)
                                 }
                                 xmin <- min(self$choropleth.df$long)

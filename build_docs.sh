@@ -8,6 +8,7 @@ IFS=$'\n\t'
 
 main() {
 	Rscript -e "rmarkdown::render('index.Rmd')"
+	#Rscript -e "rmarkdown::render('README.Rmd')"
     Rscript -e "pkgdown::clean_site();pkgdown::build_site()"
     cp header.png docs/
     mv index_files/ docs/
