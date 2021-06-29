@@ -86,7 +86,8 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 #' more information.
 #'
 #' @param df A data.frame with a column named "region" and a column named "value".  Elements in
-#' the "region" column must exactly match how regions are named in the "region" column in ?df_mxmunicipio
+#' the "region" column must match the numeric codes in the "region" column of ?df_mxmunicipio
+#' either with a leading zero or without one (e.g. 01001 or 1001 are both fine)
 #' @param title An optional title for the map.
 #' @param legend An optional name for the legend.
 #' @param num_colors The number of colors to use on the map.  A value of 1

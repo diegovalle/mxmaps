@@ -11,7 +11,8 @@ mxhexbin_choropleth(
   num_colors = 7,
   zoom = NULL,
   label_color = "black",
-  label_size = 4.5
+  label_size = 4.5,
+  shadow_color = NULL
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ match the names of countries as they appear in the "region" column of ?country.r
 \item{label_color}{An optional color for the state abbreviation labels}
 
 \item{label_size}{An optional size for the state abbrevition labels}
+
+\item{shadow_color}{An optional shadow color for the state abbreviation labels}
 }
 \description{
 Hexagonal tiles of the states of Mexico

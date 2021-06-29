@@ -27,6 +27,8 @@ gg$render()
 \describe{
 \item{\code{label_color}}{color for the state labels}
 
+\item{\code{shadow_color}}{shadow color for the state labels}
+
 \item{\code{label_size}}{font size for the state labels}
 
 \item{\code{show_labels}}{draw the state labels}
