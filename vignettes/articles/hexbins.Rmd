@@ -16,7 +16,7 @@ library("mxmaps")
 data("df_mxstate")
 df_mxstate$value = df_mxstate$afromexican / df_mxstate$pop * 100
 mxhexbin_choropleth(df_mxstate, num_colors = 1,
-                    title = "Percentage of the population that self-identifies as Afro-Mexican",
+                    title = "Percentage of the population that identifies as Afro-Mexican",
                     legend = "%")
 
 ```
