@@ -16,9 +16,11 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                              public = list(
 
                                #' @field label_color color for the state labels
+                               #' @field shadow_color shadow color for the state labels
                                #' @field label_size font size for the state labels
                                #' @field show_labels draw the state labels
                                label_color = "black",
+                               shadow_color = NULL,
                                label_size = 5,
                                show_labels = TRUE,
 
@@ -81,9 +83,20 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 
                                    df_mxstate_labels = df_mxstate_labels[df_mxstate_labels$id %in% private$zoom, ]
 
-                                   choropleth <-  choropleth + geom_text(data = df_mxstate_labels, aes(long, lat, label = state_abbr, group = NULL),
-                                                                       color = self$label_color,
-                                                                       size = self$label_size)
+                                   if(!is.null(self$shadow_color)) {
+                                   choropleth <-  choropleth +
+                                     shadowtext::geom_shadowtext(data = df_mxstate_labels,
+                                                                 bg.colour= self$shadow_color,
+                                                                 aes(long, lat, label = state_abbr, group = NULL),
+                                                                 color = self$label_color,
+                                                                 size = self$label_size)
+                                   } else {
+                                     choropleth <-  choropleth +
+                                       geom_text(data = df_mxstate_labels,
+                                                 aes(long, lat, label = state_abbr, group = NULL),
+                                                 color = self$label_color,
+                                                 size = self$label_size)
+                                   }
                                  }
 
                                  choropleth
@@ -105,13 +118,15 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 #' match the names of countries as they appear in the "region" column of ?country.regions
 #' @param label_color An optional color for the state abbreviation labels
 #' @param label_size An optional size for the state abbrevition labels
+#' @param shadow_color An optional shadow color for the state abbreviation labels
 #' @examples
 #' data(df_mxstate)
 #' df_mxstate$value <- df_mxstate$pop
 #' mxhexbin_choropleth(df_mxstate, num_colors = 1)
 #' @export
 mxhexbin_choropleth  <-  function(df, title="", legend="", num_colors=7, zoom=NULL,
-                               label_color = "black", label_size = 4.5)
+                               label_color = "black", label_size = 4.5,
+                               shadow_color = NULL)
 {
   if("region" %in% colnames(df)) {
     df$region <- str_mxstate(df$region)
@@ -125,6 +140,7 @@ mxhexbin_choropleth  <-  function(df, title="", legend="", num_colors=7, zoom=NU
   c$set_num_colors(num_colors)
   c$set_zoom(zoom)
   c$label_color <-  label_color
+  c$shadow_color <- shadow_color
   c$label_size <-  label_size
   c$render()
 }

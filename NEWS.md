@@ -1,3 +1,10 @@
+# mxmaps 2020.1.0
+
+## New feature
+
+* New argument to `mxhexbin_choropleth` called shadow_color to add a 
+  background shadow to the state abbreviation labels
+
 # mxmaps 2020.0.0
 
 ## New features

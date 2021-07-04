@@ -15,7 +15,8 @@ mxmunicipio_choropleth(
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
-the "region" column must exactly match how regions are named in the "region" column in ?df_mxmunicipio}
+the "region" column must match the numeric codes in the "region" column of ?df_mxmunicipio
+either with a leading zero or without one (e.g. 01001 or 1001 are both fine)}
 
 \item{title}{An optional title for the map.}
 
