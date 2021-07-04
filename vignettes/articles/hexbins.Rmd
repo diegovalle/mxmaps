@@ -21,8 +21,9 @@ mxhexbin_choropleth(df_mxstate, num_colors = 1,
 
 ```
 
-You can use ```label_color``` if you want the state abbreviations in a different color than the default black, and you can add ```shadow_color``` of you want to add a
-shadow to the state abbreviation fonts.
+## Text Shadow
+
+You can use ```label_color``` if you want the state abbreviations in a different color than the default black, and you can also add a ```shadow_color``` if you want to the state abbreviation labels to have a shadow to better distinguish them from the background colors.
 
 ```{r message=FALSE,warning=FALSE}
 library("viridis")

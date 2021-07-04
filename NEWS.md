@@ -2,7 +2,7 @@
 
 ## New feature
 
-* Add an argument to `mxhexbin_choropleth` called shadow_color to add a 
+* New argument to `mxhexbin_choropleth` called shadow_color to add a 
   background shadow to the state abbreviation labels
 
 
