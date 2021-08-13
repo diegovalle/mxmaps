@@ -36,6 +36,7 @@ jobs:
       INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
       COVERALLS_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
