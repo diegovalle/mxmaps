@@ -18,7 +18,7 @@ Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=mas
 | **Author:**  | Diego Valle-Jones                                                  |
 | **License:** | [BSD\_3](https://opensource.org/licenses/BSD-3-Clause)             |
 | **Website:** | <https://www.diegovalle.net/mxmaps/>                               |
-| **Forum:**   | [https://groups.google.com/forum/\#\!forum/mxmaps](Google%20Group) |
+| **Forum:**   | [Google%20Group](https://groups.google.com/forum/\#\!forum/mxmaps) |
 
 ## What does it do?
 
