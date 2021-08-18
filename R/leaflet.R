@@ -201,7 +201,8 @@ mxstate_leaflet <- function(df, pal,
   df$apopups <- resolveFormula(popup, df)
   df$acolors <- resolveFormula(fillColor, df)
   mxstate.topoJSON$objects$state$geometries <-
-    setGeometry(mxstate.topoJSON$objects$state$geometries, df, zoom)
+    setGeometry(mxstate.topoJSON$objects$state$geometries, df, zoom,
+                fillOpacity = fillOpacity)
 
   draw_mxleaflet(mxstate.topoJSON, lat, lng, mapzoom)
 }
