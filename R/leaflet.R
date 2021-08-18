@@ -3,9 +3,10 @@
 setStyle <- function(topoJSON, weight, color, opacity, fillOpacity){
  topoJSON$style = list(
     weight = .2,
-    color = "#555555",
-    opacity = .8,
-    fillOpacity = 0.8
+    color = "transparent",
+    opacity = opacity,
+    fillOpacity = fillOpacity,
+    fillColor = "transparent"
   )
  topoJSON
 }
@@ -26,24 +27,28 @@ doResolveFormula.data.frame = function(data, f) {
   eval(f[[2]], data, environment(f))
 }
 
-setGeometry <- function(topoJSON.geometries, df, zoom) {
+setGeometry <- function(topoJSON.geometries, df, zoom, fillOpacity) {
   # Add a properties$style list and popupto each feature
   lapply(topoJSON.geometries, function(feat) {
-      idx <- which(df$region == feat$properties$id)
-      if(!is.null(zoom)) {
-        if(!feat$properties$id %in% zoom) {
-          feat$properties$style <- list(
-            fillColor = "transparent"
-          )
-          return(feat)
-        }
+    idx <- which(df$region == feat$properties$id)
+    if(!is.null(zoom)) {
+      if(!feat$properties$id %in% zoom) {
+        feat$properties$style <- list(
+          fillColor = "red",
+          fillOpacity = 0,
+          color = "transparent"
+        )
+        return(feat)
       }
-      feat$properties$style <- list(
-        fillColor = df$acolors[idx]
-      )
-      feat$properties$popup <- df$apopups[idx]
-      return(feat)
     }
+    feat$properties$style <- list(
+      fillColor = df$acolors[idx],
+      fillOpacity = fillOpacity,
+      color = "#555555"
+    )
+    feat$properties$popup <- df$apopups[idx]
+    return(feat)
+  }
   )
 }
 
@@ -100,8 +105,10 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
 #' }
 mxmunicipio_leaflet <- function(df, pal,
                                 fillColor, popup = "",
-                                weight = .2, color = "#555555", opacity = 1, fillOpacity = .8,
-                                lng = -102, lat = 23.8, mapzoom = 5, zoom = NULL) {
+                                weight = .2, color = "#555555", opacity = 0.8,
+                                fillOpacity = .8,
+                                lng = -102, lat = 23.8, mapzoom = 5,
+                                zoom = NULL) {
   #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
   #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
   #}
@@ -123,7 +130,8 @@ mxmunicipio_leaflet <- function(df, pal,
   df$apopups <- resolveFormula(popup, df)
   df$acolors <- resolveFormula(fillColor, df)
   mxmunicipio.topoJSON$objects$municipio$geometries <-
-    setGeometry(mxmunicipio.topoJSON$objects$municipio$geometries, df, zoom)
+    setGeometry(mxmunicipio.topoJSON$objects$municipio$geometries, df, zoom,
+                fillOpacity = fillOpacity)
 
   draw_mxleaflet(mxmunicipio.topoJSON, lat, lng, mapzoom)
 }
@@ -178,7 +186,8 @@ mxstate_leaflet <- function(df, pal,
   #}
 
   data(mxstate.topoJSON, package="mxmaps", envir=environment())
-  mxstate.topoJSON <- setStyle(mxstate.topoJSON, weight, color, opacity , fillOpacity)
+  mxstate.topoJSON <- setStyle(mxstate.topoJSON, weight, color, opacity,
+                               fillOpacity)
   if (missing(df)){
     stop("missing data.frame")
   }

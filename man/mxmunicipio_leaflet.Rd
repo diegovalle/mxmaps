@@ -11,7 +11,7 @@ mxmunicipio_leaflet(
   popup = "",
   weight = 0.2,
   color = "#555555",
-  opacity = 1,
+  opacity = 0.8,
   fillOpacity = 0.8,
   lng = -102,
   lat = 23.8,
