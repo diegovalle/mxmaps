@@ -17,7 +17,7 @@ Master: [![R build status](https://github.com/diegovalle/mxmaps/workflows/R-CMD-
 | __Author:__  | Diego Valle-Jones                                                        |
 | __License:__ | [BSD_3](https://opensource.org/licenses/BSD-3-Clause)                    |
 | __Website:__ | [https://www.diegovalle.net/mxmaps/](https://www.diegovalle.net/mxmaps/) |
-| __Forum:__   | [https://groups.google.com/forum/#!forum/mxmaps](Google Group)           |
+| __Forum:__   | [Google Group](https://groups.google.com/forum/#!forum/mxmaps)           |
 
 ## What does it do?
 
