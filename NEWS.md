@@ -2,8 +2,8 @@
 
 ## Bug fixes and improvements
 
-* Fixes the zoom parameter of `mxmunicipio_leaflet` and `mxstate_leaflet`
-  so that municipios/states that aren zoomed to are not shown on the map
+* Fixes the zoom argument of `mxmunicipio_leaflet` and `mxstate_leaflet`
+  so that municipios/states that aren't zoomed to are not shown on the map
 
 # mxmaps 2020.1.0
 

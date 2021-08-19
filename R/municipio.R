@@ -19,65 +19,65 @@
 #' gg$render()
 
 MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
-                            inherit = choroplethr:::Choropleth,
-                            public = list(
-                              #' @field show_states boolean, draw state borders
-                              show_states = TRUE,
-                              #' @description
-                              #' Render the map of Mexico
-                              #' @param user.df df
-                              #' @return A new ggplot2 object with a map of Mexico.
-                              render = function()
-                              {
-                                self$prepare_map()
+                                inherit = choroplethr:::Choropleth,
+                                public = list(
+                                  #' @field show_states boolean, draw state borders
+                                  show_states = TRUE,
+                                  #' @description
+                                  #' Render the map of Mexico
+                                  #' @param user.df df
+                                  #' @return A new ggplot2 object with a map of Mexico.
+                                  render = function()
+                                  {
+                                    self$prepare_map()
 
-                                gg <- ggplot(self$choropleth.df, aes(long, lat, group = group)) +
-                                  geom_polygon(aes(fill = value), color = "dark grey", size = 0.08) +
-                                  self$get_scale() +
-                                  self$theme_clean() +
-                                  ggtitle(self$title)
-                                state_zoom <- unique(str_sub(private$zoom, start = 1, end = 2))
-                                if(self$show_states) {
-                                  data(mxstate.map, package="mxmaps", envir=environment())
-                                  gg <- gg + geom_polygon(
-                                    data = subset(mxstate.map, region %in% state_zoom),
-                                    fill = "transparent",
-                                    color = "#333333",
-                                    size = .15)
-                                }
-                                xmin <- min(self$choropleth.df$long)
-                                xmax <- max(self$choropleth.df$long)
-                                ymin <- min(self$choropleth.df$lat)
-                                ymax <- max(self$choropleth.df$lat)
-                                xpad <- (xmax - xmin) * .05
-                                ypad <- (ymax - ymin) * .05
-                                return(gg + coord_map(xlim = c(xmin - xpad,
-                                                               xmax + xpad),
-                                                      ylim = c(ymin - ypad,
-                                                               ymax + ypad)
-                                                      )
-                                       )
-                              },
+                                    gg <- ggplot(self$choropleth.df, aes(long, lat, group = group)) +
+                                      geom_polygon(aes(fill = value), color = "dark grey", size = 0.08) +
+                                      self$get_scale() +
+                                      self$theme_clean() +
+                                      ggtitle(self$title)
+                                    state_zoom <- unique(str_sub(private$zoom, start = 1, end = 2))
+                                    if(self$show_states) {
+                                      data(mxstate.map, package="mxmaps", envir=environment())
+                                      gg <- gg + geom_polygon(
+                                        data = subset(mxstate.map, region %in% state_zoom),
+                                        fill = "transparent",
+                                        color = "#333333",
+                                        size = .15)
+                                    }
+                                    xmin <- min(self$choropleth.df$long)
+                                    xmax <- max(self$choropleth.df$long)
+                                    ymin <- min(self$choropleth.df$lat)
+                                    ymax <- max(self$choropleth.df$lat)
+                                    xpad <- (xmax - xmin) * .05
+                                    ypad <- (ymax - ymin) * .05
+                                    return(gg + coord_map(xlim = c(xmin - xpad,
+                                                                   xmax + xpad),
+                                                          ylim = c(ymin - ypad,
+                                                                   ymax + ypad)
+                                    )
+                                    )
+                                  },
 
-                              #' @description
-                              #' Initialize the map of Mexico
-                              #' @param user.df df
-                              #' @return A new `MXMunicipioChoropleth` object.
-                              initialize = function(user.df)
-                              {
-                                #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
-                                #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
-                                #}
+                                  #' @description
+                                  #' Initialize the map of Mexico
+                                  #' @param user.df df
+                                  #' @return A new `MXMunicipioChoropleth` object.
+                                  initialize = function(user.df)
+                                  {
+                                    #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
+                                    #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
+                                    #}
 
-                                data(mxmunicipio.map, package="mxmaps", envir=environment())
-                                super$initialize(mxmunicipio.map, user.df)
+                                    data(mxmunicipio.map, package="mxmaps", envir=environment())
+                                    super$initialize(mxmunicipio.map, user.df)
 
-                                if (private$has_invalid_regions)
-                                {
-                                  warning("Please see df_mxmunicipio for a list of mappable regions")
-                                }
-                              }
-                            )
+                                    if (private$has_invalid_regions)
+                                    {
+                                      warning("Please see df_mxmunicipio for a list of mappable regions")
+                                    }
+                                  }
+                                )
 )
 
 #' Create a municipio-level choropleth
@@ -102,7 +102,7 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 
 #' @export
 mxmunicipio_choropleth  <-  function(df, title="", legend="", num_colors=7, zoom=NULL,
-                                  show_states = TRUE)
+                                     show_states = TRUE)
 {
   if("region" %in% colnames(df)) {
     df$region <- str_mxmunicipio(df$region)
