@@ -72,7 +72,7 @@ mxstate_choropleth(df_mxstate_2020,
 You can also plot Mexican municipios (similar to counties) with a continuous color scale set with num_colors = 1
 
 ```{r}
-data("df_mxmunicipio")
+data("df_mxmunicipio_2020")
 df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / 
   df_mxmunicipio_2020$pop * 100
 mxmunicipio_choropleth(df_mxmunicipio_2020, 
