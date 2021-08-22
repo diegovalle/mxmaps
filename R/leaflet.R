@@ -133,7 +133,10 @@ mxmunicipio_leaflet <- function(df, pal,
     setGeometry(mxmunicipio.topoJSON$objects$municipio$geometries, df, zoom,
                 fillOpacity = fillOpacity)
   if(!is.null(zoom)) {
+    zoom <- str_mxmunicipio(zoom)
     df_zoom <- dplyr::filter(df, region %in% zoom)
+    if (nrow(df_zoom) == 0)
+      stop("No valid municipios in zoom data")
     draw_mxleaflet(mxmunicipio.topoJSON, lat, lng, mapzoom) %>%
       fitBounds(min(df_zoom$long) - .5,
                 max(df_zoom$lat) + .5,
@@ -293,12 +296,15 @@ mxstate_leaflet <- function(df, pal,
     setGeometry(mxstate.topoJSON$objects$state$geometries, df, zoom,
                 fillOpacity = fillOpacity)
   if(!is.null(zoom)) {
+    zoom <- str_mxstate(zoom)
     states_bbox <- dplyr::filter(states_bbox, region %in% zoom)
+    if (nrow(states_bbox) == 0)
+      stop("No valid municipios in zoom data")
     draw_mxleaflet(mxstate.topoJSON, lat, lng, mapzoom) %>%
-      fitBounds(min(states_bbox$lng1) - .1,
-                max(states_bbox$lat1) + .1,
-                max(states_bbox$lng2) - .1,
-                min(states_bbox$lat2) - .1)
+      fitBounds(min(states_bbox$lng1) ,
+                max(states_bbox$lat1) ,
+                max(states_bbox$lng2) ,
+                min(states_bbox$lat2) )
   } else {
     draw_mxleaflet(mxstate.topoJSON, lat, lng, mapzoom)
   }

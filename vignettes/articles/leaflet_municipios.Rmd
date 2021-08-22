@@ -38,12 +38,42 @@ mxmunicipio_leaflet(df_mxmunicipio_2020,
 
 You can also subset the data to only show certain municipios
 
-
 ```{r message=FALSE,warning=FALSE}
 library("dplyr")
 library("geojsonio")
 library("jsonlite")
 library("sf")
+library("RColorBrewer")
+library("leaflet")
+
+df <- df_mxmunicipio_2020 %>%
+  as.data.frame() %>%
+  filter(metro_area %in% c("Valle de México", "Toluca", "Puebla-Tlaxcala"))
+
+df$value <- df$indigenous /df$pop
+
+Reds <- c("white",brewer.pal(6, "Reds"))
+pal <- colorNumeric(Reds, domain = df$value)
+mxmunicipio_leaflet(df,
+                    pal,
+                    ~ pal(value),
+                    opacity = 0.8,
+                    fillOpacity = 0.8,
+                    zoom = df$region,
+                    popup = sprintf("State: %s<br/>Municipio : %s<br/>Value: %s%%",
+                                    df$state_name,
+                                    df$municipio_name,
+                                    round(df$value * 100, 1))) %>%
+  addLegend(position = "bottomright", pal = pal,
+            values = df$value) %>%
+  addProviderTiles("CartoDB.Positron") 
+```
+
+
+or you can subset the topoJSON directly
+
+```{r message=FALSE,warning=FALSE}
+
 
 # Convert the topoJSON to spatial object
 tmpdir <- tempdir()
