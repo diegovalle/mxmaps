@@ -52,7 +52,7 @@ df <- df_mxmunicipio_2020 %>%
 
 df$value <- df$indigenous /df$pop
 
-Reds <- c("white",brewer.pal(6, "Reds"))
+Reds <- c("white", brewer.pal(4, "RdYlBu"))
 pal <- colorNumeric(Reds, domain = df$value)
 mxmunicipio_leaflet(df,
                     pal,
