@@ -25,7 +25,8 @@ Imports:
     viridis,
     progress,
     mapproj,
-    shadowtext
+    shadowtext,
+    rlang
 Suggests:
     testthat,
     knitr,

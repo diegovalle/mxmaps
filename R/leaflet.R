@@ -82,8 +82,10 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
 #'
 #' @return A leaflet map
 #' @export
-#' @importFrom leaflet colorNumeric
+#' @importFrom leaflet colorNumeric fitBounds
 #' @importFrom  utils data
+#' @importFrom dplyr %>%
+#' @importFrom rlang .data
 #'
 #' @examples
 #' \dontrun{
@@ -134,11 +136,11 @@ mxmunicipio_leaflet <- function(df, pal,
                 fillOpacity = fillOpacity)
   if(!is.null(zoom)) {
     zoom <- str_mxmunicipio(zoom)
-    df_zoom <- dplyr::filter(df, region %in% zoom)
+    df_zoom <- dplyr::filter(df, .data$region %in% zoom)
     if (nrow(df_zoom) == 0)
       stop("No valid municipios in zoom data")
     draw_mxleaflet(mxmunicipio.topoJSON, lat, lng, mapzoom) %>%
-      fitBounds(min(df_zoom$long) - .5,
+      leaflet::fitBounds(min(df_zoom$long) - .5,
                 max(df_zoom$lat) + .5,
                 max(df_zoom$long) - .5,
                 min(df_zoom$lat) - .5)
@@ -170,8 +172,10 @@ mxmunicipio_leaflet <- function(df, pal,
 #'
 #' @return A leaflet map
 #' @export
-#' @importFrom leaflet colorNumeric
+#' @importFrom leaflet colorNumeric fitBounds
 #' @importFrom  utils data
+#' @importFrom dplyr %>%
+#' @importFrom rlang .data
 #'
 #' @examples
 #' \dontrun{
@@ -297,11 +301,11 @@ mxstate_leaflet <- function(df, pal,
                 fillOpacity = fillOpacity)
   if(!is.null(zoom)) {
     zoom <- str_mxstate(zoom)
-    states_bbox <- dplyr::filter(states_bbox, region %in% zoom)
+    states_bbox <- dplyr::filter(states_bbox, .data$region %in% zoom)
     if (nrow(states_bbox) == 0)
       stop("No valid municipios in zoom data")
     draw_mxleaflet(mxstate.topoJSON, lat, lng, mapzoom) %>%
-      fitBounds(min(states_bbox$lng1) ,
+      leaflet::fitBounds(min(states_bbox$lng1) ,
                 max(states_bbox$lat1) ,
                 max(states_bbox$lng2) ,
                 min(states_bbox$lat2) )
