@@ -30,3 +30,31 @@ mxstate_leaflet(df_mxstate_2020,
                                     transform = function(x) {100 * x})) %>%
   addProviderTiles("CartoDB.Positron")
 ```
+
+
+You can also create maps with categorical variables by first converting the 
+variables to integers and using the `colors` and `labels` parameters to `addLegend` to assign the colors to each level in the variable.
+
+
+```{r}
+library(mxmaps)
+library(leaflet) # for colorBin
+library(scales) # needed for comma
+
+df_mxstate_2020$value2 <- factor(sample(c("a", "b", "c", "d", "e"), 32, replace = TRUE))
+df_mxstate_2020$value <- as.integer(df_mxstate_2020$value2)
+
+pal <- colorBin(rainbow(5), domain = as.integer(factor(df_mxstate_2020$value2)))
+mxstate_leaflet(df_mxstate_2020,
+                pal,
+                ~ pal(value),
+                ~ sprintf("State: %s<br/>Percent Afro-Mexican: %s",
+                          state_name, comma(value))) %>%
+  addLegend(position = "bottomright", 
+            colors =c(rainbow(5)),
+            labels= c("a", "b","c","d", "e"),
+            title = "categoría"
+  ) %>%
+  addProviderTiles("CartoDB.Positron")
+
+```
