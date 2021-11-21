@@ -11,8 +11,8 @@
 #' library(viridis)
 #' library(scales)
 #'
-#' df_mxmunicipio$value <-  df_mxmunicipio$indigenous / df_mxmunicipio$pop
-#' gg = MXMunicipioChoropleth$new(df_mxmunicipio)
+#' df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / df_mxmunicipio_2020$pop
+#' gg = MXMunicipioChoropleth$new(df_mxmunicipio_2020)
 #' gg$title <- "Percentage of the population that self-identifies as indigenous"
 #' gg$set_num_colors(1)
 #' gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
@@ -96,8 +96,8 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
 #' match the names of countries as they appear in the "region" column of ?country.regions
 #' @param show_states Wether to draw state borders.
 #' @examples
-#' df <- df_mxmunicipio
-#' df$value <- df$indigenous
+#' df <- df_mxmunicipio_2020
+#' df$value <- df$indigenous_language
 #' mxmunicipio_choropleth(df)
 
 #' @export

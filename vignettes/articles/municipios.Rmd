@@ -36,7 +36,8 @@ df_mxmunicipio_2020$value <- as.factor(sample(c(NA, letters[1:6]),
 gg = MXMunicipioChoropleth$new(df_mxmunicipio_2020)
 gg$title <- "Municipios a-f"
 gg$set_num_colors(6)
-gg$set_zoom(subset(df_mxmunicipio_2020, state_name %in% c("Ciudad de México",                                                                     "México"))$region)
+gg$set_zoom(subset(df_mxmunicipio_2020, state_name %in% c("Ciudad de México",
+                                                          "México"))$region)
 gg$ggplot_scale <- scale_fill_brewer("type", type = "qual", palette = 2,
                                      na.value = "gray")
 p <- gg$render()

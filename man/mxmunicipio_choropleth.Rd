@@ -35,7 +35,7 @@ The map used is mxmunicipio.map. See ?mxmunicipio.map for
 more information.
 }
 \examples{
-df <- df_mxmunicipio
-df$value <- df$indigenous
+df <- df_mxmunicipio_2020
+df$value <- df$indigenous_language
 mxmunicipio_choropleth(df)
 }

@@ -1,3 +1,8 @@
+# mxmaps 2020.1.1.9000
+
+* Fixes the municipios examaples to use the df_mxmunicipio_2020 data.frame and
+  avoid the missing municipios warning
+
 # mxmaps 2020.1.1
 
 ## Bug fixes and improvements
