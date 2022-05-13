@@ -19,7 +19,7 @@ if (!require("devtools")) install.packages("devtools")
 devtools::install_github("Eflores89/inegiR", upgrade = "never")
 ```
 
-1) You must have a [token](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx) to use this functionality. It's free and easy to get by visiting the [INEGI website](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx)
+1) You must have a [token](http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx) to use this functionality. It's free and easy to get by visiting the [INEGI website](https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx)
 2) The function plots the most recent value provided by the API
 3) You'll have to lookup the indicator code at the [INEGI](https://www.inegi.org.mx/servicios/api_indicadores.html)
 
@@ -31,7 +31,7 @@ library(mxmaps)
 library(ggplot2)
 # Insert token here
 # If you don't have a token you can get one from:
-# http://www3.inegi.org.mx//sistemas/api/indicadores/v1/tokenVerify.aspx
+# https://www.inegi.org.mx/app/api/indicadores/interna_v1_1/tokenVerify.aspx
 token <- ""
 ```
 

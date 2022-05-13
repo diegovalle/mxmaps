@@ -1,10 +1,20 @@
 url: https://www.diegovalle.net/mxmaps
 template:
+  
+  includes:
+    in_header: |
+       <!-- Global site tag (gtag.js) - Google Analytics -->
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDV0SL3HT9"></script>
+       <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         gtag('config', 'G-GDV0SL3HT9');
+       </script>
   params:
     docsearch:
       api_key: 8a77b782295c9cba8f27c0e19f021240
       index_name: mxmaps
-    ganalytics: UA-100264-1
 authors:
   Diego Valle-Jones:
     href: https://www.diegovalle.net
@@ -15,27 +25,27 @@ navbar:
       icon: fa-home
       href: index.html
     - text: "Data"
-      href: articles/articles/data.html
+      href: articles/data.html
     - text: "Choropleths"
       icon: fa-map
       menu:
         - text: "Static"
         - text: "States"
-          href: articles/articles/states.html
+          href: articles/states.html
         - text: "Hexbins"
-          href: articles/articles/hexbins.html
+          href: articles/hexbins.html
         - text: "Municipios"
-          href: articles/articles/municipios.html
+          href: articles/municipios.html
         - text: "---------"
         - text: "Leaflet"
         - text: "States"
-          href: articles/articles/leaflet_states.html
+          href: articles/leaflet_states.html
         - text: "Municipios"
-          href: articles/articles/leaflet_municipios.html
+          href: articles/leaflet_municipios.html
     - text: "INEGI API"
-      href: articles/articles/inegi_api.html
+      href: articles/inegi_api.html
     - text: "Shiny"
-      href: articles/articles/shiny.html
+      href: articles/shiny.html
     - text: "Reference"
       href: reference/index.html
     - text: "Changelog"

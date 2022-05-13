@@ -1,5 +1,6 @@
 # mxmaps 2020.1.1.9000
 
+* Switches Universal Analytics to Google Analytics 4 in the pkgdown website
 * Fixes the municipios examaples to use the df_mxmunicipio_2020 data.frame and
   avoid the missing municipios warning
 
