@@ -7,6 +7,7 @@
 #' @importFrom scales percent
 #' @importFrom choroplethr Choropleth
 #' @importFrom mapproj mapproject
+#' @importFrom RJSONIO toJSON
 #' @examples
 #' library(viridis)
 #' library(scales)
