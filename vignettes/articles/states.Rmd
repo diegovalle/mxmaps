@@ -73,8 +73,11 @@ df_mxstate_2020 <- cbind(df_mxstate_2020,
 df_mxstate_2020$group <- df_mxstate_2020$state_abbr
 
 p +
-  geom_text_repel(data = df_mxstate_2020, aes(lon, lat, label = state_abbr), size = 3,
-                  box.padding = unit(0.1, 'lines'), force = 0.1)
+  geom_text_repel(data = df_mxstate_2020, 
+                  aes(lon, lat, label = state_abbr,), 
+                  size = 3,
+                  box.padding = unit(0.1, 'lines'), 
+                  force = 0.1)
 ```
 
 ## Legends
@@ -91,7 +94,9 @@ mxstate_choropleth(df_mxstate_2020,
                    legend = "%") +
   # Add a fake color scale which we'll change to 'no data'
   geom_point(data = df_mxmunicipio_2020[1,], 
-             aes(color = "", group = NA, lat = lat, long = long)) +
+             size = -1,
+             aes(color = "",
+                 group = NA, lat = lat, long = long)) +
   scale_color_manual(values = NA) +
   guides(color=guide_legend("no data", 
                              override.aes=list(color = "black",

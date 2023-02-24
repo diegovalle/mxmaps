@@ -41,3 +41,24 @@ mxhexbin_choropleth(df_mxstate_2020,
   scale_fill_viridis("percentage", labels = percent)
 
 ```
+
+
+## Auto Contrast
+
+In your maps, you may encounter situations where the background color changes dynamically, making it difficult to read text in a single color. In such cases, you can use the automatic text color adjustment feature `auto_constrast` to improve readability. This feature automatically adjusts the text color based on the background color, ensuring optimal readability.
+
+
+```{r message=FALSE,warning=FALSE}
+library("viridis")
+library("scales")
+
+df_mxstate_2020$value = df_mxstate_2020$afromexican / df_mxstate_2020$pop 
+mxhexbin_choropleth(df_mxstate_2020, num_colors = 1,
+                    title = "Percentage of the population that identifies as Afro-Mexican",
+                    legend = "%",
+                    shadow_color = "#111111",
+                    auto_contrast = TRUE)+
+  scale_fill_viridis()
+```
+
+Note how the label color for GRO and OAX is black

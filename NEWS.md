@@ -1,8 +1,9 @@
-# mxmaps 2020.1.1.9000
+# mxmaps 2020.1.2
 
 * Switches Universal Analytics to Google Analytics 4 in the pkgdown website
 * Fixes the municipios examaples to use the df_mxmunicipio_2020 data.frame and
   avoid the missing municipios warning
+* Adds `auto_contrast` option to `mxhexbin_choropleth`
 
 # mxmaps 2020.1.1
 

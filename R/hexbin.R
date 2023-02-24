@@ -1,6 +1,12 @@
 #' An R6 object for creating state-level hexbin choropleths.
 #' @export
 #' @importFrom R6 R6Class
+#' @importFrom prismatic best_contrast
+#' @importFrom shadowtext geom_shadowtext
+#' @importFrom viridis scale_fill_viridis
+#' @importFrom scales percent
+#' @importFrom choroplethr Choropleth
+#' @importFrom mapproj mapproject
 #' @examples
 #' library(viridis)
 #' library(scales)
@@ -19,11 +25,12 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                                #' @field shadow_color shadow color for the state labels
                                #' @field label_size font size for the state labels
                                #' @field show_labels draw the state labels
+                               #' @field auto_constrast automatically determine the label color based on the map fill scale
                                label_color = "black",
                                shadow_color = NULL,
                                label_size = 5,
                                show_labels = TRUE,
-
+                               auto_contrast = NULL,
                                #' @description
                                #' Initialize the map of Mexico
                                #' @param user.df df
@@ -82,15 +89,62 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                                                                  class = "data.frame")
 
                                    df_mxstate_labels = df_mxstate_labels[df_mxstate_labels$id %in% private$zoom, ]
-
-                                   if(!is.null(self$shadow_color)) {
+                                   if (!is.null(self$shadow_color) &&
+                                       !is.null(self$auto_contrast) &&
+                                       self$auto_contrast
+                                   ) {
+                                     df_mxstate_labels <- dplyr::left_join(
+                                       df_mxstate_labels,
+                                       unique(choropleth$data[ , c("id", "value")]),
+                                       by = "id"
+                                     )
+                                     choropleth <-  choropleth +
+                                       suppressWarnings(
+                                         shadowtext::geom_shadowtext(data = df_mxstate_labels,
+                                                                     aes(long,
+                                                                         lat,
+                                                                         label = state_abbr,
+                                                                         group = NULL,
+                                                                         fill = value,
+                                                                         bg.colour=
+                                                                           ggplot2::after_scale(
+                                                                             prismatic::clr_negate(
+                                                                               prismatic::best_contrast(fill)
+                                                                             )
+                                                                         ),
+                                                                         color = ggplot2::after_scale(prismatic::best_contrast(fill))),
+                                                                     size = self$label_size
+                                         )
+                                       )
+                                   }
+                                   else if(!is.null(self$shadow_color)) {
                                    choropleth <-  choropleth +
                                      shadowtext::geom_shadowtext(data = df_mxstate_labels,
                                                                  bg.colour= self$shadow_color,
                                                                  aes(long, lat, label = state_abbr, group = NULL),
                                                                  color = self$label_color,
                                                                  size = self$label_size)
-                                   } else {
+                                   } else if(!is.null(self$auto_contrast) &&
+                                             self$auto_contrast) {
+                                     df_mxstate_labels <- dplyr::left_join(
+                                       df_mxstate_labels,
+                                       unique(choropleth$data[ , c("id", "value")]),
+                                       by = "id"
+                                     )
+                                     choropleth <-  choropleth +
+                                       suppressWarnings(
+                                         geom_text(
+                                           data = df_mxstate_labels,
+                                           aes(
+                                             long, lat, label = state_abbr,
+                                             group = NULL,
+                                             fill = value,
+                                             color = ggplot2::after_scale(prismatic::best_contrast(fill))
+                                           ),
+                                           size = self$label_size)
+                                       )
+                                   }
+                                   else {
                                      choropleth <-  choropleth +
                                        geom_text(data = df_mxstate_labels,
                                                  aes(long, lat, label = state_abbr, group = NULL),
@@ -119,6 +173,8 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 #' @param label_color An optional color for the state abbreviation labels
 #' @param label_size An optional size for the state abbrevition labels
 #' @param shadow_color An optional shadow color for the state abbreviation labels
+#' @param auto_contrast Optional argument to automatically determine the best contrast
+#' for the state abbreviation labels
 #' @examples
 #' data(df_mxstate)
 #' df_mxstate$value <- df_mxstate$pop
@@ -126,7 +182,7 @@ MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
 #' @export
 mxhexbin_choropleth  <-  function(df, title="", legend="", num_colors=7, zoom=NULL,
                                label_color = "black", label_size = 4.5,
-                               shadow_color = NULL)
+                               shadow_color = NULL, auto_contrast = NULL)
 {
   if("region" %in% colnames(df)) {
     df$region <- str_mxstate(df$region)
@@ -141,6 +197,7 @@ mxhexbin_choropleth  <-  function(df, title="", legend="", num_colors=7, zoom=NU
   c$set_zoom(zoom)
   c$label_color <-  label_color
   c$shadow_color <- shadow_color
+  c$auto_contrast <- auto_contrast
   c$label_size <-  label_size
   c$render()
 }
