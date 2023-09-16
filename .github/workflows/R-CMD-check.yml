@@ -53,7 +53,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install libcurl4-openssl-dev libxml2-dev libssl-dev
-          sudo apt-get install libudunits2-dev libgdal-dev libproj-dev
+          sudo apt-get install libudunits2-dev libgdal-dev libproj-dev libgeos-dev
           sudo apt-get install libicu-dev
 
       - name: Query dependencies
@@ -75,10 +75,11 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
+          remotes::install_cran("stringr", type = "source", force = TRUE)
           remotes::install_cran("stringi", type = "source", force = TRUE)
-          remotes::install_cran("choroplethr", type = "source", force = TRUE)
-          remotes::install_cran("units", type = "source", force = TRUE)
           remotes::install_cran("sf", type = "source", force = TRUE)
+          remotes::install_cran("units", type = "source", force = TRUE)
+          remotes::install_cran("choroplethr", type = "source", force = TRUE)
         shell: Rscript {0}
 
       - name: Check
