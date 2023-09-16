@@ -77,6 +77,7 @@ jobs:
           remotes::install_cran("stringi", type = "source", force = TRUE)
           remotes::install_cran("choroplethr", type = "source", force = TRUE)
           remotes::install_cran("units", type = "source", force = TRUE)
+          remotes::install_cran("proj4", type = "source", force = TRUE)
         shell: Rscript {0}
 
       - name: Check
