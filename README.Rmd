@@ -25,7 +25,7 @@ This package is based on [choroplethr](https://CRAN.R-project.org/package=chorop
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.path = "man/figures/")
 ```
 
 ## Installation
@@ -50,7 +50,7 @@ mxstate_choropleth(df_mxstate_2020,
                     title = "Total population, by state") 
 ```
 
-##Data
+## Data
 
 The data.frame that you provide to the plotting functions must have one column named "region" and one column named "value". The entries for "region" must match the INEGI codes for states ("01", "02", etc) and municipios ("01001", "01002", etc) either as a string with or without a leading "0" or as numerics. The functions `str_mxstate` and `str_mxmunicipio` are provided to easily format codes to the INEGI specification. Also, two example data.frames, `df_mxstate_2020` and `df_mxmunicipio_2020`, are provided with demographic variables from the 2020 census.
 
