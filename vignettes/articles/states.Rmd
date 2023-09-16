@@ -39,7 +39,7 @@ gg$render()
 
 ## Map with labels for each state
 
-```{r message=FALSE,warning=FALSE}
+```{r text-repel, message=FALSE,warning=FALSE}
 library("geojsonio")
 library("ggplot2")
 library("rgdal")
