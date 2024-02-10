@@ -92,9 +92,9 @@ jobs:
       - name: test site
         if: matrix.config.r == 'release' && matrix.config.os == 'ubuntu-20.04'
         run: |
-          Rscript -e "remotes::install_cran('rgdal')"
-          Rscript -e "remotes::install_cran('rgeos', type = 'source', force = TRUE)"
-          Rscript -e "remotes::install_cran('maptools', type = 'source', force = TRUE)"
+          Rscript -e "remotes::install_cran('rgdal', repos='https://cloud.r-project.org/')"
+          Rscript -e "remotes::install_cran('rgeos', repos='https://cloud.r-project.org/')"
+          Rscript -e "remotes::install_cran('maptools', repos='https://cloud.r-project.org/')"
           Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite', 'maptools'), type = 'source');install.packages('V8', repos = 'http://cran.r-project.org'); remotes::install_github('r-lib/pkgdown'); remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR');pkgdown::build_site()}, error = function(e) {quit(status=1)})"
 
       - name: coveralls
