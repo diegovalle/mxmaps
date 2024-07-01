@@ -128,10 +128,10 @@ df$value <- cut(df$value, breaks = c(0, 5e4, 1e6, 2e6, 4e6, 20e7))
 
 f <- mxstate_choropleth(subset(df, genero == "f"),
                         title = "F population, by state",
-                        num_colors = 4) 
+                        num_colors = 5) 
 m <- mxstate_choropleth(subset(df, genero == "m"),
                         title = "M population, by state",
-                        num_colors = 4)
+                        num_colors = 5)
 
 ggarrange(f, m,
           labels = c("", ""),
