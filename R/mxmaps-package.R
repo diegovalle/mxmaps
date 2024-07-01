@@ -9,4 +9,4 @@
 #'
 #' @docType package
 #' @name mxmaps
-NULL
+"_PACKAGE"

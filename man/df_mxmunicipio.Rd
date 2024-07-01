@@ -45,6 +45,6 @@ head(df_mxmunicipio)
 Population estimates taken from the \href{https://www.inegi.org.mx/programas/intercensal/2015/}{Encuesta Intercensal}.
 The latitude and longitude of the localidad cabecera of each municipio come from the
 \href{http://www.inegi.org.mx/est/contenidos/proyectos/aspectosmetodologicos/clasificadoresycatalogos/catalogo_entidades.aspx}{Catálogo de entidades federativas, municipios y localidades} and the
-metro areas from the \href{http://www.conapo.gob.mx/en/CONAPO/Delimitacion_de_Zonas_Metropolitanas}{CONAPO}
+metro areas from the \href{http://www.conapo.gob.mx/es/CONAPO/Datos_Abiertos_Delimitacion_de_Zonas_Metropolitanas}{CONAPO}
 }
 \keyword{data}

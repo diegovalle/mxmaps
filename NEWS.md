@@ -1,3 +1,7 @@
+# mxmaps 2020.1.3
+
+* Remove the functions that use the INEGI API since it doesn't work anymore
+
 # mxmaps 2020.1.2
 
 * Switches Universal Analytics to Google Analytics 4 in the pkgdown website

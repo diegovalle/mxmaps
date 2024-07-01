@@ -21,7 +21,7 @@ mxstate_choropleth(df_mxstate_2020,
                     title = "Total population, by state") 
 ```
 
-## Different color scale
+## Change the color scale
 
 ```{r message=FALSE,warning=FALSE}
 library(mxmaps)
@@ -42,11 +42,9 @@ gg$render()
 ```{r text-repel, message=FALSE,warning=FALSE}
 library("geojsonio")
 library("ggplot2")
-library("rgdal")
-library("rgeos")
-library("maptools")
 library("ggrepel")
 library("sf")
+library("RJSONIO")
 
 df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
   df_mxstate_2020$pop * 100
@@ -57,19 +55,18 @@ p <- mxstate_choropleth(df_mxstate_2020,
 
 
 data("mxstate.topoJSON")
-data("df_mxstate_2020")
 
 tmpdir <- tempdir()
 # have to use RJSONIO or else the topojson isn't valid
 write(RJSONIO::toJSON(mxstate.topoJSON), file.path(tmpdir, "state.topojson"))
 states <- topojson_read(file.path(tmpdir, "state.topojson"))
-# convert to SpatialPolygonsDataFrame
-states <- as_Spatial(states)
 
 # make sure the coordinates of the labels are in the correct order
-df_mxstate_2020 <- cbind(df_mxstate_2020, 
-                    data.frame(lon = coordinates(states[match(df_mxstate_2020$region, states$id),])[,1],
-                               lat = coordinates(states[match(df_mxstate_2020$region, states$id),])[,2]))
+ 
+df_mxstate_2020$lon <- st_coordinates(st_centroid(states))[,1]
+df_mxstate_2020$lat <- st_coordinates(st_centroid(states))[,2]
+
+
 df_mxstate_2020$group <- df_mxstate_2020$state_abbr
 
 p +
@@ -85,21 +82,58 @@ p +
 Add a legend for states with NA values
 
 ```{r warning=FALSE, message=FALSE}
-df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
-  df_mxstate_2020$pop * 100
-df_mxstate_2020$value[1:5] <- NA
-mxstate_choropleth(df_mxstate_2020, 
+
+df_na <- df_mxstate_2020
+df_na$value[1:20] <- NA
+mxstate_choropleth(df_na,
                    num_colors = 1,
                    title = "Percentage of the population that speaks\nan indigenous language",
                    legend = "%") +
   # Add a fake color scale which we'll change to 'no data'
-  geom_point(data = df_mxmunicipio_2020[1,], 
+  geom_point(data = df_mxmunicipio_2020[1,],
              size = -1,
              aes(color = "",
-                 group = NA, lat = lat, long = long)) +
+                 group = NA)) +
   scale_color_manual(values = NA) +
-  guides(color=guide_legend("no data", 
-                             override.aes=list(color = "black",
-                                               shape = 15, 
-                                               size = 7)))
+  scale_fill_continuous(low="orange", high="darkred", 
+                        na.value = "lightgray") +
+  theme(legend.key = element_rect(color = "black")) + # Add a border to the legend
+  # Add an extra color legend with a giant square
+  guides(color = guide_legend("no data",
+                              override.aes=list(color = "lightgray",
+                                                shape = 15, # shape 15 is a black square
+                                                size = 7)))
+```
+
+## facet_grid like functionality
+
+Currently `mxmaps` is not compatible with facet_grid, but we can mimic the
+same functionality by using the function `ggarrange` from the `ggpubr` 
+package
+
+```{r}
+library(mxmaps)
+library(ggplot2)
+library(ggpubr)
+
+data("df_mxstate_2020")
+df <- rbind(df_mxstate_2020, df_mxstate_2020)
+
+df$genero <- rep(c("m", "f"), each= 32)
+df$value <- ifelse(df$genero == "m", df$pop_male, df$pop_female)
+# This is needed so that both the male and female population scales have
+# the same values
+df$value <- cut(df$value, breaks = c(0, 5e4, 1e6, 2e6, 4e6, 20e7))
+
+
+f <- mxstate_choropleth(subset(df, genero == "f"),
+                        title = "F population, by state",
+                        num_colors = 5) 
+m <- mxstate_choropleth(subset(df, genero == "m"),
+                        title = "M population, by state",
+                        num_colors = 5)
+
+ggarrange(f, m,
+          labels = c("", ""),
+          ncol = 1, nrow = 2)
 ```

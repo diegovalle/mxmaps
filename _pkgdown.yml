@@ -42,8 +42,6 @@ navbar:
           href: articles/leaflet_states.html
         - text: "Municipios"
           href: articles/leaflet_municipios.html
-    - text: "INEGI API"
-      href: articles/inegi_api.html
     - text: "Shiny"
       href: articles/shiny.html
     - text: "Reference"
@@ -65,11 +63,6 @@ reference:
     contents:
       - '`mxstate_leaflet`'
       - '`mxmunicipio_leaflet`'
-  - title: INEGI API Maps
-    desc: Functions for drawing static maps with INEGI data
-    contents:
-      - '`choropleth_inegi`'
-      - '`hexbin_inegi`'
   - title: Datasets
     desc: Official datasets from the INEGI and CONAPO
     contents:

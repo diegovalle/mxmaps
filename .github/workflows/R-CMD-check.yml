@@ -89,10 +89,13 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
-      - name: test site
+      - name: test mxmaps website
         if: matrix.config.r == 'release' && matrix.config.os == 'ubuntu-20.04'
         run: |
-          Rscript -e "tryCatch({install.packages(c('remotes', 'sf', 'rgdal', 'rgeos', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite', 'maptools'), type = 'source');install.packages('V8', repos = 'http://cran.r-project.org'); remotes::install_github('r-lib/pkgdown'); remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR');pkgdown::build_site()}, error = function(e) {quit(status=1)})"
+          Rscript -e "remotes::install_url('https://cran.r-project.org/src/contrib/Archive/rgdal/rgdal_1.6-7.tar.gz')"
+          Rscript -e "remotes::install_url('https://cran.r-project.org/src/contrib/Archive/rgeos/rgeos_0.6-4.tar.gz')"
+          Rscript -e "remotes::install_url('https://cran.r-project.org/src/contrib/Archive/maptools/maptools_1.1-8.tar.gz')"
+          Rscript -e "tryCatch({install.packages(c('sf', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'), type = 'source');install.packages('V8', repos = 'http://cran.r-project.org'); remotes::install_github('r-lib/pkgdown'); remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR', force = TRUE);pkgdown::build_site()}, error = function(e) {quit(status=1)})"
 
       - name: coveralls
         if: matrix.config.r == 'release' && matrix.config.os == 'ubuntu-20.04'
