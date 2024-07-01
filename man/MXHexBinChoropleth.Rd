@@ -33,14 +33,7 @@ gg$render()
 
 \item{\code{show_labels}}{draw the state labels}
 
-\item{\code{auto_constrast}}{automatically determine the label color based on the map fill scale}
-}
-\if{html}{\out{</div>}}
-}
-\section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{auto_constrast}}{automatically determine the label color based on the map fill scale}
+\item{\code{auto_contrast}}{automatically determine the label color based on the map fill scale}
 }
 \if{html}{\out{</div>}}
 }

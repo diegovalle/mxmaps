@@ -23,6 +23,7 @@ doResolveFormula = function(data, f) {
   UseMethod("doResolveFormula")
 }
 
+#' @export
 doResolveFormula.data.frame = function(data, f) {
   eval(f[[2]], data, environment(f))
 }

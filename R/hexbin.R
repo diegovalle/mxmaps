@@ -21,12 +21,11 @@
 MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
                              inherit = choroplethr:::Choropleth,
                              public = list(
-
                                #' @field label_color color for the state labels
                                #' @field shadow_color shadow color for the state labels
                                #' @field label_size font size for the state labels
                                #' @field show_labels draw the state labels
-                               #' @field auto_constrast automatically determine the label color based on the map fill scale
+                               #' @field auto_contrast automatically determine the label color based on the map fill scale
                                label_color = "black",
                                shadow_color = NULL,
                                label_size = 5,
