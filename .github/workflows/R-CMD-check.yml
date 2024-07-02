@@ -92,6 +92,7 @@ jobs:
       - name: test mxmaps website
         if: matrix.config.r == 'release' && matrix.config.os == 'ubuntu-20.04'
         run: |
+          Rscript -e "tryCatch({install.packages(c('RJSONIO', 'ggpubr', 'viridis', 'scales', 'sf', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'), type = 'source');install.packages('V8', repos = 'http://cran.r-project.org'); remotes::install_github('r-lib/pkgdown'); remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR', force = TRUE);}, error = function(e) {quit(status=1)})"
           ./build_docs.sh
 
       - name: coveralls
