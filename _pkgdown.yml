@@ -52,6 +52,9 @@ navbar:
     - icon: fa-github
       href: https://github.com/diegovalle/mxmaps
 reference:
+  - title: internal
+    contents:
+      - Choropleth
   - title: Static Maps
     desc: Functions for drawing non-interactive maps with ggplot2
     contents:

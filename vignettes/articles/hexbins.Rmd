@@ -17,7 +17,8 @@ data("df_mxstate_2020")
 df_mxstate_2020$value = df_mxstate_2020$afromexican / df_mxstate_2020$pop * 100
 mxhexbin_choropleth(df_mxstate_2020, num_colors = 1,
                     title = "Percentage of the population that identifies as Afro-Mexican",
-                    legend = "%")
+                    legend = "%",
+                    auto_contrast = TRUE)
 
 ```
 

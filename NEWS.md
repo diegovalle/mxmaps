@@ -1,3 +1,12 @@
+# mxmaps 2020.2.1
+
+* Remove dependency on deprecated package choropletr
+
+# mxmaps 2020.2.0
+
+* Remove the functions that use the INEGI API since it doesn't work anymore and 
+correct to a major release version
+
 # mxmaps 2020.1.3
 
 * Remove the functions that use the INEGI API since it doesn't work anymore

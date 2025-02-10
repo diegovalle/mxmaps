@@ -13,28 +13,28 @@
 #' gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
 #' gg$render()
 MXStateChoropleth = R6Class("MXStateChoropleth",
-                                inherit = choroplethr:::Choropleth,
-                                public = list(
+                            inherit = Choropleth,
+                            public = list(
 
-                                  #' @description
-                                  #' Initialize the map of Mexico
-                                  #' @param user.df df
-                                  #' @return A new `MXStateChoropleth` object.
-                                  initialize = function(user.df)
-                                  {
-                                    #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
-                                    #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
-                                    #}
+                              #' @description
+                              #' Initialize the map of Mexico
+                              #' @param user.df df
+                              #' @return A new `MXStateChoropleth` object.
+                              initialize = function(user.df)
+                              {
+                                #if (!requireNamespace("mxmapsData", quietly = TRUE)) {
+                                #  stop("Package mxmapsData is needed for this function to work. Please install it.", call. = FALSE)
+                                #}
 
-                                    data(mxstate.map, package="mxmaps", envir=environment())
-                                    super$initialize(mxstate.map, user.df)
+                                data(mxstate.map, package="mxmaps", envir=environment())
+                                super$initialize(mxstate.map, user.df)
 
-                                    if (private$has_invalid_regions)
-                                    {
-                                      warning("Please see df_mxstate for a list of mappable regions")
-                                    }
-                                  }
-                                )
+                                if (private$has_invalid_regions)
+                                {
+                                  warning("Please see df_mxstate for a list of mappable regions")
+                                }
+                              }
+                            )
 )
 
 #' Create a state-level choropleth

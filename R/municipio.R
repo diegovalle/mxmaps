@@ -19,7 +19,7 @@
 #' gg$render()
 
 MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
-                                inherit = choroplethr:::Choropleth,
+                                inherit = Choropleth,
                                 public = list(
                                   #' @field show_states boolean, draw state borders
                                   show_states = TRUE,
@@ -32,7 +32,7 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                     self$prepare_map()
 
                                     gg <- ggplot(self$choropleth.df, aes(long, lat, group = group)) +
-                                      geom_polygon(aes(fill = value), color = "dark grey", size = 0.08) +
+                                      geom_polygon(aes(fill = value), color = "dark grey", linewidth = 0.08) +
                                       self$get_scale() +
                                       self$theme_clean() +
                                       ggtitle(self$title)
@@ -43,7 +43,7 @@ MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
                                         data = subset(mxstate.map, region %in% state_zoom),
                                         fill = "transparent",
                                         color = "#333333",
-                                        size = .15)
+                                        linewidth = .15)
                                     }
                                     xmin <- min(self$choropleth.df$long)
                                     xmax <- max(self$choropleth.df$long)

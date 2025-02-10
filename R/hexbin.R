@@ -5,7 +5,6 @@
 #' @importFrom shadowtext geom_shadowtext
 #' @importFrom viridis scale_fill_viridis
 #' @importFrom scales percent
-#' @importFrom choroplethr Choropleth
 #' @importFrom mapproj mapproject
 #' @importFrom RJSONIO toJSON
 #' @examples
@@ -19,7 +18,7 @@
 #' gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
 #' gg$render()
 MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
-                             inherit = choroplethr:::Choropleth,
+                             inherit = Choropleth,
                              public = list(
                                #' @field label_color color for the state labels
                                #' @field shadow_color shadow color for the state labels
