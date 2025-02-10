@@ -1,6 +1,7 @@
 # mxmaps 2020.2.1
 
 * Remove dependency on deprecated package choropletr
+* Fix state labels in the state vignette
 
 # mxmaps 2020.2.0
 
