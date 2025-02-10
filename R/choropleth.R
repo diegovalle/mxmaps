@@ -1,4 +1,3 @@
-#Code taken from https://github.com/cran/choroplethr/blob/master/R/choropleth.R
 #' The base Choropleth object.
 #' @importFrom R6 R6Class
 #' @importFrom ggplot2 scale_color_continuous coord_quickmap coord_map scale_x_continuous scale_y_continuous geom_sf coord_sf
@@ -7,7 +6,6 @@
 #' @importFrom stringr str_extract_all
 #' @importFrom dplyr left_join
 #' @keywords internal
-#' @noRd
 #' @export
 Choropleth = R6Class("Choropleth",
 
@@ -360,3 +358,4 @@ Choropleth = R6Class("Choropleth",
                        has_invalid_regions = FALSE
                      )
 )
+#Code taken from https://github.com/cran/choroplethr/blob/master/R/choropleth.R
