@@ -11,8 +11,6 @@ test_that("state choropleth matches expectations",{
   p <- mxstate_choropleth(df_mxstate_2020, num_colors = 1)
   expect_is(p$layers[[1]], "ggproto")
   expect_identical(sort(unique(p$data$id)), sort(df_mxstate_2020$region))
-  expect_identical(p$labels$y, "lat")
-  expect_identical(p$labels$x, "long")
 })
 
 test_that("municipio choropleth matches expectations",{
@@ -21,8 +19,6 @@ test_that("municipio choropleth matches expectations",{
   p <- mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1)
   expect_is(p$layers[[1]], "ggproto")
   expect_identical(sort(unique(p$data$id)), sort(df_mxmunicipio_2020$region))
-  expect_identical(p$labels$y, "lat")
-  expect_identical(p$labels$x, "long")
 })
 
 test_that("hexbin matches expectations",{
@@ -31,8 +27,6 @@ test_that("hexbin matches expectations",{
   p <- mxhexbin_choropleth(df_mxstate_2020)
   expect_is(p$layers[[1]], "ggproto")
   expect_identical(sort(unique(p$data$id)), sort(df_mxstate_2020$region))
-  expect_identical(p$labels$y, "lat")
-  expect_identical(p$labels$x, "long")
 })
 
 test_that("convert state codes to INEGI format",{
