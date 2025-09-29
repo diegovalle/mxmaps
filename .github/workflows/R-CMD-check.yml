@@ -52,7 +52,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install libcurl4-openssl-dev libxml2-dev libssl-dev
-          sudo apt-get install libudunits2-dev libgdal-dev libproj-dev libgeos-dev
+          sudo apt-get install libudunits2-dev libgdal-dev libproj-dev libgeos-dev libfontconfig1-dev
           sudo apt-get install libicu-dev
 
       - name: Query dependencies
