@@ -46,7 +46,7 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-pandoc@v2
-      
+
       - name: system dependencies
         if: runner.os == 'Linux'
         run: |
@@ -80,6 +80,7 @@ jobs:
           remotes::install_cran("units", type = "source", force = TRUE)
           remotes::install_cran("acs", type = "source", force = TRUE)
           remotes::install_cran("choroplethr", type = "source", force = TRUE)
+          remotes::install_cran("shadowtext, type = "source", force = TRUE)
         shell: Rscript {0}
 
       - name: Check
@@ -96,7 +97,7 @@ jobs:
 
       - name: coveralls
         if: matrix.config.r == 'release' && matrix.config.os == 'ubuntu-20.04'
-        run: | 
+        run: |
           Rscript -e 'remotes::install_github("r-lib/covr@gh-actions");covr::codecov(quiet = FALSE, token = "${{secrets.CODECOV_TOKEN}}")'
 
       - name: Upload check results
