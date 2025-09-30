@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <img src="header.png" intrinsicsize="722 x 270" style="width:80%">
 
-This R package can be used to easily create maps of Mexico at both the state and municipio levels. It is based on the [choroplethr](https://cran.r-project.org/web/packages/choroplethr/index.html) package and includes functions to create interactive maps using the leaflet package, map INEGI data using their API with the [inegiR](https://github.com/Eflores89/inegiR) package, and format strings so they match the INEGI state and municipio codes. Feel free to
+This R package can be used to easily create maps of Mexico at both the state and municipio levels. It is based on the [choroplethr](https://cran.r-project.org/web/packages/choroplethr/index.html) package and includes functions to create interactive maps using the leaflet package, and format strings so they match the INEGI state and municipio codes. Feel free to
 ask for help in the [discussion forum](https://groups.google.com/forum/#!forum/mxmaps)
 
 
@@ -53,7 +53,7 @@ What the data looks like:
 knitr::kable(head(df_mxstate_2020[,c("region", "value")]))
 ```
 
-##Basic Usage
+## Basic Usage
 
 The two basic functions of the package are ```mxstate_choropleth``` and ```mxmunicipio_choropleth```. The data.frame that you provide to the plotting functions must have one column named ```region``` with the INEGI codes of the states or municipios and another one named ```value``` with the values to plot. You can specify a title with the ```title``` parameter and the number of buckets for the color scale with the ```num_color``` parameter. If you need a continuous scale you can set the ```num_colors``` parameter equal to 1.
 

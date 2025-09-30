@@ -19,7 +19,7 @@
 #' gg$render()
 
 MXMunicipioChoropleth = R6Class("MXMunicipioChoropleth",
-                                inherit = Choropleth,
+                                inherit = Choropleth2,
                                 public = list(
                                   #' @field show_states boolean, draw state borders
                                   show_states = TRUE,

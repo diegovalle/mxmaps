@@ -1,4 +1,4 @@
-#' The base Choropleth object.
+#' The base Choropleth2 object.
 #' @importFrom R6 R6Class
 #' @importFrom ggplot2 scale_color_continuous coord_quickmap coord_map scale_x_continuous scale_y_continuous geom_sf coord_sf
 #' @importFrom ggmap get_map ggmap
@@ -7,8 +7,19 @@
 #' @importFrom dplyr left_join
 #' @keywords internal
 #' @export
-Choropleth = R6Class("Choropleth",
+Choropleth2 = R6Class("Choropleth2",
 
+                     #' @field user.df input from user
+                     #' @field map.df geometry of the map
+                     #' @field choropleth.df result of binding user data with our map data
+                     #' @field title title for map
+                     #' @field legend title for legend
+                     #' @field warn warn user on clipped or missing values
+                     #' @field ggplot_scale override default scale.
+                     #' @field ggplot_polygon null
+                     #' @field projection_sf null
+                     #' @field projection null
+                     #' @field ggplot_sf null
                      public = list(
                        # the key objects for this class
                        user.df        = NULL, # input from user
@@ -31,9 +42,9 @@ Choropleth = R6Class("Choropleth",
                        projection_sf  = NULL,
                        ggplot_sf      = NULL,
 
-                       # a choropleth map is defined by these two variables
-                       # a data.frame of a map
-                       # a data.frame that expresses values for regions of each map
+                       #' @description a choropleth map is defined by these two variables
+                       #' @param map.df a data.frame of a map
+                       #' @param user.df a data.frame that expresses values for regions of each map
                        initialize = function(map.df, user.df)
                        {
                          stopifnot(is.data.frame(map.df))
@@ -81,7 +92,7 @@ Choropleth = R6Class("Choropleth",
                          self$projection_sf = coord_sf()
                          self$ggplot_sf     = geom_sf(aes(fill = value), color = "dark grey", linewidth = 0.2)
                        },
-
+                       #' @description render
                        render = function()
                        {
                          self$prepare_map()
@@ -104,29 +115,35 @@ Choropleth = R6Class("Choropleth",
                        },
 
                        # left
+                       #' @description left
                        get_min_long = function()
                        {
                          min(self$choropleth.df$long)
                        },
 
                        # right
+                       #' @description right
                        get_max_long = function()
                        {
                          max(self$choropleth.df$long)
                        },
 
                        # bottom
+                       #' @description bottom
                        get_min_lat = function()
                        {
                          min(self$choropleth.df$lat)
                        },
 
                        # top
+                       #' @description top
                        get_max_lat = function()
                        {
                          max(self$choropleth.df$lat)
                        },
-
+                       #' @description get_bounding_box
+                       #' @param long_margin_percent null
+                       #' @param lat_margin_percent null
                        get_bounding_box = function(long_margin_percent, lat_margin_percent)
                        {
                          c(self$get_min_long(), # left
@@ -134,17 +151,17 @@ Choropleth = R6Class("Choropleth",
                            self$get_max_long(), # right
                            self$get_max_lat())  # top
                        },
-
+                       #' @description get_x_scale
                        get_x_scale = function()
                        {
                          scale_x_continuous(limits = c(self$get_min_long(), self$get_max_long()))
                        },
-
+                       #' @description get_y_scale
                        get_y_scale = function()
                        {
                          scale_y_continuous(limits = c(self$get_min_lat(), self$get_max_lat()))
                        },
-
+                       #' @description get_reference_map
                        get_reference_map = function()
                        {
                          # note: center is (long, lat) but MaxZoom is (lat, long)
@@ -159,13 +176,15 @@ Choropleth = R6Class("Choropleth",
                                  zoom     = max_zoom,
                                  color    = "bw")
                        },
-
+                       #' @description get_choropleth_as_polygon
+                       #' @param alpha null
                        get_choropleth_as_polygon = function(alpha)
                        {
                          geom_polygon(data = self$choropleth.df,
                                       aes(x = long, y = lat, fill = value, group = group), alpha = alpha)
                        },
-
+                       #' @description render_with_reference_map
+                       #' @param alpha null
                        render_with_reference_map = function(alpha = 0.5)
                        {
                          self$prepare_map()
@@ -183,6 +202,7 @@ Choropleth = R6Class("Choropleth",
                        },
 
                        # support e.g. users just viewing states on the west coast
+                       #' @description support e.g. users just viewing states on the west coast
                        clip = function() {
                          stopifnot(!is.null(private$zoom))
 
@@ -194,6 +214,7 @@ Choropleth = R6Class("Choropleth",
                        # 1. assigning each value to one of num_colors colors
                        # 2. formatting the intervals e.g. with commas
                        #' @importFrom Hmisc cut2
+                       #' @description discretizing values means
                        discretize = function()
                        {
                          if (is.numeric(self$user.df$value) && private$num_colors > 1) {
@@ -207,7 +228,7 @@ Choropleth = R6Class("Choropleth",
                            levels(self$user.df$value) = sapply(levels(self$user.df$value), self$format_levels)
                          }
                        },
-
+                       #' @description bind
                        bind = function() {
                          self$choropleth.df = left_join(self$map.df, self$user.df, by="region")
                          missing_regions = unique(self$choropleth.df[is.na(self$choropleth.df$value), ]$region)
@@ -224,6 +245,7 @@ Choropleth = R6Class("Choropleth",
                          }
                        },
 
+                       #' @description prepare_map
                        prepare_map = function()
                        {
                          self$clip() # clip the input - e.g. remove value for Washington DC on a 50 state map
@@ -232,6 +254,7 @@ Choropleth = R6Class("Choropleth",
                        },
 
                        #' @importFrom ggplot2 scale_fill_gradient2
+                       #' @description  get_scale
                        get_scale = function()
                        {
                          if (!is.null(self$ggplot_scale))
@@ -269,6 +292,7 @@ Choropleth = R6Class("Choropleth",
                        # does for maps that appear as insets, such as Alaska) was causing a crash).
                        # So these functions now use theme_void
                        #' @importFrom ggplot2 theme_void
+                       #' @description theme_clean
                        theme_clean = function()
                        {
                          ggplot2::theme_void()
@@ -276,6 +300,7 @@ Choropleth = R6Class("Choropleth",
 
                        # This is a copy of the actual code in theme_void, but it also remove the legend
                        #' @importFrom ggplot2 theme_void theme "%+replace%"
+                       #' @description theme_inset
                        theme_inset = function()
                        {
                          ggplot2::theme_void() %+replace%
@@ -301,6 +326,9 @@ Choropleth = R6Class("Choropleth",
                        # # [1] "[562,803 to 2,851,183)"    "[2,851,183 to 6,353,226)"  "[6,353,226 to 37,325,068]"
                        #
                        # @seealso \url{http://stackoverflow.com/questions/22416612/how-can-i-get-cut2-to-use-commas/}, which this implementation is based on.
+                       #' @description format_levels
+                       #' @param x null
+                       #' @param nsep null
                        format_levels = function(x, nsep=" to ")
                        {
                          n = str_extract_all(x, "[-+]?[0-9]*\\.?[0-9]+")[[1]]  # extract numbers
@@ -325,6 +353,8 @@ Choropleth = R6Class("Choropleth",
                          paste0(prefix, paste(v,collapse=nsep), suffix)
                        },
 
+                       #' @description set_zoom
+                       #' @param zoom null
                        set_zoom = function(zoom)
                        {
                          if (is.null(zoom))
@@ -337,8 +367,11 @@ Choropleth = R6Class("Choropleth",
                          }
                        },
 
+                       #' @description get_zoom
                        get_zoom = function() { private$zoom },
 
+                       #' @description set_num_colors
+                       #' @param num_colors null
                        set_num_colors = function(num_colors)
                        {
                          # if R's ?is.integer actually tested if a value was an integer, we could replace the

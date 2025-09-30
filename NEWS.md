@@ -1,5 +1,10 @@
 # mxmaps 2020.2.1
 
+* Rename Choroplet R6 class to Choropleth2
+* Update documentation to bootstrap 5
+
+# mxmaps 2020.2.1
+
 * Remove dependency on deprecated package choropletr
 * Fix state labels in the state vignette
 

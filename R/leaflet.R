@@ -68,8 +68,8 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
 #'   "value".  Elements in the "region" column must exactly match how regions
 #'   are named in the "region" column in ?df_mxmunicipio.
 #' @param pal the color palette function, generated from
-#'   \code{\link{colorNumeric}()}, \code{colorBin()}, \code{colorQuantile()}, or
-#'   \code{colorFactor()}
+#'   \link[leaflet]{colorNumeric},  \link[leaflet]{colorBin},  \link[leaflet]{colorQuantile}, or
+#'    \link[leaflet]{colorFactor}
 #' @param fillColor the values used to generate colors from the palette function
 #' @param popup The text to show when the user clicks on a map feature
 #' @param weight The thickness of map feature borders
@@ -158,8 +158,8 @@ mxmunicipio_leaflet <- function(df, pal,
 #' @param df A data.frame with a column named "region" and a column named "value".  Elements in
 #' the "region" column must exactly match how regions are named in the "region" column in ?df_mxstate.
 #' @param pal the color palette function, generated from
-#'   \code{\link{colorNumeric}()}, \code{colorBin()}, \code{colorQuantile()}, or
-#'   \code{colorFactor()}
+#'   \link[leaflet]{colorNumeric},  \link[leaflet]{colorBin},  \link[leaflet]{colorQuantile}, or
+#'    \link[leaflet]{colorFactor}
 #' @param fillColor the values used to generate colors from the palette function
 #' @param popup The text to show when the user clicks on a map feature
 #' @param weight The thickness of map feature borders
