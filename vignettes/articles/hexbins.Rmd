@@ -62,4 +62,4 @@ mxhexbin_choropleth(df_mxstate_2020, num_colors = 1,
   scale_fill_viridis()
 ```
 
-Note how the label colors for GRO and OAX are black
+Note how the label colors for GRO and OAX are black with a white outline
