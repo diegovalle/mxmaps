@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE,
 knitr::include_graphics('homicides_shiny.png')
 ```
 
-You can also use the data that comes with the package to create interactive web apps with shiny.
+This document provides an example of how to use the `mxmaps` package to create an interactive web application with Shiny. The app displays a choropleth map of homicide rates in Mexico by state, and includes a slider to allow users to explore the data across different years.
 
 ```r
 ## Load required packages
@@ -130,4 +130,3 @@ server <- function(input, output, session) {
 
 shinyApp(ui, server)
 ```
-

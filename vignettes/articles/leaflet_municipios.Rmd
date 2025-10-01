@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = '100%')
 ```
 
+This document provides examples of how to create interactive choropleth maps of Mexican municipios using the `mxmaps` and `leaflet` packages. The examples show how to visualize data for all municipios, as well as how to create focused maps of specific areas, such as cities or metropolitan areas, by subsetting the data.
+
 ```{r}
 library(mxmaps)
 library(leaflet) # for colorNumeric

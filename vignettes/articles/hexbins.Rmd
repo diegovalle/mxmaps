@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = '100%')
 ```
 
+This document demonstrates how to create hexbin choropleth maps of Mexican states using the `mxmaps` package. The examples show how to visualize data on a hexbin grid, customize the appearance of state labels with different colors and shadows, and use an automatic contrast feature to ensure text readability against varying background colors.
+
 ```{r}
 library("mxmaps")
 

@@ -10,6 +10,8 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = '100%')
 ```
 
+This document provides examples of how to create interactive choropleth maps of Mexican states using the `mxmaps` and `leaflet` packages. The examples illustrate how to build maps with both continuous and categorical data, and how to customize the map legends.
+
 ```{r}
 library(mxmaps)
 library(leaflet) # for colorNumeric

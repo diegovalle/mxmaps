@@ -10,6 +10,12 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = '100%')
 ```
 
+This document provides examples of how to create choropleth maps of Mexican municipios using the `mxmaps` package. The examples showcase various customizations, such as using continuous and categorical data, zooming into specific regions, removing municipio borders, and adding labels to the map.
+
+### Continuous Color Scale
+
+The following example demonstrates how to create a choropleth map of all Mexican municipios with a continuous color scale. The map shows the percentage of the population that speaks an indigenous language.
+
 ```{r message=FALSE,warning=FALSE}
 library(mxmaps)
 library(viridis)
@@ -25,7 +31,9 @@ gg$ggplot_scale <- scale_fill_viridis("percent",
 gg$render()
 ```
 
-Another example with categorical data
+### Categorical Data and Zooming
+
+This example shows how to create a map with categorical data. The map is zoomed in to show only the municipios in the states of Mexico and Mexico City. The `theme_void()` function is used to create a clean layout without axes or gridlines.
 
 ```{r message=FALSE,warning=FALSE}
 library("ggplot2")
@@ -43,7 +51,10 @@ gg$ggplot_scale <- scale_fill_brewer("type", type = "qual", palette = 2,
 p <- gg$render()
 p + theme_void()
 ```
-You can also edit the ggplot object directly, for example, if you wanted to remove the municipio borders.
+
+### Removing Municipio Borders
+
+The `mxmunicipio_choropleth` function returns a `ggplot` object, which can be further customized. In this example, the borders of the municipios are removed by directly modifying the `ggplot` object.
 
 ```{r message=FALSE,warning=FALSE}
 library("scales")
@@ -58,7 +69,9 @@ p[["layers"]][[1]][["aes_params"]][["colour"]] <- "transparent"
 p
 ```
 
-We can also label the map with the names of important municipios (in this case those municipios in Chihuahua with more than 100,000 persons)
+### Adding Labels to the Map
+
+This example demonstrates how to add labels to the map to identify important municipios. The map is zoomed in to the state of Chihuahua, and labels are added for all municipios with a population greater than 100,000. The `ggrepel` package is used to prevent the labels from overlapping.
 
 ```{r}
 library("ggrepel")
