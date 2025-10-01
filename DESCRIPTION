@@ -1,7 +1,7 @@
 Package: mxmaps
 Type: Package
 Title: Create Maps of Mexico
-Version: 2020.2.1
+Version: 2020.2.2
 Authors@R: c(person("Diego", "Valle-Jones", email = "diego@diegovalle.net", role = c("aut", "cre")))
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
 Description: Ready-made functions to create static and interactive choropleths of Mexico.
@@ -34,5 +34,5 @@ Suggests:
     rmarkdown
 Depends:
     R (>= 3.2.3)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.3
 Encoding: UTF-8

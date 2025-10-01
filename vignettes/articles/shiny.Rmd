@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE,
 knitr::include_graphics('homicides_shiny.png')
 ```
 
-You can also use the data that comes with the package to create interactive webapps with shiny.
+This document provides an example of how to use the `mxmaps` package to create an interactive web application with Shiny. The app displays a choropleth map of homicide rates in Mexico by state, and includes a slider to allow users to explore the data across different years.
 
 ```r
 ## Load required packages
@@ -26,7 +26,6 @@ library("shiny")
 library("leaflet")
 library("RColorBrewer")
 library("lubridate")
-library("zoo")
 library("stringi")
 
 ## Download archived crime data from elcri.men 1997-2017 (not updated anymore)
@@ -47,10 +46,11 @@ crime$year <- as.integer(substr(crime$date, 1, 4))
 
 ## Yearly homicide rates
 hom <- crime %>%
-  mutate(year = year(as.yearmon(date))) %>%
+  mutate(year = year(paste0(date, "-01"))) %>%
   group_by(year, state_code, tipo, state) %>%
   summarise(total = sum(count, na.rm = TRUE),
-            rate = total / mean(population) * 10^5) %>%
+            rate = total / mean(population) * 10^5,
+            .groups = "drop") %>%
   mutate(region = str_mxstate(state_code),
          id = str_mxstate(state_code))
 
@@ -84,7 +84,7 @@ server <- function(input, output, session) {
   # Reactive expression for the data subsetted to what the user selected
   filteredData <- reactive({
     states <- left_join(states, subset(hom, year == input$range[1]), 
-                             by = "id")
+                        by = "id")
     states
     #hom[hom$year == input$range[1] ,]
   })
@@ -130,4 +130,3 @@ server <- function(input, output, session) {
 
 shinyApp(ui, server)
 ```
-

@@ -1,6 +1,14 @@
 url: https://www.diegovalle.net/mxmaps
 template:
-  
+
+  bootstrap: 5
+  math-rendering: mathjax
+  light-switch: true
+  bslib:
+    primary: "#0054AD"
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
+    danger: "#A6081A"
   includes:
     in_header: |
        <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -11,10 +19,6 @@ template:
          gtag('js', new Date());
          gtag('config', 'G-GDV0SL3HT9');
        </script>
-  params:
-    docsearch:
-      api_key: 8a77b782295c9cba8f27c0e19f021240
-      index_name: mxmaps
 authors:
   Diego Valle-Jones:
     href: https://www.diegovalle.net
@@ -48,13 +52,12 @@ navbar:
       href: reference/index.html
     - text: "Changelog"
       href: news/index.html
-  right:
-    - icon: fa-github
-      href: https://github.com/diegovalle/mxmaps
+  structure:
+    right: [search, github, lightswitch]
 reference:
   - title: internal
     contents:
-      - Choropleth
+      - Choropleth2
   - title: Static Maps
     desc: Functions for drawing non-interactive maps with ggplot2
     contents:

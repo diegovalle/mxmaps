@@ -18,7 +18,7 @@
 #' gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
 #' gg$render()
 MXHexBinChoropleth = R6Class("MXHexBinChoropleth",
-                             inherit = Choropleth,
+                             inherit = Choropleth2,
                              public = list(
                                #' @field label_color color for the state labels
                                #' @field shadow_color shadow color for the state labels

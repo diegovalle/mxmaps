@@ -5,13 +5,23 @@ css: css/report_styles.css
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      fig.dim = c(6, 6), 
-                      dpi = 100, 
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.dim = c(6, 6),
+                      dpi = 100,
                       out.width = '100%')
 ```
 
-The data.frame that you provide to the plotting functions must have one column named "region" and one column named "value". The entries for "region" must match the INEGI codes for states ("01", "02", etc) or municipios ("01001", "01002", etc) either as strings with or without a leading "0" or as numerics. The functions `str_mxstate` and `str_mxmunicipio` are provided to easily format codes to the INEGI specification. Also, some example data.frames, such as `df_mxstate_2020` and `df_mxmunicipio_2020`, are provided with demographic variables from the 2020 Census.
+The `data.frame` you provide to the plotting functions must
+have a `region` column and a `value` column. The `region`
+entries must be INEGI codes for states (e.g., "01", "02") or
+municipios (e.g., "01001", "01002"). These codes can be
+strings (with or without a leading zero) or numeric. The
+package provides the `str_mxstate` and `str_mxmunicipio`
+functions to easily format these codes to the INEGI
+specification. The package also includes example
+`data.frame` objects, such as `df_mxstate_2020` and
+`df_mxmunicipio_2020`, which contain demographic variables
+from the 2020 Census.
 
 ```{r}
 library(mxmaps)
@@ -25,8 +35,8 @@ htmlTable(head(df_mxmunicipio_2020), rnames = FALSE, col.rgroup = c("none", "#F7
 
 ## 2015 Conteo Intercensal
 
-There are additional data.frames with data from other censuses or conteos 
-intercensales
+Additional `data.frame` objects are available with data
+from other censuses and *conteos intercensales*.
 
 ```{r}
 data("df_mxstate_2015")
@@ -44,7 +54,12 @@ data("df_mxmunicipio_1990_2010")
 htmlTable(head(df_mxmunicipio_1990_2010), rnames = FALSE, col.rgroup = c("none", "#F7F7F7"))
 ```
 
-State names and abbreviations come in two versions since normal people always use _Veracruz_ instead of its full official name of _Veracruz de Ignacio de la Llave_, and it's kind of awkward to use the Chiapas official abbreviation of _Chis._
+The package includes two versions of state names and
+abbreviations. This is because common usage often differs
+from official names. For example, most people use "Veracruz"
+instead of the full official name, "Veracruz de Ignacio de
+la Llave." Similarly, the official abbreviation for Chiapas,
+"Chis.", can be awkward in some Spanish speaking countries.
 
 ```{r message=FALSE,warning=FALSE}
 library("geojsonio")

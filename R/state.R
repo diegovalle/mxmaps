@@ -13,7 +13,7 @@
 #' gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
 #' gg$render()
 MXStateChoropleth = R6Class("MXStateChoropleth",
-                            inherit = Choropleth,
+                            inherit = Choropleth2,
                             public = list(
 
                               #' @description

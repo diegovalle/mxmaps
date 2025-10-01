@@ -1,3 +1,9 @@
+# mxmaps 2020.2.2
+
+* Rename Choroplet R6 class to Choropleth2 to avoid interfering with 
+choroplethr package
+* Update documentation to bootstrap 5
+
 # mxmaps 2020.2.1
 
 * Remove dependency on deprecated package choropletr

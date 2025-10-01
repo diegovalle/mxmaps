@@ -74,13 +74,13 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          remotes::install_cran("stringr", type = "source", force = TRUE)
-          remotes::install_cran("stringi", type = "source", force = TRUE)
-          remotes::install_cran("sf", type = "source", force = TRUE)
-          remotes::install_cran("units", type = "source", force = TRUE)
-          remotes::install_cran("acs", type = "source", force = TRUE)
-          remotes::install_cran("choroplethr", type = "source", force = TRUE)
-          remotes::install_cran("shadowtext", type = "source", force = TRUE)
+          remotes::install_cran("stringr")
+          remotes::install_cran("stringi")
+          remotes::install_cran("sf")
+          remotes::install_cran("units")
+          remotes::install_cran("acs")
+          remotes::install_cran("choroplethr")
+          remotes::install_cran("shadowtext")
         shell: Rscript {0}
 
       - name: Check

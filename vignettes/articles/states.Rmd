@@ -12,6 +12,12 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = '100%')
 ```
 
+This document provides examples of how to create choropleth maps of Mexican states using the `mxmaps` package. The examples demonstrate how to customize the maps, including changing the color scale, adding state labels, handling missing values in the legend, and arranging multiple maps in a grid.
+
+### Basic State Choropleth
+
+This example shows how to create a simple choropleth map of Mexican states, displaying the total population by state.
+
 ```{r}
 library(mxmaps)
 
@@ -21,7 +27,9 @@ mxstate_choropleth(df_mxstate_2020,
                     title = "Total population, by state") 
 ```
 
-## Change the color scale
+### Customizing the Color Scale
+
+This example demonstrates how to change the color scale of the map. The `viridis` color scale is used to represent the percentage of the population that speaks an indigenous language.
 
 ```{r message=FALSE,warning=FALSE}
 library(mxmaps)
@@ -37,7 +45,9 @@ gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
 gg$render()
 ```
 
-## Map with labels for each state
+### Adding Labels to the Map
+
+This example shows how to add labels to each state on the map. The `ggrepel` package is used to prevent the labels from overlapping.
 
 ```{r text-repel, message=FALSE,warning=FALSE}
 library("geojsonio")
@@ -80,9 +90,9 @@ p +
                   force = 0.1)
 ```
 
-## Legends
+### Legend for Missing Values
 
-Add a legend for states with NA values
+This example demonstrates how to add a legend for states with missing (NA) values. A separate legend is created to indicate which states have no data.
 
 ```{r warning=FALSE, message=FALSE}
 
@@ -108,11 +118,9 @@ mxstate_choropleth(df_na,
                                                 size = 7)))
 ```
 
-## facet_grid like functionality
+### Creating Small Multiples (Faceting)
 
-Currently `mxmaps` is not compatible with facet_grid, but we can mimic the
-same functionality by using the function `ggarrange` from the `ggpubr` 
-package
+While `mxmaps` is not directly compatible with `facet_grid`, this example shows how to mimic faceting functionality by creating multiple maps and arranging them in a grid using the `ggarrange` function from the `ggpubr` package. This allows for the comparison of different variables or populations side-by-side.
 
 ```{r}
 library(mxmaps)
@@ -139,4 +147,5 @@ m <- mxstate_choropleth(subset(df, genero == "m"),
 ggarrange(f, m,
           labels = c("", ""),
           ncol = 1, nrow = 2)
+```
 ```
