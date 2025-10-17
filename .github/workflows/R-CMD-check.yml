@@ -78,8 +78,6 @@ jobs:
           remotes::install_cran("stringi")
           remotes::install_cran("sf")
           remotes::install_cran("units")
-          remotes::install_cran("acs")
-          remotes::install_cran("choroplethr")
           remotes::install_cran("shadowtext")
         shell: Rscript {0}
 
