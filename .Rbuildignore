@@ -21,3 +21,4 @@ README_files
 .github
 ^\.github$
 ^index_files$
+^pkgdown/
