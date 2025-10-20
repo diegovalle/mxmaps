@@ -1,3 +1,9 @@
+# mxmaps 2020.2.9000
+
+* Add pkgdown directory to .Rbuildignore
+* Update lifecycle to stable since maturing was deprecated from the lifecyle
+package
+
 # mxmaps 2020.2.2
 
 * Rename Choroplet R6 class to Choropleth2 to avoid interfering with 
