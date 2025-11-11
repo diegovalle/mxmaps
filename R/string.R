@@ -1,7 +1,7 @@
 #' Format state codes with leading zeroes
 #'
 #' @param code The state code according to the INEGI's Catalogo de entidades federativas, municipios y localidades
-#' @seealso \url{http://www.inegi.org.mx/est/contenidos/proyectos/aspectosmetodologicos/clasificadoresycatalogos/catalogo_entidades.aspx}
+#' @seealso \url{https://www.inegi.org.mx/app/ageeml/}
 #'
 #' @return The state code in the format required by the plotting functions
 #' @export
@@ -30,7 +30,7 @@ str_mxstate <- function(code){
 #'
 #' @param code The sate or combined state and municipio code if the municipio_code variable is missing
 #' @param municipio_code The municipio code
-#' @seealso \url{http://www.inegi.org.mx/est/contenidos/proyectos/aspectosmetodologicos/clasificadoresycatalogos/catalogo_entidades.aspx}
+#' @seealso \url{https://www.inegi.org.mx/app/ageeml/}
 #'
 #' @return The state and municipio code in the format required by the plotting functions
 #' @export
@@ -69,5 +69,3 @@ str_mxmunicipio <- function(code, municipio_code){
   }
   return(code)
 }
-
-
