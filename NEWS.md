@@ -1,4 +1,4 @@
-# mxmaps 2020.2.9000
+# mxmaps 2020.2.3
 
 * Add pkgdown directory to .Rbuildignore
 * Update lifecycle to stable since maturing was deprecated from the lifecyle
