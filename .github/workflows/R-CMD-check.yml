@@ -93,17 +93,17 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-       - name: Install dependencies
-         run: |
-           remotes::install_deps(dependencies = TRUE)
-           remotes::install_cran("rcmdcheck")
-           remotes::install_cran("stringr")
-           remotes::install_cran("stringi")
-           remotes::install_cran("sf")
-           remotes::install_cran("units")
-           remotes::install_cran("shadowtext")
-           remotes::install_cran("rlang")
-         shell: Rscript {0}
+      - name: Install dependencies
+        run: |
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
+          remotes::install_cran("stringr")
+          remotes::install_cran("stringi")
+          remotes::install_cran("sf")
+          remotes::install_cran("units")
+          remotes::install_cran("shadowtext")
+          remotes::install_cran("rlang")
+        shell: Rscript {0}
 
       - name: Check
         env:
