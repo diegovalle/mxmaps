@@ -15,19 +15,42 @@ on:
       - develop
 
 name: R-CMD-check
+# Trigger / Branch    ubuntu (all versions)	windows-latest	macos-latest
+# Push to main/master	✅ Runs               ✅ Runs         ✅ Runs
+# Push to test  	    ✅ Runs               ✅ Runs         ✅ Runs
+# Push to develop	    ✅ Runs               ❌ Skipped      ❌ Skipped
+# Weekly Schedule	    ✅ Runs (release)     ❌ Skipped      ❌ Skipped
 
 jobs:
   R-CMD-check:
+
     runs-on: ${{ matrix.config.os }}
-    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
       fail-fast: false
       matrix:
-        config:
-          - {os: macOS-latest, r: 'release'}
-          - {os: ubuntu-latest, r: 'devel'}
+        config: |
+          ${{ fromJSON(
+          (github.event_name == 'schedule')
+          && '[
+            {"os":"ubuntu-latest","r":"release"}
+          ]'
+          || ((github.ref_name == 'main' || github.ref_name == 'master' || github.ref_name == 'test')
+          && '[
+            {"os":"ubuntu-latest","r":"devel","http-user-agent":"release"},
+            {"os":"ubuntu-latest","r":"release"},
+            {"os":"ubuntu-latest","r":"oldrel-1"},
+            {"os":"windows-latest","r":"release"},
+            {"os":"macos-latest","r":"release"}
+          ]'
+          || '[
+            {"os":"ubuntu-latest","r":"devel","http-user-agent":"release"},
+            {"os":"ubuntu-latest","r":"release"},
+            {"os":"ubuntu-latest","r":"oldrel-1"}
+          ]')
+          ) }}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
