@@ -1,14 +1,14 @@
 # mxmaps 2020.2.3
 
-* Add pkgdown directory to .Rbuildignore
-* Update lifecycle to stable since maturing was deprecated from the lifecyle
+* Exlude images in man/figures by adding it to .Rbuildignore
+* Update lifecycle badge to stable since maturing was deprecated from the lifecyle
 package
 
 # mxmaps 2020.2.2
 
-* Rename Choroplet R6 class to Choropleth2 to avoid interfering with 
+* Rename Choroplet R6 class to Choropleth2 to avoid interfering with the 
 choroplethr package
-* Update documentation to bootstrap 5
+* Update documentation to use bootstrap 5
 
 # mxmaps 2020.2.1
 

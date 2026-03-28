@@ -41,7 +41,7 @@ devtools::install_github('diegovalle/mxmaps')
 
 ## Quick Example
 
-```{r}
+```{r readme-quick-example}
 library(mxmaps)
 
 data("df_mxstate_2020")
@@ -65,7 +65,7 @@ knitr::kable(head(df_mxmunicipio_2020))
 
 Here's another example showing Mexican municipios (similar to counties):
 
-```{r}
+```{r readme-muncipios}
 data("df_mxmunicipio_2020")
 df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / df_mxmunicipio_2020$pop 
 mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,

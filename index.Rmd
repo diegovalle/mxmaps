@@ -9,7 +9,8 @@ fig_height: 5
 knitr::opts_chunk$set(echo = TRUE, 
                       fig.dim = c(8, 5), 
                       dpi = 200, 
-                      out.width = '100%')
+                      out.width = '100%',
+                      fig.path = "man/figures/")
 ```
 
 # mxmaps - create maps of Mexico
@@ -18,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE,
 [![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master) 
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 
-<img src="header.png" intrinsicsize="722 x 270" style="width:80%">
+<img src="reference/figures/header.png" alt="Maps of Mexico" intrinsicsize="722 x 270" style="width:80%">
 
 This R package easily creates choropleth maps of Mexico at both the state and municipio levels. It is based on the [choroplethr](https://cran.r-project.org/web/packages/choroplethr/index.html) package and includes functions to create interactive maps with Leaflet, and to format strings to match INEGI state and municipio codes. If you have questions, please visit the [discussion forum](https://groups.google.com/forum/#!forum/mxmaps).
 
@@ -37,7 +38,7 @@ Note: `mxmaps` depends on the `sf` package, which has its own [system dependenci
 
 ## Quick Example
 
-```{r head, fig.dim = c(8, 5)}
+```{r index-example, fig.dim = c(8, 5)}
 library("mxmaps")
 
 df_mxstate_2020$value <- df_mxstate_2020$pop
@@ -55,7 +56,7 @@ knitr::kable(head(df_mxstate_2020[,c("region", "value")]))
 
 The two main functions in this package are `mxstate_choropleth` and `mxmunicipio_choropleth`. The `data.frame` provided to these functions must contain a `region` column with INEGI state or municipio codes, and a `value` column with the values to plot. You can set the map's title with the `title` parameter and the number of color buckets with the `num_colors` parameter. To use a continuous color scale, set `num_colors = 1`.
 
-```{r}
+```{r index-basics}
 library("mxmaps")
 
 df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
@@ -70,7 +71,7 @@ mxstate_choropleth(df_mxstate_2020,
 
 You can also plot data for Mexican municipios (which are similar to US counties).
 
-```{r}
+```{r index-municipios}
 data("df_mxmunicipio_2020")
 df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / 
   df_mxmunicipio_2020$pop * 100
@@ -83,7 +84,7 @@ mxmunicipio_choropleth(df_mxmunicipio_2020,
 
 You can also zoom in on specific areas of the map by passing a vector of `region` codes to the `zoom` parameter:
 
-```{r}
+```{r index-zoom}
 
 mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
                        zoom = subset(df_mxmunicipio_2020, metro_area %in% 
@@ -97,7 +98,7 @@ mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
 
 The `show_states` parameter allows you to hide state borders on municipio-level maps.
 
-```{r}
+```{r index-borders}
 mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
                        zoom = subset(df_mxmunicipio_2020, state_name %in% 
                                        c("Yucatán", "Veracruz"))$region,
