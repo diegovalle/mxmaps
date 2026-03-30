@@ -121,7 +121,7 @@ jobs:
       #     ./build_docs.sh
 
       - name: coveralls
-        if: matrix.config.r == 'release'
+        if: matrix.config.r == 'release' && github.event_name != 'schedule'
         run: >
           Rscript -e 
           'install.packages(c("covr", "xml2"));
