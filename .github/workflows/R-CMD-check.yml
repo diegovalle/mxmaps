@@ -14,6 +14,9 @@ on:
       - master
       - develop
 
+permissions:  # added using https://github.com/step-security/secure-workflows
+  contents: read
+
 name: R-CMD-check
 # Trigger / Branch    ubuntu (all versions)	windows-latest	macos-latest
 # Push to main/master	✅ Runs               ✅ Runs         ✅ Runs
@@ -93,17 +96,17 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: Install dependencies
-        run: |
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-          remotes::install_cran("stringr")
-          remotes::install_cran("stringi")
-          remotes::install_cran("sf")
-          remotes::install_cran("units")
-          remotes::install_cran("shadowtext")
-          remotes::install_cran("rlang")
-        shell: Rscript {0}
+      # - name: Install dependencies
+      #   run: |
+      #     remotes::install_deps(dependencies = TRUE)
+      #     remotes::install_cran("rcmdcheck")
+      #     remotes::install_cran("stringr")
+      #     remotes::install_cran("stringi")
+      #     remotes::install_cran("sf")
+      #     remotes::install_cran("units")
+      #     remotes::install_cran("shadowtext")
+      #     remotes::install_cran("rlang")
+      #   shell: Rscript {0}
 
       - name: Check
         env:
