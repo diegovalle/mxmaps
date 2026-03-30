@@ -64,7 +64,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-r@v2
         with:
@@ -81,12 +81,10 @@ jobs:
           sudo apt-get install libudunits2-dev libgdal-dev libproj-dev libgeos-dev libfontconfig1-dev libcairo2-dev
           sudo apt-get install libicu-dev
 
-      - name: Query dependencies
-        run: |
-          install.packages('remotes')
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
 
       - name: Cache R packages
         if: runner.os != 'Windows'
@@ -96,18 +94,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      # - name: Install dependencies
-      #   run: |
-      #     remotes::install_deps(dependencies = TRUE)
-      #     remotes::install_cran("rcmdcheck")
-      #     remotes::install_cran("stringr")
-      #     remotes::install_cran("stringi")
-      #     remotes::install_cran("sf")
-      #     remotes::install_cran("units")
-      #     remotes::install_cran("shadowtext")
-      #     remotes::install_cran("rlang")
-      #   shell: Rscript {0}
-
       - name: Check
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
@@ -115,13 +101,13 @@ jobs:
         shell: Rscript {0}
 
       - name: test mxmaps website
-        if: matrix.config.r == 'release' && matrix.config.os == 'ubuntu-20.04'
+        if: matrix.config.r == 'release'
         run: |
           Rscript -e "tryCatch({install.packages(c('RJSONIO', 'ggpubr', 'viridis', 'scales', 'sf', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'), type = 'source');install.packages('V8', repos = 'http://cran.r-project.org'); remotes::install_github('r-lib/pkgdown'); remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR', force = TRUE);}, error = function(e) {quit(status=1)})"
           ./build_docs.sh
 
       - name: coveralls
-        if: matrix.config.r == 'release' && matrix.config.os == 'ubuntu-20.04'
+        if: matrix.config.r == 'release'
         run: |
           Rscript -e 'remotes::install_github("r-lib/covr@gh-actions");covr::codecov(quiet = FALSE, token = "${{secrets.CODECOV_TOKEN}}")'
 
