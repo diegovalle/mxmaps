@@ -116,14 +116,17 @@ jobs:
 
       # - name: test mxmaps website
       #   if: matrix.config.r == 'release'
-      #   run: |
+      #   run: >
       #     Rscript -e "tryCatch({install.packages(c('RJSONIO', 'ggpubr', 'viridis', 'scales', 'sf', 'geojsonio', 'ggrepel', 'leaflet', 'jsonlite'), type = 'source');install.packages('V8', repos = 'http://cran.r-project.org'); remotes::install_github('r-lib/pkgdown'); remotes::install_github('diegovalle/mxmaps');remotes::install_github('Eflores89/inegiR', force = TRUE);}, error = function(e) {quit(status=1)})"
       #     ./build_docs.sh
 
       - name: coveralls
         if: matrix.config.r == 'release'
-        run: |
-          Rscript -e 'install.packages(c("xml2"));remotes::install_github("r-lib/covr@gh-actions");covr::codecov(quiet = FALSE, token = "${{secrets.CODECOV_TOKEN}}")'
+        run: >
+          Rscript -e 
+          'install.packages(c("covr", "xml2"));
+           remotes::install_github("r-lib/covr@gh-actions");
+           covr::codecov(quiet = FALSE, token = "${{secrets.CODECOV_TOKEN}}")'
 
       - name: Upload check results
         if: failure()
