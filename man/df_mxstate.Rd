@@ -8,7 +8,7 @@
 An object of class \code{data.frame} with 32 rows and 13 columns.
 }
 \usage{
-df_mxstate
+data(df_mxstate)
 }
 \description{
 A data.frame containing population estimates for all the Mexican states in 2015.

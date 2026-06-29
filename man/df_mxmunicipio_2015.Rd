@@ -8,7 +8,7 @@
 An object of class \code{data.frame} with 2457 rows and 19 columns.
 }
 \usage{
-df_mxmunicipio_2015
+data(df_mxmunicipio_2015)
 }
 \description{
 A data.frame containing population estimates for all the Mexican municipios in 2015.

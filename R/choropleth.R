@@ -1,12 +1,38 @@
 #' The base Choropleth2 object.
 #' @importFrom R6 R6Class
-#' @importFrom ggplot2 scale_color_continuous coord_quickmap coord_map scale_x_continuous scale_y_continuous geom_sf coord_sf
+#' @importFrom ggplot2 scale_color_continuous coord_quickmap coord_map scale_x_continuous scale_y_continuous geom_sf coord_sf annotate
 #' @importFrom ggmap get_map ggmap
 #' @importFrom RgoogleMaps MaxZoom
 #' @importFrom stringr str_extract_all
 #' @importFrom dplyr left_join
 #' @keywords internal
 #' @export
+#'
+# -------------------------------------------------------------------------
+# Extensions for mxmaps
+#
+# Added support for:
+#   - customizable polygon borders
+#   - configurable backgrounds
+#   - title styling
+#   - scale bar rendering
+#
+# Added parameters:
+#   border_color
+#   border_size
+#   background_color
+#   title_color
+#   title_align
+#   title_position
+#   scale_bar
+#   scale_bar_position
+#   scale_bar_length
+#   scale_bar_segments
+#   scale_bar_height
+#   scale_bar_color
+#   scale_bar_text_color
+#
+# -------------------------------------------------------------------------
 Choropleth2 = R6Class("Choropleth2",
 
                      #' @field user.df input from user
@@ -20,6 +46,23 @@ Choropleth2 = R6Class("Choropleth2",
                      #' @field projection_sf null
                      #' @field projection null
                      #' @field ggplot_sf null
+                     #'
+                     #'
+                     #' @field border_color Polygon border color.
+                     #' @field border_size Polygon border width.
+                     #' @field background_color Background color.
+                     #'
+                     #' @field title_color Title color.
+                     #' @field title_align Title horizontal alignment.
+                     #' @field title_position Title position.
+                     #'
+                     #' @field scale_bar Draw scale bar.
+                     #' @field scale_bar_position Scale bar position.
+                     #' @field scale_bar_length Scale bar length in km.
+                     #' @field scale_bar_segments Number of segments.
+                     #' @field scale_bar_height Scale bar height.
+                     #' @field scale_bar_color Scale bar color.
+                     #' @field scale_bar_text_color Scale bar text color.
                      public = list(
                        # the key objects for this class
                        user.df        = NULL, # input from user
@@ -41,6 +84,25 @@ Choropleth2 = R6Class("Choropleth2",
                        # variables for working with simple features
                        projection_sf  = NULL,
                        ggplot_sf      = NULL,
+
+                       # mxmaps extensions
+                       border_color = "dark grey",
+                       border_size = 0.2,
+
+                       background_color="white",
+
+                       title_color = "black",
+                       title_align = 0.5,
+                       title_position = "plot",
+
+                       scale_bar = FALSE,
+                       scale_bar_position = "bl",
+                       scale_bar_length=500,
+                       scale_bar_segments = 5,
+                       scale_bar_height = 0.5,
+                       scale_bar_color="black",
+                       scale_bar_text_color="black",
+
 
                        #' @description a choropleth map is defined by these two variables
                        #' @param map.df a data.frame of a map
@@ -98,20 +160,122 @@ Choropleth2 = R6Class("Choropleth2",
                          self$prepare_map()
 
                          if ("sf" %in% class(self$choropleth.df)) {
-                           ggplot(self$choropleth.df) +
-                             self$ggplot_sf +
+                           gg <- ggplot(self$choropleth.df) +
+                             geom_sf(
+                               aes(fill=value),
+                               color=self$border_color,
+                               linewidth=self$border_size
+                             ) +
                              self$get_scale() +
                              self$theme_clean() +
                              ggtitle(self$title) +
                              self$projection_sf
                          } else {
-                           ggplot(self$choropleth.df, aes(long, lat, group = group)) +
-                             self$ggplot_polygon +
+                           gg <- ggplot(self$choropleth.df, aes(long, lat, group = group)) +
+                             geom_polygon(
+                               aes(fill=value),
+                               color=self$border_color,
+                               linewidth=self$border_size
+                             ) +
                              self$get_scale() +
                              self$theme_clean() +
                              ggtitle(self$title) +
                              self$projection
                          }
+
+                         # mxmaps extension: optional scale bar
+
+                         if(self$scale_bar){
+                           xmin <- min(self$choropleth.df$long)
+                           xmax <- max(self$choropleth.df$long)
+
+                           ymin <- min(self$choropleth.df$lat)
+                           ymax <- max(self$choropleth.df$lat)
+
+
+                           km <- self$scale_bar_length
+
+                           mean_lat <- mean(self$choropleth.df$lat)
+
+                           km_per_degree <- 111 * cos(mean_lat*pi/180)
+
+                           deg <- km / km_per_degree
+
+
+                           segment_deg <- deg/self$scale_bar_segments
+                           segment_km <- km/self$scale_bar_segments
+
+                           # determine scale bar position
+                           if(self$scale_bar_position == "bl"){
+                             x0 <- xmin + 0.05*(xmax-xmin)
+                             y0 <- ymin + 0.05*(ymax-ymin)
+                           }
+
+                           if(self$scale_bar_position == "br"){
+                             x0 <- xmax - 0.10*(xmax-xmin) - deg
+                             y0 <- ymin + 0.05*(ymax-ymin)
+                           }
+
+                           if(self$scale_bar_position == "tl"){
+                             x0 <- xmin + 0.05*(xmax-xmin)
+                             y0 <- ymax - 0.05*(ymax-ymin)
+                           }
+
+                           if(self$scale_bar_position == "tr"){
+                             x0 <- xmax - 0.10*(xmax-xmin) - deg
+                             y0 <- ymax - 0.05*(ymax-ymin)
+                           }
+
+
+                          # draw scale bar segments
+                           for(i in seq_len(self$scale_bar_segments)){
+                             xleft <- x0+(i-1)*segment_deg
+                             xright <- x0+i*segment_deg
+
+                             fillcol <- ifelse(
+                               i %% 2 == 0,
+                               "white",
+                               self$scale_bar_color
+                             )
+
+                             gg <- gg +
+                               annotate("rect",
+                                        xmin = xleft,xmax=xright,
+                                        ymin=y0, ymax=y0+self$scale_bar_height,
+
+                                        fill=fillcol,
+                                        colour = self$scale_bar_color,
+                                        linewidth = .3)
+
+                           }
+
+
+
+                           # draw distance labels
+                           for(i in 0:self$scale_bar_segments){
+                             xlab <- x0 + i*segment_deg
+                             lab <- round(i*segment_km)
+
+                             gg <- gg +
+                               annotate(
+                                 "text", x=xlab,
+                                 y=y0 - self$scale_bar_height,
+                                 label=lab,
+                                 size=3,
+                                 colour=self$scale_bar_text_color
+                               )
+                           }
+
+                           gg <-  gg +
+                             annotate("text",
+                                      x=x0+(self$scale_bar_segments+0.5)*segment_deg,
+                                      y=y0+0.5*self$scale_bar_height,
+                                      label="km", hjust=0,
+                                      colour=self$scale_bar_text_color)
+
+                         }
+
+                         gg
                        },
 
                        # left
@@ -180,8 +344,11 @@ Choropleth2 = R6Class("Choropleth2",
                        #' @param alpha null
                        get_choropleth_as_polygon = function(alpha)
                        {
+                         # mxmaps extension: customizable polygon borders
                          geom_polygon(data = self$choropleth.df,
-                                      aes(x = long, y = lat, fill = value, group = group), alpha = alpha)
+                                      aes(x = long, y = lat, fill = value, group = group), alpha = alpha,
+                                      color=self$border_color,
+                                      linewidth=self$border_size)
                        },
                        #' @description render_with_reference_map
                        #' @param alpha null
@@ -293,9 +460,44 @@ Choropleth2 = R6Class("Choropleth2",
                        # So these functions now use theme_void
                        #' @importFrom ggplot2 theme_void
                        #' @description theme_clean
+                       # mxmaps extension:
+                       # configurable background and title appearance
                        theme_clean = function()
                        {
-                         ggplot2::theme_void()
+                         ggplot2::theme_void()+
+                           ggplot2::theme(
+
+                             panel.background =
+                               ggplot2::element_rect(
+                                 fill =  self$background_color,
+                                 colour = self$background_color
+                               ),
+                             plot.background =
+                               ggplot2::element_rect(
+                                 fill =  self$background_color,
+                                 colour = self$background_color
+                               ),
+
+                             legend.background =
+                               ggplot2::element_rect(
+                                 fill=self$background_color,
+                                 colour=self$background_color
+                               ),
+                             legend.key=
+                               ggplot2::element_rect(
+                                 fill=self$background_color,
+                                 colour=self$background_color
+                               ),
+                             plot.title =
+                               ggplot2::element_text(
+                                colour=self$title_color,
+                                hjust=self$title_align
+                             ),
+                             plot.title.position =
+                               self$title_position
+
+
+                           )
                        },
 
                        # This is a copy of the actual code in theme_void, but it also remove the legend
@@ -391,4 +593,10 @@ Choropleth2 = R6Class("Choropleth2",
                        has_invalid_regions = FALSE
                      )
 )
-#Code taken from https://github.com/cran/choroplethr/blob/master/R/choropleth.R
+# Original implementation based on:
+# https://github.com/cran/choroplethr/blob/master/R/choropleth.R
+#
+# Extended for mxmaps with:
+#   - customizable borders
+#   - configurable themes
+#   - scale bar support
