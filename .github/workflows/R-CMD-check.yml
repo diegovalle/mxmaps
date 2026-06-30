@@ -2,20 +2,33 @@
 # https://community.rstudio.com/new-topic?category=Package%20development&tags=github-actions
 on:
   schedule:
-    - cron: '2 20 * * 5'
+    - cron: "2 20 * * 5"
   push:
     branches:
       - main
       - master
       - develop
+    paths-ignore:
+      - "README.md"
+      - "README.Rmd"
+      - "index.md"
+      - "index.Rmd"
+      - "mxmaps.Rproj"
+      - "LICENSE"
+      - "vignettes/**"
+      - "data-raw/**"
   pull_request:
     branches:
       - main
       - master
       - develop
 
-permissions:  # added using https://github.com/step-security/secure-workflows
+permissions: # added using https://github.com/step-security/secure-workflows
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 name: R-CMD-check
 # Trigger / Branch    ubuntu (all versions)	windows-latest	macos-latest
@@ -26,7 +39,6 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
-
     runs-on: ${{ matrix.config.os }}
 
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
@@ -34,44 +46,45 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config: |
-          ${{ fromJSON(
-          (github.event_name == 'schedule')
-          && '[
-            {"os":"ubuntu-latest","r":"release"}
-          ]'
-          || ((github.ref_name == 'main' || github.ref_name == 'master' || github.ref_name == 'test')
-          && '[
-            {"os":"ubuntu-latest","r":"devel","http-user-agent":"release"},
-            {"os":"ubuntu-latest","r":"release"},
-            {"os":"ubuntu-latest","r":"oldrel-1"},
-            {"os":"windows-latest","r":"release"},
-            {"os":"macos-latest","r":"release"}
-          ]'
-          || '[
-            {"os":"ubuntu-latest","r":"devel","http-user-agent":"release"},
-            {"os":"ubuntu-latest","r":"release"},
-            {"os":"ubuntu-latest","r":"oldrel-1"}
-          ]')
-          ) }}
+        config:
+          - >
+            ${{ fromJSON(
+            (github.event_name == 'schedule')
+            && '[
+              {"os":"ubuntu-latest","r":"release"}
+            ]'
+            || ((github.ref_name == 'main' || github.ref_name == 'master' || github.ref_name == 'test')
+            && '[
+              {"os":"ubuntu-latest","r":"devel","http-user-agent":"release"},
+              {"os":"ubuntu-latest","r":"release"},
+              {"os":"ubuntu-latest","r":"oldrel-1"},
+              {"os":"windows-latest","r":"release"},
+              {"os":"macos-latest","r":"release"}
+            ]'
+            || '[
+              {"os":"ubuntu-latest","r":"devel","http-user-agent":"release"},
+              {"os":"ubuntu-latest","r":"release"},
+              {"os":"ubuntu-latest","r":"oldrel-1"}
+            ]')
+            ) }}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
-      INEGI_TOKEN: ${{ secrets.INEGI_TOKEN }}
-      COVERALLS_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
 
-      - uses: r-lib/actions/setup-r@v2
+      - uses: r-lib/actions/setup-r@d3c5be51b12e724e68f33216ca3c148b66d5f0b6 # v2
         with:
           r-version: ${{ matrix.config.r }}
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-pandoc@d3c5be51b12e724e68f33216ca3c148b66d5f0b6 # v2
 
       - name: system dependencies
         if: runner.os == 'Linux'
@@ -90,7 +103,7 @@ jobs:
 
       - name: Cache R packages
         if: runner.os != 'Windows'
-        uses: actions/cache@v3
+        uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
@@ -100,12 +113,12 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-      #     remotes::install_cran("stringr")
-      #     remotes::install_cran("stringi")
-      #     remotes::install_cran("sf")
-      #     remotes::install_cran("units")
-      #     remotes::install_cran("shadowtext")
-      #     remotes::install_cran("rlang")
+        #     remotes::install_cran("stringr")
+        #     remotes::install_cran("stringi")
+        #     remotes::install_cran("sf")
+        #     remotes::install_cran("units")
+        #     remotes::install_cran("shadowtext")
+        #     remotes::install_cran("rlang")
         shell: Rscript {0}
 
       - name: Check
@@ -123,14 +136,16 @@ jobs:
       - name: coveralls
         if: matrix.config.r == 'release' && github.event_name != 'schedule'
         run: >
-          Rscript -e 
+          Rscript -e
           'install.packages(c("covr", "xml2"));
            remotes::install_github("r-lib/covr@gh-actions");
-           covr::codecov(quiet = FALSE, token = "${{secrets.CODECOV_TOKEN}}")'
+           covr::codecov(quiet = FALSE, token = "${ CODECOV_TOKEN }")'
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN}}
 
       - name: Upload check results
         if: failure()
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
