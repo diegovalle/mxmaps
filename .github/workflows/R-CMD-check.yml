@@ -9,12 +9,15 @@ on:
       - master
       - develop
     paths-ignore:
+      - "build_docs.sh"
+      - "ISSUE_TEMPLATE.md"
+      - "_pkgdown.yml"
+      - "NEWS.md"
       - "README.md"
       - "README.Rmd"
       - "index.md"
       - "index.Rmd"
       - "mxmaps.Rproj"
-      - "LICENSE"
       - "vignettes/**"
       - "data-raw/**"
   pull_request:
@@ -47,7 +50,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - >
+          - |
             ${{ fromJSON(
             (github.event_name == 'schedule')
             && '[
