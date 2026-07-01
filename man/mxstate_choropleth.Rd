@@ -4,7 +4,26 @@
 \alias{mxstate_choropleth}
 \title{Create a state-level choropleth}
 \usage{
-mxstate_choropleth(df, title = "", legend = "", num_colors = 7, zoom = NULL)
+mxstate_choropleth(
+  df,
+  title = "",
+  legend = "",
+  num_colors = 7,
+  zoom = NULL,
+  background_color = "white",
+  border_color = "dark grey",
+  border_size = 0.2,
+  title_color = "black",
+  title_align = 0.5,
+  title_position = "plot",
+  scale_bar = FALSE,
+  scale_bar_position = "bl",
+  scale_bar_length = 500,
+  scale_bar_segments = 5,
+  scale_bar_height = 0.5,
+  scale_bar_color = "black",
+  scale_bar_text_color = "black"
+)
 }
 \arguments{
 \item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
@@ -20,6 +39,33 @@ will use a continuous scale, and a value in [2, 9] will use that many colors.}
 
 \item{zoom}{An optional vector of countries to zoom in on. Elements of this vector must exactly
 match the names of countries as they appear in the "region" column of ?country.regions}
+
+\item{background_color}{Background color of the map and legend.}
+
+\item{border_color}{Border color of polygons.}
+
+\item{border_size}{Border line width.}
+
+\item{title_color}{Title text color.}
+
+\item{title_align}{Horizontal justification of title.}
+
+\item{title_position}{Either "plot" or "panel".}
+
+\item{scale_bar}{Logical; draw a scale bar.}
+
+\item{scale_bar_position}{Position of scale bar:
+"bl", "br", "tl", or "tr".}
+
+\item{scale_bar_length}{Scale bar length in kilometers.}
+
+\item{scale_bar_segments}{Number of scale bar segments.}
+
+\item{scale_bar_height}{Height of scale bar.}
+
+\item{scale_bar_color}{Scale bar outline and fill color.}
+
+\item{scale_bar_text_color}{Scale bar text color.}
 }
 \description{
 The map used is mxstate.map. See ?mxstate.map for

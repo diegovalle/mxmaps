@@ -6,7 +6,8 @@ Authors@R: c(person("Diego", "Valle-Jones", email = "diego@diegovalle.net", role
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
 Description: Ready-made functions to create static and interactive choropleths of Mexico.
     Includes functions to manipulate INEGI state and municipio codes along with options to download data
-    from the INEGI API.
+    from the INEGI API, and customize map appearance through configurable borders, backgrounds, titles and
+    optional scale bars.
 URL: https://www.diegovalle.net/mxmaps/, https://github.com/diegovalle/mxmaps
 BugReports: https://github.com/diegovalle/mxmaps/issues
 License: BSD_3_clause + file LICENSE
@@ -34,5 +35,5 @@ Suggests:
     rmarkdown
 Depends:
     R (>= 3.2.3)
-RoxygenNote: 7.3.3
 Encoding: UTF-8
+Config/roxygen2/version: 8.0.0

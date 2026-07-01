@@ -8,7 +8,7 @@
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 36855 rows and 5 columns.
 }
 \usage{
-df_mxmunicipio_1990_2010
+data(df_mxmunicipio_1990_2010)
 }
 \description{
 A data.frame containing population estimates for all the Mexican municipios in
