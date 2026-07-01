@@ -5,8 +5,6 @@
 \title{An R6 object for creating municipio-level choropleths.}
 \description{
 An R6 object for creating municipio-level choropleths.
-
-An R6 object for creating municipio-level choropleths.
 }
 \examples{
 library(viridis)
@@ -20,105 +18,102 @@ gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
 gg$render()
 }
 \section{Super class}{
-\code{\link[mxmaps:Choropleth2]{mxmaps::Choropleth2}} -> \code{MXMunicipioChoropleth}
+\code{\link[mxmaps:Choropleth2]{Choropleth2}} -> \code{MXMunicipioChoropleth}
 }
 \section{Public fields}{
-\if{html}{\out{<div class="r6-fields">}}
-\describe{
-\item{\code{show_states}}{boolean, draw state borders}
-}
-\if{html}{\out{</div>}}
+  \if{html}{\out{<div class="r6-fields">}}
+  \describe{
+    \item{\code{show_states}}{boolean, draw state borders}
+  }
+  \if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
-\itemize{
-\item \href{#method-MXMunicipioChoropleth-render}{\code{MXMunicipioChoropleth$render()}}
-\item \href{#method-MXMunicipioChoropleth-new}{\code{MXMunicipioChoropleth$new()}}
-\item \href{#method-MXMunicipioChoropleth-clone}{\code{MXMunicipioChoropleth$clone()}}
+  \itemize{
+    \item \href{#method-MXMunicipioChoropleth-render}{\code{MXMunicipioChoropleth$render()}}
+    \item \href{#method-MXMunicipioChoropleth-initialize}{\code{MXMunicipioChoropleth$new()}}
+    \item \href{#method-MXMunicipioChoropleth-clone}{\code{MXMunicipioChoropleth$clone()}}
+  }
 }
-}
-\if{html}{\out{
-<details><summary>Inherited methods</summary>
+\if{html}{\out{<details><summary>Inherited methods</summary>
 <ul>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="bind"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-bind'><code>mxmaps::Choropleth2$bind()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="clip"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-clip'><code>mxmaps::Choropleth2$clip()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="discretize"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-discretize'><code>mxmaps::Choropleth2$discretize()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="format_levels"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-format_levels'><code>mxmaps::Choropleth2$format_levels()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_bounding_box"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_bounding_box'><code>mxmaps::Choropleth2$get_bounding_box()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_choropleth_as_polygon"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_choropleth_as_polygon'><code>mxmaps::Choropleth2$get_choropleth_as_polygon()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_max_lat"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_max_lat'><code>mxmaps::Choropleth2$get_max_lat()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_max_long"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_max_long'><code>mxmaps::Choropleth2$get_max_long()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_min_lat"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_min_lat'><code>mxmaps::Choropleth2$get_min_lat()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_min_long"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_min_long'><code>mxmaps::Choropleth2$get_min_long()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_reference_map"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_reference_map'><code>mxmaps::Choropleth2$get_reference_map()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_scale"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_scale'><code>mxmaps::Choropleth2$get_scale()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_x_scale"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_x_scale'><code>mxmaps::Choropleth2$get_x_scale()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_y_scale"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_y_scale'><code>mxmaps::Choropleth2$get_y_scale()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_zoom"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_zoom'><code>mxmaps::Choropleth2$get_zoom()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="prepare_map"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-prepare_map'><code>mxmaps::Choropleth2$prepare_map()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="render_with_reference_map"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-render_with_reference_map'><code>mxmaps::Choropleth2$render_with_reference_map()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="set_num_colors"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-set_num_colors'><code>mxmaps::Choropleth2$set_num_colors()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="set_zoom"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-set_zoom'><code>mxmaps::Choropleth2$set_zoom()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="theme_clean"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-theme_clean'><code>mxmaps::Choropleth2$theme_clean()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="theme_inset"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-theme_inset'><code>mxmaps::Choropleth2$theme_inset()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="bind"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-bind'><code>Choropleth2$bind()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="clip"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-clip'><code>Choropleth2$clip()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="discretize"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-discretize'><code>Choropleth2$discretize()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="format_levels"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-format_levels'><code>Choropleth2$format_levels()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_bounding_box"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_bounding_box'><code>Choropleth2$get_bounding_box()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_choropleth_as_polygon"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_choropleth_as_polygon'><code>Choropleth2$get_choropleth_as_polygon()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_max_lat"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_max_lat'><code>Choropleth2$get_max_lat()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_max_long"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_max_long'><code>Choropleth2$get_max_long()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_min_lat"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_min_lat'><code>Choropleth2$get_min_lat()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_min_long"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_min_long'><code>Choropleth2$get_min_long()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_reference_map"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_reference_map'><code>Choropleth2$get_reference_map()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_scale"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_scale'><code>Choropleth2$get_scale()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_x_scale"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_x_scale'><code>Choropleth2$get_x_scale()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_y_scale"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_y_scale'><code>Choropleth2$get_y_scale()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="get_zoom"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-get_zoom'><code>Choropleth2$get_zoom()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="prepare_map"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-prepare_map'><code>Choropleth2$prepare_map()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="render_with_reference_map"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-render_with_reference_map'><code>Choropleth2$render_with_reference_map()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="set_num_colors"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-set_num_colors'><code>Choropleth2$set_num_colors()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="set_zoom"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-set_zoom'><code>Choropleth2$set_zoom()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="theme_clean"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-theme_clean'><code>Choropleth2$theme_clean()</code></a></span></li>
+  <li><span class="pkg-link" data-pkg="mxmaps" data-topic="Choropleth2" data-id="theme_inset"><a href='../../mxmaps/html/Choropleth2.html#method-Choropleth2-theme_inset'><code>Choropleth2$theme_inset()</code></a></span></li>
 </ul>
-</details>
-}}
+</details>}}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MXMunicipioChoropleth-render"></a>}}
 \if{latex}{\out{\hypertarget{method-MXMunicipioChoropleth-render}{}}}
-\subsection{Method \code{render()}}{
-Render the map of Mexico
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MXMunicipioChoropleth$render()}\if{html}{\out{</div>}}
+\subsection{\code{MXMunicipioChoropleth$render()}}{
+  Render the map of Mexico
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MXMunicipioChoropleth$render()}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A new ggplot2 object with a map of Mexico.
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{user.df}}{df}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A new ggplot2 object with a map of Mexico.
-}
-}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-MXMunicipioChoropleth-new"></a>}}
-\if{latex}{\out{\hypertarget{method-MXMunicipioChoropleth-new}{}}}
-\subsection{Method \code{new()}}{
-Initialize the map of Mexico
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MXMunicipioChoropleth$new(user.df)}\if{html}{\out{</div>}}
+\if{html}{\out{<a id="method-MXMunicipioChoropleth-initialize"></a>}}
+\if{latex}{\out{\hypertarget{method-MXMunicipioChoropleth-initialize}{}}}
+\subsection{\code{MXMunicipioChoropleth$new()}}{
+  Initialize the map of Mexico
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MXMunicipioChoropleth$new(user.df)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{user.df}}{df}
+    }
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Returns}{
+    A new `MXMunicipioChoropleth` object.
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{user.df}}{df}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Returns}{
-A new `MXMunicipioChoropleth` object.
-}
-}
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MXMunicipioChoropleth-clone"></a>}}
 \if{latex}{\out{\hypertarget{method-MXMunicipioChoropleth-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{MXMunicipioChoropleth$clone(deep = FALSE)}\if{html}{\out{</div>}}
+\subsection{\code{MXMunicipioChoropleth$clone()}}{
+  The objects of this class are cloneable with this method.
+  \subsection{Usage}{
+    \if{html}{\out{<div class="r">}}
+    \preformatted{MXMunicipioChoropleth$clone(deep = FALSE)}
+    \if{html}{\out{</div>}}
+  }
+  \subsection{Arguments}{
+    \if{html}{\out{<div class="arguments">}}
+    \describe{
+      \item{\code{deep}}{Whether to make a deep clone.}
+    }
+    \if{html}{\out{</div>}}
+  }
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }
