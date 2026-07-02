@@ -32,3 +32,5 @@ man/figures/logo.png
 man/figures/logo.svg
 man/figures/readme-muncipios-1.png
 man/figures/readme-quick-example-1.png
+^.lintr$
+^prek.toml$
