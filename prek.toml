@@ -1,0 +1,17 @@
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "check-yaml" },
+  { id = "end-of-file-fixer" },
+  { id = "trailing-whitespace" },
+  { id = "no-commit-to-branch" }
+]
+
+[[repos]]
+repo = "local"
+hooks = [
+#  { id = "index.Rmd", name = "index.Rmd", language = "system", shell = "bash", entry = "[ index.Rmd -nt index.md ] && exit 1 || exit 0" },
+#  { id = "README.Rmd", name = "README.Rmd", language = "system", shell = "bash", entry = "[ README.Rmd -nt README.md ] && exit 1 || exit 0" },
+  { id = "inegi_secret", name = "inegi_secret", language = "system", shell = "bash", entry = 'if grep  --exclude="mxmaps.Rproj" --exclude="index.html" --exclude-dir="docs" -rqE "\w{8}-\w{4}-\w{4}-\w{4}-\w{12}" * ; then exit 1; else echo ok;fi' },
+  { id = "lintr", name = "lintr", language = "system", entry = "Rscript -e 'lintr::lint_package()'", types = ["r"] }
+]
