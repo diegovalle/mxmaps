@@ -16,7 +16,7 @@
 #' library(ggplot2)
 #'
 #' data(mxmunicipio.map)
-#' ggplot(mxmunicipio.map, aes(long, lat, group=group)) +
+#' ggplot(mxmunicipio.map, aes(long, lat, group = group)) +
 #'   geom_polygon(fill = "white", color = "#666666", size = .05) +
 #'   coord_map()
 NULL

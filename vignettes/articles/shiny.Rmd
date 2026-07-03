@@ -4,14 +4,16 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      fig.dim = c(6, 6), 
-                      dpi = 100, 
-                      out.width = '100%')
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.dim = c(6, 6),
+  dpi = 100,
+  out.width = "100%"
+)
 ```
 
 ```{r  echo=FALSE, out.width='100%'}
-knitr::include_graphics('homicides_shiny.png')
+knitr::include_graphics("homicides_shiny.png")
 ```
 
 This document provides an example of how to use the `mxmaps` package to create an interactive web application with Shiny. The app displays a choropleth map of homicide rates in Mexico by state, and includes a slider to allow users to explore the data across different years.

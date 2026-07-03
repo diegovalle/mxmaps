@@ -36,6 +36,7 @@ data("df_mxstate_2015")
 head(df_mxstate_2015)
 }
 \references{
-Population estimates taken from the \href{https://www.inegi.org.mx/programas/intercensal/2015/}{Encuesta Intercensal.}
+Population estimates taken from the
+\href{https://www.inegi.org.mx/programas/intercensal/2015/}{Encuesta Intercensal.}
 }
 \keyword{data}

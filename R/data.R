@@ -20,7 +20,8 @@
 #' }
 #' @name df_mxstate
 #' @docType data
-#' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/intercensal/2015/}{Encuesta Intercensal.}
+#' @references Population estimates taken from the
+#' \href{https://www.inegi.org.mx/programas/intercensal/2015/}{Encuesta Intercensal.}
 #'
 #' @keywords data
 #' @examples
@@ -56,10 +57,12 @@
 #' }
 #' @name df_mxmunicipio
 #' @docType data
-#' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/intercensal/2015/}{Encuesta Intercensal}.
+#' @references Population estimates taken from the
+#' \href{https://www.inegi.org.mx/programas/intercensal/2015/}{Encuesta Intercensal}.
 #' The latitude and longitude of the localidad cabecera of each municipio come from the
 #' \href{https://www.inegi.org.mx/app/ageeml/}{Catálogo de entidades federativas, municipios y localidades} and the
-#' metro areas from the \href{http://www.conapo.gob.mx/es/CONAPO/Datos_Abiertos_Delimitacion_de_Zonas_Metropolitanas}{CONAPO}
+#' metro areas from the
+#' \href{http://www.conapo.gob.mx/es/CONAPO/Datos_Abiertos_Delimitacion_de_Zonas_Metropolitanas}{CONAPO}
 #'
 #' @keywords data
 #' @examples

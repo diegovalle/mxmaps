@@ -11,8 +11,8 @@ mxstate_choropleth(
   num_colors = 7,
   zoom = NULL,
   background_color = "white",
-  border_color = "dark grey",
-  border_size = 0.2,
+  state_border_color = "dark grey",
+  state_border_size = 0.2,
   title_color = "black",
   title_align = 0.5,
   title_position = "plot",
@@ -42,9 +42,9 @@ match the names of countries as they appear in the "region" column of ?country.r
 
 \item{background_color}{Background color of the map and legend.}
 
-\item{border_color}{Border color of polygons.}
+\item{state_border_color}{Border color of polygons.}
 
-\item{border_size}{Border line width.}
+\item{state_border_size}{Border line width.}
 
 \item{title_color}{Title text color.}
 
@@ -66,6 +66,9 @@ match the names of countries as they appear in the "region" column of ?country.r
 \item{scale_bar_color}{Scale bar outline and fill color.}
 
 \item{scale_bar_text_color}{Scale bar text color.}
+}
+\value{
+A ggplot object representing an state map of Mexico
 }
 \description{
 The map used is mxstate.map. See ?mxstate.map for

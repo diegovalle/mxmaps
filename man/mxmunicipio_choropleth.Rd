@@ -10,11 +10,27 @@ mxmunicipio_choropleth(
   legend = "",
   num_colors = 7,
   zoom = NULL,
-  show_states = TRUE
+  show_states = TRUE,
+  background_color = "white",
+  title_color = "black",
+  title_align = 0.5,
+  title_position = "plot",
+  scale_bar = FALSE,
+  scale_bar_position = "bl",
+  scale_bar_length = 500,
+  scale_bar_segments = 5,
+  scale_bar_height = 0.5,
+  scale_bar_color = "black",
+  scale_bar_text_color = "black",
+  state_border_color = "#333333",
+  state_border_size = 0.15,
+  municipio_border_color = "dark gray",
+  municipio_border_size = 0.08
 )
 }
 \arguments{
-\item{df}{A data.frame with a column named "region" and a column named "value".  Elements in
+\item{df}{A data.frame with a column named "region" and a column named "value".
+Elements in
 the "region" column must match the numeric codes in the "region" column of ?df_mxmunicipio
 either with a leading zero or without one (e.g. 01001 or 1001 are both fine)}
 
@@ -25,10 +41,46 @@ either with a leading zero or without one (e.g. 01001 or 1001 are both fine)}
 \item{num_colors}{The number of colors to use on the map.  A value of 1
 will use a continuous scale, and a value in [2, 9] will use that many colors.}
 
-\item{zoom}{An optional vector of countries to zoom in on. Elements of this vector must exactly
-match the names of countries as they appear in the "region" column of ?country.regions}
+\item{zoom}{An optional vector of countries to zoom in on. Elements of this
+vector must exactly
+match the names of countries as they appear in the "region" column
+of ?country.regions}
 
 \item{show_states}{Wether to draw state borders.}
+
+\item{background_color}{Background color of the map and legend.}
+
+\item{title_color}{Title text color.}
+
+\item{title_align}{Horizontal justification of title.}
+
+\item{title_position}{Either "plot" or "panel".}
+
+\item{scale_bar}{Logical; draw a scale bar.}
+
+\item{scale_bar_position}{Position of scale bar:
+"bl", "br", "tl", or "tr".}
+
+\item{scale_bar_length}{Scale bar length in kilometers.}
+
+\item{scale_bar_segments}{Number of scale bar segments.}
+
+\item{scale_bar_height}{Height of scale bar.}
+
+\item{scale_bar_color}{Scale bar outline and fill color.}
+
+\item{scale_bar_text_color}{Scale bar text color.}
+
+\item{state_border_color}{State border color of polygons.}
+
+\item{state_border_size}{State border line width.}
+
+\item{municipio_border_color}{Municipio border color of polygons.}
+
+\item{municipio_border_size}{Municipio border line width.}
+}
+\value{
+A ggplot object representing a municipio map of Mexico
 }
 \description{
 The map used is mxmunicipio.map. See ?mxmunicipio.map for

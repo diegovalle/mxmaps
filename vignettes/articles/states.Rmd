@@ -6,10 +6,12 @@ fig_height: 5
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      fig.dim = c(6,4), 
-                      dpi = 200, 
-                      out.width = '100%')
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.dim = c(6, 4),
+  dpi = 200,
+  out.width = "100%"
+)
 ```
 
 This document provides examples of how to create choropleth maps of Mexican states using the `mxmaps` package. The examples demonstrate how to customize the maps, including changing the color scale, adding state labels, handling missing values in the legend, and arranging multiple maps in a grid.
@@ -24,7 +26,8 @@ library(mxmaps)
 data("df_mxstate_2020")
 df_mxstate_2020$value <- df_mxstate_2020$pop
 mxstate_choropleth(df_mxstate_2020,
-                    title = "Total population, by state") 
+  title = "Total population, by state"
+)
 ```
 
 ### Customizing the Color Scale
@@ -36,9 +39,9 @@ library(mxmaps)
 library(viridis)
 library(scales)
 
-df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
-  df_mxstate_2020$pop 
-gg = MXStateChoropleth$new(df_mxstate_2020)
+df_mxstate_2020$value <- df_mxstate_2020$indigenous_language /
+  df_mxstate_2020$pop
+gg <- MXStateChoropleth$new(df_mxstate_2020)
 gg$title <- "Percentage of the population that speaks\nan indigenous language"
 gg$set_num_colors(1)
 gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
@@ -57,12 +60,13 @@ library("sf")
 library("RJSONIO")
 library("dplyr")
 
-df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
+df_mxstate_2020$value <- df_mxstate_2020$indigenous_language /
   df_mxstate_2020$pop * 100
-p <- mxstate_choropleth(df_mxstate_2020, 
-                        num_colors = 1,
-                        title = "Percentage of the population that speaks\nan indigenous language",
-                        legend = "%")
+p <- mxstate_choropleth(df_mxstate_2020,
+  num_colors = 1,
+  title = "Percentage of the population that speaks\nan indigenous language",
+  legend = "%"
+)
 
 
 data("mxstate.topoJSON")
@@ -75,19 +79,21 @@ states <- topojson_read(file.path(tmpdir, "state.topojson")) |>
 df_mxstate <- arrange(df_mxstate_2020, region)
 
 # make sure the coordinates of the labels are in the correct order
- 
-df_mxstate_2020$lon <- st_coordinates(st_centroid(states))[,1]
-df_mxstate_2020$lat <- st_coordinates(st_centroid(states))[,2]
+
+df_mxstate_2020$lon <- st_coordinates(st_centroid(states))[, 1]
+df_mxstate_2020$lat <- st_coordinates(st_centroid(states))[, 2]
 
 
 df_mxstate_2020$group <- df_mxstate_2020$state_abbr
 
 p +
-  geom_text_repel(data = df_mxstate_2020, 
-                  aes(lon, lat, label = state_abbr,), 
-                  size = 3,
-                  box.padding = unit(0.1, 'lines'), 
-                  force = 0.1)
+  geom_text_repel(
+    data = df_mxstate_2020,
+    aes(lon, lat, label = state_abbr),
+    size = 3,
+    box.padding = unit(0.1, "lines"),
+    force = 0.1
+  )
 ```
 
 ### Legend for Missing Values
@@ -95,27 +101,36 @@ p +
 This example demonstrates how to add a legend for states with missing (NA) values. A separate legend is created to indicate which states have no data.
 
 ```{r warning=FALSE, message=FALSE}
-
 df_na <- df_mxstate_2020
 df_na$value[1:20] <- NA
 mxstate_choropleth(df_na,
-                   num_colors = 1,
-                   title = "Percentage of the population that speaks\nan indigenous language",
-                   legend = "%") +
+  num_colors = 1,
+  title = "Percentage of the population that speaks\nan indigenous language",
+  legend = "%"
+) +
   # Add a fake color scale which we'll change to 'no data'
-  geom_point(data = df_mxmunicipio_2020[1,],
-             size = -1,
-             aes(color = "",
-                 group = NA)) +
+  geom_point(
+    data = df_mxmunicipio_2020[1, ],
+    size = -1,
+    aes(
+      color = "",
+      group = NA
+    )
+  ) +
   scale_color_manual(values = NA) +
-  scale_fill_continuous(low="orange", high="darkred", 
-                        na.value = "lightgray") +
+  scale_fill_continuous(
+    low = "orange", high = "darkred",
+    na.value = "lightgray"
+  ) +
   theme(legend.key = element_rect(color = "black")) + # Add a border to the legend
   # Add an extra color legend with a giant square
   guides(color = guide_legend("no data",
-                              override.aes=list(color = "lightgray",
-                                                shape = 15, # shape 15 is a black square
-                                                size = 7)))
+    override.aes = list(
+      color = "lightgray",
+      shape = 15, # shape 15 is a black square
+      size = 7
+    )
+  ))
 ```
 
 ### Creating Small Multiples (Faceting)
@@ -130,7 +145,7 @@ library(ggpubr)
 data("df_mxstate_2020")
 df <- rbind(df_mxstate_2020, df_mxstate_2020)
 
-df$genero <- rep(c("m", "f"), each= 32)
+df$genero <- rep(c("m", "f"), each = 32)
 df$value <- ifelse(df$genero == "m", df$pop_male, df$pop_female)
 # This is needed so that both the male and female population scales have
 # the same values
@@ -138,14 +153,35 @@ df$value <- cut(df$value, breaks = c(0, 5e4, 1e6, 2e6, 4e6, 20e7))
 
 
 f <- mxstate_choropleth(subset(df, genero == "f"),
-                        title = "F population, by state",
-                        num_colors = 5) 
+  title = "F population, by state",
+  num_colors = 5
+)
 m <- mxstate_choropleth(subset(df, genero == "m"),
-                        title = "M population, by state",
-                        num_colors = 5)
+  title = "M population, by state",
+  num_colors = 5
+)
 
 ggarrange(f, m,
-          labels = c("", ""),
-          ncol = 1, nrow = 2)
+  labels = c("", ""),
+  ncol = 1, nrow = 2
+)
 ```
+
+### Scale Bar
+
+mxmaps can automatically add a scale bar to your map, making it easier to interpret distances at a glance. The scale bar can be customized through several parameters: `scale_bar_position` controls where it is placed on the map (for example, `"bl"` for bottom-left), `scale_bar_length` sets the total length represented by the scale bar in kilometers, `scale_bar_segments` defines how many divisions the bar is split into, `scale_bar_height` adjusts its visual height, while `scale_bar_color` and `scale_bar_text_color` control the colors of the bar itself and its labels. For example, `scale_bar_position = "bl", scale_bar_length = 1000`, `scale_bar_segments = 4`, `scale_bar_height = 0.5`, `scale_bar_color = "black"`, `scale_bar_text_color = "black"` will place a 1000 km scale bar with four segments in the bottom-left corner of the map using black styling.
+
+
+```{r}
+df_mxstate_2020$value <- df_mxstate_2020$pop
+mxstate_choropleth(df_mxstate_2020,
+  title = "Total population, by state",
+  background_color = "#e3dac9",
+  title_color = "#635147",
+  title_position = "panel",
+  scale_bar = TRUE,
+  scale_bar_position = "bl",
+  scale_bar_length = 1000,
+  scale_bar_segments = 4
+)
 ```

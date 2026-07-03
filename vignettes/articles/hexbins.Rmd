@@ -4,10 +4,12 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      fig.dim = c(6, 5), 
-                      dpi = 200, 
-                      out.width = '100%')
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.dim = c(6, 5),
+  dpi = 200,
+  out.width = "100%"
+)
 ```
 
 This document demonstrates how to create hexbin choropleth maps of Mexican states using the `mxmaps` package. The examples show how to visualize data on a hexbin grid, customize the appearance of state labels with different colors and shadows, and use an automatic contrast feature to ensure text readability against varying background colors.
@@ -16,12 +18,13 @@ This document demonstrates how to create hexbin choropleth maps of Mexican state
 library("mxmaps")
 
 data("df_mxstate_2020")
-df_mxstate_2020$value = df_mxstate_2020$afromexican / df_mxstate_2020$pop * 100
-mxhexbin_choropleth(df_mxstate_2020, num_colors = 1,
-                    title = "Percentage of the population that identifies as Afro-Mexican",
-                    legend = "%",
-                    auto_contrast = TRUE)
-
+df_mxstate_2020$value <- df_mxstate_2020$afromexican / df_mxstate_2020$pop * 100
+mxhexbin_choropleth(df_mxstate_2020,
+  num_colors = 1,
+  title = "Percentage of the population that identifies as Afro-Mexican",
+  legend = "%",
+  auto_contrast = TRUE
+)
 ```
 
 ## Text Shadow
@@ -32,17 +35,17 @@ You can use ```label_color``` if you want the state abbreviations in a different
 library("viridis")
 library("scales")
 
-df_mxstate_2020$value = df_mxstate_2020$afromexican / df_mxstate_2020$pop 
+df_mxstate_2020$value <- df_mxstate_2020$afromexican / df_mxstate_2020$pop
 # Will show a warning, look at the municipio examples to see how to remove it
-mxhexbin_choropleth(df_mxstate_2020, 
-                    num_colors = 1,
-                    label_color = "white",
-                    shadow_color = "black",
-                    title = "Percentage of the population that identifies as Afro-Mexican",
-                    legend = "%",
-                    label_size = 3.8) +
+mxhexbin_choropleth(df_mxstate_2020,
+  num_colors = 1,
+  label_color = "white",
+  shadow_color = "black",
+  title = "Percentage of the population that identifies as Afro-Mexican",
+  legend = "%",
+  label_size = 3.8
+) +
   scale_fill_viridis("percentage", labels = percent)
-
 ```
 
 
@@ -55,13 +58,30 @@ In your maps, you may encounter situations where the background color changes dy
 library("viridis")
 library("scales")
 
-df_mxstate_2020$value = df_mxstate_2020$afromexican / df_mxstate_2020$pop 
-mxhexbin_choropleth(df_mxstate_2020, num_colors = 1,
-                    title = "Percentage of the population that identifies as Afro-Mexican",
-                    legend = "%",
-                    shadow_color = "#111111",
-                    auto_contrast = TRUE)+
+df_mxstate_2020$value <- df_mxstate_2020$afromexican / df_mxstate_2020$pop
+mxhexbin_choropleth(df_mxstate_2020,
+  num_colors = 1,
+  title = "Percentage of the population that identifies as Afro-Mexican",
+  legend = "%",
+  shadow_color = "#111111",
+  auto_contrast = TRUE
+) +
   scale_fill_viridis()
 ```
 
 Note how the label colors for GRO and OAX are black with a white outline
+
+## Title and Background Colors
+
+```{r}
+df_mxstate_2020$value <- df_mxstate_2020$afromexican / df_mxstate_2020$pop * 100
+mxhexbin_choropleth(df_mxstate_2020,
+  num_colors = 1,
+  title = "Percentage of the population that identifies as Afro-Mexican",
+  legend = "%",
+  auto_contrast = TRUE,
+  background_color = "#e3dac9",
+  state_border_size = 2,
+  state_border_color = "#AA7E44"
+)
+```

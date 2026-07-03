@@ -15,7 +15,7 @@ A fortified data.frame which contains an hexagonal bin map of all 32 Mexican sta
 library(ggplot2)
 
 data(mxhexbin.map)
-ggplot(mxhexbin.map, aes(long, lat, group=group)) +
+ggplot(mxhexbin.map, aes(long, lat, group = group)) +
   geom_polygon(color = "black") +
   coord_map()
 }

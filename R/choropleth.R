@@ -18,8 +18,8 @@
 #   - scale bar rendering
 #
 # Added parameters:
-#   border_color
-#   border_size
+#   state_border_color
+#   state_border_size
 #   background_color
 #   title_color
 #   title_align
@@ -48,8 +48,10 @@ Choropleth2 <- R6Class("Choropleth2",
   #' @field ggplot_sf ggplot_sf
   #'
   #'
-  #' @field border_color Polygon border color.
-  #' @field border_size Polygon border width.
+  #' @field state_border_color State polygon border color.
+  #' @field state_border_size State polygon border width.
+  #' @field municipio_border_color Municipio polygon border color.
+  #' @field municipio_border_size Municipio polygon border width.
   #' @field background_color Background color.
   #'
   #' @field title_color Title color.
@@ -86,8 +88,10 @@ Choropleth2 <- R6Class("Choropleth2",
     ggplot_sf = NULL,
 
     # mxmaps extensions
-    border_color = "dark grey",
-    border_size = 0.2,
+    municipio_border_color = "dark grey",
+    municipio_border_size = 0.08,
+    state_border_color = "dark grey",
+    state_border_size = 0.2,
     background_color = "white",
     title_color = "black",
     title_align = 0.5,
@@ -155,8 +159,8 @@ Choropleth2 <- R6Class("Choropleth2",
         gg <- ggplot(self$choropleth.df) +
           geom_sf(
             aes(fill = value),
-            color = self$border_color,
-            linewidth = self$border_size
+            color = self$state_border_color,
+            linewidth = self$state_border_size
           ) +
           self$get_scale() +
           self$theme_clean() +
@@ -166,8 +170,8 @@ Choropleth2 <- R6Class("Choropleth2",
         gg <- ggplot(self$choropleth.df, aes(long, lat, group = group)) +
           geom_polygon(
             aes(fill = value),
-            color = self$border_color,
-            linewidth = self$border_size
+            color = self$state_border_color,
+            linewidth = self$state_border_size
           ) +
           self$get_scale() +
           self$theme_clean() +
@@ -338,8 +342,8 @@ Choropleth2 <- R6Class("Choropleth2",
       geom_polygon(
         data = self$choropleth.df,
         aes(x = long, y = lat, fill = value, group = group), alpha = alpha,
-        color = self$border_color,
-        linewidth = self$border_size
+        color = self$state_border_color,
+        linewidth = self$state_border_size
       )
     },
     #' @description render_with_reference_map

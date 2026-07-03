@@ -18,7 +18,8 @@
 #' }
 #' @name df_mxstate_2020
 #' @docType data
-#' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{Censo 2020.}
+#' @references Population estimates taken from the
+#' \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{Censo 2020.}
 #'
 #' @keywords data
 #' @examples
@@ -45,15 +46,18 @@
 #'   \item{pop_male}{male population according to the Censo 2020}
 #'   \item{pop_female}{female population according to the Censo 2020}
 #'   \item{afromexican}{afromexican population according to the Censo 2020}
-#'   \item{indigenous_language}{Number of persons who speak an indigenous language according to the Censo 2020}
+#'   \item{indigenous_language}{Number of persons who speak an indigenous language
+#'   according to the Censo 2020}
 #'   \item{long}{longitude of the localidad cabecera of each municipio}
 #'   \item{lat}{latitude of the localidad cabecera of each municipio}
 #' }
 #' @name df_mxmunicipio_2020
 #' @docType data
-#' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{Censo 2020}.
+#' @references Population estimates taken from the
+#' \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{Censo 2020}.
 #' The latitude and longitude of the localidad cabecera of each municipio come from the
-#' \href{https://www.inegi.org.mx/app/ageeml/}{Catálogo Único de Claves de Áreas Geoestadísticas Estatales, Municipales y Localidades}
+#' \href{https://www.inegi.org.mx/app/ageeml/}{Catálogo Único de Claves
+#' de Áreas Geoestadísticas Estatales, Municipales y Localidades}
 #'
 #' @keywords data
 #' @examples

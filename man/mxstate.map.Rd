@@ -18,7 +18,7 @@ Guadalupe Island, then simplified with http://www.mapshaper.org/
 library(ggplot2)
 
 data(mxstate.map)
-ggplot(mxstate.map, aes(long, lat, group=group)) +
+ggplot(mxstate.map, aes(long, lat, group = group)) +
   geom_polygon(fill = "white", color = "black", size = .2) +
   coord_map()
 }

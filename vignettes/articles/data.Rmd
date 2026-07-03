@@ -5,10 +5,12 @@ css: css/report_styles.css
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-                      fig.dim = c(6, 6),
-                      dpi = 100,
-                      out.width = '100%')
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.dim = c(6, 6),
+  dpi = 100,
+  out.width = "100%"
+)
 ```
 
 The `data.frame` you provide to the plotting functions must

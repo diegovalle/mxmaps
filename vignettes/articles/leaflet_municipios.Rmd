@@ -4,10 +4,12 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      fig.dim = c(6, 6), 
-                      dpi = 100, 
-                      out.width = '100%')
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.dim = c(6, 6),
+  dpi = 100,
+  out.width = "100%"
+)
 ```
 
 This document provides examples of how to create interactive choropleth maps of Mexican municipios using the `mxmaps` and `leaflet` packages. The examples show how to visualize data for all municipios, as well as how to create focused maps of specific areas, such as cities or metropolitan areas, by subsetting the data.
@@ -18,21 +20,33 @@ library(leaflet) # for colorNumeric
 
 df_mxmunicipio_2020$value <- df_mxmunicipio_2020$indigenous_language /
   df_mxmunicipio_2020$pop
-#Viridis color scheme
-magma <- c("#000004FF", "#1D1146FF", "#50127CFF", "#822681FF", "#B63779FF", 
-           "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF")
+# Viridis color scheme
+magma <- c(
+  "#000004FF", "#1D1146FF", "#50127CFF", "#822681FF", "#B63779FF",
+  "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF"
+)
 pal <- colorNumeric(magma, domain = df_mxmunicipio_2020$value)
-mxmunicipio_leaflet(df_mxmunicipio_2020,
-                    pal,
-                    ~ pal(value),
-                    ~ sprintf("State: %s<br/>Municipio : %s<br/>Percent Indigenous: %s%%",
-                              state_name, municipio_name, round(value * 100, 1))) %>%
-  addLegend(position = "bottomright", 
-            pal = pal, 
-            values = df_mxmunicipio_2020$value,
-            title = "Percent<br>Indigenous<br>Speaking",
-            labFormat = labelFormat(suffix = "%",
-                                    transform = function(x) {100 * x})) %>%
+mxmunicipio_leaflet(
+  df_mxmunicipio_2020,
+  pal,
+  ~ pal(value),
+  ~ sprintf(
+    "State: %s<br/>Municipio : %s<br/>Percent Indigenous: %s%%",
+    state_name, municipio_name, round(value * 100, 1)
+  )
+) |>
+  addLegend(
+    position = "bottomright",
+    pal = pal,
+    values = df_mxmunicipio_2020$value,
+    title = "Percent<br>Indigenous<br>Speaking",
+    labFormat = labelFormat(
+      suffix = "%",
+      transform = function(x) {
+        100 * x
+      }
+    )
+  ) |>
   addProviderTiles("CartoDB.Positron")
 ```
 
@@ -48,35 +62,38 @@ library("sf")
 library("RColorBrewer")
 library("leaflet")
 
-df <- df_mxmunicipio_2020 %>%
-  as.data.frame() %>%
+df <- df_mxmunicipio_2020 |>
+  as.data.frame() |>
   filter(metro_area %in% c("Valle de México", "Toluca", "Puebla-Tlaxcala"))
 
-df$value <- df$indigenous /df$pop
+df$value <- df$indigenous / df$pop
 
 Reds <- c("white", brewer.pal(4, "RdYlBu"))
 pal <- colorNumeric(Reds, domain = df$value)
 mxmunicipio_leaflet(df,
-                    pal,
-                    ~ pal(value),
-                    opacity = 0.8,
-                    fillOpacity = 0.8,
-                    zoom = df$region,
-                    popup = sprintf("State: %s<br/>Municipio : %s<br/>Value: %s%%",
-                                    df$state_name,
-                                    df$municipio_name,
-                                    round(df$value * 100, 1))) %>%
-  addLegend(position = "bottomright", pal = pal,
-            values = df$value) %>%
-  addProviderTiles("CartoDB.Positron") 
+  pal,
+  ~ pal(value),
+  opacity = 0.8,
+  fillOpacity = 0.8,
+  zoom = df$region,
+  popup = sprintf(
+    "State: %s<br/>Municipio : %s<br/>Value: %s%%",
+    df$state_name,
+    df$municipio_name,
+    round(df$value * 100, 1)
+  )
+) |>
+  addLegend(
+    position = "bottomright", pal = pal,
+    values = df$value
+  ) |>
+  addProviderTiles("CartoDB.Positron")
 ```
 
 
 or you can subset the topoJSON directly
 
 ```{r message=FALSE,warning=FALSE}
-
-
 # Convert the topoJSON to spatial object
 tmpdir <- tempdir()
 # have to use RJSONIO or else the topojson isn't valid
@@ -84,12 +101,16 @@ write(RJSONIO::toJSON(mxmunicipio.topoJSON), file.path(tmpdir, "mun.topojson"))
 muns <- topojson_read(file.path(tmpdir, "mun.topojson"))
 
 # municipios that make up Monterrey
-monterrey <- muns[muns$id %in% 
-                    df_mxmunicipio_2020$region[df_mxmunicipio_2020$metro_area == "Monterrey"], ]
+monterrey <- muns[
+  muns$id %in%
+    df_mxmunicipio_2020$region[
+      df_mxmunicipio_2020$metro_area == "Monterrey"
+    ],
+]
 # Convert to SpatialDataFrame
 monterrey <- as_Spatial(monterrey)
 # made-up data
-monterrey@data$rand <- 1:nrow(monterrey@data)
+monterrey@data$rand <- seq_len(nrow(monterrey@data))
 
 # Create a continuous palette function
 pal <- colorNumeric(
@@ -97,9 +118,10 @@ pal <- colorNumeric(
   domain = monterrey@data$rand
 )
 
-leaflet(monterrey) %>%
-  addPolygons(stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1,
-              color = ~pal(monterrey@data$rand)
-  )%>%
+leaflet(monterrey) |>
+  addPolygons(
+    stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1,
+    color = ~ pal(monterrey@data$rand)
+  ) |>
   addProviderTiles("CartoDB.Positron")
 ```

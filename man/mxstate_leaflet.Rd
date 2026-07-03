@@ -61,11 +61,15 @@ library(leaflet)
 data(df_mxstate)
 df_mxstate$value <- df_mxstate$afromexican / df_mxstate$pop
 pal <- colorNumeric("Blues", domain = df_mxstate$value)
-mxstate_leaflet(df_mxstate,
-                pal,
-                ~ pal(value),
-                ~ sprintf("State: \%s<br/>Value: \%s",
-                          state_name, comma(value))) \%>\%
+mxstate_leaflet(
+  df_mxstate,
+  pal,
+  ~ pal(value),
+  ~ sprintf(
+    "State: \%s<br/>Value: \%s",
+    state_name, comma(value)
+  )
+) \%>\%
   addLegend(position = "bottomright", pal = pal, values = df_mxstate$value) \%>\%
   addProviderTiles("CartoDB.Positron")
 }

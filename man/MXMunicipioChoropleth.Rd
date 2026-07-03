@@ -3,6 +3,9 @@
 \name{MXMunicipioChoropleth}
 \alias{MXMunicipioChoropleth}
 \title{An R6 object for creating municipio-level choropleths.}
+\value{
+An R6 Class
+}
 \description{
 An R6 object for creating municipio-level choropleths.
 }
@@ -10,8 +13,9 @@ An R6 object for creating municipio-level choropleths.
 library(viridis)
 library(scales)
 
-df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / df_mxmunicipio_2020$pop
-gg = MXMunicipioChoropleth$new(df_mxmunicipio_2020)
+df_mxmunicipio_2020$value <- df_mxmunicipio_2020$indigenous_language /
+                             df_mxmunicipio_2020$pop
+gg <- MXMunicipioChoropleth$new(df_mxmunicipio_2020)
 gg$title <- "Percentage of the population that self-identifies as indigenous"
 gg$set_num_colors(1)
 gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)

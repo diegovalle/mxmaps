@@ -8,6 +8,12 @@ mxhexbin_choropleth(
   df,
   title = "",
   legend = "",
+  state_border_color = "dark grey",
+  state_border_size = 0.2,
+  background_color = "white",
+  title_color = "black",
+  title_align = 0.5,
+  title_position = "plot",
   num_colors = 7,
   zoom = NULL,
   label_color = "black",
@@ -24,6 +30,18 @@ the "region" column must exactly match how regions are named in the "region" col
 
 \item{legend}{An optional name for the legend.}
 
+\item{state_border_color}{Border color of polygons.}
+
+\item{state_border_size}{Border line width.}
+
+\item{background_color}{Background color of the map and legend.}
+
+\item{title_color}{Title text color.}
+
+\item{title_align}{Horizontal justification of title.}
+
+\item{title_position}{Either "plot" or "panel".}
+
 \item{num_colors}{The number of colors to use on the map.  A value of 1
 will use a continuous scale, and a value in [2, 9] will use that many colors.}
 
@@ -38,6 +56,9 @@ match the names of countries as they appear in the "region" column of ?country.r
 
 \item{auto_contrast}{Optional argument to automatically determine the best contrast
 for the state abbreviation labels}
+}
+\value{
+A ggplot object representing an hexbin of Mexico
 }
 \description{
 Hexagonal tiles of the states of Mexico

@@ -11,8 +11,8 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 data(df_mxmunicipio_1990_2010)
 }
 \description{
-A data.frame containing population estimates for all the Mexican municipios in
-1990, 1995, 2000, 2005, and 2010
+A data.frame containing population estimates for all the Mexican municipios
+in 1990, 1995, 2000, 2005, and 2010
 }
 \details{
 \describe{
@@ -28,6 +28,7 @@ data("df_mxmunicipio_1990_2010")
 head(df_mxmunicipio_1990_2010)
 }
 \references{
-Population estimates taken from the \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page}
+Population estimates taken from the
+ \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page}
 }
 \keyword{data}

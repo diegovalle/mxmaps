@@ -3,40 +3,40 @@ context("test charts")
 library(testthat)
 library(mxmaps)
 
-#test_package("mxmaps")
+# test_package("mxmaps")
 
-test_that("state choropleth matches expectations",{
+test_that("state choropleth matches expectations", {
   data("df_mxstate_2020")
-  df_mxstate_2020$value = df_mxstate_2020$pop
+  df_mxstate_2020$value <- df_mxstate_2020$pop
   p <- mxstate_choropleth(df_mxstate_2020, num_colors = 1)
   expect_is(p$layers[[1]], "ggproto")
   expect_identical(sort(unique(p$data$id)), sort(df_mxstate_2020$region))
 })
 
-test_that("municipio choropleth matches expectations",{
+test_that("municipio choropleth matches expectations", {
   data("df_mxmunicipio_2020")
-  df_mxmunicipio_2020$value = df_mxmunicipio_2020$pop
+  df_mxmunicipio_2020$value <- df_mxmunicipio_2020$pop
   p <- mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1)
   expect_is(p$layers[[1]], "ggproto")
   expect_identical(sort(unique(p$data$id)), sort(df_mxmunicipio_2020$region))
 })
 
-test_that("hexbin matches expectations",{
+test_that("hexbin matches expectations", {
   data("df_mxstate")
-  df_mxstate_2020$value = df_mxstate_2020$pop
+  df_mxstate_2020$value <- df_mxstate_2020$pop
   p <- mxhexbin_choropleth(df_mxstate_2020)
   expect_is(p$layers[[1]], "ggproto")
   expect_identical(sort(unique(p$data$id)), sort(df_mxstate_2020$region))
 })
 
-test_that("convert state codes to INEGI format",{
+test_that("convert state codes to INEGI format", {
   expect_identical(str_mxstate(c("01", "02")), c("01", "02"))
   expect_identical(str_mxstate(c("12", "2")), c("12", "02"))
   expect_identical(str_mxstate(c(32, 5)), c("32", "05"))
   expect_warning(str_mxstate(c(92, 5)), "Invalid state codes detected")
 })
 
-test_that("convert municipio codes to INEGI format",{
+test_that("convert municipio codes to INEGI format", {
   expect_identical(str_mxmunicipio(c("01006", "02003")), c("01006", "02003"))
   expect_identical(str_mxmunicipio(c("12", "2"), c("09", "4")), c("12009", "02004"))
   expect_identical(str_mxmunicipio(c(32, 5), c(9, 18)), c("32009", "05018"))
@@ -45,11 +45,12 @@ test_that("convert municipio codes to INEGI format",{
 })
 
 test_that("zoom works in", {
-  df = df_mxmunicipio_2020
-  df$value = df$pop
+  df <- df_mxmunicipio_2020
+  df$value <- df$pop
   p <- mxmunicipio_choropleth(df,
-                         num_colors = 1,
-                         zoom = c(9002:9010))
+    num_colors = 1,
+    zoom = 9002:9010
+  )
   expect_is(p$layers[[1]], "ggproto")
 })
 

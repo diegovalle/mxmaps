@@ -24,9 +24,21 @@ The base Choropleth2 object.
 
     \item{\code{ggplot_scale}}{override default scale.}
 
-    \item{\code{border_color}}{Polygon border color.}
+    \item{\code{ggplot_polygon}}{ggplot_polygon}
 
-    \item{\code{border_size}}{Polygon border width.}
+    \item{\code{projection_sf}}{projection_sf}
+
+    \item{\code{projection}}{projection}
+
+    \item{\code{ggplot_sf}}{ggplot_sf}
+
+    \item{\code{state_border_color}}{State polygon border color.}
+
+    \item{\code{state_border_size}}{State polygon border width.}
+
+    \item{\code{municipio_border_color}}{Municipio polygon border color.}
+
+    \item{\code{municipio_border_size}}{Municipio polygon border width.}
 
     \item{\code{background_color}}{Background color.}
 

@@ -25,7 +25,8 @@ mxmunicipio_leaflet(
 are named in the "region" column in ?df_mxmunicipio.}
 
 \item{pal}{the color palette function, generated from
-\link[leaflet]{colorNumeric},  \link[leaflet]{colorBin},  \link[leaflet]{colorQuantile}, or
+\link[leaflet]{colorNumeric},  \link[leaflet]{colorBin},
+\link[leaflet]{colorQuantile}, or
  \link[leaflet]{colorFactor}}
 
 \item{fillColor}{the values used to generate colors from the palette function}
@@ -59,17 +60,25 @@ Zoomable municipio maps made with leaflet
 library(leaflet)
 
 data(df_mxmunicipio)
-df_mxmunicipio$value <- df_mxmunicipio$indigenous /df_mxmunicipio$pop
-magma <- c("#000004FF", "#1D1146FF", "#50127CFF", "#822681FF",
-           "#B63779FF", "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF")
+df_mxmunicipio$value <- df_mxmunicipio$indigenous / df_mxmunicipio$pop
+magma <- c(
+  "#000004FF", "#1D1146FF", "#50127CFF", "#822681FF",
+  "#B63779FF", "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF"
+)
 pal <- colorNumeric(magma, domain = df_mxmunicipio$value)
-mxmunicipio_leaflet(df_mxmunicipio,
-                    pal,
-                    ~ pal(value),
-                    ~ sprintf("State: \%s<br/>Municipio : \%s<br/>Value: \%s\%\%",
-                    state_name, municipio_name, round(value * 100, 1))) \%>\%
-  addLegend(position = "bottomright", pal = pal,
-            values = df_mxmunicipio$value) \%>\%
+mxmunicipio_leaflet(
+  df_mxmunicipio,
+  pal,
+  ~ pal(value),
+  ~ sprintf(
+    "State: \%s<br/>Municipio : \%s<br/>Value: \%s\%\%",
+    state_name, municipio_name, round(value * 100, 1)
+  )
+) \%>\%
+  addLegend(
+    position = "bottomright", pal = pal,
+    values = df_mxmunicipio$value
+  ) \%>\%
   addProviderTiles("CartoDB.Positron")
 }
 }

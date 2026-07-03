@@ -12,7 +12,8 @@
 #' }
 #' @name df_mxstate_1990_2010
 #' @docType data
-#' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page.}
+#' @references Population estimates taken from the
+#' \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page.}
 #'
 #' @keywords data
 #' @examples
@@ -22,8 +23,8 @@
 
 #' Mexican 1990-2010 municipio population dataset
 #'
-#' A data.frame containing population estimates for all the Mexican municipios in
-#' 1990, 1995, 2000, 2005, and 2010
+#' A data.frame containing population estimates for all the Mexican municipios
+#' in 1990, 1995, 2000, 2005, and 2010
 #'
 #' \describe{
 #'   \item{region}{INEGI code of the state}
@@ -34,7 +35,8 @@
 #' }
 #' @name df_mxmunicipio_1990_2010
 #' @docType data
-#' @references Population estimates taken from the \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page}
+#' @references Population estimates taken from the
+#'  \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page}
 #'
 #' @keywords data
 #' @examples

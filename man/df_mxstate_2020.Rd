@@ -34,6 +34,7 @@ data("df_mxstate_2020")
 head(df_mxstate_2020)
 }
 \references{
-Population estimates taken from the \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{Censo 2020.}
+Population estimates taken from the
+\href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{Censo 2020.}
 }
 \keyword{data}

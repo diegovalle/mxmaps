@@ -28,6 +28,7 @@ data("df_mxstate_1990_2010")
 head(df_mxstate_1990_2010)
 }
 \references{
-Population estimates taken from the \href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page.}
+Population estimates taken from the
+\href{https://www.inegi.org.mx/programas/ccpv/2020/default.html#Tabulados}{INEGI Census Page.}
 }
 \keyword{data}

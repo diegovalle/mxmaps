@@ -3,6 +3,9 @@
 \name{MXStateChoropleth}
 \alias{MXStateChoropleth}
 \title{An R6 object for creating state-level choropleths.}
+\value{
+An R6 Class
+}
 \description{
 An R6 object for creating state-level choropleths.
 }
@@ -10,8 +13,8 @@ An R6 object for creating state-level choropleths.
 library(viridis)
 library(scales)
 
-df_mxstate$value <-  df_mxstate$indigenous / df_mxstate$pop
-gg = MXStateChoropleth$new(df_mxstate)
+df_mxstate$value <- df_mxstate$indigenous / df_mxstate$pop
+gg <- MXStateChoropleth$new(df_mxstate)
 gg$title <- "Percentage of the population that self-identifies as indigenous"
 gg$set_num_colors(1)
 gg$ggplot_scale <- scale_fill_viridis("percent", labels = percent)
