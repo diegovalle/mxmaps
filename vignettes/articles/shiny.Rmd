@@ -74,7 +74,7 @@ ui <- bootstrapPage(
   absolutePanel(top = 10, right = 10,
                 sliderInput("range", "Year", 1997, 2017,
                             value = 2017, step = 1, sep="",
-                            animate = animationOptions(interval = 3000, loop = FALSE, 
+                            animate = animationOptions(interval = 3000, loop = FALSE,
                                                        playButton = NULL,
                                                        pauseButton = NULL),
                 )
@@ -82,21 +82,21 @@ ui <- bootstrapPage(
 )
 
 server <- function(input, output, session) {
-  
+
   # Reactive expression for the data subsetted to what the user selected
   filteredData <- reactive({
-    states <- left_join(states, subset(hom, year == input$range[1]), 
+    states <- left_join(states, subset(hom, year == input$range[1]),
                         by = "id")
     states
     #hom[hom$year == input$range[1] ,]
   })
-  
+
   # This reactive expression represents the palette function,
   # which changes as the user makes selections in UI.
   colorpal <- reactive({
     colorNumeric("Reds", hom$rate)
   })
-  
+
   output$map <- renderLeaflet({
     # Use leaflet() here, and only include aspects of the map that
     # won't need to change dynamically (at least, not unless the
@@ -104,13 +104,13 @@ server <- function(input, output, session) {
     states <- left_join(states, subset(hom, year == 2017), by = "id")
     pal <- colorpal()
     leaflet(states) %>% addTiles() %>%
-      setView(-102, 23.8, 5)%>% 
+      setView(-102, 23.8, 5)%>%
       addLegend(position = "bottomright",
                 pal = pal, values = ~hom$rate,
-                title = "homicide<br>rate") %>% 
+                title = "homicide<br>rate") %>%
       addTiles()
   })
-  
+
   # Incremental changes to the map (in this case, replacing the
   # circles when a new color is chosen) should be performed in
   # an observer. Each independent set of things that can change
@@ -121,13 +121,13 @@ server <- function(input, output, session) {
       clearShapes() %>%
       addPolygons(stroke = TRUE, weight = 1, color = "#000000",
                   fillOpacity = 0.8, smoothFactor = 0.5,
-                  fillColor = ~pal(rate), 
+                  fillColor = ~pal(rate),
                   popup = ~ sprintf("State: %s<br/>Rate: %s",
-                                    stri_trans_totitle(state), 
+                                    stri_trans_totitle(state),
                                     round(rate, 1)))
   })
-  
-  
+
+
 }
 
 shinyApp(ui, server)

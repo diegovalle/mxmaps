@@ -46,7 +46,7 @@ mxstate_leaflet(
 ```
 
 
-You can also create maps with categorical variables by first converting the 
+You can also create maps with categorical variables by first converting the
 variables to integers and using the `colors` and `labels` parameters to `addLegend` to assign the colors to each level in the variable.
 
 
