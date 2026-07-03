@@ -1,3 +1,67 @@
+# mxmaps 2020.3.0
+
+* Add options for showing a scale bar (provide a visual indication of distance 
+  and feature size on the map) to `mxstate_choropleth` and 
+  `mxmunicipio_choropleth` with the options: `scale_bar_position`, 
+  `scale_bar_length`, `scale_bar_segments`, `scale_bar_height`, 
+  `scale_bar_color`, and `scale_bar_text_color` 
+
+```R
+df_mxstate_2020$value <- df_mxstate_2020$pop
+mxstate_choropleth(df_mxstate_2020,
+  title = "Total population, by state",
+  title_color = "#635147",
+  scale_bar = TRUE,
+  scale_bar_position = "bl",
+  scale_bar_length = 1000,
+  scale_bar_segments = 4
+)
+```
+* Add options `background_color` `state_border_size` `state_border_color` to 
+  `mxstate_choropleth`, `mxhexbin_choropleth`, and `mxmunicipio_choropleth`
+
+```R
+df_mxstate_2020$value <- df_mxstate_2020$pop
+mxstate_choropleth(df_mxstate_2020,
+  title = "Total population, by state",
+  background_color = "#e3dac9",
+  state_border_size=2,
+  state_border_color="red"
+)
+```
+* Add options `municipio_border_size` `municipio_border_color` to 
+  `mxmunicipio_choropleth`
+
+```R
+df_mxmunicipio_2020$value <- df_mxmunicipio_2020$indigenous_language /
+  df_mxmunicipio_2020$pop * 100
+mxmunicipio_choropleth(df_mxmunicipio_2020,
+  num_colors = 1,
+  title = "Percentage of the population that speaks\nan indigenous language",
+  scale_bar = TRUE,
+  scale_bar_position = "bl",
+  scale_bar_length = 1000,
+  scale_bar_segments = 4,
+  background_color = "#e3dac9",
+  title_color = "#635147",
+  municipio_border_color = "gold",
+  municipio_border_size = 0.01,
+  state_border_color = "red",
+  state_border_size = .5,
+  legend = "%"
+)
+```
+* Add options`title_color`, `title_align`, and `title_position`  to 
+  `mxstate_choropleth`, `mxhexbin_choropleth` and `mxmunicipio_choropleth`
+
+```R
+df_mxstate_2020$value <- df_mxstate_2020$pop
+mxstate_choropleth(df_mxstate_2020,
+  title = "Total population, by state",
+  title_color = "green"
+)
+```
+
 # mxmaps 2020.2.3
 
 * Exlude images in man/figures by adding it to .Rbuildignore

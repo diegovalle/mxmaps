@@ -47,7 +47,8 @@ library(mxmaps)
 data("df_mxstate_2020")
 df_mxstate_2020$value <- df_mxstate_2020$pop
 mxstate_choropleth(df_mxstate_2020,
-                    title = "Total population, by state") 
+  title = "Total population, by state"
+)
 ```
 
 ## Data
@@ -67,8 +68,14 @@ Here's another example showing Mexican municipios (similar to counties):
 
 ```{r readme-muncipios}
 data("df_mxmunicipio_2020")
-df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / df_mxmunicipio_2020$pop 
-mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
-                       title = "Percentage of the population that speaks\nan indigenous language")
-
+df_mxmunicipio_2020$value <- df_mxmunicipio_2020$indigenous_language / df_mxmunicipio_2020$pop
+mxmunicipio_choropleth(df_mxmunicipio_2020,
+  num_colors = 1,
+  title = "Percentage of the population that speaks\nan indigenous language"
+)
 ```
+
+
+## Contributors
+
+* [robibgeophy](https://github.com/robibgeophy)

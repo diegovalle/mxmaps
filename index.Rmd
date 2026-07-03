@@ -106,3 +106,10 @@ mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
                        show_states = FALSE,
                        legend = "%")
 ```
+
+
+
+
+## Contributors
+
+* [robibgeophy](https://github.com/robibgeophy)

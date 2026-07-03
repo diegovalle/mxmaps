@@ -1,12 +1,12 @@
 Package: mxmaps
 Type: Package
 Title: Create Maps of Mexico
-Version: 2020.2.3
+Version: 2020.3.0
 Authors@R: c(person("Diego", "Valle-Jones", email = "diego@diegovalle.net", role = c("aut", "cre")))
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
 Description: Ready-made functions to create static and interactive choropleths of Mexico.
-    Includes functions to manipulate INEGI state and municipio codes along with options to download data
-    from the INEGI API, and customize map appearance through configurable borders, backgrounds, titles and
+    Includes functions to manipulate INEGI state and municipio codes along with options to
+    customize map appearance through configurable borders, backgrounds, titles and
     optional scale bars.
 URL: https://www.diegovalle.net/mxmaps/, https://github.com/diegovalle/mxmaps
 BugReports: https://github.com/diegovalle/mxmaps/issues
@@ -14,7 +14,6 @@ License: BSD_3_clause + file LICENSE
 LazyData: TRUE
 Imports:
     Hmisc,
-    RJSONIO,
     stringr,
     ggplot2 (>= 2.2.1),
     scales,
@@ -31,9 +30,11 @@ Imports:
 Suggests:
     sf,
     testthat,
+    vdiffr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    jsonlite
 Depends:
-    R (>= 3.2.3)
+    R (>= 4.1.0)
 Encoding: UTF-8
 Config/roxygen2/version: 8.0.0
