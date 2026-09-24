@@ -1,10 +1,15 @@
+# mxmaps 2025.0.0
+
+* Update the state and municipios maps with those from the Encuesta Intercensal 2025
+* Add an API key to the leaflet state and municipio map examples
+
 # mxmaps 2020.3.0
 
-* Add options for showing a scale bar (provide a visual indication of distance 
-  and feature size on the map) to `mxstate_choropleth` and 
-  `mxmunicipio_choropleth` with the options: `scale_bar_position`, 
-  `scale_bar_length`, `scale_bar_segments`, `scale_bar_height`, 
-  `scale_bar_color`, and `scale_bar_text_color` 
+* Add options for showing a scale bar (provide a visual indication of distance
+  and feature size on the map) to `mxstate_choropleth` and
+  `mxmunicipio_choropleth` with the options: `scale_bar_position`,
+  `scale_bar_length`, `scale_bar_segments`, `scale_bar_height`,
+  `scale_bar_color`, and `scale_bar_text_color`
 
 ```R
 df_mxstate_2020$value <- df_mxstate_2020$pop
@@ -17,7 +22,7 @@ mxstate_choropleth(df_mxstate_2020,
   scale_bar_segments = 4
 )
 ```
-* Add options `background_color` `state_border_size` `state_border_color` to 
+* Add options `background_color` `state_border_size` `state_border_color` to
   `mxstate_choropleth`, `mxhexbin_choropleth`, and `mxmunicipio_choropleth`
 
 ```R
@@ -29,7 +34,7 @@ mxstate_choropleth(df_mxstate_2020,
   state_border_color="red"
 )
 ```
-* Add options `municipio_border_size` `municipio_border_color` to 
+* Add options `municipio_border_size` `municipio_border_color` to
   `mxmunicipio_choropleth`
 
 ```R
@@ -51,7 +56,7 @@ mxmunicipio_choropleth(df_mxmunicipio_2020,
   legend = "%"
 )
 ```
-* Add options`title_color`, `title_align`, and `title_position`  to 
+* Add options`title_color`, `title_align`, and `title_position`  to
   `mxstate_choropleth`, `mxhexbin_choropleth` and `mxmunicipio_choropleth`
 
 ```R
@@ -70,7 +75,7 @@ package
 
 # mxmaps 2020.2.2
 
-* Rename Choroplet R6 class to Choropleth2 to avoid interfering with the 
+* Rename Choroplet R6 class to Choropleth2 to avoid interfering with the
 choroplethr package
 * Update documentation to use bootstrap 5
 
@@ -81,7 +86,7 @@ choroplethr package
 
 # mxmaps 2020.2.0
 
-* Remove the functions that use the INEGI API since it doesn't work anymore and 
+* Remove the functions that use the INEGI API since it doesn't work anymore and
 correct to a major release version
 
 # mxmaps 2020.1.3
@@ -106,7 +111,7 @@ correct to a major release version
 
 ## New feature
 
-* New argument to `mxhexbin_choropleth` called shadow_color to add a 
+* New argument to `mxhexbin_choropleth` called shadow_color to add a
   background shadow to the state abbreviation labels
 
 # mxmaps 2020.0.0
@@ -118,8 +123,8 @@ correct to a major release version
   data from the 2020 Census
 * New data.frames `df_mxmunicipio_1990_2010` and `df_mxstate_1990_2010` with
   population data from the 1990-2010 censuses and conteos
-* Alias the `df_mxmunicipio` and `df_mxstate` data.frames to 
- `df_mxmunicipio_2015` and `df_mxstate_2015` to indicate the year their data is 
+* Alias the `df_mxmunicipio` and `df_mxstate` data.frames to
+ `df_mxmunicipio_2015` and `df_mxstate_2015` to indicate the year their data is
   from
 * Changed the versioning scheme to include the year the shapefiles the maps are
   based on were published

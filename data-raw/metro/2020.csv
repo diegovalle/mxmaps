@@ -1,0 +1,422 @@
+_id,clave_metropoli,tipo,nombre,clave_entidad,entidad,clave_municipio,clave_compuesta_municipio,municipio,centrales_conurbacion_fisica,centrales_integracion_funcional,centrales_capital_200khab,centrales_0100khab,centrales_50khab,exteriores_integracion_funcional,exteriores_continuidad_geografica,entidad_etq
+1,2001-01-01T00:00:00,Zona metropolitana,Aguascalientes,1,Aguascalientes,1,1001,Aguascalientes,True,False,False,True,False,False,False,Aguascalientes
+2,2001-01-01T00:00:00,Zona metropolitana,Aguascalientes,1,Aguascalientes,5,1005,Jesús María,True,False,False,True,False,False,False,Aguascalientes
+3,2001-01-01T00:00:00,Zona metropolitana,Aguascalientes,1,Aguascalientes,11,1011,San Francisco de los Romo,False,False,False,False,False,True,False,Aguascalientes
+4,2002-01-01T00:00:00,Zona metropolitana,Tijuana,2,Baja California,4,2004,Tijuana,True,False,False,True,False,False,False,Baja California
+5,2002-01-01T00:00:00,Zona metropolitana,Tijuana,2,Baja California,5,2005,Playas de Rosarito,True,False,False,True,False,False,False,Baja California
+6,2002-02-02T00:00:00,Metrópoli municipal,Ensenada,2,Baja California,1,2001,Ensenada,False,False,True,False,False,False,False,Baja California
+7,2002-02-03T00:00:00,Metrópoli municipal,Mexicali,2,Baja California,2,2002,Mexicali,False,False,True,False,False,False,False,Baja California
+8,2003-02-01T00:00:00,Metrópoli municipal,La Paz,3,Baja California Sur,3,3003,La Paz,False,False,True,False,False,False,False,Baja California Sur
+9,2003-02-02T00:00:00,Metrópoli municipal,Los Cabos,3,Baja California Sur,8,3008,Los Cabos,False,False,True,False,False,False,False,Baja California Sur
+10,2004-02-01T00:00:00,Metrópoli municipal,Campeche,4,Campeche,2,4002,Campeche,False,False,True,False,False,False,False,Campeche
+11,2005-01-01T00:00:00,Zona metropolitana,La Laguna,5,Coahuila de Zaragoza,17,5017,Matamoros,True,False,False,True,False,False,False,Coahuila
+12,2005-01-01T00:00:00,Zona metropolitana,La Laguna,5,Coahuila de Zaragoza,35,5035,Torreón,True,False,False,True,False,False,False,Coahuila
+13,2005-01-01T00:00:00,Zona metropolitana,La Laguna,10,Durango,7,10007,Gómez Palacio,True,False,False,True,False,False,False,Durango
+14,2005-01-01T00:00:00,Zona metropolitana,La Laguna,10,Durango,12,10012,Lerdo,True,False,False,True,False,False,False,Durango
+15,2005-01-02T00:00:00,Zona metropolitana,Monclova-Frontera,5,Coahuila de Zaragoza,6,5006,Castaños,True,False,False,True,False,False,False,Coahuila
+16,2005-01-02T00:00:00,Zona metropolitana,Monclova-Frontera,5,Coahuila de Zaragoza,10,5010,Frontera,True,False,False,True,False,False,False,Coahuila
+17,2005-01-02T00:00:00,Zona metropolitana,Monclova-Frontera,5,Coahuila de Zaragoza,18,5018,Monclova,True,False,False,True,False,False,False,Coahuila
+18,2005-01-02T00:00:00,Zona metropolitana,Monclova-Frontera,5,Coahuila de Zaragoza,31,5031,San Buenaventura,False,False,False,False,False,True,False,Coahuila
+19,2005-01-03T00:00:00,Zona metropolitana,Piedras Negras,5,Coahuila de Zaragoza,22,5022,Nava,True,False,False,True,False,False,False,Coahuila
+20,2005-01-03T00:00:00,Zona metropolitana,Piedras Negras,5,Coahuila de Zaragoza,25,5025,Piedras Negras,True,False,False,True,False,False,False,Coahuila
+21,2005-01-04T00:00:00,Zona metropolitana,Saltillo,5,Coahuila de Zaragoza,4,5004,Arteaga,True,False,False,True,False,False,False,Coahuila
+22,2005-01-04T00:00:00,Zona metropolitana,Saltillo,5,Coahuila de Zaragoza,27,5027,Ramos Arizpe,True,False,False,True,False,False,False,Coahuila
+23,2005-01-04T00:00:00,Zona metropolitana,Saltillo,5,Coahuila de Zaragoza,30,5030,Saltillo,True,False,False,True,False,False,False,Coahuila
+24,2005-03-05T00:00:00,Zona conurbada,Sabinas,5,Coahuila de Zaragoza,28,5028,Sabinas,False,True,False,False,True,False,False,Coahuila
+25,2005-03-05T00:00:00,Zona conurbada,Sabinas,5,Coahuila de Zaragoza,32,5032,San Juan de Sabinas,False,False,False,False,False,True,False,Coahuila
+26,2006-01-01T00:00:00,Zona metropolitana,Colima-Villa de Álvarez,6,Colima,2,6002,Colima,True,False,False,True,False,False,False,Colima
+27,2006-01-01T00:00:00,Zona metropolitana,Colima-Villa de Álvarez,6,Colima,3,6003,Comala,False,False,False,False,False,True,False,Colima
+28,2006-01-01T00:00:00,Zona metropolitana,Colima-Villa de Álvarez,6,Colima,10,6010,Villa de Álvarez,True,False,False,True,False,False,False,Colima
+29,2006-03-02T00:00:00,Zona conurbada,Tecomán,6,Colima,1,6001,Armería,True,False,False,False,True,False,False,Colima
+30,2006-03-02T00:00:00,Zona conurbada,Tecomán,6,Colima,9,6009,Tecomán,True,False,False,False,True,False,False,Colima
+31,2007-01-01T00:00:00,Zona metropolitana,Tapachula,7,Chiapas,55,7055,Metapa,False,False,False,False,False,True,False,Chiapas
+32,2007-01-01T00:00:00,Zona metropolitana,Tapachula,7,Chiapas,89,7089,Tapachula,False,True,False,True,False,False,False,Chiapas
+33,2007-01-01T00:00:00,Zona metropolitana,Tapachula,7,Chiapas,102,7102,Tuxtla Chico,False,False,False,False,False,True,False,Chiapas
+34,2007-01-02T00:00:00,Zona metropolitana,Tuxtla Gutiérrez,7,Chiapas,12,7012,Berriozábal,False,False,False,False,False,True,False,Chiapas
+35,2007-01-02T00:00:00,Zona metropolitana,Tuxtla Gutiérrez,7,Chiapas,27,7027,Chiapa de Corzo,True,False,False,True,False,False,False,Chiapas
+36,2007-01-02T00:00:00,Zona metropolitana,Tuxtla Gutiérrez,7,Chiapas,79,7079,San Fernando,False,False,False,False,False,True,False,Chiapas
+37,2007-01-02T00:00:00,Zona metropolitana,Tuxtla Gutiérrez,7,Chiapas,86,7086,Suchiapa,False,False,False,False,False,True,False,Chiapas
+38,2007-01-02T00:00:00,Zona metropolitana,Tuxtla Gutiérrez,7,Chiapas,101,7101,Tuxtla Gutiérrez,True,False,False,True,False,False,False,Chiapas
+39,2008-01-01T00:00:00,Zona metropolitana,Chihuahua,8,Chihuahua,2,8002,Aldama,False,False,False,False,False,True,False,Chihuahua
+40,2008-01-01T00:00:00,Zona metropolitana,Chihuahua,8,Chihuahua,4,8004,Aquiles Serdán,True,False,False,True,False,False,False,Chihuahua
+41,2008-01-01T00:00:00,Zona metropolitana,Chihuahua,8,Chihuahua,19,8019,Chihuahua,True,False,False,True,False,False,False,Chihuahua
+42,2008-01-02T00:00:00,Zona metropolitana,Delicias,8,Chihuahua,21,8021,Delicias,False,True,False,True,False,False,False,Chihuahua
+43,2008-01-02T00:00:00,Zona metropolitana,Delicias,8,Chihuahua,45,8045,Meoqui,False,False,False,False,False,True,False,Chihuahua
+44,2008-01-02T00:00:00,Zona metropolitana,Delicias,8,Chihuahua,55,8055,Rosales,False,False,False,False,False,True,False,Chihuahua
+45,2008-02-03T00:00:00,Metrópoli municipal,Juárez,8,Chihuahua,37,8037,Juárez,False,False,True,False,False,False,False,Chihuahua
+46,2008-03-04T00:00:00,Zona conurbada,Hidalgo del Parral,8,Chihuahua,32,8032,Hidalgo del Parral,False,True,False,False,True,False,False,Chihuahua
+47,2008-03-04T00:00:00,Zona conurbada,Hidalgo del Parral,8,Chihuahua,59,8059,San Francisco del Oro,False,False,False,False,False,True,False,Chihuahua
+48,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,2,9002,Azcapotzalco,True,False,False,True,False,False,False,Ciudad de México
+49,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,3,9003,Coyoacán,True,False,False,True,False,False,False,Ciudad de México
+50,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,4,9004,Cuajimalpa de Morelos,True,False,False,True,False,False,False,Ciudad de México
+51,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,5,9005,Gustavo A. Madero,True,False,False,True,False,False,False,Ciudad de México
+52,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,6,9006,Iztacalco,True,False,False,True,False,False,False,Ciudad de México
+53,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,7,9007,Iztapalapa,True,False,False,True,False,False,False,Ciudad de México
+54,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,8,9008,La Magdalena Contreras,True,False,False,True,False,False,False,Ciudad de México
+55,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,9,9009,Milpa Alta,True,False,False,True,False,False,False,Ciudad de México
+56,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,10,9010,Álvaro Obregón,True,False,False,True,False,False,False,Ciudad de México
+57,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,11,9011,Tláhuac,True,False,False,True,False,False,False,Ciudad de México
+58,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,12,9012,Tlalpan,True,False,False,True,False,False,False,Ciudad de México
+59,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,13,9013,Xochimilco,True,False,False,True,False,False,False,Ciudad de México
+60,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,14,9014,Benito Juárez,True,False,False,True,False,False,False,Ciudad de México
+61,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,15,9015,Cuauhtémoc,True,False,False,True,False,False,False,Ciudad de México
+62,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,16,9016,Miguel Hidalgo,True,False,False,True,False,False,False,Ciudad de México
+63,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,9,Ciudad de México,17,9017,Venustiano Carranza,True,False,False,True,False,False,False,Ciudad de México
+64,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,13,Hidalgo,13,13013,Atotonilco de Tula,False,False,False,False,False,True,False,Hidalgo
+65,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,13,Hidalgo,69,13069,Tizayuca,False,False,False,False,False,True,False,Hidalgo
+66,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,2,15002,Acolman,True,False,False,True,False,False,False,Estado de México
+67,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,11,15011,Atenco,True,False,False,True,False,False,False,Estado de México
+68,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,13,15013,Atizapán de Zaragoza,True,False,False,True,False,False,False,Estado de México
+69,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,20,15020,Coacalco de Berriozábal,True,False,False,True,False,False,False,Estado de México
+70,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,22,15022,Cocotitlán,False,False,False,False,False,True,False,Estado de México
+71,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,23,15023,Coyotepec,True,False,False,True,False,False,False,Estado de México
+72,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,24,15024,Cuautitlán,True,False,False,True,False,False,False,Estado de México
+73,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,25,15025,Chalco,True,False,False,True,False,False,False,Estado de México
+74,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,28,15028,Chiautla,True,False,False,True,False,False,False,Estado de México
+75,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,29,15029,Chicoloapan,True,False,False,True,False,False,False,Estado de México
+76,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,30,15030,Chiconcuac,True,False,False,True,False,False,False,Estado de México
+77,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,31,15031,Chimalhuacán,True,False,False,True,False,False,False,Estado de México
+78,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,33,15033,Ecatepec de Morelos,True,False,False,True,False,False,False,Estado de México
+79,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,35,15035,Huehuetoca,False,False,False,False,False,True,False,Estado de México
+80,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,37,15037,Huixquilucan,True,False,False,True,False,False,False,Estado de México
+81,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,38,15038,Isidro Fabela,False,False,False,False,False,True,False,Estado de México
+82,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,39,15039,Ixtapaluca,True,False,False,True,False,False,False,Estado de México
+83,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,44,15044,Jaltenco,True,False,False,True,False,False,False,Estado de México
+84,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,46,15046,Jilotzingo,False,False,False,False,False,True,False,Estado de México
+85,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,53,15053,Melchor Ocampo,True,False,False,True,False,False,False,Estado de México
+86,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,57,15057,Naucalpan de Juárez,True,False,False,True,False,False,False,Estado de México
+87,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,58,15058,Nezahualcóyotl,True,False,False,True,False,False,False,Estado de México
+88,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,59,15059,Nextlalpan,False,False,False,False,False,True,False,Estado de México
+89,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,60,15060,Nicolás Romero,True,False,False,True,False,False,False,Estado de México
+90,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,69,15069,Papalotla,True,False,False,True,False,False,False,Estado de México
+91,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,70,15070,La Paz,True,False,False,True,False,False,False,Estado de México
+92,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,75,15075,San Martín de las Pirámides,False,False,False,False,False,True,False,Estado de México
+93,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,81,15081,Tecámac,True,False,False,True,False,False,False,Estado de México
+94,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,83,15083,Temamatla,False,False,False,False,False,True,False,Estado de México
+95,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,84,15084,Temascalapa,False,False,False,False,False,True,False,Estado de México
+96,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,89,15089,Tenango del Aire,False,False,False,False,False,True,False,Estado de México
+97,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,91,15091,Teoloyucan,True,False,False,True,False,False,False,Estado de México
+98,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,92,15092,Teotihuacán,True,False,False,True,False,False,False,Estado de México
+99,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,93,15093,Tepetlaoxtoc,True,False,False,True,False,False,False,Estado de México
+100,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,95,15095,Tepotzotlán,True,False,False,True,False,False,False,Estado de México
+101,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,99,15099,Texcoco,True,False,False,True,False,False,False,Estado de México
+102,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,100,15100,Tezoyuca,True,False,False,True,False,False,False,Estado de México
+103,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,103,15103,Tlalmanalco,False,False,False,False,False,True,False,Estado de México
+104,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,104,15104,Tlalnepantla de Baz,True,False,False,True,False,False,False,Estado de México
+105,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,108,15108,Tultepec,True,False,False,True,False,False,False,Estado de México
+106,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,109,15109,Tultitlán,True,False,False,True,False,False,False,Estado de México
+107,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,120,15120,Zumpango,False,False,False,False,False,True,False,Estado de México
+108,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,121,15121,Cuautitlán Izcalli,True,False,False,True,False,False,False,Estado de México
+109,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,122,15122,Valle de Chalco Solidaridad,True,False,False,True,False,False,False,Estado de México
+110,2009-01-01T00:00:00,Zona metropolitana,Ciudad de México,15,México,125,15125,Tonanitla,True,False,False,True,False,False,False,Estado de México
+111,2010-02-01T00:00:00,Metrópoli municipal,Durango,10,Durango,5,10005,Durango,False,False,True,False,False,False,False,Durango
+112,2011-01-01T00:00:00,Zona metropolitana,Celaya,11,Guanajuato,7,11007,Celaya,False,True,False,True,False,False,False,Guanajuato
+113,2011-01-01T00:00:00,Zona metropolitana,Celaya,11,Guanajuato,11,11011,Cortazar,False,False,False,False,False,True,False,Guanajuato
+114,2011-01-01T00:00:00,Zona metropolitana,Celaya,11,Guanajuato,44,11044,Villagrán,False,False,False,False,False,True,False,Guanajuato
+115,2011-01-02T00:00:00,Zona metropolitana,León,11,Guanajuato,20,11020,León,False,True,False,True,False,False,False,Guanajuato
+116,2011-01-02T00:00:00,Zona metropolitana,León,11,Guanajuato,25,11025,Purísima del Rincón,False,False,False,False,False,True,False,Guanajuato
+117,2011-01-02T00:00:00,Zona metropolitana,León,11,Guanajuato,31,11031,San Francisco del Rincón,False,False,False,False,False,True,False,Guanajuato
+118,2011-02-03T00:00:00,Metrópoli municipal,Guanajuato,11,Guanajuato,15,11015,Guanajuato,False,False,True,False,False,False,False,Guanajuato
+119,2011-02-04T00:00:00,Metrópoli municipal,Irapuato,11,Guanajuato,17,11017,Irapuato,False,False,True,False,False,False,False,Guanajuato
+120,2011-03-05T00:00:00,Zona conurbada,Moroleón-Uriangato,11,Guanajuato,21,11021,Moroleón,True,False,False,False,True,False,False,Guanajuato
+121,2011-03-05T00:00:00,Zona conurbada,Moroleón-Uriangato,11,Guanajuato,41,11041,Uriangato,True,False,False,False,True,False,False,Guanajuato
+122,2011-03-05T00:00:00,Zona conurbada,Moroleón-Uriangato,16,Michoacán de Ocampo,20,16020,Cuitzeo,False,False,False,False,False,True,False,Michoacán
+123,2011-03-06T00:00:00,Zona conurbada,Silao,11,Guanajuato,26,11026,Romita,False,False,False,False,False,True,False,Guanajuato
+124,2011-03-06T00:00:00,Zona conurbada,Silao,11,Guanajuato,37,11037,Silao de la Victoria,False,True,False,False,True,False,False,Guanajuato
+125,2012-01-01T00:00:00,Zona metropolitana,Chilpancingo,12,Guerrero,29,12029,Chilpancingo de los Bravo,False,True,False,True,False,False,False,Guerrero
+126,2012-01-01T00:00:00,Zona metropolitana,Chilpancingo,12,Guerrero,75,12075,Eduardo Neri,False,False,False,False,False,True,False,Guerrero
+127,2012-02-02T00:00:00,Metrópoli municipal,Acapulco,12,Guerrero,1,12001,Acapulco de Juárez,False,False,True,False,False,False,False,Guerrero
+128,2013-01-01T00:00:00,Zona metropolitana,Pachuca,13,Hidalgo,39,13039,Mineral del Monte,False,False,False,False,False,True,False,Hidalgo
+129,2013-01-01T00:00:00,Zona metropolitana,Pachuca,13,Hidalgo,48,13048,Pachuca de Soto,True,False,False,True,False,False,False,Hidalgo
+130,2013-01-01T00:00:00,Zona metropolitana,Pachuca,13,Hidalgo,51,13051,Mineral de la Reforma,True,False,False,True,False,False,False,Hidalgo
+131,2013-01-01T00:00:00,Zona metropolitana,Pachuca,13,Hidalgo,82,13082,Zapotlán de Juárez,False,False,False,False,False,True,False,Hidalgo
+132,2013-01-01T00:00:00,Zona metropolitana,Pachuca,13,Hidalgo,83,13083,Zempoala,True,False,False,True,False,False,False,Hidalgo
+133,2013-01-02T00:00:00,Zona metropolitana,Tulancingo,13,Hidalgo,16,13016,Cuautepec de Hinojosa,True,False,False,True,False,False,False,Hidalgo
+134,2013-01-02T00:00:00,Zona metropolitana,Tulancingo,13,Hidalgo,56,13056,Santiago Tulantepec de Lugo Guerrero,True,False,False,True,False,False,False,Hidalgo
+135,2013-01-02T00:00:00,Zona metropolitana,Tulancingo,13,Hidalgo,77,13077,Tulancingo de Bravo,True,False,False,True,False,False,False,Hidalgo
+136,2013-03-03T00:00:00,Zona conurbada,Atitalaquia,13,Hidalgo,10,13010,Atitalaquia,True,False,False,False,True,False,False,Hidalgo
+137,2013-03-03T00:00:00,Zona conurbada,Atitalaquia,13,Hidalgo,74,13074,Tlaxcoapan,True,False,False,False,True,False,False,Hidalgo
+138,2014-01-01T00:00:00,Zona metropolitana,Guadalajara,14,Jalisco,39,14039,Guadalajara,True,False,False,True,False,False,False,Jalisco
+139,2014-01-01T00:00:00,Zona metropolitana,Guadalajara,14,Jalisco,51,14051,Juanacatlán,False,False,False,False,False,True,False,Jalisco
+140,2014-01-01T00:00:00,Zona metropolitana,Guadalajara,14,Jalisco,70,14070,El Salto,True,False,False,True,False,False,False,Jalisco
+141,2014-01-01T00:00:00,Zona metropolitana,Guadalajara,14,Jalisco,97,14097,Tlajomulco de Zúñiga,True,False,False,True,False,False,False,Jalisco
+142,2014-01-01T00:00:00,Zona metropolitana,Guadalajara,14,Jalisco,98,14098,San Pedro Tlaquepaque,True,False,False,True,False,False,False,Jalisco
+143,2014-01-01T00:00:00,Zona metropolitana,Guadalajara,14,Jalisco,101,14101,Tonalá,True,False,False,True,False,False,False,Jalisco
+144,2014-01-01T00:00:00,Zona metropolitana,Guadalajara,14,Jalisco,120,14120,Zapopan,True,False,False,True,False,False,False,Jalisco
+145,2014-01-02T00:00:00,Zona metropolitana,Puerto Vallarta,14,Jalisco,67,14067,Puerto Vallarta,True,False,False,True,False,False,False,Jalisco
+146,2014-01-02T00:00:00,Zona metropolitana,Puerto Vallarta,18,Nayarit,20,18020,Bahía de Banderas,True,False,False,True,False,False,False,Nayarit
+147,2014-03-03T00:00:00,Zona conurbada,Ocotlán,14,Jalisco,47,14047,Jamay,False,False,False,False,False,True,False,Jalisco
+148,2014-03-03T00:00:00,Zona conurbada,Ocotlán,14,Jalisco,63,14063,Ocotlán,True,False,False,False,True,False,False,Jalisco
+149,2014-03-03T00:00:00,Zona conurbada,Ocotlán,14,Jalisco,66,14066,Poncitlán,True,False,False,False,True,False,False,Jalisco
+150,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,5,15005,Almoloya de Juárez,True,False,False,True,False,False,False,Estado de México
+151,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,18,15018,Calimaya,True,False,False,True,False,False,False,Estado de México
+152,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,27,15027,Chapultepec,False,False,False,False,False,True,False,Estado de México
+153,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,51,15051,Lerma,True,False,False,True,False,False,False,Estado de México
+154,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,54,15054,Metepec,True,False,False,True,False,False,False,Estado de México
+155,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,55,15055,Mexicaltzingo,True,False,False,True,False,False,False,Estado de México
+156,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,62,15062,Ocoyoacac,False,False,False,False,False,True,False,Estado de México
+157,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,67,15067,Otzolotepec,True,False,False,True,False,False,False,Estado de México
+158,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,72,15072,Rayón,False,False,False,False,False,True,False,Estado de México
+159,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,73,15073,San Antonio la Isla,False,False,False,False,False,True,False,Estado de México
+160,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,76,15076,San Mateo Atenco,True,False,False,True,False,False,False,Estado de México
+161,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,87,15087,Temoaya,False,False,False,False,False,True,False,Estado de México
+162,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,90,15090,Tenango del Valle,False,False,False,False,False,True,False,Estado de México
+163,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,106,15106,Toluca,True,False,False,True,False,False,False,Estado de México
+164,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,115,15115,Xonacatlán,False,False,False,False,False,True,False,Estado de México
+165,2015-01-01T00:00:00,Zona metropolitana,Toluca,15,México,118,15118,Zinacantepec,True,False,False,True,False,False,False,Estado de México
+166,2015-03-02T00:00:00,Zona conurbada,Ozumba,15,México,15,15015,Atlautla,True,False,False,False,True,False,False,Estado de México
+167,2015-03-02T00:00:00,Zona conurbada,Ozumba,15,México,68,15068,Ozumba,True,False,False,False,True,False,False,Estado de México
+168,2015-03-02T00:00:00,Zona conurbada,Ozumba,15,México,94,15094,Tepetlixpa,True,False,False,False,True,False,False,Estado de México
+169,2015-03-03T00:00:00,Zona conurbada,Tianguistenco,15,México,6,15006,Almoloya del Río,True,False,False,False,True,False,False,Estado de México
+170,2015-03-03T00:00:00,Zona conurbada,Tianguistenco,15,México,12,15012,Atizapán,True,False,False,False,True,False,False,Estado de México
+171,2015-03-03T00:00:00,Zona conurbada,Tianguistenco,15,México,19,15019,Capulhuac,True,False,False,False,True,False,False,Estado de México
+172,2015-03-03T00:00:00,Zona conurbada,Tianguistenco,15,México,43,15043,Xalatlaco,True,False,False,False,True,False,False,Estado de México
+173,2015-03-03T00:00:00,Zona conurbada,Tianguistenco,15,México,98,15098,Texcalyacac,False,False,False,False,False,True,False,Estado de México
+174,2015-03-03T00:00:00,Zona conurbada,Tianguistenco,15,México,101,15101,Tianguistenco,True,False,False,False,True,False,False,Estado de México
+175,2016-01-01T00:00:00,Zona metropolitana,La Piedad-Pénjamo,11,Guanajuato,23,11023,Pénjamo,True,False,False,True,False,False,False,Guanajuato
+176,2016-01-01T00:00:00,Zona metropolitana,La Piedad-Pénjamo,16,Michoacán de Ocampo,69,16069,La Piedad,True,False,False,True,False,False,False,Michoacán
+177,2016-01-02T00:00:00,Zona metropolitana,Morelia,16,Michoacán de Ocampo,22,16022,Charo,False,False,False,False,False,True,False,Michoacán
+178,2016-01-02T00:00:00,Zona metropolitana,Morelia,16,Michoacán de Ocampo,53,16053,Morelia,True,False,False,True,False,False,False,Michoacán
+179,2016-01-02T00:00:00,Zona metropolitana,Morelia,16,Michoacán de Ocampo,88,16088,Tarímbaro,True,False,False,True,False,False,False,Michoacán
+180,2016-01-03T00:00:00,Zona metropolitana,Zamora,16,Michoacán de Ocampo,43,16043,Jacona,True,False,False,True,False,False,False,Michoacán
+181,2016-01-03T00:00:00,Zona metropolitana,Zamora,16,Michoacán de Ocampo,108,16108,Zamora,True,False,False,True,False,False,False,Michoacán
+182,2016-02-04T00:00:00,Metrópoli municipal,Uruapan,16,Michoacán de Ocampo,102,16102,Uruapan,False,False,True,False,False,False,False,Michoacán
+183,2016-03-05T00:00:00,Zona conurbada,Lázaro Cárdenas,12,Guerrero,68,12068,La Unión de Isidoro Montes de Oca,False,False,False,False,False,True,False,Guerrero
+184,2016-03-05T00:00:00,Zona conurbada,Lázaro Cárdenas,16,Michoacán de Ocampo,52,16052,Lázaro Cárdenas,False,True,False,False,True,False,False,Michoacán
+185,2016-03-06T00:00:00,Zona conurbada,Sahuayo,16,Michoacán de Ocampo,45,16045,Jiquilpan,False,False,False,False,False,True,False,Michoacán
+186,2016-03-06T00:00:00,Zona conurbada,Sahuayo,16,Michoacán de Ocampo,76,16076,Sahuayo,False,True,False,False,True,False,False,Michoacán
+187,2017-01-01T00:00:00,Zona metropolitana,Cuautla,17,Morelos,2,17002,Atlatlahucan,False,False,False,False,False,True,False,Morelos
+188,2017-01-01T00:00:00,Zona metropolitana,Cuautla,17,Morelos,4,17004,Ayala,True,False,False,True,False,False,False,Morelos
+189,2017-01-01T00:00:00,Zona metropolitana,Cuautla,17,Morelos,6,17006,Cuautla,True,False,False,True,False,False,False,Morelos
+190,2017-01-01T00:00:00,Zona metropolitana,Cuautla,17,Morelos,30,17030,Yecapixtla,True,False,False,True,False,False,False,Morelos
+191,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,7,17007,Cuernavaca,True,False,False,True,False,False,False,Morelos
+192,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,8,17008,Emiliano Zapata,True,False,False,True,False,False,False,Morelos
+193,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,9,17009,Huitzilac,False,False,False,False,False,True,False,Morelos
+194,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,11,17011,Jiutepec,True,False,False,True,False,False,False,Morelos
+195,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,18,17018,Temixco,True,False,False,True,False,False,False,Morelos
+196,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,20,17020,Tepoztlán,False,False,False,False,False,True,False,Morelos
+197,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,28,17028,Xochitepec,True,False,False,True,False,False,False,Morelos
+198,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,29,17029,Yautepec,False,False,False,False,False,True,False,Morelos
+199,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,34,17034,Coatetelco,False,False,False,False,False,True,False,Morelos
+200,2017-01-02T00:00:00,Zona metropolitana,Cuernavaca,17,Morelos,35,17035,Xoxocotla,False,False,False,False,False,True,False,Morelos
+201,2018-01-01T00:00:00,Zona metropolitana,Tepic,18,Nayarit,8,18008,Xalisco,True,False,False,True,False,False,False,Nayarit
+202,2018-01-01T00:00:00,Zona metropolitana,Tepic,18,Nayarit,17,18017,Tepic,True,False,False,True,False,False,False,Nayarit
+203,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,6,19006,Apodaca,True,False,False,True,False,False,False,Nuevo León
+204,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,9,19009,Cadereyta Jiménez,False,False,False,False,False,True,False,Nuevo León
+205,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,10,19010,El Carmen,True,False,False,True,False,False,False,Nuevo León
+206,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,12,19012,Ciénega de Flores,False,False,False,False,False,True,False,Nuevo León
+207,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,18,19018,García,True,False,False,True,False,False,False,Nuevo León
+208,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,19,19019,San Pedro Garza García,True,False,False,True,False,False,False,Nuevo León
+209,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,21,19021,General Escobedo,True,False,False,True,False,False,False,Nuevo León
+210,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,25,19025,General Zuazua,False,False,False,False,False,True,False,Nuevo León
+211,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,26,19026,Guadalupe,True,False,False,True,False,False,False,Nuevo León
+212,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,31,19031,Juárez,True,False,False,True,False,False,False,Nuevo León
+213,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,39,19039,Monterrey,True,False,False,True,False,False,False,Nuevo León
+214,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,41,19041,Pesquería,False,False,False,False,False,True,False,Nuevo León
+215,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,45,19045,Salinas Victoria,True,False,False,True,False,False,False,Nuevo León
+216,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,46,19046,San Nicolás de los Garza,True,False,False,True,False,False,False,Nuevo León
+217,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,48,19048,Santa Catarina,True,False,False,True,False,False,False,Nuevo León
+218,2019-01-01T00:00:00,Zona metropolitana,Monterrey,19,Nuevo León,49,19049,Santiago,True,False,False,True,False,False,False,Nuevo León
+219,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,23,20023,Cuilápam de Guerrero,False,False,False,False,False,True,False,Oaxaca
+220,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,45,20045,Magdalena Apasco,False,False,False,False,False,True,False,Oaxaca
+221,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,63,20063,Nazareno Etla,False,False,False,False,False,True,False,Oaxaca
+222,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,67,20067,Oaxaca de Juárez,True,False,False,True,False,False,False,Oaxaca
+223,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,83,20083,San Agustín de las Juntas,True,False,False,True,False,False,False,Oaxaca
+224,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,87,20087,San Agustín Yatareni,True,False,False,True,False,False,False,Oaxaca
+225,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,91,20091,San Andrés Huayápam,True,False,False,True,False,False,False,Oaxaca
+226,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,107,20107,San Antonio de la Cal,True,False,False,True,False,False,False,Oaxaca
+227,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,115,20115,San Bartolo Coyotepec,False,False,False,False,False,True,False,Oaxaca
+228,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,157,20157,San Jacinto Amilpas,True,False,False,True,False,False,False,Oaxaca
+229,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,174,20174,Ánimas Trujano,True,False,False,True,False,False,False,Oaxaca
+230,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,227,20227,San Lorenzo Cacaotepec,True,False,False,True,False,False,False,Oaxaca
+231,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,293,20293,San Pablo Etla,True,False,False,True,False,False,False,Oaxaca
+232,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,338,20338,Villa de Etla,False,False,False,False,False,True,False,Oaxaca
+233,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,342,20342,San Raymundo Jalpan,False,False,False,False,False,False,True,Oaxaca
+234,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,350,20350,San Sebastián Tutla,True,False,False,True,False,False,False,Oaxaca
+235,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,375,20375,Santa Cruz Amilpas,True,False,False,True,False,False,False,Oaxaca
+236,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,385,20385,Santa Cruz Xoxocotlán,True,False,False,True,False,False,False,Oaxaca
+237,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,390,20390,Santa Lucía del Camino,True,False,False,True,False,False,False,Oaxaca
+238,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,399,20399,Santa María Atzompa,True,False,False,True,False,False,False,Oaxaca
+239,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,403,20403,Santa María Coyotepec,False,False,False,False,False,True,False,Oaxaca
+240,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,409,20409,Santa María del Tule,True,False,False,True,False,False,False,Oaxaca
+241,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,519,20519,Santo Domingo Tomaltepec,True,False,False,True,False,False,False,Oaxaca
+242,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,539,20539,Soledad Etla,False,False,False,False,False,True,False,Oaxaca
+243,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,553,20553,Tlalixtac de Cabrera,True,False,False,True,False,False,False,Oaxaca
+244,2020-01-01T00:00:00,Zona metropolitana,Oaxaca,20,Oaxaca,565,20565,Villa de Zaachila,False,False,False,False,False,True,False,Oaxaca
+245,2020-03-02T00:00:00,Zona conurbada,Juchitán,20,Oaxaca,30,20030,El Espinal,False,False,False,False,False,True,False,Oaxaca
+246,2020-03-02T00:00:00,Zona conurbada,Juchitán,20,Oaxaca,43,20043,Juchitán de Zaragoza,False,True,False,False,True,False,False,Oaxaca
+247,2020-03-02T00:00:00,Zona conurbada,Juchitán,20,Oaxaca,441,20441,Santa María Xadani,False,False,False,False,False,True,False,Oaxaca
+248,2020-03-03T00:00:00,Zona conurbada,Salina Cruz,20,Oaxaca,79,20079,Salina Cruz,False,True,False,False,True,False,False,Oaxaca
+249,2020-03-03T00:00:00,Zona conurbada,Salina Cruz,20,Oaxaca,308,20308,San Pedro Huilotepec,False,False,False,False,False,True,False,Oaxaca
+250,2020-03-04T00:00:00,Zona conurbada,Tehuantepec,20,Oaxaca,124,20124,San Blas Atempa,True,False,False,False,True,False,False,Oaxaca
+251,2020-03-04T00:00:00,Zona conurbada,Tehuantepec,20,Oaxaca,515,20515,Santo Domingo Tehuantepec,True,False,False,False,True,False,False,Oaxaca
+252,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,1,21001,Acajete,False,False,False,False,False,True,False,Puebla
+253,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,15,21015,Amozoc,True,False,False,True,False,False,False,Puebla
+254,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,34,21034,Coronango,True,False,False,True,False,False,False,Puebla
+255,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,41,21041,Cuautlancingo,True,False,False,True,False,False,False,Puebla
+256,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,90,21090,Juan C. Bonilla,True,False,False,True,False,False,False,Puebla
+257,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,106,21106,Ocoyucan,True,False,False,True,False,False,False,Puebla
+258,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,114,21114,Puebla,True,False,False,True,False,False,False,Puebla
+259,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,119,21119,San Andrés Cholula,True,False,False,True,False,False,False,Puebla
+260,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,125,21125,San Gregorio Atzompa,True,False,False,True,False,False,False,Puebla
+261,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,136,21136,San Miguel Xoxtla,False,False,False,False,False,True,False,Puebla
+262,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,140,21140,San Pedro Cholula,True,False,False,True,False,False,False,Puebla
+263,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,163,21163,Tepatlaxco de Hidalgo,False,False,False,False,False,True,False,Puebla
+264,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,21,Puebla,181,21181,Tlaltenango,False,False,False,False,False,True,False,Puebla
+265,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,17,29017,Mazatecochco de José María Morelos,True,False,False,True,False,False,False,Tlaxcala
+266,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,22,29022,Acuamanala de Miguel Hidalgo,True,False,False,True,False,False,False,Tlaxcala
+267,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,25,29025,San Pablo del Monte,True,False,False,True,False,False,False,Tlaxcala
+268,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,27,29027,Tenancingo,True,False,False,True,False,False,False,Tlaxcala
+269,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,28,29028,Teolocholco,True,False,False,True,False,False,False,Tlaxcala
+270,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,29,29029,Tepeyanco,True,False,False,True,False,False,False,Tlaxcala
+271,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,32,29032,Tetlatlahuca,False,False,False,False,False,False,True,Tlaxcala
+272,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,41,29041,Papalotla de Xicohténcatl,True,False,False,True,False,False,False,Tlaxcala
+273,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,42,29042,Xicohtzinco,True,False,False,True,False,False,False,Tlaxcala
+274,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,44,29044,Zacatelco,True,False,False,True,False,False,False,Tlaxcala
+275,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,51,29051,San Jerónimo Zacualpan,False,False,False,False,False,False,True,Tlaxcala
+276,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,53,29053,San Juan Huactzinco,True,False,False,True,False,False,False,Tlaxcala
+277,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,54,29054,San Lorenzo Axocomanitla,True,False,False,True,False,False,False,Tlaxcala
+278,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,58,29058,Santa Catarina Ayometla,True,False,False,True,False,False,False,Tlaxcala
+279,2021-01-01T00:00:00,Zona metropolitana,Puebla-Tlaxcala,29,Tlaxcala,59,29059,Santa Cruz Quilehtla,True,False,False,True,False,False,False,Tlaxcala
+280,2021-01-02T00:00:00,Zona metropolitana,San Martín Texmelucan,21,Puebla,48,21048,Chiautzingo,False,False,False,False,False,False,True,Puebla
+281,2021-01-02T00:00:00,Zona metropolitana,San Martín Texmelucan,21,Puebla,74,21074,Huejotzingo,False,False,False,False,False,True,False,Puebla
+282,2021-01-02T00:00:00,Zona metropolitana,San Martín Texmelucan,21,Puebla,122,21122,San Felipe Teotlalcingo,False,False,False,False,False,False,True,Puebla
+283,2021-01-02T00:00:00,Zona metropolitana,San Martín Texmelucan,21,Puebla,132,21132,San Martín Texmelucan,True,False,False,True,False,False,False,Puebla
+284,2021-01-02T00:00:00,Zona metropolitana,San Martín Texmelucan,21,Puebla,143,21143,San Salvador el Verde,True,False,False,True,False,False,False,Puebla
+285,2021-01-03T00:00:00,Zona metropolitana,Tehuacán,21,Puebla,149,21149,Santiago Miahuatlán,True,False,False,True,False,False,False,Puebla
+286,2021-01-03T00:00:00,Zona metropolitana,Tehuacán,21,Puebla,156,21156,Tehuacán,True,False,False,True,False,False,False,Puebla
+287,2021-03-04T00:00:00,Zona conurbada,Huauchinango,21,Puebla,71,21071,Huauchinango,False,True,False,False,True,False,False,Puebla
+288,2021-03-04T00:00:00,Zona conurbada,Huauchinango,21,Puebla,91,21091,Juan Galindo,False,False,False,False,False,True,False,Puebla
+289,2021-03-05T00:00:00,Zona conurbada,Teziutlán,21,Puebla,54,21054,Chignautla,True,False,False,False,True,False,False,Puebla
+290,2021-03-05T00:00:00,Zona conurbada,Teziutlán,21,Puebla,174,21174,Teziutlán,True,False,False,False,True,False,False,Puebla
+291,2022-01-01T00:00:00,Zona metropolitana,Querétaro,22,Querétaro,6,22006,Corregidora,True,False,False,True,False,False,False,Querétaro
+292,2022-01-01T00:00:00,Zona metropolitana,Querétaro,22,Querétaro,8,22008,Huimilpan,False,False,False,False,False,True,False,Querétaro
+293,2022-01-01T00:00:00,Zona metropolitana,Querétaro,22,Querétaro,11,22011,El Marqués,True,False,False,True,False,False,False,Querétaro
+294,2022-01-01T00:00:00,Zona metropolitana,Querétaro,22,Querétaro,14,22014,Querétaro,True,False,False,True,False,False,False,Querétaro
+295,2023-01-01T00:00:00,Zona metropolitana,Cancún,23,Quintana Roo,3,23003,Isla Mujeres,True,False,False,True,False,False,False,Quintana Roo
+296,2023-01-01T00:00:00,Zona metropolitana,Cancún,23,Quintana Roo,5,23005,Benito Juárez,True,False,False,True,False,False,False,Quintana Roo
+297,2023-02-02T00:00:00,Metrópoli municipal,Chetumal,23,Quintana Roo,4,23004,Othón P. Blanco,False,False,True,False,False,False,False,Quintana Roo
+298,2023-02-03T00:00:00,Metrópoli municipal,Playa del Carmen,23,Quintana Roo,8,23008,Solidaridad,False,False,True,False,False,False,False,Quintana Roo
+299,2024-01-01T00:00:00,Zona metropolitana,San Luis Potosí,24,San Luis Potosí,28,24028,San Luis Potosí,True,False,False,True,False,False,False,San Luis Potosí
+300,2024-01-01T00:00:00,Zona metropolitana,San Luis Potosí,24,San Luis Potosí,35,24035,Soledad de Graciano Sánchez,True,False,False,True,False,False,False,San Luis Potosí
+301,2024-03-02T00:00:00,Zona conurbada,Matehuala,24,San Luis Potosí,20,24020,Matehuala,False,True,False,False,True,False,False,San Luis Potosí
+302,2024-03-02T00:00:00,Zona conurbada,Matehuala,24,San Luis Potosí,48,24048,Villa de la Paz,False,False,False,False,False,True,False,San Luis Potosí
+303,2024-03-03T00:00:00,Zona conurbada,Rioverde,24,San Luis Potosí,11,24011,Ciudad Fernández,True,False,False,False,True,False,False,San Luis Potosí
+304,2024-03-03T00:00:00,Zona conurbada,Rioverde,24,San Luis Potosí,24,24024,Rioverde,True,False,False,False,True,False,False,San Luis Potosí
+305,2025-02-01T00:00:00,Metrópoli municipal,Culiacán,25,Sinaloa,6,25006,Culiacán,False,False,True,False,False,False,False,Sinaloa
+306,2025-02-02T00:00:00,Metrópoli municipal,Los Mochis,25,Sinaloa,1,25001,Ahome,False,False,True,False,False,False,False,Sinaloa
+307,2025-02-03T00:00:00,Metrópoli municipal,Mazatlán,25,Sinaloa,12,25012,Mazatlán,False,False,True,False,False,False,False,Sinaloa
+308,2026-01-01T00:00:00,Zona metropolitana,Guaymas,26,Sonora,25,26025,Empalme,False,False,False,False,False,True,False,Sonora
+309,2026-01-01T00:00:00,Zona metropolitana,Guaymas,26,Sonora,29,26029,Guaymas,False,True,False,True,False,False,False,Sonora
+310,2026-02-02T00:00:00,Metrópoli municipal,Ciudad Obregón,26,Sonora,18,26018,Cajeme,False,False,True,False,False,False,False,Sonora
+311,2026-02-03T00:00:00,Metrópoli municipal,Hermosillo,26,Sonora,30,26030,Hermosillo,False,False,True,False,False,False,False,Sonora
+312,2026-02-04T00:00:00,Metrópoli municipal,Nogales,26,Sonora,43,26043,Nogales,False,False,True,False,False,False,False,Sonora
+313,2026-03-05T00:00:00,Zona conurbada,Caborca,26,Sonora,17,26017,Caborca,True,False,False,False,True,False,False,Sonora
+314,2026-03-05T00:00:00,Zona conurbada,Caborca,26,Sonora,47,26047,Pitiquito,False,False,False,False,False,True,False,Sonora
+315,2027-01-01T00:00:00,Zona metropolitana,Villahermosa,27,Tabasco,4,27004,Centro,True,False,False,True,False,False,False,Tabasco
+316,2027-01-01T00:00:00,Zona metropolitana,Villahermosa,27,Tabasco,13,27013,Nacajuca,True,False,False,True,False,False,False,Tabasco
+317,2028-01-01T00:00:00,Zona metropolitana,Reynosa,28,Tamaulipas,32,28032,Reynosa,False,True,False,True,False,False,False,Tamaulipas
+318,2028-01-01T00:00:00,Zona metropolitana,Reynosa,28,Tamaulipas,33,28033,Río Bravo,False,False,False,False,False,True,False,Tamaulipas
+319,2028-01-02T00:00:00,Zona metropolitana,Tampico,28,Tamaulipas,3,28003,Altamira,True,False,False,True,False,False,False,Tamaulipas
+320,2028-01-02T00:00:00,Zona metropolitana,Tampico,28,Tamaulipas,9,28009,Ciudad Madero,True,False,False,True,False,False,False,Tamaulipas
+321,2028-01-02T00:00:00,Zona metropolitana,Tampico,28,Tamaulipas,38,28038,Tampico,True,False,False,True,False,False,False,Tamaulipas
+322,2028-01-02T00:00:00,Zona metropolitana,Tampico,30,Veracruz de Ignacio de la Llave,123,30123,Pánuco,True,False,False,True,False,False,False,Veracruz
+323,2028-01-02T00:00:00,Zona metropolitana,Tampico,30,Veracruz de Ignacio de la Llave,133,30133,Pueblo Viejo,True,False,False,True,False,False,False,Veracruz
+324,2028-02-03T00:00:00,Metrópoli municipal,Ciudad Victoria,28,Tamaulipas,41,28041,Victoria,False,False,True,False,False,False,False,Tamaulipas
+325,2028-02-04T00:00:00,Metrópoli municipal,Matamoros,28,Tamaulipas,22,28022,Matamoros,False,False,True,False,False,False,False,Tamaulipas
+326,2028-02-05T00:00:00,Metrópoli municipal,Nuevo Laredo,28,Tamaulipas,27,28027,Nuevo Laredo,False,False,True,False,False,False,False,Tamaulipas
+327,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,1,29001,Amaxac de Guerrero,True,False,False,True,False,False,False,Tlaxcala
+328,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,2,29002,Apetatitlán de Antonio Carvajal,True,False,False,True,False,False,False,Tlaxcala
+329,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,3,29003,Atlangatepec,False,False,False,False,False,False,True,Tlaxcala
+330,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,5,29005,Apizaco,True,False,False,True,False,False,False,Tlaxcala
+331,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,9,29009,Cuaxomulco,True,False,False,True,False,False,False,Tlaxcala
+332,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,10,29010,Chiautempan,True,False,False,True,False,False,False,Tlaxcala
+333,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,11,29011,Muñoz de Domingo Arenas,False,False,False,False,False,True,False,Tlaxcala
+334,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,15,29015,Ixtacuixtla de Mariano Matamoros,False,False,False,False,False,True,False,Tlaxcala
+335,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,18,29018,Contla de Juan Cuamatzi,True,False,False,True,False,False,False,Tlaxcala
+336,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,24,29024,Panotla,True,False,False,True,False,False,False,Tlaxcala
+337,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,26,29026,Santa Cruz Tlaxcala,True,False,False,True,False,False,False,Tlaxcala
+338,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,31,29031,Tetla de la Solidaridad,True,False,False,True,False,False,False,Tlaxcala
+339,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,33,29033,Tlaxcala,True,False,False,True,False,False,False,Tlaxcala
+340,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,34,29034,Tlaxco,False,False,False,False,False,True,False,Tlaxcala
+341,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,35,29035,Tocatlán,True,False,False,True,False,False,False,Tlaxcala
+342,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,36,29036,Totolac,True,False,False,True,False,False,False,Tlaxcala
+343,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,38,29038,Tzompantepec,True,False,False,True,False,False,False,Tlaxcala
+344,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,39,29039,Xaloztoc,True,False,False,True,False,False,False,Tlaxcala
+345,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,43,29043,Yauhquemehcan,True,False,False,True,False,False,False,Tlaxcala
+346,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,48,29048,La Magdalena Tlaltelulco,True,False,False,True,False,False,False,Tlaxcala
+347,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,49,29049,San Damián Texóloc,True,False,False,True,False,False,False,Tlaxcala
+348,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,50,29050,San Francisco Tetlanohcan,True,False,False,True,False,False,False,Tlaxcala
+349,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,56,29056,Santa Ana Nopalucan,False,False,False,False,False,True,False,Tlaxcala
+350,2029-01-01T00:00:00,Zona metropolitana,Tlaxcala-Apizaco,29,Tlaxcala,60,29060,Santa Isabel Xiloxoxtla,True,False,False,True,False,False,False,Tlaxcala
+351,2029-03-02T00:00:00,Zona conurbada,Huamantla,29,Tlaxcala,13,29013,Huamantla,False,True,False,False,True,False,False,Tlaxcala
+352,2029-03-02T00:00:00,Zona conurbada,Huamantla,29,Tlaxcala,16,29016,Ixtenco,False,False,False,False,False,True,False,Tlaxcala
+353,2030-01-01T00:00:00,Zona metropolitana,Coatzacoalcos,30,Veracruz de Ignacio de la Llave,39,30039,Coatzacoalcos,False,True,False,True,False,False,False,Veracruz
+354,2030-01-01T00:00:00,Zona metropolitana,Coatzacoalcos,30,Veracruz de Ignacio de la Llave,82,30082,Ixhuatlán del Sureste,False,False,False,False,False,True,False,Veracruz
+355,2030-01-01T00:00:00,Zona metropolitana,Coatzacoalcos,30,Veracruz de Ignacio de la Llave,206,30206,Nanchital de Lázaro Cárdenas del Río,False,False,False,False,False,True,False,Veracruz
+356,2030-01-02T00:00:00,Zona metropolitana,Córdoba,30,Veracruz de Ignacio de la Llave,14,30014,Amatlán de los Reyes,True,False,False,True,False,False,False,Veracruz
+357,2030-01-02T00:00:00,Zona metropolitana,Córdoba,30,Veracruz de Ignacio de la Llave,44,30044,Córdoba,True,False,False,True,False,False,False,Veracruz
+358,2030-01-02T00:00:00,Zona metropolitana,Córdoba,30,Veracruz de Ignacio de la Llave,68,30068,Fortín,True,False,False,True,False,False,False,Veracruz
+359,2030-01-02T00:00:00,Zona metropolitana,Córdoba,30,Veracruz de Ignacio de la Llave,113,30113,Naranjal,False,False,False,False,False,True,False,Veracruz
+360,2030-01-02T00:00:00,Zona metropolitana,Córdoba,30,Veracruz de Ignacio de la Llave,196,30196,Yanga,False,False,False,False,False,True,False,Veracruz
+361,2030-01-03T00:00:00,Zona metropolitana,Minatitlán,30,Veracruz de Ignacio de la Llave,48,30048,Cosoleacaque,True,False,False,True,False,False,False,Veracruz
+362,2030-01-03T00:00:00,Zona metropolitana,Minatitlán,30,Veracruz de Ignacio de la Llave,59,30059,Chinameca,False,False,False,False,False,False,True,Veracruz
+363,2030-01-03T00:00:00,Zona metropolitana,Minatitlán,30,Veracruz de Ignacio de la Llave,108,30108,Minatitlán,True,False,False,True,False,False,False,Veracruz
+364,2030-01-03T00:00:00,Zona metropolitana,Minatitlán,30,Veracruz de Ignacio de la Llave,120,30120,Oteapan,False,False,False,False,False,True,False,Veracruz
+365,2030-01-03T00:00:00,Zona metropolitana,Minatitlán,30,Veracruz de Ignacio de la Llave,199,30199,Zaragoza,False,False,False,False,False,True,False,Veracruz
+366,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,6,30006,Acultzingo,False,False,False,False,False,True,False,Veracruz
+367,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,30,30030,Camerino Z. Mendoza,True,False,False,True,False,False,False,Veracruz
+368,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,74,30074,Huiloapan de Cuauhtémoc,True,False,False,True,False,False,False,Veracruz
+369,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,81,30081,Ixhuatlancillo,True,False,False,True,False,False,False,Veracruz
+370,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,85,30085,Ixtaczoquitlán,True,False,False,True,False,False,False,Veracruz
+371,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,98,30098,Magdalena,False,False,False,False,False,True,False,Veracruz
+372,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,99,30099,Maltrata,False,False,False,False,False,True,False,Veracruz
+373,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,101,30101,Mariano Escobedo,True,False,False,True,False,False,False,Veracruz
+374,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,115,30115,Nogales,True,False,False,True,False,False,False,Veracruz
+375,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,118,30118,Orizaba,True,False,False,True,False,False,False,Veracruz
+376,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,135,30135,Rafael Delgado,True,False,False,True,False,False,False,Veracruz
+377,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,138,30138,Río Blanco,True,False,False,True,False,False,False,Veracruz
+378,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,140,30140,San Andrés Tenejapan,False,False,False,False,False,True,False,Veracruz
+379,2030-01-04T00:00:00,Zona metropolitana,Orizaba,30,Veracruz de Ignacio de la Llave,185,30185,Tlilapan,True,False,False,True,False,False,False,Veracruz
+380,2030-01-05T00:00:00,Zona metropolitana,Poza Rica,30,Veracruz de Ignacio de la Llave,40,30040,Coatzintla,True,False,False,True,False,False,False,Veracruz
+381,2030-01-05T00:00:00,Zona metropolitana,Poza Rica,30,Veracruz de Ignacio de la Llave,131,30131,Poza Rica de Hidalgo,True,False,False,True,False,False,False,Veracruz
+382,2030-01-05T00:00:00,Zona metropolitana,Poza Rica,30,Veracruz de Ignacio de la Llave,175,30175,Tihuatlán,True,False,False,True,False,False,False,Veracruz
+383,2030-01-06T00:00:00,Zona metropolitana,Veracruz,30,Veracruz de Ignacio de la Llave,28,30028,Boca del Río,True,False,False,True,False,False,False,Veracruz
+384,2030-01-06T00:00:00,Zona metropolitana,Veracruz,30,Veracruz de Ignacio de la Llave,90,30090,Jamapa,False,False,False,False,False,True,False,Veracruz
+385,2030-01-06T00:00:00,Zona metropolitana,Veracruz,30,Veracruz de Ignacio de la Llave,100,30100,Manlio Fabio Altamirano,False,False,False,False,False,True,False,Veracruz
+386,2030-01-06T00:00:00,Zona metropolitana,Veracruz,30,Veracruz de Ignacio de la Llave,105,30105,Medellín de Bravo,False,False,False,False,False,True,False,Veracruz
+387,2030-01-06T00:00:00,Zona metropolitana,Veracruz,30,Veracruz de Ignacio de la Llave,193,30193,Veracruz,True,False,False,True,False,False,False,Veracruz
+388,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,1,30001,Acajete,False,False,False,False,False,True,False,Veracruz
+389,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,26,30026,Banderilla,True,False,False,True,False,False,False,Veracruz
+390,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,36,30036,Coacoatzintla,False,False,False,False,False,True,False,Veracruz
+391,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,38,30038,Coatepec,False,False,False,False,False,True,False,Veracruz
+392,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,65,30065,Emiliano Zapata,True,False,False,True,False,False,False,Veracruz
+393,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,87,30087,Xalapa,True,False,False,True,False,False,False,Veracruz
+394,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,92,30092,Xico,False,False,False,False,False,True,False,Veracruz
+395,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,93,30093,Jilotepec,False,False,False,False,False,True,False,Veracruz
+396,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,136,30136,Rafael Lucio,False,False,False,False,False,True,False,Veracruz
+397,2030-01-07T00:00:00,Zona metropolitana,Xalapa,30,Veracruz de Ignacio de la Llave,182,30182,Tlalnelhuayocan,True,False,False,True,False,False,False,Veracruz
+398,2030-03-08T00:00:00,Zona conurbada,Acayucan,30,Veracruz de Ignacio de la Llave,3,30003,Acayucan,True,False,False,False,True,False,False,Veracruz
+399,2030-03-08T00:00:00,Zona conurbada,Acayucan,30,Veracruz de Ignacio de la Llave,116,30116,Oluta,False,False,False,False,False,True,False,Veracruz
+400,2030-03-08T00:00:00,Zona conurbada,Acayucan,30,Veracruz de Ignacio de la Llave,145,30145,Soconusco,True,False,False,False,True,False,False,Veracruz
+401,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,2,31002,Acanceh,False,False,False,False,False,True,False,Yucatán
+402,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,13,31013,Conkal,True,False,False,True,False,False,False,Yucatán
+403,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,20,31020,Chicxulub Pueblo,False,False,False,False,False,False,True,Yucatán
+404,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,38,31038,Hunucmá,False,False,False,False,False,True,False,Yucatán
+405,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,39,31039,Ixil,False,False,False,False,False,True,False,Yucatán
+406,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,41,31041,Kanasín,True,False,False,True,False,False,False,Yucatán
+407,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,50,31050,Mérida,True,False,False,True,False,False,False,Yucatán
+408,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,63,31063,Samahil,False,False,False,False,False,True,False,Yucatán
+409,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,90,31090,Timucuy,False,False,False,False,False,True,False,Yucatán
+410,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,93,31093,Tixkokob,False,False,False,False,False,True,False,Yucatán
+411,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,95,31095,Tixpéhual,False,False,False,False,False,False,True,Yucatán
+412,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,100,31100,Ucú,False,False,False,False,False,False,True,Yucatán
+413,2031-01-01T00:00:00,Zona metropolitana,Mérida,31,Yucatán,101,31101,Umán,True,False,False,True,False,False,False,Yucatán
+414,2031-03-02T00:00:00,Zona conurbada,Valladolid,31,Yucatán,21,31021,Chichimilá,False,False,False,False,False,False,True,Yucatán
+415,2031-03-02T00:00:00,Zona conurbada,Valladolid,31,Yucatán,99,31099,Uayma,False,False,False,False,False,False,True,Yucatán
+416,2031-03-02T00:00:00,Zona conurbada,Valladolid,31,Yucatán,102,31102,Valladolid,False,True,False,False,False,False,False,Yucatán
+417,2032-01-01T00:00:00,Zona metropolitana,Zacatecas-Guadalupe,32,Zacatecas,17,32017,Guadalupe,True,False,False,True,False,False,False,Zacatecas
+418,2032-01-01T00:00:00,Zona metropolitana,Zacatecas-Guadalupe,32,Zacatecas,32,32032,Morelos,False,False,False,False,False,True,False,Zacatecas
+419,2032-01-01T00:00:00,Zona metropolitana,Zacatecas-Guadalupe,32,Zacatecas,50,32050,Vetagrande,False,False,False,False,False,True,False,Zacatecas
+420,2032-01-01T00:00:00,Zona metropolitana,Zacatecas-Guadalupe,32,Zacatecas,56,32056,Zacatecas,True,False,False,True,False,False,False,Zacatecas
+421,2032-01-01T00:00:00,Zona metropolitana,Zacatecas-Guadalupe,32,Zacatecas,57,32057,Trancoso,False,False,False,False,False,True,False,Zacatecas
