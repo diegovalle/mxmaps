@@ -8,6 +8,7 @@ docs/*
 /index.md
 /index_files
 data-raw/simpl/
+data-raw/simpl2025/
 AGEEML_20211271312276.csv.xz
 AGEEML_2026910145484.csv.xz
 /data-raw/*shp
