@@ -14,23 +14,26 @@ knitr::opts_chunk$set(
 
 This document provides examples of how to create interactive choropleth maps of Mexican municipios using the `mxmaps` and `leaflet` packages. The examples show how to visualize data for all municipios, as well as how to create focused maps of specific areas, such as cities or metropolitan areas, by subsetting the data.
 
-```{r}
-library(mxmaps)
-library(leaflet) # for colorNumeric
+```{r message=FALSE}
+library("mxmaps")
+library("sf")
+library("leaflet") # for colorNumeric
 
-df_mxmunicipio_2020$value <- df_mxmunicipio_2020$indigenous_language /
-  df_mxmunicipio_2020$pop
+df_mxmunicipio_2025$value <- df_mxmunicipio_2025$indigenous /
+  df_mxmunicipio_2025$pop
 # Viridis color scheme
 magma <- c(
   "#000004FF", "#1D1146FF", "#50127CFF", "#822681FF", "#B63779FF",
   "#E65163FF", "#FB8761FF", "#FEC387FF", "#FCFDBFFF"
 )
-pal <- colorNumeric(magma, domain = df_mxmunicipio_2020$value)
+pal <- colorNumeric(magma, domain = df_mxmunicipio_2025$value)
 mxmunicipio_leaflet(
-  df_mxmunicipio_2020,
-  pal,
-  ~ pal(value),
-  ~ sprintf(
+  df = df_mxmunicipio_2025,
+  pal = pal,
+  fillColor = ~ pal(value),
+  fillOpacity = .7,
+  weight = .8,
+  popup = ~ sprintf(
     "State: %s<br/>Municipio : %s<br/>Percent Indigenous: %s%%",
     state_name, municipio_name, round(value * 100, 1)
   )
@@ -38,8 +41,8 @@ mxmunicipio_leaflet(
   addLegend(
     position = "bottomright",
     pal = pal,
-    values = df_mxmunicipio_2020$value,
-    title = "Percent<br>Indigenous<br>Speaking",
+    values = df_mxmunicipio_2025$value,
+    title = "Percent<br>Indigenous",
     labFormat = labelFormat(
       suffix = "%",
       transform = function(x) {
@@ -47,7 +50,7 @@ mxmunicipio_leaflet(
       }
     )
   ) |>
-  addProviderTiles("CartoDB.Positron")
+  addProviderTiles("Esri.WorldShadedRelief")
 ```
 
 ## City maps
@@ -58,9 +61,7 @@ You can also subset the data to only show certain municipios
 library("dplyr")
 library("geojsonio")
 library("jsonlite")
-library("sf")
 library("RColorBrewer")
-library("leaflet")
 
 df <- df_mxmunicipio_2020 |>
   as.data.frame() |>
@@ -70,11 +71,10 @@ df$value <- df$indigenous / df$pop
 
 Reds <- c("white", brewer.pal(4, "RdYlBu"))
 pal <- colorNumeric(Reds, domain = df$value)
-mxmunicipio_leaflet(df,
-  pal,
-  ~ pal(value),
-  opacity = 0.8,
-  fillOpacity = 0.8,
+mxmunicipio_leaflet(
+  df = df,
+  fillColor = ~ pal(value),
+  fillOpacity = 0.5,
   zoom = df$region,
   popup = sprintf(
     "State: %s<br/>Municipio : %s<br/>Value: %s%%",
@@ -84,10 +84,11 @@ mxmunicipio_leaflet(df,
   )
 ) |>
   addLegend(
-    position = "bottomright", pal = pal,
+    position = "bottomright",
+    pal = pal,
     values = df$value
-  ) |>
-  addProviderTiles("CartoDB.Positron")
+  )  |>
+  addProviderTiles("Esri.WorldTerrain")
 ```
 
 
@@ -96,8 +97,16 @@ or you can subset the topoJSON directly
 ```{r message=FALSE,warning=FALSE}
 # Convert the topoJSON to spatial object
 tmpdir <- tempdir()
-# have to use RJSONIO or else the topojson isn't valid
-write(RJSONIO::toJSON(mxmunicipio.topoJSON), file.path(tmpdir, "mun.topojson"))
+
+# Convert sf to GeoJSON string
+geojson_str <- geojsonio::geojson_json(mxmunicipio.topoJSON)
+
+# Convert GeoJSON to TopoJSON
+topojson_str <- geojsonio::geo2topo(as.character(geojson_str))
+
+# Write to a file
+writeLines(topojson_str, file.path(tmpdir, "mun.topojson"))
+
 muns <- topojson_read(file.path(tmpdir, "mun.topojson"))
 
 # municipios that make up Monterrey
@@ -120,8 +129,12 @@ pal <- colorNumeric(
 
 leaflet(monterrey) |>
   addPolygons(
-    stroke = FALSE, smoothFactor = 0.2, fillOpacity = 1,
-    color = ~ pal(monterrey@data$rand)
-  ) |>
-  addProviderTiles("CartoDB.Positron")
+    stroke = TRUE,
+    smoothFactor = 0.2,
+    fillOpacity = .7,
+    weight = 1.2,
+    fillColor = ~ pal(monterrey@data$rand),
+    color = "#111"
+  )  |>
+  addProviderTiles("Esri.WorldTerrain")
 ```

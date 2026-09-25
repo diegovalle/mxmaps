@@ -59,6 +59,7 @@ library("ggrepel")
 library("sf")
 library("RJSONIO")
 library("dplyr")
+library("shadowtext")
 
 df_mxstate_2020$value <- df_mxstate_2020$indigenous_language /
   df_mxstate_2020$pop * 100
@@ -68,12 +69,15 @@ p <- mxstate_choropleth(df_mxstate_2020,
   legend = "%"
 )
 
-
 data("mxstate.topoJSON")
 
 tmpdir <- tempdir()
-# have to use RJSONIO or else the topojson isn't valid
-write(RJSONIO::toJSON(mxstate.topoJSON), file.path(tmpdir, "state.topojson"))
+# Convert sf to GeoJSON string
+geojson_str <- geojsonio::geojson_json(mxstate.topoJSON)
+# Convert GeoJSON to TopoJSON
+topojson_str <- geojsonio::geo2topo(as.character(geojson_str))
+# Write to a file
+writeLines(topojson_str, file.path(tmpdir, "state.topojson"))
 states <- topojson_read(file.path(tmpdir, "state.topojson")) |>
   arrange(id)
 df_mxstate <- arrange(df_mxstate_2020, region)
@@ -92,7 +96,10 @@ p +
     aes(lon, lat, label = state_abbr),
     size = 3,
     box.padding = unit(0.1, "lines"),
-    force = 0.1
+    force = 0.1,
+    color = "white",      # Color of the main text
+    bg.color = "black",   # Color of the shadow/border outline
+    bg.r = 0.15           # Radius/thickness of the shadow border
   )
 ```
 

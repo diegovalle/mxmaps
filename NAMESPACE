@@ -15,44 +15,55 @@ export(str_mxstate)
 importFrom(Hmisc,cut2)
 importFrom(R6,R6Class)
 importFrom(RgoogleMaps,MaxZoom)
-importFrom(dplyr,"%>%")
-importFrom(dplyr,left_join)
-importFrom(ggmap,get_map)
-importFrom(ggmap,ggmap)
-importFrom(ggplot2,"%+replace%")
-importFrom(ggplot2,aes)
-importFrom(ggplot2,annotate)
-importFrom(ggplot2,annotation_custom)
-importFrom(ggplot2,coord_map)
-importFrom(ggplot2,coord_quickmap)
-importFrom(ggplot2,coord_sf)
-importFrom(ggplot2,element_blank)
-importFrom(ggplot2,geom_polygon)
-importFrom(ggplot2,geom_sf)
-importFrom(ggplot2,geom_text)
-importFrom(ggplot2,ggplot)
-importFrom(ggplot2,ggplotGrob)
-importFrom(ggplot2,ggtitle)
-importFrom(ggplot2,scale_color_continuous)
-importFrom(ggplot2,scale_colour_brewer)
-importFrom(ggplot2,scale_fill_brewer)
-importFrom(ggplot2,scale_fill_continuous)
-importFrom(ggplot2,scale_fill_gradient2)
-importFrom(ggplot2,scale_x_continuous)
-importFrom(ggplot2,scale_y_continuous)
-importFrom(ggplot2,theme)
-importFrom(ggplot2,theme_grey)
-importFrom(ggplot2,theme_void)
-importFrom(leaflet,colorNumeric)
-importFrom(leaflet,fitBounds)
+importFrom(dplyr,
+  "%>%",
+  anti_join,
+  left_join
+)
+importFrom(ggmap,
+  get_map,
+  ggmap
+)
+importFrom(ggplot2,
+  "%+replace%",
+  aes,
+  annotate,
+  annotation_custom,
+  coord_map,
+  coord_quickmap,
+  coord_sf,
+  element_blank,
+  geom_polygon,
+  geom_sf,
+  geom_text,
+  ggplot,
+  ggplotGrob,
+  ggtitle,
+  scale_color_continuous,
+  scale_colour_brewer,
+  scale_fill_brewer,
+  scale_fill_continuous,
+  scale_fill_gradient2,
+  scale_x_continuous,
+  scale_y_continuous,
+  theme,
+  theme_grey,
+  theme_void
+)
+importFrom(leaflet,
+  colorNumeric,
+  fitBounds
+)
 importFrom(mapproj,mapproject)
 importFrom(prismatic,best_contrast)
 importFrom(rlang,.data)
 importFrom(scales,percent)
 importFrom(shadowtext,geom_shadowtext)
-importFrom(stringr,str_c)
-importFrom(stringr,str_extract_all)
-importFrom(stringr,str_pad)
-importFrom(stringr,str_sub)
+importFrom(stringr,
+  str_c,
+  str_extract_all,
+  str_pad,
+  str_sub
+)
 importFrom(utils,data)
 importFrom(viridis,scale_fill_viridis)

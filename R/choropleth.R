@@ -4,7 +4,7 @@
 #' @importFrom ggmap get_map ggmap
 #' @importFrom RgoogleMaps MaxZoom
 #' @importFrom stringr str_extract_all
-#' @importFrom dplyr left_join
+#' @importFrom dplyr left_join anti_join
 #' @keywords internal
 #' @export
 #'
@@ -390,10 +390,12 @@ Choropleth2 <- R6Class("Choropleth2",
     },
     #' @description bind
     bind = function() {
+      missing_regions <- anti_join(self$map.df, self$user.df, by = "region")
       self$choropleth.df <- left_join(self$map.df, self$user.df, by = "region")
-      missing_regions <- unique(self$choropleth.df[is.na(self$choropleth.df$value), ]$region)
-      if (self$warn && length(missing_regions) > 0) {
-        missing_regions <- paste(missing_regions, collapse = ", ")
+      #self$choropleth.df <- left_join(self$map.df, self$user.df, by = "region")
+      #missing_regions <- unique(self$choropleth.df[is.na(self$choropleth.df$value), ]$region)
+      if (self$warn && nrow(missing_regions) > 0) {
+        missing_regions <- paste(unique(missing_regions$region), collapse = ", ")
         warning_string <- paste("The following regions were missing and are being set to NA:", missing_regions)
         warning(warning_string)
       }

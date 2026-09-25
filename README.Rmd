@@ -2,7 +2,7 @@
 title: "Mexico Choropleths"
 author: "Diego Valle-Jones"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
-output: 
+output:
  github_document:
           toc: true
           fig_width: 8
@@ -21,7 +21,7 @@ Master: [![R build status](https://github.com/diegovalle/mxmaps/workflows/R-CMD-
 
 ## What does it do?
 
-This package is based on [choroplethr](https://CRAN.R-project.org/package=choroplethr) and can be used to easily create maps of Mexico at both the state and municipio levels. It also includes functions to create interactive maps using the leaflet package, map INEGI data from its [API](https://CRAN.R-project.org/package=inegiR), and format strings so they match the INEGI state and municipio codes. Be sure to visit the [official website](https://www.diegovalle.net/mxmaps/).
+This package is based on [choroplethr](https://CRAN.R-project.org/package=choroplethr) and can be used to easily create maps of Mexico at both the state and municipio levels. It also includes functions to create interactive maps using the leaflet package, and format strings so they match the INEGI state and municipio codes. Be sure to visit the [official website](https://www.diegovalle.net/mxmaps/).
 
 
 ```{r setup, include=FALSE}
@@ -44,22 +44,22 @@ devtools::install_github('diegovalle/mxmaps')
 ```{r readme-quick-example}
 library(mxmaps)
 
-data("df_mxstate_2020")
-df_mxstate_2020$value <- df_mxstate_2020$pop
-mxstate_choropleth(df_mxstate_2020,
+data("df_mxstate_2025")
+df_mxstate_2025$value <- df_mxstate_2025$pop
+mxstate_choropleth(df_mxstate_2025,
   title = "Total population, by state"
 )
 ```
 
 ## Data
 
-The data.frame that you provide to the plotting functions must have one column named "region" and one column named "value". The entries for "region" must match the INEGI codes for states ("01", "02", etc) and municipios ("01001", "01002", etc) either as a string with or without a leading "0" or as numerics. The functions `str_mxstate` and `str_mxmunicipio` are provided to easily format codes to the INEGI specification. Also, two example data.frames, `df_mxstate_2020` and `df_mxmunicipio_2020`, are provided with demographic variables from the 2020 census.
+The data.frame that you provide to the plotting functions must have one column named "region" and one column named "value". The entries for "region" must match the INEGI codes for states ("01", "02", etc) and municipios ("01001", "01002", etc) either as a string with or without a leading "0" or as numerics. The functions `str_mxstate` and `str_mxmunicipio` are provided to easily format codes to the INEGI specification. Also, two example data.frames, `df_mxstate_2025` and `df_mxmunicipio_2025`, are provided with demographic variables from the 2025 census.
 
 ```{r}
-data("df_mxstate_2020")
-knitr::kable(head(df_mxstate_2020))
-data("df_mxmunicipio_2020")
-knitr::kable(head(df_mxmunicipio_2020))
+data("df_mxstate_2025")
+knitr::kable(head(df_mxstate_2025))
+data("df_mxmunicipio_2025")
+knitr::kable(head(df_mxmunicipio_2025))
 ```
 
 ## Municipios
@@ -67,14 +67,13 @@ knitr::kable(head(df_mxmunicipio_2020))
 Here's another example showing Mexican municipios (similar to counties):
 
 ```{r readme-muncipios}
-data("df_mxmunicipio_2020")
-df_mxmunicipio_2020$value <- df_mxmunicipio_2020$indigenous_language / df_mxmunicipio_2020$pop
-mxmunicipio_choropleth(df_mxmunicipio_2020,
+data("df_mxmunicipio_2025")
+df_mxmunicipio_2025$value <- df_mxmunicipio_2025$indigenous / df_mxmunicipio_2025$pop
+mxmunicipio_choropleth(df_mxmunicipio_2025,
   num_colors = 1,
   title = "Percentage of the population that speaks\nan indigenous language"
 )
 ```
-
 
 ## Contributors
 

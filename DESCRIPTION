@@ -1,7 +1,7 @@
 Package: mxmaps
 Type: Package
 Title: Create Maps of Mexico
-Version: 2020.3.0
+Version: 2025.0.0
 Authors@R: c(person("Diego", "Valle-Jones", email = "diego@diegovalle.net", role = c("aut", "cre")))
 Maintainer: Diego Valle-Jones <diego@diegovalle.net>
 Description: Ready-made functions to create static and interactive choropleths of Mexico.
@@ -12,29 +12,30 @@ URL: https://www.diegovalle.net/mxmaps/, https://github.com/diegovalle/mxmaps
 BugReports: https://github.com/diegovalle/mxmaps/issues
 License: BSD_3_clause + file LICENSE
 LazyData: TRUE
+LazyDataCompression: xz
 Imports:
-    Hmisc,
-    stringr,
-    ggplot2 (>= 2.2.1),
-    scales,
     dplyr,
-    RgoogleMaps,
     ggmap,
+    ggplot2 (>= 2.2.1),
+    Hmisc,
+    leaflet,
+    mapproj,
     prismatic,
     R6,
-    leaflet,
-    viridis,
-    mapproj,
+    RgoogleMaps,
+    rlang,
+    scales,
     shadowtext,
-    rlang
+    stringr,
+    viridis
 Suggests:
-    sf,
-    testthat,
-    vdiffr,
+    jsonlite,
     knitr,
     rmarkdown,
-    jsonlite
+    sf,
+    testthat,
+    vdiffr
 Depends:
     R (>= 4.1.0)
 Encoding: UTF-8
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0

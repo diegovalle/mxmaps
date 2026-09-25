@@ -1,7 +1,7 @@
-test_that("state plot appearance", {
+test_that("state plot appearance vdiff", {
   skip_on_ci()
-  df_mxstate_2020$value <- df_mxstate_2020$pop
-  p <- mxstate_choropleth(df_mxstate_2020,
+  df_mxstate_2025$value <- df_mxstate_2025$pop
+  p <- mxstate_choropleth(df_mxstate_2025,
     title = "Title",
     scale_bar = TRUE
   )
@@ -12,14 +12,14 @@ test_that("state plot appearance", {
   )
 })
 
-test_that("municipio plot appearance", {
+test_that("municipio plot appearance vdiff", {
   skip_on_ci()
-  df_mxmunicipio_2020$value <- df_mxmunicipio_2020$indigenous_language /
-    df_mxmunicipio_2020$pop * 100
-  p <- mxmunicipio_choropleth(df_mxmunicipio_2020,
+  df_mxmunicipio_2025$value <- df_mxmunicipio_2025$indigenous /
+    df_mxmunicipio_2025$pop * 100
+  p <- mxmunicipio_choropleth(df_mxmunicipio_2025,
     num_colors = 1,
-    title = "",
-    legend = "",
+    title = "title",
+    legend = "indigenous",
     municipio_border_size = 0,
     municipio_border_color = "transparent",
     background_color = "lightblue",
@@ -32,11 +32,11 @@ test_that("municipio plot appearance", {
   )
 })
 
-test_that("hexbin plot appearance", {
+test_that("hexbin plot appearance vdiff", {
   skip_on_ci()
-  df_mxstate_2020$value <- df_mxstate_2020$afromexican /
-    df_mxstate_2020$pop * 100
-  p <- mxhexbin_choropleth(df_mxstate_2020,
+  df_mxstate_2025$value <- df_mxstate_2025$afromexican /
+    df_mxstate_2025$pop * 100
+  p <- mxhexbin_choropleth(df_mxstate_2025,
     num_colors = 1,
     title = "",
     legend = "",

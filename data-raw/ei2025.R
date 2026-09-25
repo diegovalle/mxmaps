@@ -27,8 +27,13 @@ df_mxstate_2025 <- df_mxstate_2025 |>
          pop_female = POBFEM,
          afromexican = PCN_POB_AFRO,
          indigenous = PCN_POB_IND) |>
+  mutate(pop = as.numeric(str_replace_all(pop, " ", "")),
+         pop_female = as.numeric(str_replace_all(pop_female, " ", "")),
+         pop_male = as.numeric(str_replace_all(pop_male, " ", ""))) |>
   mutate(region = str_mxstate(region)) |>
   left_join(df_mxstate[, c(1:5)], by = "region") |>
+  mutate(afromexican = round(afromexican/100 * pop),
+         indigenous = round(indigenous/100 * pop)) |>
   select(region, state_name, state_name_official, state_abbr,
          state_abbr_official, year, pop, pop_male, pop_female,
          afromexican, indigenous)
@@ -66,16 +71,20 @@ df_mxmunicipio_2025 <- df_mxmunicipio_2025 |>
   mutate(region = str_mxmunicipio(CVE_ENT, CVE_MUN)) |>
   rename(state_code = CVE_ENT,
          municipio_code = CVE_MUN,
-         state_name = NOM_ENT,
          municipio_name = NOM_MUN,
          pop = POBTOT,
          pop_male = POBMAS,
          pop_female = POBFEM,
          afromexican = PCN_POB_AFRO,
          indigenous = PCN_POB_IND) |>
+  mutate(pop = as.numeric(str_replace_all(pop, " ", "")),
+         pop_female = as.numeric(str_replace_all(pop_female, " ", "")),
+         pop_male = as.numeric(str_replace_all(pop_male, " ", ""))) |>
   mutate(municipio_name =
            str_replace_all(municipio_name, fixed("*"), "")) |>
-  left_join(df_mxmunicipio_2020[, c(3, 5:7)], by = "region") |>
+  left_join(df_mxmunicipio_2020[, c(3:4, 5:7)], by = "region") |>
+  mutate(afromexican = round(afromexican/100 * pop),
+         indigenous = round(indigenous/100 * pop)) |>
   select("state_code", "municipio_code", "region", "state_name", "state_name_official",
          "state_abbr", "state_abbr_official", "municipio_name", "year",
          "pop", "pop_male", "pop_female", "afromexican", "indigenous")
@@ -105,6 +114,7 @@ Encoding(df_mxmunicipio_2025$state_name) <- "UTF-8"
 Encoding(df_mxmunicipio_2025$state_name_official) <- "UTF-8"
 Encoding(df_mxmunicipio_2025$state_abbr_official) <- "UTF-8"
 Encoding(df_mxmunicipio_2025$municipio_name) <- "UTF-8"
+Encoding(df_mxmunicipio_2025$metro_area) <- "UTF-8"
 save(df_mxmunicipio_2025, file = "data/df_mxmunicipio_2025.RData", compress = "xz", version = 2)
 
 

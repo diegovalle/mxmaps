@@ -15,10 +15,10 @@ test_that("state choropleth matches expectations", {
 
 test_that("municipio choropleth matches expectations", {
   data("df_mxmunicipio_2020")
-  df_mxmunicipio_2020$value <- df_mxmunicipio_2020$pop
-  p <- mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1)
+  df_mxmunicipio_2025$value <- df_mxmunicipio_2025$pop
+  p <- mxmunicipio_choropleth(df_mxmunicipio_2025, num_colors = 1)
   expect_is(p$layers[[1]], "ggproto")
-  expect_identical(sort(unique(p$data$id)), sort(df_mxmunicipio_2020$region))
+  expect_identical(sort(unique(p$data$id)), sort(df_mxmunicipio_2025$region))
 })
 
 test_that("hexbin matches expectations", {

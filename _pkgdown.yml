@@ -72,6 +72,8 @@ reference:
   - title: Datasets
     desc: Official datasets from the INEGI and CONAPO
     contents:
+      - '`df_mxstate_2025`'
+      - '`df_mxmunicipio_2025`'
       - '`df_mxstate_2020`'
       - '`df_mxmunicipio_2020`'
       - '`df_mxstate`'
@@ -100,4 +102,3 @@ reference:
     desc: mxmaps package
     contents:
       - '`mxmaps`'
-

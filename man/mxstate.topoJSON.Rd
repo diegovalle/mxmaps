@@ -8,10 +8,9 @@
 data(mxstate.topoJSON)
 }
 \description{
-A fortified data.frame which contains a map of all 32 Mexican states in topoJSON format.
+A sf object which contains a map of all 32 Mexican states.
 }
 \references{
-Downloaded from the "Cartografia Geoestadistica Urbana y
-Rural Amanzanada. Planeacion de la Encuesta Intercensal 2015" shapefiles
-(https://gist.github.com/diegovalle/aa3eef87c085d6ea034f)
+Downloaded from the "Marco Geoestadístico, Encuesta Intercensal 2025" shapefiles
+(https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=794551196649)
 }

@@ -6,9 +6,9 @@ fig_height: 5
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
-                      fig.dim = c(8, 5), 
-                      dpi = 200, 
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.dim = c(8, 5),
+                      dpi = 200,
                       out.width = '100%',
                       fig.path = "man/figures/")
 ```
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE,
 # mxmaps - create maps of Mexico
 
 [![R build status](https://github.com/diegovalle/mxmaps/workflows/R-CMD-check/badge.svg)](https://github.com/diegovalle/mxmaps/actions)
-[![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master) 
+[![Coverage Status](https://coveralls.io/repos/github/diegovalle/mxmaps/badge.svg?branch=master)](https://coveralls.io/github/diegovalle/mxmaps?branch=master)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 
 <img src="reference/figures/header.png" alt="Maps of Mexico" intrinsicsize="722 x 270" style="width:80%">
@@ -41,15 +41,15 @@ Note: `mxmaps` depends on the `sf` package, which has its own [system dependenci
 ```{r index-example, fig.dim = c(8, 5)}
 library("mxmaps")
 
-df_mxstate_2020$value <- df_mxstate_2020$pop
-mxstate_choropleth(df_mxstate_2020,
+df_mxstate_2025$value <- df_mxstate_2025$pop
+mxstate_choropleth(df_mxstate_2025,
                    title = "Total population, by state")
 ```
 
 Here is a preview of the data format:
 
 ```{r}
-knitr::kable(head(df_mxstate_2020[,c("region", "value")]))
+knitr::kable(head(df_mxstate_2025[,c("region", "value")]))
 ```
 
 ## Basic Usage
@@ -59,11 +59,11 @@ The two main functions in this package are `mxstate_choropleth` and `mxmunicipio
 ```{r index-basics}
 library("mxmaps")
 
-df_mxstate_2020$value <-  df_mxstate_2020$indigenous_language / 
-  df_mxstate_2020$pop * 100
-mxstate_choropleth(df_mxstate_2020, 
+df_mxstate_2025$value <-  df_mxstate_2025$indigenous /
+  df_mxstate_2025$pop * 100
+mxstate_choropleth(df_mxstate_2025,
                    num_colors = 1,
-                   title = "Percentage of the population that speaks\nan indigenous language",
+                   title = "Percentage of the population that is\n indigenous",
                    legend = "%")
 ```
 
@@ -72,12 +72,12 @@ mxstate_choropleth(df_mxstate_2020,
 You can also plot data for Mexican municipios (which are similar to US counties).
 
 ```{r index-municipios}
-data("df_mxmunicipio_2020")
-df_mxmunicipio_2020$value <-  df_mxmunicipio_2020$indigenous_language / 
-  df_mxmunicipio_2020$pop * 100
-mxmunicipio_choropleth(df_mxmunicipio_2020, 
+data("df_mxmunicipio_2025")
+df_mxmunicipio_2025$value <-  df_mxmunicipio_2025$indigenous /
+  df_mxmunicipio_2025$pop * 100
+mxmunicipio_choropleth(df_mxmunicipio_2025,
                        num_colors = 1,
-                       title = "Percentage of the population that speaks\nan indigenous language",
+                       title = "Percentage of the population that is\n indigenous",
                        legend = "%")
 
 ```
@@ -86,30 +86,23 @@ You can also zoom in on specific areas of the map by passing a vector of `region
 
 ```{r index-zoom}
 
-mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
-                       zoom = subset(df_mxmunicipio_2020, metro_area %in% 
-                                       c("Valle de México",
+mxmunicipio_choropleth(df_mxmunicipio_2025, num_colors = 1,
+                       zoom = subset(df_mxmunicipio_2025, metro_area %in%
+                                       c("Ciudad de México",
                                          "Puebla-Tlaxcala",
                                          "Cuernavaca",
                                          "Toluca"))$region,
-                       title = "Percentage of the population that speaks\nan indigenous language",
+                       title = "Percentage of the population that is\na indigenous",
                        legend = "%")
 ```
 
 The `show_states` parameter allows you to hide state borders on municipio-level maps.
 
 ```{r index-borders}
-mxmunicipio_choropleth(df_mxmunicipio_2020, num_colors = 1,
-                       zoom = subset(df_mxmunicipio_2020, state_name %in% 
+mxmunicipio_choropleth(df_mxmunicipio_2025, num_colors = 1,
+                       zoom = subset(df_mxmunicipio_2025, state_name %in%
                                        c("Yucatán", "Veracruz"))$region,
-                       title = "Percentage of the population that speaks\nan indigenous language in Yucatán and Veracruz",
+                       title = "Percentage of the population that is\n indigenous in Yucatán and Veracruz",
                        show_states = FALSE,
                        legend = "%")
 ```
-
-
-
-
-## Contributors
-
-* [robibgeophy](https://github.com/robibgeophy)

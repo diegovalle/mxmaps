@@ -21,14 +21,23 @@ strings (with or without a leading zero) or numeric. The
 package provides the `str_mxstate` and `str_mxmunicipio`
 functions to easily format these codes to the INEGI
 specification. The package also includes example
-`data.frame` objects, such as `df_mxstate_2020` and
-`df_mxmunicipio_2020`, which contain demographic variables
-from the 2020 Census.
+`data.frame` objects, such as `df_mxstate_2025` and
+`df_mxmunicipio_2025`, which contain demographic variables
+from the 2025 Encuesta Intercensal
 
 ```{r}
 library(mxmaps)
 library(htmlTable)
 
+data("df_mxstate_2025")
+htmlTable(head(df_mxstate_2025), rnames = FALSE, col.rgroup = c("none", "#F7F7F7"))
+data("df_mxmunicipio_2025")
+htmlTable(head(df_mxmunicipio_2025), rnames = FALSE, col.rgroup = c("none", "#F7F7F7"))
+```
+
+## 2020 Census
+
+```{r}
 data("df_mxstate_2020")
 htmlTable(head(df_mxstate_2020), rnames = FALSE, col.rgroup = c("none", "#F7F7F7"))
 data("df_mxmunicipio_2020")
@@ -63,18 +72,26 @@ instead of the full official name, "Veracruz de Ignacio de
 la Llave." Similarly, the official abbreviation for Chiapas,
 "Chis.", can be awkward in some Spanish speaking countries.
 
+## Exporting topojson data
+
 ```{r message=FALSE,warning=FALSE}
 library("geojsonio")
 
 # Convert the topoJSON to spatial object
 data(mxstate.topoJSON)
 tmpdir <- tempdir()
-# have to use RJSONIO or else the topojson isn't valid
-write(RJSONIO::toJSON(mxstate.topoJSON), file.path(tmpdir, "state.topojson"))
+# Convert sf to GeoJSON string
+geojson_str <- geojsonio::geojson_json(mxstate.topoJSON)
+# Convert GeoJSON to TopoJSON
+topojson_str <- geojsonio::geo2topo(as.character(geojson_str))
+# Write to a file
+writeLines(topojson_str, file.path(tmpdir, "state.topojson"))
 states <- topojson_read(file.path(tmpdir, "state.topojson"))
 ```
 
 ## String conversion
+
+INEGI municipality identifiers are fixed-width, five-character geographic codes composed of a two-digit state code (Entidad Federativa) followed by a three-digit municipality code (Municipio). The municipality component is zero-padded to a width of three digits, meaning that valid identifiers may contain one or more leading zeros (e.g., 01001, 02003, 09002). Leading zeros are semantically significant and form part of the official identifier; they do not represent insignificant numeric padding. Consequently, INEGI codes should be stored and processed as character strings rather than numeric values. Converting these identifiers to numeric types can strip leading zeros, altering the code and potentially causing referential integrity issues, failed joins, duplicate records, or mismatches
 
 ```{r}
 str_mxstate(c(32, 5))

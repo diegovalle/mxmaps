@@ -246,8 +246,8 @@ MXMunicipioChoropleth <- R6Class("MXMunicipioChoropleth", # nolint
 #' @param municipio_border_size Municipio border line width.
 #' @return A ggplot object representing a municipio map of Mexico
 #' @examples
-#' df <- df_mxmunicipio_2020
-#' df$value <- df$indigenous_language
+#' df <- df_mxmunicipio_2025
+#' df$value <- df$indigenous
 #' mxmunicipio_choropleth(df)
 
 #' @export

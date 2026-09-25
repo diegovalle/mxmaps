@@ -19,10 +19,10 @@ library(ggplot2)
 
 data(mxstate.map)
 ggplot(mxstate.map, aes(long, lat, group = group)) +
-  geom_polygon(fill = "white", color = "black", size = .2) +
+  geom_polygon(fill = "white", color = "black", linewidth = .2) +
   coord_map()
 }
 \references{
-Downloaded from the "Marco Geoestadístico. Censo de Población y Vivienda 2020" shapefiles
-(https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=889463807469)
+Downloaded from the "Marco Geoestadístico, Encuesta Intercensal 2025" shapefiles
+(https://www.inegi.org.mx/app/biblioteca/ficha.html?upc=794551196649)
 }

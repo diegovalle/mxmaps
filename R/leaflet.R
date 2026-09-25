@@ -31,6 +31,8 @@ doResolveFormula.data.frame <- function(data, f) {
 setGeometry <- function(topoJSON.geometries, df, zoom, fillOpacity) {
   # Add a properties$style list and popupto each feature
   lapply(topoJSON.geometries, function(feat) {
+    browser()
+    feat$properties <- as.list(feat$properties)
     idx <- which(df$region == feat$properties$id)
     if (!is.null(zoom)) {
       if (!feat$properties$id %in% zoom) {
@@ -52,11 +54,31 @@ setGeometry <- function(topoJSON.geometries, df, zoom, fillOpacity) {
   })
 }
 
-draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
-  m <- leaflet::leaflet()
+draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom,
+                           fillColor, popup,
+                           weight, color, opacity, fillOpacity) {
+  m <- leaflet::leaflet(topoJSON)
   m <- leaflet::addTiles(m)
   m <- leaflet::setView(m, lng, lat, mapzoom)
-  leaflet::addTopoJSON(m, topoJSON)
+  #leaflet::addTopoJSON(m, topoJSON)
+  leaflet::addPolygons(
+    m,
+    fillColor = fillColor,       # Map color to the data column
+    popup = popup,
+    weight = weight,                    # Border thickness
+    opacity = opacity,
+    color = color,               # Border color
+    #dashArray = "3",
+    fillOpacity = fillOpacity,
+    # highlightOptions = highlightOptions(
+    #   weight = 2,
+    #   color = "#666",
+    #   dashArray = "",
+    #   fillOpacity = 0.7,
+    #   bringToFront = TRUE
+    # ),
+    # label = ~paste0("Value: ", round(value, 2)) # Hover tooltip
+  )
 }
 
 #' Create a municipio-level interactive map
@@ -85,7 +107,7 @@ draw_mxleaflet <- function(topoJSON, lat, lng, mapzoom) {
 #' @export
 #' @importFrom leaflet colorNumeric fitBounds
 #' @importFrom  utils data
-#' @importFrom dplyr %>%
+#' @importFrom dplyr %>% left_join
 #' @importFrom rlang .data
 #'
 #' @examples
@@ -133,25 +155,17 @@ mxmunicipio_leaflet <- function(df, pal,
   df$region <- str_mxmunicipio(df$region)
 
   data(mxmunicipio.topoJSON, package = "mxmaps", envir = environment())
-  mxmunicipio.topoJSON <- setStyle(
-    mxmunicipio.topoJSON, weight, color, opacity,
-    fillOpacity
-  )
-
-
-  df$apopups <- resolveFormula(popup, df)
-  df$acolors <- resolveFormula(fillColor, df)
-  mxmunicipio.topoJSON$objects$municipio$geometries <-
-    setGeometry(mxmunicipio.topoJSON$objects$municipio$geometries, df, zoom,
-      fillOpacity = fillOpacity
-    )
+  merged_sf  <- mxmunicipio.topoJSON |>
+    dplyr::left_join(df, by = c("id" = "region"))
   if (!is.null(zoom)) {
     zoom <- str_mxmunicipio(zoom)
     df_zoom <- dplyr::filter(df, .data$region %in% zoom)
     if (nrow(df_zoom) == 0) {
       stop("No valid municipios in zoom data")
     }
-    draw_mxleaflet(mxmunicipio.topoJSON, lat, lng, mapzoom) |>
+    draw_mxleaflet(merged_sf, lat, lng, mapzoom,
+                   fillColor, popup,
+                   weight, color, opacity, fillOpacity) |>
       leaflet::fitBounds(
         min(df_zoom$long) - 0.5,
         max(df_zoom$lat) + 0.5,
@@ -159,7 +173,9 @@ mxmunicipio_leaflet <- function(df, pal,
         min(df_zoom$lat) - 0.5
       )
   } else {
-    draw_mxleaflet(mxmunicipio.topoJSON, lat, lng, mapzoom)
+    draw_mxleaflet(merged_sf, lat, lng, mapzoom,
+                   fillColor, popup,
+                   weight, color, opacity, fillOpacity)
   }
 }
 
@@ -233,7 +249,7 @@ states_bbox <- data.frame(
 #' @export
 #' @importFrom leaflet colorNumeric fitBounds
 #' @importFrom  utils data
-#' @importFrom dplyr %>%
+#' @importFrom dplyr %>% left_join
 #' @importFrom rlang .data
 #'
 #' @examples
@@ -262,10 +278,6 @@ mxstate_leaflet <- function(df, pal,
                             opacity = 1, fillOpacity = 0.8,
                             lng = -102, lat = 23.8, mapzoom = 5, zoom = NULL) {
   data(mxstate.topoJSON, package = "mxmaps", envir = environment())
-  mxstate.topoJSON <- setStyle(
-    mxstate.topoJSON, weight, color, opacity,
-    fillOpacity
-  )
   if (missing(df)) {
     stop("missing data.frame")
   }
@@ -278,19 +290,17 @@ mxstate_leaflet <- function(df, pal,
   })
   df$region <- str_mxstate(df$region)
 
-  df$apopups <- resolveFormula(popup, df)
-  df$acolors <- resolveFormula(fillColor, df)
-  mxstate.topoJSON$objects$state$geometries <-
-    setGeometry(mxstate.topoJSON$objects$state$geometries, df, zoom,
-      fillOpacity = fillOpacity
-    )
+  merged_sf  <- mxstate.topoJSON |>
+    dplyr::left_join(df, by = c("id" = "region"))
   if (!is.null(zoom)) {
     zoom <- str_mxstate(zoom)
     states_bbox <- dplyr::filter(states_bbox, .data$region %in% zoom)
     if (nrow(states_bbox) == 0) {
       stop("No valid municipios in zoom data")
     }
-    draw_mxleaflet(mxstate.topoJSON, lat, lng, mapzoom) |>
+    draw_mxleaflet(merged_sf, lat, lng, mapzoom,
+                   fillColor, popup,
+                   weight, color, opacity, fillOpacity) |>
       leaflet::fitBounds(
         min(states_bbox$lng1),
         max(states_bbox$lat1),
@@ -298,6 +308,8 @@ mxstate_leaflet <- function(df, pal,
         min(states_bbox$lat2)
       )
   } else {
-    draw_mxleaflet(mxstate.topoJSON, lat, lng, mapzoom)
+    draw_mxleaflet(merged_sf, lat, lng, mapzoom,
+                   fillColor, popup,
+                   weight, color, opacity, fillOpacity)
   }
 }

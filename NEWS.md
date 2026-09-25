@@ -1,7 +1,26 @@
 # mxmaps 2025.0.0
 
 * Update the state and municipios maps with those from the Encuesta Intercensal 2025
-* Add an API key to the leaflet state and municipio map examples
+* Add new `df_mxstate_2025` and `df_mxmunicipio_2025` data.frames with data
+  from the Encuesta Intercensal 2025
+* Add a CartoDB API key to the leaflet state and municipio pkgdown map examples
+  to avoid to avoid getting a key required watermark
+* `mxstate.topoJSON` and `mxmunicipio.topoJSON` are now sf objects. To convert them
+  to TopoJSON you use the following code:
+
+```R
+library("geojsonio")
+
+# Convert the topoJSON to spatial object
+data(mxstate.topoJSON)
+tmpdir <- tempdir()
+# Convert sf to GeoJSON string
+geojson_str <- geojsonio::geojson_json(mxstate.topoJSON)
+# Convert GeoJSON to TopoJSON
+topojson_str <- geojsonio::geo2topo(as.character(geojson_str))
+# Write to a file
+writeLines(topojson_str, file.path(tmpdir, "state.topojson"))
+```
 
 # mxmaps 2020.3.0
 
